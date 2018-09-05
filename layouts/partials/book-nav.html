@@ -1,0 +1,61 @@
+{{ $bookSection := default "docs" .Site.Params.BookSection  }}
+{{ if eq $bookSection "*" }}
+  {{ .Scratch.Set "BookSections" .Site.Sections }}
+{{ else }}
+  {{ $bookSections := where .Site.Sections "Section" $bookSection }}
+  {{ .Scratch.Set "BookSections" $bookSections }}
+
+  {{ if eq (len $bookSections) 1 }}
+    {{ $singleSection := index $bookSections 0 }}
+    {{ .Scratch.Set "BookSections" $singleSection.Sections }}
+  {{ end }}
+
+{{ end }}
+
+<nav role="navigation" class="pure-menu">
+  {{ partial "book-brand" . }}
+
+  <ul class="pure-menu-list pure-menu-root">
+  {{ range .Scratch.Get "BookSections" }}
+    {{ template "book-section" (dict "Section" . "CurrentPage" $.Permalink) }}
+  {{ end }}
+  </ul>
+</nav>
+
+<!-- Single section of menu (recursive) -->
+{{ define "book-section" }}
+  <li class="pure-menu-item">
+    {{ template "book-heading" .Section }}
+    <ul class="pure-menu-list">
+      {{ range .Section.Sections }}
+        {{ template "book-section" (dict "Section" . "CurrentPage" $.CurrentPage) }}
+      {{ end }}
+      {{ range .Section.Pages }}
+        <li class="pure-menu-item">
+          <a href="{{ .RelPermalink }}" class="pure-menu-link {{ if eq $.CurrentPage .Permalink }}active{{ end }}">
+            {{ default .Title (.File | humanize | title) }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </li>
+{{ end }}
+
+<!-- Menu Heading -->
+{{ define "book-heading" }}
+
+{{ $sections := split (trim .Dir "/") "/" }}
+{{ $title := index ($sections | last 1) 0 | humanize | title }}
+{{ $title := default .Title $title }}
+
+{{ if .Content }}
+<a href="{{ .RelPermalink }}" class="pure-menu-link {{ if .IsSection }}section{{ end }}">
+  {{- $title -}}
+</a>
+{{ else }}
+<span class="pure-menu-heading {{ if .IsSection }}section{{ end }}">
+  {{- $title -}}
+</span>
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,55 @@
+@import 'variables';
+
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
+  font-family: "Open Sans", "Roboto", sans-serif;
+  font-weight: 300;
+  
+}
+
+.pure-g {
+  [class *= "pure-u"] {
+    box-sizing: border-box;
+  }
+}
+
+.pure-u {
+  flex-grow: 1;
+  width: 0;
+}
+
+.pure-menu-list ul ul {
+  // left padding for nested sections
+  padding-left: $padding-16;
+}
+
+.pure-menu-root {
+  // vertical space between root sections
+  > li {
+    padding-bottom: $padding-16;
+  }
+  
+  // font weight only for root sections
+  > li > .section {
+    font-weight: 600;
+  }
+}
+
+.pure-menu-link, .pure-menu-heading {
+  color: $gray-800;
+  padding: $padding-4 $padding-16;
+  text-transform: capitalize;
+}
+
+.pure-menu-link {
+  &:hover, &.active {
+    background: none;
+  }
+
+  &:hover {
+    color: $gray-600;
+  }
+
+  &.active {
+    color: #1F37E6;
+  }
+}
