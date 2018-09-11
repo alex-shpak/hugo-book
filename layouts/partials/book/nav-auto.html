@@ -12,27 +12,29 @@
 
 {{ end }}
 
-<nav role="navigation" class="pure-menu">
-  {{ partial "book-brand" . }}
+<nav role="navigation">
+  {{ partial "book/nav-brand" . }}
 
-  <ul class="pure-menu-list pure-menu-root">
+  <ul>
   {{ range .Scratch.Get "BookSections" }}
     {{ template "book-section" (dict "Section" . "CurrentPage" $.Permalink) }}
   {{ end }}
   </ul>
+
+  {{ partial "book/nav-after" . }}
 </nav>
 
 <!-- Single section of menu (recursive) -->
 {{ define "book-section" }}
-  <li class="pure-menu-item">
+  <li {{ if .Section.Params.booktopsection }}class="book-nav-section"{{ end }}>
     {{ template "book-heading" .Section }}
-    <ul class="pure-menu-list">
+    <ul>
       {{ range .Section.Sections }}
         {{ template "book-section" (dict "Section" . "CurrentPage" $.CurrentPage) }}
       {{ end }}
       {{ range .Section.Pages }}
-        <li class="pure-menu-item">
-          <a href="{{ .RelPermalink }}" class="pure-menu-link {{ if eq $.CurrentPage .Permalink }}active{{ end }}">
+        <li>
+          <a href="{{ .RelPermalink }}" class="{{ if eq $.CurrentPage .Permalink }}active{{ end }}">
             {{ default .Title (.File | humanize | title) }}
           </a>
         </li>
@@ -49,13 +51,13 @@
 {{ $title := default .Title $title }}
 
 {{ if .Content }}
-<a href="{{ .RelPermalink }}" class="pure-menu-link {{ if .IsSection }}section{{ end }}">
-  {{- $title -}}
+<a href="{{ .RelPermalink }}">
+  {{- $title -}} 
 </a>
 {{ else }}
-<span class="pure-menu-heading {{ if .IsSection }}section{{ end }}">
+<a>
   {{- $title -}}
-</span>
+</a>
 {{ end }}
 
 {{ end }}

@@ -17,28 +17,20 @@ body {
   line-height: $body-line-height;
 }
 
-.book-content {
-  max-width: $content-max-width;
-  margin: 0 auto;
-}
-
-.book-page {
-  padding: 0 $size-48;
+a {
+  text-decoration: none;
+  color: $color-link;
 }
 
 .book-brand {
   padding: 0 $padding-16;
   font-weight: 300;
-
-  a {
-    color: $gray-800;
-    text-decoration: none;
-  }
 }
 
+// Navigation styles
 .book-nav {
-  width: $nav-menu-width;
   flex-grow: 0;
+  width: $nav-menu-width;
 
   nav {
     position: fixed;
@@ -50,14 +42,54 @@ body {
 
     font-size: $font-size-14;
     background: $gray-100;
+  }
+
+  ul {
+    list-style: none;
     padding-left: $padding-16;
+  }
+
+  a {
+    display: block;
+    color: $gray-800;
+    padding: $padding-4 $padding-16;
+    text-transform: capitalize;
+  
+    &[href]:hover {
+      color: $gray-600;
+    }
+  
+    &.active {
+      color: $color-link;
+    }
+  }
+
+  // class used for sections with bookTopSection: true
+  .book-nav-section {
+    margin-bottom: $padding-16;
+    > a { font-weight: 600; }
+    > ul { padding-left: 0; }
   }
 }
 
+.book-content {
+  max-width: $content-max-width;
+  min-width: $content-min-width;
+  margin: 0 auto;
+
+  .book-page {
+    padding: $padding-16 $size-48;
+  }
+
+  a:visited {
+    color: $color-visited-link
+  }
+}
+
+// Table of Contents styles
 .book-toc {
   flex-grow: 0;
   width: $toc-menu-width;
-  font-size: $font-size-12;
 
   nav {
     position: fixed;
@@ -66,6 +98,8 @@ body {
 
     overflow-x: hidden;
     overflow-y: auto;
+
+    font-size: $font-size-12;
 
     > ul {
       margin: $size-48 0;
@@ -80,7 +114,6 @@ body {
   }
 
   a {
-    text-decoration: none;
     line-height: 1.25;
     padding: $padding-4 0;
     display: block;

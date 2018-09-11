@@ -3,7 +3,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,600" rel="stylesheet">
 <link href="/css/pure-min.css" rel="stylesheet">
-<link href="/css/grids-responsive-min.css" rel="stylesheet">
+<!-- <link href="/css/grids-responsive-min.css" rel="stylesheet"> -->
 
 {{ $styles := resources.Get "styles.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}">

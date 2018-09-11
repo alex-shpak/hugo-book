@@ -1,7 +1,7 @@
-{{ define "title" }}
-  {{ .Title }} &ndash; {{ .Site.Title }}
+{{- define "title" -}}
+  {{ .Site.Title }}
 {{ end }}
 
-{{ define "main" }}
+{{- define "main" -}}
   <div>{{ .Content }}</div>
 {{ end }}

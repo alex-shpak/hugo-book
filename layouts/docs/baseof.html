@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {{ partial "book-html-head" . }}
-  <title>{{ .Site.Title }}</title>
+  {{ partial "book/html-head" . }}
+  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
 </head>
 
 <body>
   <div class="pure-g">
+
     <div class="pure-u book-nav">
-        {{ partial "book-nav" . }}
+      {{ partial "book/nav" . }}
     </div>
     <div class="pure-u book-content">
       <div class="pure-g">
+
         <div class="pure-u book-page markdown">
           {{ block "main" . }}{{ end }}
         </div>
+        {{ if and (default true .Site.Params.BookShowTOC) (.Page.TableOfContents) }}
         <div class="pure-u book-toc">
-          {{ partial "book-toc" . }}
+          {{ partial "book/toc" . }}
         </div>
+        {{ end }}
+
       </div>
     </div>
+
   </div>
 </body>
 </html>

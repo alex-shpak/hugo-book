@@ -25,12 +25,12 @@ $gray-800: #343a40;
 $gray-900: #212529;
 $black:    #000;
 
-// $color-link: 
-// $color-visited-link: 
-
+$color-link: #1177EE;
+$color-visited-link: #7823c9;
 
 $body-line-height: 1.75;
 $body-min-width: 25rem;
 $content-max-width: 64rem;
+$content-min-width: $body-min-width;
 $nav-menu-width: 18rem;
 $toc-menu-width: 14rem;
