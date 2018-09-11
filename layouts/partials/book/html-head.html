@@ -7,3 +7,5 @@
 
 {{ $styles := resources.Get "styles.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}">
+
+{{ partial "book/html-head-after" . }}

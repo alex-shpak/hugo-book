@@ -14,6 +14,7 @@
 
 <nav role="navigation">
   {{ partial "book/nav-brand" . }}
+  {{ partial "book/nav-before" . }}
 
   <ul>
   {{ range .Scratch.Get "BookSections" }}
