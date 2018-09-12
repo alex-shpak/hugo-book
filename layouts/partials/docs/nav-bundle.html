@@ -1,0 +1,8 @@
+<nav role="navigation">
+  {{ partial "docs/nav-brand" . }}
+  {{ partial "docs/inject/nav-before" . }}
+  {{ with .Site.GetPage .Site.Params.BookMenuBundle }}
+    {{- .Content -}}
+  {{ end }}
+  {{ partial "docs/inject/nav-after" . }}
+</nav>

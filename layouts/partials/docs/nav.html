@@ -1,0 +1,5 @@
+{{ if .Site.Params.BookMenuBundle }}
+  {{ partial "docs/nav-bundle" . }}
+{{ else }}
+  {{ partial "docs/nav-tree" . }}
+{{ end }}

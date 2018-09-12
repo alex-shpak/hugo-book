@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {{ partial "book/html-head" . }}
-  <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
+  <title>{{ block "title" . }} {{- .Site.Title -}} {{ end }}</title>
 </head>
 
 <body>
   <div class="pure-g">
 
     <div class="pure-u book-nav">
-      {{ partial "book/nav" . }}
+      {{ partial "docs/nav" . }}
     </div>
     <div class="pure-u book-content">
       <div class="pure-g">
 
         <div class="pure-u book-page markdown">
-          {{ block "main" . }}{{ end }}
+          {{ block "main" . }} {{- .Content -}} {{ end }}
         </div>
         {{ if and (default true .Site.Params.BookShowTOC) (.Page.TableOfContents) }}
         <div class="pure-u book-toc">
-          {{ partial "book/toc" . }}
+          {{ partial "docs/toc" . }}
         </div>
         {{ end }}
 
@@ -27,5 +28,6 @@
     </div>
 
   </div>
+  {{ partial "docs/inject/body" . }}
 </body>
 </html>

@@ -13,8 +13,8 @@
 {{ end }}
 
 <nav role="navigation">
-  {{ partial "book/nav-brand" . }}
-  {{ partial "book/nav-before" . }}
+  {{ partial "docs/nav-brand" . }}
+  {{ partial "docs/inject/nav-before" . }}
 
   <ul>
   {{ range .Scratch.Get "BookSections" }}
@@ -22,7 +22,7 @@
   {{ end }}
   </ul>
 
-  {{ partial "book/nav-after" . }}
+  {{ partial "docs/inject/nav-after" . }}
 </nav>
 
 <!-- Single section of menu (recursive) -->

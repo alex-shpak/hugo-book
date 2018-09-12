@@ -1,5 +1,0 @@
-<nav role="navigation">
-  {{ partial "book/nav-brand" . }}
-  {{ with .Site.GetPage .Site.Params.BookMenuBundle }}{{ .Content }}{{ end }}
-  {{ partial "book/nav-after" . }}
-</nav>

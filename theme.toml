@@ -3,13 +3,13 @@
 
 name = "Book"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE"
-description = ""
-homepage = "http://example.com/"
-tags = []
+licenselink = "https://github.com/alex-shpak/hugo-book/blob/master/LICENSE"
+description = "Hugo documentation theme as simple as plain book"
+homepage = "https://github.com/alex-shpak/hugo-book"
+tags = ["responsive", "clean", "documentation", "docs", "flexbox"]
 features = []
 min_version = "0.41"
 
 [author]
   name = "Alex Shpak"
-  homepage = ""
+  homepage = "https://github.com/alex-shpak/"
