@@ -10,7 +10,18 @@
   <div class="pure-g">
 
     <div class="pure-u book-nav">
-      {{ partial "docs/nav" . }}
+      <nav role="navigation">
+        {{ partial "docs/nav-brand" . }}
+        {{ partial "docs/inject/nav-before" . }}
+        
+        {{ if .Site.Params.BookMenuBundle }}
+          {{ partial "docs/nav-bundle" . }}
+        {{ else }}
+          {{ partial "docs/nav-filetree" . }}
+        {{ end }}
+      
+        {{ partial "docs/inject/nav-after" . }}
+      </nav>
     </div>
     <div class="pure-u book-content">
       <div class="pure-g">

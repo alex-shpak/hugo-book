@@ -9,21 +9,13 @@
     {{ $singleSection := index $bookSections 0 }}
     {{ .Scratch.Set "BookSections" $singleSection.Sections }}
   {{ end }}
-
 {{ end }}
 
-<nav role="navigation">
-  {{ partial "docs/nav-brand" . }}
-  {{ partial "docs/inject/nav-before" . }}
-
-  <ul>
+<ul>
   {{ range .Scratch.Get "BookSections" }}
     {{ template "book-section" (dict "Section" . "CurrentPage" $.Permalink) }}
   {{ end }}
-  </ul>
-
-  {{ partial "docs/inject/nav-after" . }}
-</nav>
+</ul>
 
 <!-- Single section of menu (recursive) -->
 {{ define "book-section" }}
@@ -47,18 +39,18 @@
 <!-- Menu Heading -->
 {{ define "book-heading" }}
 
-{{ $sections := split (trim .Dir "/") "/" }}
-{{ $title := index ($sections | last 1) 0 | humanize | title }}
-{{ $title := default .Title $title }}
+  {{ $sections := split (trim .Dir "/") "/" }}
+  {{ $title := index ($sections | last 1) 0 | humanize | title }}
+  {{ $title := default .Title $title }}
 
-{{ if .Content }}
-<a href="{{ .RelPermalink }}">
-  {{- $title -}} 
-</a>
-{{ else }}
-<a>
-  {{- $title -}}
-</a>
-{{ end }}
+  {{ if .Content }}
+  <a href="{{ .RelPermalink }}">
+    {{- $title -}} 
+  </a>
+  {{ else }}
+  <a>
+    {{- $title -}}
+  </a>
+  {{ end }}
 
 {{ end }}
