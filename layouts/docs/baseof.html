@@ -29,7 +29,8 @@
         <div class="pure-u book-page markdown">
           {{ block "main" . }} {{- .Content -}} {{ end }}
         </div>
-        {{ if and (default true .Site.Params.BookShowTOC) (.Page.TableOfContents) }}
+        {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
+        {{ if and ($showToC) (.Page.TableOfContents) }}
         <div class="pure-u book-toc">
           {{ partial "docs/toc" . }}
         </div>

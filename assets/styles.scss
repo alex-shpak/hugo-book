@@ -13,7 +13,8 @@ html, body {
 }
 
 body {
-  color: $gray-800;
+  color: $body-font-color;
+  background: $body-background;
   line-height: $body-line-height;
 }
 
@@ -24,7 +25,12 @@ a {
 
 .book-brand {
   padding: 0 $padding-16;
-  font-weight: 300;
+  font-weight: 400;
+
+  a {
+    padding: 0 $padding-16;
+    color: $body-font-color;
+  }
 }
 
 // Navigation styles
@@ -41,26 +47,26 @@ a {
     overflow-y: auto;
 
     font-size: $font-size-14;
-    background: $gray-100;
+    background: $nav-background;
   }
 
   ul {
     list-style: none;
     padding-left: $padding-16;
-  }
 
-  a {
-    display: block;
-    color: $gray-800;
-    padding: $padding-4 $padding-16;
-    text-transform: capitalize;
-  
-    &[href]:hover {
-      color: $gray-600;
-    }
-  
-    &.active {
-      color: $color-link;
+    a {
+      display: block;
+      color: $nav-link-color;
+      padding: $padding-4 $padding-16;
+      text-transform: capitalize;
+    
+      &[href]:hover {
+        opacity: 0.5;
+      }
+    
+      &.active {
+        color: $color-link;
+      }
     }
   }
 
@@ -126,5 +132,7 @@ a {
 
 // Print styles
 @media print {
-  
+  .book-nav, .book-toc {
+    display: none;
+  }
 }

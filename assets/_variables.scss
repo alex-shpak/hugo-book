@@ -9,8 +9,8 @@ $font-size-14: .875rem;
 $font-size-16: 1rem;
 
 $size-48: 3rem;
-$size-56: 3.5rem;
-$size-72: 4.5rem;
+// $size-56: 3.5rem;
+// $size-72: 4.5rem;
 
 // Grayscale
 $white:    #fff;
@@ -28,9 +28,17 @@ $black:    #000;
 $color-link: #1177EE;
 $color-visited-link: #7823c9;
 
+
+$body-background: none;
+$body-font-color: $gray-800;
+$body-font-weight: 300;
 $body-line-height: 1.75;
 $body-min-width: 25rem;
-$content-max-width: 64rem;
-$content-min-width: $body-min-width;
+
+$nav-background: $gray-100;
+$nav-link-color: $gray-800;
 $nav-menu-width: 18rem;
 $toc-menu-width: 14rem;
+
+$content-max-width: 64rem;
+$content-min-width: $body-min-width;
