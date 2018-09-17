@@ -79,7 +79,7 @@ bookShowToC: false
 ### Partials
 There are few empty partials you can override in `layouts/partials/`
 | Partial                                      | Placement                     |
-| --                                           | --                            |
+| ---                                          | ---                           |
 | layouts/partials/docs/inject/head.html       | Before closing `<head>` tag   |
 | layouts/partials/docs/inject/body.html       | Before closing `<body>` tag   |
 | layouts/partials/docs/inject/nav-before.html | Before `<nav>` menu block     |
