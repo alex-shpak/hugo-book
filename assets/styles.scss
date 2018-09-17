@@ -28,7 +28,6 @@ a {
   font-weight: 400;
 
   a {
-    padding: 0 $padding-16;
     color: $body-font-color;
   }
 }
@@ -52,12 +51,16 @@ a {
 
   ul {
     list-style: none;
+    margin: 0;
     padding-left: $padding-16;
+
+    li {
+      line-height: $padding-16 * 2;
+    }
 
     a {
       display: block;
       color: $nav-link-color;
-      padding: $padding-4 $padding-16;
       text-transform: capitalize;
     
       &[href]:hover {

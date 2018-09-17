@@ -1,15 +1,5 @@
-{{ $bookSection := default "docs" .Site.Params.BookSection  }}
-{{ if eq $bookSection "*" }}
-  {{ .Scratch.Set "BookSections" .Site.Sections }}
-{{ else }}
-  {{ $bookSections := where .Site.Sections "Section" $bookSection }}
-  {{ .Scratch.Set "BookSections" $bookSections }}
-
-  {{ if eq (len $bookSections) 1 }}
-    {{ $singleSection := index $bookSections 0 }}
-    {{ .Scratch.Set "BookSections" $singleSection.Sections }}
-  {{ end }}
-{{ end }}
+<!-- Put configured sections list to .Scratch -->
+{{ template "book-get-root-section" . }}
 
 <ul>
   {{ range .Scratch.Get "BookSections" }}
@@ -20,7 +10,15 @@
 <!-- Single section of menu (recursive) -->
 {{ define "book-section" }}
   <li {{ if .Section.Params.booktopsection }}class="book-nav-section"{{ end }}>
-    {{ template "book-heading" .Section }}
+
+    {{ with .Section}}
+      {{- if .Content -}}
+        <a href="{{ .RelPermalink }}">{{- template "title" . -}}</a>
+      {{- else -}}
+        {{- template "title" . -}}
+      {{- end -}}
+    {{ end }}
+
     <ul>
       {{ range .Section.Sections }}
         {{ template "book-section" (dict "Section" . "CurrentPage" $.CurrentPage) }}
@@ -28,7 +26,7 @@
       {{ range .Section.Pages }}
         <li>
           <a href="{{ .RelPermalink }}" class="{{ if eq $.CurrentPage .Permalink }}active{{ end }}">
-            {{ default .Title (.File | humanize | title) }}
+            {{- template "title" . -}}
           </a>
         </li>
       {{ end }}
@@ -36,21 +34,18 @@
   </li>
 {{ end }}
 
-<!-- Menu Heading -->
-{{ define "book-heading" }}
-
-  {{ $sections := split (trim .Dir "/") "/" }}
-  {{ $title := index ($sections | last 1) 0 | humanize | title }}
-  {{ $title := default .Title $title }}
-
-  {{ if .Content }}
-  <a href="{{ .RelPermalink }}">
-    {{- $title -}} 
-  </a>
+{{ define "book-get-root-section" }}
+  <!-- Complex logic to guess page title without .Title specified -->
+  {{ $bookSection := default "docs" .Site.Params.BookSection  }}
+  {{ if eq $bookSection "*" }}
+    {{ .Scratch.Set "BookSections" .Site.Sections }}
   {{ else }}
-  <a>
-    {{- $title -}}
-  </a>
-  {{ end }}
+    {{ $bookSections := where .Site.Sections "Section" $bookSection }}
+    {{ .Scratch.Set "BookSections" $bookSections }}
 
+    {{ if eq (len $bookSections) 1 }}
+      {{ $singleSection := index $bookSections 0 }}
+      {{ .Scratch.Set "BookSections" $singleSection.Sections }}
+    {{ end }}
+  {{ end }}
 {{ end }}

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+<!-- {{ partial "docs/shared" }} -->
 <html>
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
-  <title>{{ block "title" . }} {{- .Site.Title -}} {{ end }}</title>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
       <div class="pure-g">
 
         <div class="pure-u book-page markdown">
-          {{ block "main" . }} {{- .Content -}} {{ end }}
+          {{- .Content -}}
         </div>
         {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
         {{ if and ($showToC) (.Page.TableOfContents) }}
