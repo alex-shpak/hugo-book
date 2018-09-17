@@ -1,47 +1,43 @@
 # Hugo Book Theme
-### Documentation theme as simple as plain book
-
-Description, motivation
+### [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
 ![Screenshot](images/screenshot.png)
 
 ## Features
 * Clean simple design
 * Mobile friendly
-* Customizable menu
-* Renders single site section (`docs` by default)
+* Customizable
+* Designed to not interfere with main website
+* Zero initial configuration
 
 ## Installation
+Navigate to your hugo website root and run:
 ```
-git clone ...
+git clone git@github.com:alex-shpak/hugo-book.git themes/book
+```
+
+Then run hugo (or set `theme: book` in configuration file)
+```
+hugo server --theme book
 ```
 
 ## Configuration
-### Menu
-There are two options to render menu:
-1. Use file tree as menu (Option by default).  
-   You can set `title` and `weight` in front matter to adjust menu.
+### File tree menu (default)
+By default theme will render pages from `content/docs` section as menu in a tree structure.  
+You can set `title` and `weight` in front matter of pages to adjust order and titles in menu.
 
-2. Use leaf bundle and content of it's `index.md` as 
+
+### Leaf bundle menu
+You can also use leaf bundle and content of it's `index.md` as 
 menu.  
-   You can enable it by pointing to leaf bundle with `BookMenuBundle` parameter on Site level.
-
-   ```md
-   - [**Introduction**](/docs/introduction/)
-   - [Motivation](/docs/motivation/)
-   - [Configuration](/docs/configuration/)
-      - [Server](/docs/configuration/server/)
-      - [Client](/docs/configuration/client/)
-   <br />
-   - [Addtional Information](docs/configuration/additional-information/)
-   - [*Links*](/docs/links/)
-   ```
-
-   Also see [Example](exampleSite/content/menu) and [Site configuration](#site-configuration)
+Enable it by pointing to leaf bundle with `BookMenuBundle` parameter on Site level.  
+- [Example menu](exampleSite/content/menu)
+- [Example config file](exampleSite/config.yml)
+- [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
 
 ### Site configuration
-There is few configuration options you can add to your `config.yml|json|toml` file
+There are few configuration options you can add to your `config.yml|json|toml` file
 ```yaml
 # (Optional) Set this to true if you use captial letters in file names
 disablePathToLower: true
@@ -75,11 +71,29 @@ weight: 10
 # Set to mark page as top level section in file-tree menu (if BookMenuBundle not set)
 bookTopSection: true
 
-# Set to hide table of contents, default true
+# Set to hide table of contents, overrides global value
 bookShowToC: false
 ---
 ```
 
+### Partials
+There are few empty partials you can override in `layouts/partials/`
+| Partial                                      | Placement                     |
+| --                                           | --                            |
+| layouts/partials/docs/inject/head.html       | Before closing `<head>` tag   |
+| layouts/partials/docs/inject/body.html       | Before closing `<body>` tag   |
+| layouts/partials/docs/inject/nav-before.html | Before `<nav>` menu block     |
+| layouts/partials/docs/inject/nav-after.html  | After `<nav>` menu block      |
+
+
+## Contributing
+Contributions are welcome and I will review and consider pull requests.  
+Primary goals are:
+ - Keep it simple
+ - Keep minimal (or zero) default configuration
+ - Avoid interference with user-defined layouts
+
+If you missing some configuration or customisation option feel free to open issue.
 
 ## License
 [MIT](LICENSE)
