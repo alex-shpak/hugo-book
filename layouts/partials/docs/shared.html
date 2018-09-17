@@ -3,9 +3,9 @@
   {{- if .Pages -}}
     {{ $sections := split (trim .Dir "/") "/" }}
     {{ $title := index ($sections | last 1) 0 | humanize | title }}
-    {{- default .Title $title -}}
+    {{- default $title .Title -}}
   {{- else -}}
     {{ $title :=  .File | humanize | title }}
-    {{- default .Title $title -}}
+    {{- default $title .Title -}}
   {{- end -}}
 {{ end }}

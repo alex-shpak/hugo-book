@@ -43,6 +43,10 @@ Given you have this file structure
 
 Create file `content/docs/menu/index.md` with content
 ```md
+---
+headless: true
+---
+
 - [Book Example](/docs/)
   - [Page One](/docs/page-one)
   - [Page Two](/docs/page-two)
@@ -87,7 +91,7 @@ type: docs
 weight: 10
 
 # (Optional) Set to mark page as top level section in file-tree menu (if BookMenuBundle not set)
-bookTopSection: true
+bookRootSection: true
 
 # (Optional) Set to hide table of contents, overrides global value
 bookShowToC: false

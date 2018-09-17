@@ -25,6 +25,7 @@ a {
 
 .book-brand {
   padding: 0 $padding-16;
+  margin-bottom: $padding-8;
   font-weight: 400;
 
   a {
@@ -73,7 +74,7 @@ a {
     }
   }
 
-  // class used for sections with bookTopSection: true
+  // class used for sections with bookRootSection: true
   .book-nav-section {
     margin-bottom: $padding-16;
     > a { font-weight: 600; }
