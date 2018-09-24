@@ -3,8 +3,11 @@
 $block-border-radius: 0.15rem;
 
 .markdown {
+  line-height: 1.5;
+
   h1, h2, h3, h4, h5 {
     font-weight: 400;
+    line-height: 1.25;
   }
 
   b, optgroup, strong {
@@ -43,5 +46,9 @@ $block-border-radius: 0.15rem;
 
     :first-child { margin-top: 0; }
     :last-child { margin-bottom: 0; }
+  }
+
+  table tr td {
+    padding: $padding-8;
   }
 }

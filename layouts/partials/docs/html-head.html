@@ -3,8 +3,10 @@
 <title>{{- template "title" .  }} | {{ .Site.Title -}}</title>
 
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,700" rel="stylesheet">
-<link href="/css/pure-min.css" rel="stylesheet">
-<!-- <link href="/css/grids-responsive-min.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/base-min.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-min.css">
+<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+
 
 {{ $styles := resources.Get "styles.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}">

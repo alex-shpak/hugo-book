@@ -1,4 +1,4 @@
-$padding-1: 1px; //minimal
+$padding-1: 1px;
 $padding-4: .25rem;
 $padding-8: .5rem;
 $padding-16: 1rem;
@@ -7,10 +7,6 @@ $font-size-base: 16px;
 $font-size-12: .75rem;
 $font-size-14: .875rem;
 $font-size-16: 1rem;
-
-$size-48: 3rem;
-// $size-56: 3.5rem;
-// $size-72: 4.5rem;
 
 // Grayscale
 $white:    #fff;
@@ -28,17 +24,42 @@ $black:    #000;
 $color-link: #1177EE;
 $color-visited-link: #7823c9;
 
-
-$body-background: none;
+$body-background: white;
 $body-font-color: $gray-800;
 $body-font-weight: 300;
-$body-line-height: 1.75;
 $body-min-width: 25rem;
 
-$nav-background: $gray-100;
+$nav-background: $body-background; //$gray-100;
 $nav-link-color: $gray-800;
-$nav-menu-width: 18rem;
+
+$header-height: 3.5rem;
+$nav-menu-width: 16rem;
 $toc-menu-width: 14rem;
 
 $content-max-width: 64rem;
 $content-min-width: $body-min-width;
+
+
+// Mixins
+@mixin shadow {
+  box-shadow: 0 0 $padding-8 rgba(0,0,0,0.1);
+}
+
+@mixin ul {
+  ul {
+    list-style: none;
+    padding-left: $padding-16;
+
+    li {
+      line-height: $padding-16;
+
+      a {
+        display: block;
+      }
+
+      img {
+        height: $padding-16;
+      }
+    }
+  }
+}

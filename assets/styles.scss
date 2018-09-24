@@ -15,128 +15,156 @@ html, body {
 body {
   color: $body-font-color;
   background: $body-background;
-  line-height: $body-line-height;
 }
 
 a {
   text-decoration: none;
   color: $color-link;
-}
 
-.book-brand {
-  padding: 0 $padding-16;
-  margin-bottom: $padding-8;
-  font-weight: 400;
-
-  a {
-    color: $body-font-color;
+  &:visited {
+    color: $color-visited-link;
   }
 }
 
-// Navigation styles
-.book-nav {
-  flex-grow: 0;
+ul {
+  margin: 0;
+  padding-left: $padding-16;
+  line-height: $padding-16 * 2;
+
+  li {
+    
+    a {
+      display: block;
+    }
+
+    img {
+      height: $padding-16;
+    }
+  }
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  height: $header-height;
+  padding: $padding-16;
+  top: 0;
+  box-sizing: border-box;
+  z-index: 1;
+
+  background: $body-background;
+  @include shadow;
+  
+  display: flex;
+  align-items: center;
+
+  label {
+    line-height: 0;
+    margin-right: $padding-16;
+    display: none;
+  }
+
+  h3 {
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin: 0;
+
+    a {
+      color: $nav-link-color;
+    }
+  }
+}
+
+.menu {
+  position: fixed;
   width: $nav-menu-width;
+  top: $header-height;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: $padding-16;
 
-  nav {
-    position: fixed;
-    height: 100%;
-    width: $nav-menu-width;
+  background: $nav-background;
 
-    overflow-x: hidden;
-    overflow-y: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-    font-size: $font-size-14;
-    background: $nav-background;
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+
+  font-size: $font-size-14;
+  line-height: 2rem;
+
+  a {
+    display: block;
+    color: $nav-link-color;
+
+    &.active {
+      color: $color-link;
+    }
   }
 
   ul {
     list-style: none;
-    margin: 0;
-    padding-left: $padding-16;
-
-    li {
-      line-height: $padding-16 * 2;
-    }
-
-    a {
-      display: block;
-      color: $nav-link-color;
-      text-transform: capitalize;
-    
-      &[href]:hover {
-        opacity: 0.5;
-      }
-    
-      &.active {
-        color: $color-link;
-      }
-    }
   }
 
-  // class used for sections with bookRootSection: true
-  .book-nav-section {
+  // No padding for first level
+  > ul {
+    padding: 0;
+  }
+
+  // Move content
+  + div {
+    margin-left: $nav-menu-width;
+    margin-top: $header-height;
+  }
+
+  .root-section {
     margin-bottom: $padding-16;
     > a { font-weight: 600; }
     > ul { padding-left: 0; }
   }
 }
 
-.book-content {
+.content {
+  margin: 0 auto;
   max-width: $content-max-width;
   min-width: $content-min-width;
-  margin: 0 auto;
 
-  .book-page {
-    padding: $padding-16 $size-48;
+  .page {
+    overflow: hidden;
   }
 
-  a:visited {
-    color: $color-visited-link
-  }
-}
-
-// Table of Contents styles
-.book-toc {
-  flex-grow: 0;
-  width: $toc-menu-width;
-
-  nav {
-    position: fixed;
-    height: 100%;
-    width: $toc-menu-width;
-
-    overflow-x: hidden;
-    overflow-y: auto;
-
+  .toc {
     font-size: $font-size-12;
 
-    > ul {
-      margin: $size-48 0;
-      padding: 0 $padding-8;
-      border-left: $padding-1 solid $gray-200;
+    nav > ul {
+      border-left: $padding-1 solid $gray-100;
     }
-  }
 
-  ul {
-    padding-left: $padding-8;
-    list-style: none;
-  }
-
-  a {
-    line-height: 1.25;
-    padding: $padding-4 0;
-    display: block;
-
-    img {
-      max-height: $font-size-16;
+    ul {
+      list-style: none;
+      padding-left: $padding-8;
+      line-height: $padding-16 * 1.5;
     }
   }
 }
 
-// Print styles
-@media print {
-  .book-nav, .book-toc {
-    display: none;
+// Mobile styles
+@media screen and (max-width: 50rem) {
+  .header label {
+    display: inline-block;
+  }
+
+  .menu {
+    transform: translateX(-$nav-menu-width);
+
+    + div {
+      margin-left: 0;
+    }
+  }
+
+  #nav-control:checked + nav {
+    @include shadow;
+    transform: translateX(0);
   }
 }

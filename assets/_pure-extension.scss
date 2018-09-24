@@ -8,38 +8,12 @@ html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 .pure-g {
   [class *= "pure-u"] {
     box-sizing: border-box;
+    padding: $padding-16;
   }
 }
 
-.pure-u {
-  flex-grow: 1;
-  width: 0;
-}
-
-.pure-menu-list ul ul {
-  // left padding for nested sections
-  padding-left: $padding-16;
-}
-
-.pure-menu-root {
-  // vertical space between root sections
-  > li {
-    padding-bottom: $padding-16;
-  }
-  
-  // font weight only for root sections
-  > li > .section {
-    font-weight: 700;
-  }
-}
-
-.pure-menu-link, .pure-menu-heading {
-  padding: $padding-4 $padding-16;
-  text-transform: capitalize;
-}
-
-.pure-menu-link {
-  &:hover, &.active {
-    background: none;
+@media screen and (max-width:64em) {
+  .pure-hidden-md {
+    display: none;
   }
 }

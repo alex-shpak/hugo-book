@@ -8,7 +8,7 @@
 {{ define "book-section" }} <!-- Single section of menu (recursive) -->
   <ul>
     {{ range .Section.Sections }}
-    <li>
+    <li {{- if .Params.bookrootsection}} class="root-section" {{ end }}>
       {{- if .Content -}}
         {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
       {{- else -}}
