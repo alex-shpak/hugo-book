@@ -1,20 +1,26 @@
 @import 'variables';
-@import 'pure-extension';
 @import 'markdown';
+
 
 html {
   font-size: $font-size-base;
 }
 
 html, body {
-  width: 100%;
-  min-height: 100%;
   min-width: $body-min-width;
+  overflow: hidden auto;
 }
 
 body {
   color: $body-font-color;
   background: $body-background;
+  font-family: 'Roboto', sans-serif;
+  font-weight: $body-font-weight;
+
+  box-sizing: border-box;
+  * {
+    box-sizing: inherit;
+  }
 }
 
 a {
@@ -26,145 +32,139 @@ a {
   }
 }
 
-ul {
-  margin: 0;
-  padding-left: $padding-16;
-  line-height: $padding-16 * 2;
+nav {
+  ul {
+    margin: 0;
+    padding-left: $padding-16;
+    list-style: none;
+    line-height: $padding-16 * 2;
 
-  li {
-    
-    a {
-      display: block;
-    }
+    li {
+      a {
+        display: block;
+      }
 
-    img {
-      height: $padding-16;
+      a:hover {
+        opacity: .5;
+      }
+  
+      img {
+        height: $padding-16;
+      }
     }
+  }
+
+  &> ul {
+    // padding start with second level
+    padding-left: 0;
   }
 }
 
 .header {
-  position: fixed;
-  width: 100%;
-  height: $header-height;
-  padding: $padding-16;
-  top: 0;
-  box-sizing: border-box;
-  z-index: 1;
-
-  background: $body-background;
-  @include shadow;
-  
-  display: flex;
+  display: none;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: $padding-16;
+}
 
-  label {
-    line-height: 0;
-    margin-right: $padding-16;
-    display: none;
+.content {
+  max-width: $content-max-width;
+  margin: 0 auto;
+
+  display: flex;
+  flex-flow: row;
+
+  .menu nav, .page, .markdown {
+    transition: 0.2s ease-in-out;
+    transition-property: transform, margin-left, opacity;
+    will-change: transform, margin-left;
   }
 
-  h3 {
-    font-weight: 400;
-    line-height: 1.5rem;
-    margin: 0;
+  .menu {
+    flex: 0 0 $nav-menu-width;
+
+    nav {
+      position: fixed;
+      height: 100%;
+      width: $nav-menu-width;
+      overflow: hidden auto;
+
+      padding: $padding-16;
+      font-size: $font-size-14;
+    }
 
     a {
       color: $nav-link-color;
     }
-  }
-}
 
-.menu {
-  position: fixed;
-  width: $nav-menu-width;
-  top: $header-height;
-  bottom: 0;
-  box-sizing: border-box;
-  padding: $padding-16;
-
-  background: $nav-background;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-
-  transition: transform 0.3s ease-in-out;
-  will-change: transform;
-
-  font-size: $font-size-14;
-  line-height: 2rem;
-
-  a {
-    display: block;
-    color: $nav-link-color;
-
-    &.active {
-      color: $color-link;
+    .section {
+      margin-bottom: $padding-16;
+      > a { font-weight: 700; }
+      > ul { padding-left: 0; }
     }
   }
 
-  ul {
-    list-style: none;
-  }
-
-  // No padding for first level
-  > ul {
-    padding: 0;
-  }
-
-  // Move content
-  + div {
-    margin-left: $nav-menu-width;
-    margin-top: $header-height;
-  }
-
-  .root-section {
-    margin-bottom: $padding-16;
-    > a { font-weight: 600; }
-    > ul { padding-left: 0; }
-  }
-}
-
-.content {
-  margin: 0 auto;
-  max-width: $content-max-width;
-  min-width: $content-min-width;
-
   .page {
-    overflow: hidden;
+    flex: 1 0;
+    width: 0;
+    min-width: $body-min-width;
+    padding: $padding-16;
   }
 
   .toc {
-    font-size: $font-size-12;
+    flex: 0 0 $nav-menu-width;
 
-    nav > ul {
-      border-left: $padding-1 solid $gray-100;
+    nav {
+      padding: $padding-16;
+      font-size: $font-size-12;
+
+      > ul {
+        border-left: $padding-1 solid $gray-200;
+      }
     }
-
+  
     ul {
-      list-style: none;
-      padding-left: $padding-8;
       line-height: $padding-16 * 1.5;
+      padding-left: $padding-8;
     }
   }
 }
 
-// Mobile styles
-@media screen and (max-width: 50rem) {
-  .header label {
-    display: inline-block;
-  }
+// Responsive styles
+$menu-hide-point: $nav-menu-width + $body-min-width;
+$toc-hide-point: $menu-hide-point + $nav-menu-width;
 
+@media screen and (max-width: $toc-hide-point) {
+  .toc {
+    // margin-right: -$nav-menu-width;
+    display: none;
+  }
+}
+
+@media screen and (max-width: $menu-hide-point) {
   .menu {
-    transform: translateX(-$nav-menu-width);
-
-    + div {
-      margin-left: 0;
-    }
+    margin-left: -$nav-menu-width;
   }
 
-  #nav-control:checked + nav {
-    @include shadow;
-    transform: translateX(0);
+  .header {
+    display: flex;
+  }
+
+  #menu-control:checked + .content {
+    .menu nav {
+      transform: translateX($nav-menu-width);
+    }
+    
+    .page {
+      transform: translateX($nav-menu-width);
+    }
+
+    .header label {
+      transform: rotate(90deg);
+    }
+
+    .markdown {
+      opacity: .25;
+    }
   }
 }

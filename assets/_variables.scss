@@ -9,7 +9,7 @@ $font-size-14: .875rem;
 $font-size-16: 1rem;
 
 // Grayscale
-$white:    #fff;
+$white:    #ffffff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
@@ -36,30 +36,5 @@ $header-height: 3.5rem;
 $nav-menu-width: 16rem;
 $toc-menu-width: 14rem;
 
-$content-max-width: 64rem;
+$content-max-width: 80rem;
 $content-min-width: $body-min-width;
-
-
-// Mixins
-@mixin shadow {
-  box-shadow: 0 0 $padding-8 rgba(0,0,0,0.1);
-}
-
-@mixin ul {
-  ul {
-    list-style: none;
-    padding-left: $padding-16;
-
-    li {
-      line-height: $padding-16;
-
-      a {
-        display: block;
-      }
-
-      img {
-        height: $padding-16;
-      }
-    }
-  }
-}

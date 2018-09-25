@@ -7,36 +7,38 @@
 </head>
 
 <body>
-  <div class="header">
-    {{ partial "docs/header" . }}
-  </div>
-  
-  <input type="checkbox" style="display: none" id="nav-control" />
-  <nav role="navigation" class="menu">
-    {{ partial "docs/inject/nav-before" . }}
-    
-    {{ if .Site.Params.BookMenuBundle }}
-      {{ partial "docs/nav-bundle" . }}
-    {{ else }}
-      {{ partial "docs/nav-filetree" . }}
-    {{ end }}
-  
-    {{ partial "docs/inject/nav-after" . }}
-  </nav>
+  <input type="checkbox" style="display: none" id="menu-control" />
+  <div class="content">
 
-  <div>
-    
-    <div class="pure-g content">
-      <div class="pure-u-1 pure-u-lg-2-3 page markdown">
+    <div class="menu">
+      <nav role="navigation">
+        {{ partial "docs/inject/nav-before" . }}
+        
+        {{ if .Site.Params.BookMenuBundle }}
+          {{ partial "docs/menu-bundle" . }}
+        {{ else }}
+          {{ partial "docs/menu-filetree" . }}
+        {{ end }}
+      
+        {{ partial "docs/inject/nav-after" . }}
+      </nav>
+    </div>
+
+    <div class="page">
+      <div class="header">
+        <label for="menu-control"><img src="/svg/menu.svg" /></label>
+      </div>
+      <div class="markdown">
         {{- .Content -}}
       </div>
-      {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
-      {{ if and ($showToC) (.Page.TableOfContents) }}
-      <div class="pure-u-1 pure-u-lg-1-3 pure-hidden-md toc">
-        {{ partial "docs/toc" . }}
-      </div>
-      {{ end }}
     </div>
+
+    {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
+    {{ if and ($showToC) (.Page.TableOfContents) }}
+    <div class="toc">
+      {{ partial "docs/toc" . }}
+    </div>
+    {{ end }}
 
   </div>
 
