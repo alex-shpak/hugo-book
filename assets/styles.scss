@@ -23,6 +23,10 @@ body {
   }
 }
 
+h1, h2, h3, h4, h5 {
+  font-weight: 400;
+}
+
 a {
   text-decoration: none;
   color: $color-link;
@@ -32,12 +36,12 @@ a {
   }
 }
 
-nav {
+aside {
   ul {
     margin: 0;
     padding-left: $padding-16;
     list-style: none;
-    line-height: $padding-16 * 2;
+    line-height: 2em;
 
     li {
       a {
@@ -54,20 +58,20 @@ nav {
     }
   }
 
-  &> ul {
-    // padding start with second level
+  // start padding on second level
+  nav > ul {
     padding-left: 0;
   }
 }
 
-.header {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: $padding-16;
+aside.fixed nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow: hidden auto;
 }
 
-.content {
+.container {
   max-width: $content-max-width;
   margin: 0 auto;
 
@@ -84,11 +88,7 @@ nav {
     flex: 0 0 $nav-menu-width;
 
     nav {
-      position: fixed;
-      height: 100%;
       width: $nav-menu-width;
-      overflow: hidden auto;
-
       padding: $padding-16;
       font-size: $font-size-14;
     }
@@ -97,11 +97,29 @@ nav {
       color: $nav-link-color;
     }
 
-    .section {
+    a.active {
+      color: $color-link;
+    }
+
+    .brand {
+      margin-top: 0;
+      margin-bottom: $padding-16;
+    }
+
+    .flat {
       margin-bottom: $padding-16;
       > a { font-weight: 700; }
       > ul { padding-left: 0; }
     }
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $padding-16;
+  
+    display: none;
   }
 
   .page {
@@ -112,20 +130,16 @@ nav {
   }
 
   .toc {
-    flex: 0 0 $nav-menu-width;
+    flex: 0 0 $toc-menu-width;
 
     nav {
+      width: $toc-menu-width;
       padding: $padding-16;
       font-size: $font-size-12;
 
-      > ul {
-        border-left: $padding-1 solid $gray-200;
+      ul ul {
+        padding-left: $padding-8;
       }
-    }
-  
-    ul {
-      line-height: $padding-16 * 1.5;
-      padding-left: $padding-8;
     }
   }
 }
@@ -136,7 +150,6 @@ $toc-hide-point: $menu-hide-point + $nav-menu-width;
 
 @media screen and (max-width: $toc-hide-point) {
   .toc {
-    // margin-right: -$nav-menu-width;
     display: none;
   }
 }
@@ -146,20 +159,16 @@ $toc-hide-point: $menu-hide-point + $nav-menu-width;
     margin-left: -$nav-menu-width;
   }
 
-  .header {
+  .container .header {
     display: flex;
   }
 
-  #menu-control:checked + .content {
-    .menu nav {
+  #menu-control:checked + .container {
+    .menu nav, .page {
       transform: translateX($nav-menu-width);
     }
     
-    .page {
-      transform: translateX($nav-menu-width);
-    }
-
-    .header label {
+    .header label img {
       transform: rotate(90deg);
     }
 

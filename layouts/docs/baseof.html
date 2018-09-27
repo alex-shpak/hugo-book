@@ -8,11 +8,14 @@
 
 <body>
   <input type="checkbox" style="display: none" id="menu-control" />
-  <div class="content">
+  <div class="container">
 
-    <div class="menu">
+    <aside class="menu fixed">
       <nav role="navigation">
-        {{ partial "docs/inject/nav-before" . }}
+        <h2 class="brand">
+          <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+        </h2>
+        {{ partial "docs/inject/menu-before" . }}
         
         {{ if .Site.Params.BookMenuBundle }}
           {{ partial "docs/menu-bundle" . }}
@@ -20,24 +23,24 @@
           {{ partial "docs/menu-filetree" . }}
         {{ end }}
       
-        {{ partial "docs/inject/nav-after" . }}
+        {{ partial "docs/inject/menu-after" . }}
       </nav>
-    </div>
+    </aside>
 
     <div class="page">
       <div class="header">
-        <label for="menu-control"><img src="/svg/menu.svg" /></label>
+        {{ partial "docs/mobile-header" . }}
       </div>
-      <div class="markdown">
+      <article class="markdown">
         {{- .Content -}}
-      </div>
+      </article>
     </div>
 
     {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
     {{ if and ($showToC) (.Page.TableOfContents) }}
-    <div class="toc">
+    <aside class="toc fixed">
       {{ partial "docs/toc" . }}
-    </div>
+    </aside>
     {{ end }}
 
   </div>
