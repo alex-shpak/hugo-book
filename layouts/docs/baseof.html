@@ -12,9 +12,7 @@
 
     <aside class="menu fixed">
       <nav role="navigation">
-        <h2 class="brand">
-          <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-        </h2>
+        {{ partial "docs/brand" . }}
         {{ partial "docs/inject/menu-before" . }}
         
         {{ if .Site.Params.BookMenuBundle }}

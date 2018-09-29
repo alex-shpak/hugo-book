@@ -5,5 +5,5 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,700" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
 
-{{ $styles := resources.Get "styles.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{ $styles := resources.Get "book.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.Permalink }}">
