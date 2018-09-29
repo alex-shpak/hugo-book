@@ -79,7 +79,7 @@ aside.fixed nav {
   flex-flow: row;
 
   .menu nav, .page, .markdown {
-    transition: 0.2s ease-in-out;
+    transition: .2s ease-in-out;
     transition-property: transform, margin-left, opacity;
     will-change: transform, margin-left;
   }
@@ -176,4 +176,8 @@ $toc-hide-point: $menu-hide-point + $nav-menu-width;
       opacity: .25;
     }
   }
+}
+
+.muted {
+  opacity: .75;
 }
