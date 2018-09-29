@@ -8,7 +8,7 @@
 
 <body>
   <input type="checkbox" style="display: none" id="menu-control" />
-  <div class="container">
+  <main>
 
     <aside class="menu fixed">
       <nav role="navigation">
@@ -25,10 +25,10 @@
       </nav>
     </aside>
 
-    <div class="page">
-      <div class="header">
+    <div class="content">
+      <header>
         {{ partial "docs/mobile-header" . }}
-      </div>
+      </header>
       <article class="markdown">
         {{- .Content -}}
       </article>
@@ -41,8 +41,7 @@
     </aside>
     {{ end }}
 
-  </div>
-
+  </main>
   {{ partial "docs/inject/body" . }}
 </body>
 </html>

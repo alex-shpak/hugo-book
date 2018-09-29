@@ -44,13 +44,8 @@ aside {
     line-height: 2em;
 
     li {
-      a {
-        display: block;
-      }
-
-      a:hover {
-        opacity: .5;
-      }
+      a { display: block; }
+      a:hover { opacity: .5; }
   
       img {
         height: $padding-16;
@@ -71,14 +66,14 @@ aside.fixed nav {
   overflow: hidden auto;
 }
 
-.container {
+main {
   max-width: $content-max-width;
   margin: 0 auto;
 
   display: flex;
   flex-flow: row;
 
-  .menu nav, .page, .markdown {
+  aside nav, .content, .markdown {
     transition: .2s ease-in-out;
     transition-property: transform, margin-left, opacity;
     will-change: transform, margin-left;
@@ -87,24 +82,19 @@ aside.fixed nav {
   .menu {
     flex: 0 0 $nav-menu-width;
 
+    .brand {
+      margin-top: 0;
+      margin-bottom: $padding-16;
+    }
+
     nav {
       width: $nav-menu-width;
       padding: $padding-16;
       font-size: $font-size-14;
     }
 
-    a {
-      color: $nav-link-color;
-    }
-
-    a.active {
-      color: $color-link;
-    }
-
-    .brand {
-      margin-top: 0;
-      margin-bottom: $padding-16;
-    }
+    a { color: $nav-link-color; }
+    a.active { color: $color-link; }
 
     .flat {
       margin-bottom: $padding-16;
@@ -113,16 +103,16 @@ aside.fixed nav {
     }
   }
 
-  .header {
+  header {
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: space-between;
     margin-bottom: $padding-16;
   
     display: none;
   }
 
-  .page {
+  .content {
     flex: 1 0;
     width: 0;
     min-width: $body-min-width;
@@ -159,16 +149,16 @@ $toc-hide-point: $menu-hide-point + $nav-menu-width;
     margin-left: -$nav-menu-width;
   }
 
-  .container .header {
+  main header {
     display: flex;
   }
 
-  #menu-control:checked + .container {
-    .menu nav, .page {
+  #menu-control:checked + main {
+    .menu nav, .content {
       transform: translateX($nav-menu-width);
     }
     
-    .header label img {
+    header label img {
       transform: rotate(90deg);
     }
 
@@ -176,8 +166,4 @@ $toc-hide-point: $menu-hide-point + $nav-menu-width;
       opacity: .25;
     }
   }
-}
-
-.muted {
-  opacity: .75;
 }
