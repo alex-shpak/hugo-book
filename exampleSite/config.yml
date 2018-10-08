@@ -1,6 +1,8 @@
+# hugo server --themesDir ...
+
 baseURL: http://example.org
 title: Rx Jersey
-theme: book
+theme: hugo-book
 
 # Book configuration
 disablePathToLower: true
