@@ -3,10 +3,10 @@ headless: true
 ---
 
 - [**Introduction**](/)
-- [Configuration](/docs/jersey-configuration)
-  - [Jersey configuration](/docs/jersey-configuration)
-  - [Dropwizard configuration](/docs/dropwizard-configuration)  
-- **Usage**
-- [Server](/docs/rx-jersey-server)
-- [Client](/docs/rx-jersey-client)
-- Vert.x Integration
+- [Examples](/docs/examples)
+  - [With Table of contents](/docs/with-toc)
+  - [Without Table of Contents](/docs/without-toc)  
+- **More Examples**
+- [Server](/docs/server)
+- [Client](/docs/client)
+- [Advanced](/docs/advanced)  

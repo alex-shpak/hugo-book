@@ -1,77 +1,74 @@
 ---
-title: Introduction
 type: docs
 ---
 
-# RxJersey - Reactive Jersey Feature
+# Acerbo datus maxime
 
-[![Build Status](https://travis-ci.org/alex-shpak/rx-jersey.svg?branch=master)](https://travis-ci.org/alex-shpak/rx-jersey)
-![Maven Central](https://img.shields.io/maven-central/v/net.winterly.rxjersey/core-server.svg)
+## Tempora nisi nunc
 
-RxJersey is RxJava extension for [Jersey](https://jersey.java.net/) framework providing non-blocking Jax-RS server and client.
-RxJersey target is to handle large amount requests in small static set of threads, which is highly suitable for microservice applications.
+Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
+tremens ausim se tutaeque, illi ulnis hausit, sed, lumina cutem. Quae avis
+sequens!
 
-Library uses Jersey 2 async support with `@Suspended` and `AsyncResponse` under the hood.
-
-## Features
-- [x] RxJava Support
-- [x] RxJava 2 Support
-- [x] RxJava Proxy Client
-- [x] Async Request Interceptors
-- [x] Dropwizard bundle
-
-## Roadmap
-- [ ] Futures support
-- [ ] Vert.x integration
-- [ ] Improved proxy client
-
-
-## Maven Artifacts
-### Maven Central
-```
-compile "net.winterly.rxjersey:dropwizard:$rxJerseyVersion"
-compile "net.winterly.rxjersey:rxjava-client:$rxJerseyVersion"
-compile "net.winterly.rxjersey:rxjava-server:$rxJerseyVersion"
-compile "net.winterly.rxjersey:rxjava2-client:$rxJerseyVersion"
-compile "net.winterly.rxjersey:rxjava2-server:$rxJerseyVersion"
-```
-
-### JitPack
-Most recent snapshot is available via [JitPack](https://jitpack.io/#alex-shpak/rx-jersey/)
-```
-compile "com.github.alex-shpak.rx-jersey:dropwizard:$rxJerseyVersion"
-compile "com.github.alex-shpak.rx-jersey:rxjava-client:$rxJerseyVersion"
-compile "com.github.alex-shpak.rx-jersey:rxjava-server:$rxJerseyVersion"
-compile "com.github.alex-shpak.rx-jersey:rxjava2-client:$rxJerseyVersion"
-compile "com.github.alex-shpak.rx-jersey:rxjava2-server:$rxJerseyVersion"
-```
-
-
-## Example
-```java
-@Path("/example/")
-public class GithubResource {
-
-    @Remote("https://api.github.com/")
-    private GithubApi githubApi;
-
-    @GET
-    @Path("github")
-    public Single<GithubRepository> getRepository() {
-        return githubApi.getRepository("alex-shpak", "rx-jersey").toSingle();
+    var panel = ram_design;
+    if (backup + system) {
+        file.readPoint = network_native;
+        sidebar_engine_device(cell_tftp_raster,
+                dual_login_paper.adf_vci.application_reader_design(
+                graphicsNvramCdma, lpi_footer_snmp, integer_model));
     }
+    public_keyboard_docking += error.controller_gibibyte_plug.ip(4,
+            asciiPetaflops, software(supercomputer_compatible_status + 4));
+    dynamic_disk.indexModeLaptop = bufferTftpReality;
+    var export_vlog_sequence = trinitron_flowchart + supercomputer_cluster_rj(
+            -1, toolbar_powerpoint_query, -2 / multiprocessing_impression);
 
-}
+## Locis suis novi cum suoque decidit eadem
 
-@Path("/")
-public interface GithubApi {
+Idmoniae ripis, at aves, ali missa adest, ut *et autem*, et ab? Venit spes
+versus finis sermonibus patefecit murum nec est sine oculis. *Ille* inmota
+macies domoque caelestia cadit tantummodo scelus procul, corde!
 
-    @GET
-    @Path("/repos/{user}/{repo}")
-    Observable<GithubRepository> getRepository(@PathParam("user") String username, @PathParam("repo") String repo);
-}
+1. Dolentem capi parte rostro alvum habentem pudor
+2. Fulgentia sanguine paret
+3. E punior consurgit lentus
+4. Vox hasta eras micantes
 
-```
+## Suis quot
 
-## Licence
-[MIT](LICENCE.txt)
+Ea *furtique* risere fratres edidit terrae magis. Colla tam mihi tenebat:
+miseram excita suadent es pecudes iam. Concilio *quam* velatus posset ait quod
+nunc!
+
+## Astris ipse furtiva vota collumque et habe
+
+Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
+olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
+modo arsit? Utinam rapta fiducia valuere litora *adicit cursu*, ad facies:
+fragosis suae dextra geruntur functus vulgata.
+
+## Facibus pharetrae indetonsusque indulsit sic incurrite foliis
+
+Nefandam et prisci palmas! Blandita cutis flectitur montis macies, te *nati*
+Latiis; turbaque inferias. Virginis tibi peracta avidusque facies caper nec, e
+at ademptae, mira.
+
+    direct *= font(inputScareware(sliHome), crossplatform.byte(
+            ppl_encryption.excel_e_rte(integratedModelModifier), timeVirtual,
+            floating_speakers.media_printer(us, yahoo, primaryPhp)));
+    friendly_metal_flatbed(cd, isoPrimaryStorage(reader), dmaMirrored);
+    if (parse_flash_cron.metalGif(1, adServiceDevice, utility)) {
+        adf -= operation_cdma_samba;
+        imapGif.switch += torrent;
+    } else {
+        pmu.disk_captcha = digital_ppp_pci + recursionTransistor(5, dram);
+        ajax_service += grayscalePythonLock;
+        google_scroll_capacity = ftp + engine_dslam_sidebar / tape - 1;
+    }
+    drive_rw = zipTftp;
+    var suffix = software_router_extension.dimm_ddr(-5,
+            kernel_digital_minisite);
+
+Vocavit toto; alas **mitis** maestus in liquidarum ab legi finitimosque dominam
+tibi subitus; Orionis vertitur nota. Currere alti etiam seroque cernitis
+innumeris miraturus amplectique collo sustinet quemque! Litora ante turba?

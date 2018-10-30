@@ -1,7 +1,7 @@
 # hugo server --themesDir ...
 
 baseURL: http://example.org
-title: Rx Jersey
+title: Hugo Book
 theme: hugo-book
 
 # Book configuration
