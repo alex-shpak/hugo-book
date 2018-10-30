@@ -1,7 +1,7 @@
 # Hugo Book Theme
 ### [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
-![Screenshot](images/screenshot.png)
+![Screenshot](https://github.com/alex-shpak/hugo-book/blob/master/images/screenshot.png)
 
 
 ## Features
