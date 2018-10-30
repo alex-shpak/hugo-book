@@ -1,6 +1,6 @@
 # hugo server --themesDir ...
 
-baseURL: http://example.org
+baseURL: https://example.com
 title: Hugo Book
 theme: hugo-book
 
