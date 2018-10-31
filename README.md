@@ -54,8 +54,8 @@ headless: true
 
 And Enable it by settings `BookMenuBundle: /docs/menu` in Site configuration
 
-- [Example menu](exampleSite/content/menu/index.md)
-- [Example config file](exampleSite/config.yml)
+- [Example menu](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/content/menu/index.md)
+- [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yml)
 - [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
 
