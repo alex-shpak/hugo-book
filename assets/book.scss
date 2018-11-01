@@ -15,7 +15,7 @@ html, body {
 body {
   color: $body-font-color;
   background: $body-background;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Oxygen', sans-serif;
   font-weight: $body-font-weight;
 
   box-sizing: border-box;
@@ -100,7 +100,6 @@ main {
 
     .brand {
       margin-top: 0;
-      margin-bottom: $padding-16;
     }
 
     nav {
