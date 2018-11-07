@@ -4,7 +4,7 @@
 
 html {
   font-size: $font-size-base;
-  letter-spacing: .3px;
+  letter-spacing: .33px;
 }
 
 html, body {
@@ -15,8 +15,13 @@ html, body {
 body {
   color: $body-font-color;
   background: $body-background;
+
   font-family: 'Oxygen', sans-serif;
   font-weight: $body-font-weight;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   box-sizing: border-box;
   * {
