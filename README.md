@@ -15,7 +15,7 @@
 ## Installation
 Navigate to your hugo website root and run:
 ```
-git clone git@github.com:alex-shpak/hugo-book.git themes/book
+git submodule add https://github.com/alex-shpak/hugo-book themes/book
 ```
 
 Then run hugo (or set `theme: book` in configuration file)
