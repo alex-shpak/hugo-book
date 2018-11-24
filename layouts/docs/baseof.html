@@ -9,9 +9,9 @@
 
 <body>
   <input type="checkbox" style="display: none" id="menu-control" />
-  <main>
+  <main class="flex container">
 
-    <aside class="menu fixed">
+    <aside class="book-menu fixed">
       <nav role="navigation">
         {{ partial "docs/brand" . }}
         {{ partial "docs/inject/menu-before" . }}
@@ -26,10 +26,8 @@
       </nav>
     </aside>
 
-    <div class="content">
-      <header>
-        {{ partial "docs/mobile-header" . }}
-      </header>
+    <div class="book-page">
+      {{ partial "docs/mobile-header" . }}
       <article class="markdown">
         {{- .Content -}}
       </article>
@@ -37,14 +35,13 @@
 
     {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
     {{ if and ($showToC) (.Page.TableOfContents) }}
-    <aside class="toc fixed">
+    <aside class="book-toc fixed">
       {{ partial "docs/toc" . }}
     </aside>
     {{ end }}
 
+    {{ partial "docs/inject/body" . }}
   </main>
-  {{ partial "docs/inject/body" . }}
-
 </body>
 
 </html>

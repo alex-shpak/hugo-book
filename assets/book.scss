@@ -1,13 +1,14 @@
-@import 'variables';
-@import 'markdown';
-
+@import "variables";
+@import "markdown";
+@import "utils";
 
 html {
   font-size: $font-size-base;
-  letter-spacing: .33px;
+  letter-spacing: 0.33px;
 }
 
-html, body {
+html,
+body {
   min-width: $body-min-width;
   overflow: hidden auto;
 }
@@ -16,7 +17,7 @@ body {
   color: $body-font-color;
   background: $body-background;
 
-  font-family: 'Oxygen', sans-serif;
+  font-family: "Oxygen", sans-serif;
   font-weight: $body-font-weight;
 
   text-rendering: optimizeLegibility;
@@ -29,7 +30,11 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 400;
 }
 
@@ -46,148 +51,140 @@ img {
   vertical-align: middle;
 }
 
-aside {
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    margin: 1em 0;
+  }
+
+  a {
+    display: block;
+  }
+
   ul {
-    margin: 0;
     padding-left: $padding-16;
-    list-style: none;
-    line-height: 1.5em;
-
-    li {
-      margin: .75em 0;
-
-      a { display: block; }
-      a:hover { opacity: .5; }
-  
-      img {
-        height: $padding-16;
-      }
-    }
-  }
-
-  // start padding on second level
-  nav > ul {
-    padding-left: 0;
   }
 }
 
-aside.fixed nav {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  overflow: hidden auto;
+.container {
+  min-width: $container-min-width;
+  max-width: $container-max-width;
+  margin: 0 auto;
 }
 
-header {
-  display: flex;
-  align-items:center;
-  justify-content: space-between;
+.book-brand {
+  margin-top: 0;
+}
+
+.book-menu {
+  flex: 0 0 $menu-width;
+  font-size: $font-size-14;
+
+  nav {
+    width: $menu-width;
+    padding: $padding-16;
+
+    @include fixed;
+  }
+
+  a {
+    color: $nav-link-color;
+  }
+
+  a.active {
+    color: $color-link;
+  }
+}
+
+.book-page {
+  min-width: $body-min-width;
+  padding: $padding-16;
+}
+
+.book-header {
   margin-bottom: $padding-16;
-
   display: none;
 }
 
-main {
-  max-width: $content-max-width;
-  margin: 0 auto;
+.book-toc {
+  flex: 0 0 $toc-width;
+  font-size: $font-size-12;
 
-  display: flex;
-  flex-flow: row;
-
-  aside nav, .content, .markdown {
-    transition: .2s ease-in-out;
-    transition-property: transform, margin-left, opacity;
-    will-change: transform, margin-left;
-  }
-
-  .menu {
-    flex: 0 0 $nav-menu-width;
-
-    .brand {
-      margin-top: 0;
-    }
-
-    nav {
-      width: $nav-menu-width;
-      padding: $padding-16;
-      font-size: $font-size-14;
-    }
-
-    a { color: $nav-link-color; }
-    a.active { color: $color-link; }
-
-    .flat-section {
-      margin-bottom: $padding-16;
-      > a { font-weight: 700; }
-      > ul { padding-left: 0; }
-    }
-  }
-
-  .content {
-    flex: 1 0;
-    width: 0;
-    min-width: $body-min-width;
+  nav {
+    width: $toc-width;
     padding: $padding-16;
+
+    @include fixed;
   }
 
-  .toc {
-    flex: 0 0 $toc-menu-width;
+  nav > ul > li {
+    margin: 0;
+  }
+}
 
-    nav {
-      width: $toc-menu-width;
-      padding: $padding-16;
-      font-size: $font-size-12;
+.book-posts {
+  min-width: $body-min-width;
+  max-width: $sm-breakpoint;
+  padding: $padding-16;
+}
 
-      ul ul {
-        padding-left: $padding-8;
-      }
-    }
+ul.pagination {
+  display: flex;
+  justify-content: center;
+
+  .page-item a {
+    padding: $padding-16;
   }
 }
 
 // Responsive styles
-$menu-hide-point: $nav-menu-width + $body-min-width;
-$toc-hide-point: $menu-hide-point + $nav-menu-width;
+aside nav,
+.book-page,
+.markdown {
+  transition: 0.2s ease-in-out;
+  transition-property: transform, margin-left, opacity;
+  will-change: transform, margin-left;
+}
 
-@media screen and (max-width: $toc-hide-point) {
-  .toc {
+@media screen and (max-width: $md-breakpoint) {
+  .book-toc {
     display: none;
   }
 }
 
-@media screen and (max-width: $menu-hide-point) {
-  .menu {
-    margin-left: -$nav-menu-width;
+@media screen and (max-width: $sm-breakpoint) {
+  .book-menu {
+    margin-left: -$menu-width;
   }
 
-  main header {
+  .book-header {
     display: flex;
   }
 
   #menu-control:checked + main {
-    .menu nav, .content {
-      transform: translateX($nav-menu-width);
+    .book-menu nav,
+    .book-page {
+      transform: translateX($menu-width);
     }
-    
-    header label img {
+
+    .book-header label img {
       transform: rotate(90deg);
     }
 
     .markdown {
-      opacity: .25;
+      opacity: 0.25;
     }
   }
 }
 
 // Extra space for big screens
-@media screen and (min-width: $toc-hide-point) {
-  main {
-    .content {
-      padding: $padding-16 * 2 $padding-16;
-    }
-
-    .menu nav, .toc nav {
-      padding: $padding-16 * 2;
-    }
-  } 
+@media screen and (min-width: $container-max-width) {
+  .book-page,
+  .book-menu nav,
+  .book-toc nav {
+    padding: $padding-16 * 2 $padding-16;
+  }
 }
