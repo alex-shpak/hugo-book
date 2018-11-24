@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{{- partial "docs/shared" -}}
+<html>
+
+<head>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
+</head>
+
+<body>
+  <main>
+    <div class="book-posts mx-auto">
+      {{ template "main" . }}
+    </div>
+  </main>
+  {{ partial "docs/inject/body" . }}
+
+</body>
+
+</html>
