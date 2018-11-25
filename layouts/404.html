@@ -1,10 +1,19 @@
+<!DOCTYPE html>
+{{- partial "docs/shared" -}}
+<html>
 
-{{ define "main"}}
-<main id="main">
-  <div>
-   <h1 id="title"><a href="{{ "/" }}">Go Home</a></h1>
-  </div>
-</main>
-{{ end }}
+<head>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
+</head>
 
-{{ define "toc" }} {{ end }}
+<body>
+  <main class="flex justify-center">
+      <h1>404 Not Found</h1>
+  </main>
+
+  {{ partial "docs/inject/body" . }}
+  {{ template "_internal/google_analytics_async.html" . }}
+</body>
+
+</html>
