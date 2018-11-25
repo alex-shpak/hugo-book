@@ -1,5 +1,4 @@
 {{ define "main" }}
-<section>
   {{ $paginator := .Paginate (where .Pages "Params.hidden" "ne" true) }}
   {{ range sort .Paginator.Pages }}
   <article>
@@ -16,5 +15,4 @@
   </article>
   {{ end }}
   {{ template "_internal/pagination.html" . }}
-</section>
 {{ end }}
