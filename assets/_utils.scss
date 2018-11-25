@@ -30,7 +30,8 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  overflow: hidden auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .hide {

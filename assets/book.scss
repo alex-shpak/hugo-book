@@ -10,7 +10,7 @@ html {
 html,
 body {
   min-width: $body-min-width;
-  overflow: hidden auto;
+  overflow-x: hidden;
 }
 
 body {
@@ -178,7 +178,7 @@ aside nav,
       transform: translateX($menu-width);
     }
 
-    .book-header label img {
+    .book-header label {
       transform: rotate(90deg);
     }
 
