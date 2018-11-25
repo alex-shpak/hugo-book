@@ -51,7 +51,7 @@ img {
   vertical-align: middle;
 }
 
-ul {
+aside nav ul {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -66,6 +66,15 @@ ul {
 
   ul {
     padding-left: $padding-16;
+  }
+}
+
+ul.pagination {
+  display: flex;
+  justify-content: center;
+
+  .page-item a {
+    padding: $padding-16;
   }
 }
 
@@ -129,14 +138,9 @@ ul {
   min-width: $body-min-width;
   max-width: $sm-breakpoint;
   padding: $padding-16;
-}
 
-ul.pagination {
-  display: flex;
-  justify-content: center;
-
-  .page-item a {
-    padding: $padding-16;
+  article {
+    padding-bottom: $padding-16;
   }
 }
 
