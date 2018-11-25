@@ -64,6 +64,10 @@ aside nav ul {
     display: block;
   }
 
+  a:hover {
+    opacity: .5;
+  }
+
   ul {
     padding-left: $padding-16;
   }
