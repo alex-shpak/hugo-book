@@ -28,17 +28,10 @@
 
     <div class="book-page">
       {{ partial "docs/mobile-header" . }}
-      <article class="markdown">
-        {{- .Content -}}
-      </article>
+      {{ template "main" . }}
     </div>
 
-    {{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
-    {{ if and ($showToC) (.Page.TableOfContents) }}
-    <aside class="book-toc fixed">
-      {{ partial "docs/toc" . }}
-    </aside>
-    {{ end }}
+    {{ template "toc" . }}
 
     {{ partial "docs/inject/body" . }}
     {{ template "_internal/google_analytics_async.html" . }}

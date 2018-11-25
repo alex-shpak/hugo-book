@@ -1,5 +1,5 @@
 ---
-title: Index
+title: Introduction
 type: docs
 ---
 

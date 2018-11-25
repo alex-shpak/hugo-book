@@ -103,13 +103,7 @@ ul.pagination {
     @include fixed;
   }
 
-  a {
-    color: $nav-link-color;
-  }
-
-  a.active {
-    color: $color-link;
-  }
+  @include dark-links;
 }
 
 .book-page {

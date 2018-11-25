@@ -26,6 +26,10 @@
   margin: 0 auto;
 }
 
+.hide {
+  display: none;
+}
+
 @mixin fixed {
   position: fixed;
   top: 0;
@@ -34,6 +38,12 @@
   overflow-y: auto;
 }
 
-.hide {
-  display: none;
+@mixin dark-links {
+  a {
+    color: $nav-link-color;
+  }
+
+  a.active {
+    color: $color-link;
+  }
 }

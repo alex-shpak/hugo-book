@@ -1,7 +1,9 @@
 {{ define "main" }}
 <header>
   <h1>{{ .Title }}</h1>
-  <h5>{{ .Date.Format "January 2, 2006" }}</h5>
+  <h5>
+    <strong>{{ .Date.Format "January 2, 2006" }}</strong>
+  </h5>
 </header>
 <article class="markdown">
   {{- .Content -}}

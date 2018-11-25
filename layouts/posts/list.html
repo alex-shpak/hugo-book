@@ -5,11 +5,13 @@
     <h2>
       <a href="{{ .Permalink }}">{{ .Title }}</a>
     </h2>
-    <h5>{{ .Date.Format "January 2, 2006" }}</h5>
+    <h5>
+      <strong>{{ .Date.Format "January 2, 2006" }}</strong>
+    </h5>
     <p>
-      {{ .Summary }}
+      {{- .Summary -}}
       {{ if .Truncated }}
-      <a href="{{ .Permalink }}">...</a>
+        <a href="{{ .Permalink }}">...</a>
       {{ end }}
     </p>
   </article>
