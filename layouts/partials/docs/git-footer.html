@@ -1,0 +1,9 @@
+{{ with .Site.Params.BookEditURL }}
+<div class="align-center book-git-footer justify-end">
+  <div>
+    <a href="{{ . }}{{ $.File.Path }}" target="_blank" rel="noopener">
+      <img src="{{ "svg/code-fork.svg" | absURL }}" /> Edit this page
+    </a>
+  </div>
+</div>
+{{ end }}
