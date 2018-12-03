@@ -3,6 +3,7 @@
 baseURL: https://example.com
 title: Hugo Book
 theme: hugo-book
+# themesDir: ../..
 
 # Book configuration
 disablePathToLower: true
@@ -18,3 +19,7 @@ params:
   # specify section of content to render as menu
   # if bookMenuBundle is not set, 'docs' is value by default
   BookSection: docs
+
+  # Enable "Edit this page" links for 'doc' page type.
+  # Disabled by default. Uncomment to enable.
+  # BookEditURL: https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/
