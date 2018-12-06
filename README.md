@@ -78,6 +78,11 @@ params:
   # (Optional, default docs) Specify section of content to render as menu
   # You can also set value to "*" to render all sections to menu
   BookSection: docs
+
+  # (Optional, uncomment and configure url to enable) Enable "Edit this page"
+  # links for 'doc' page type. Path should point to 'content' directory of
+  # source project.
+  BookEditURL: https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/
 ```
 
 ### Page Configuration
