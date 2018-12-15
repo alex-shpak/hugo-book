@@ -66,6 +66,11 @@ There are few configuration options you can add to your `config.yml|json|toml` f
 # (Optional) Set this to true if you use captial letters in file names
 disablePathToLower: true
 
+# (Optional) Set this to true to enable 'Last Modified by' Git Author
+#  information on 'doc' type pages.
+enableGitInfo: true
+
+
 params:
   # (Optional, default true) Show or hide table of contents globally
   # You can also specify this parameter per page in front matter
@@ -79,10 +84,13 @@ params:
   # You can also set value to "*" to render all sections to menu
   BookSection: docs
 
-  # (Optional, uncomment and configure url to enable) Enable "Edit this page"
-  # links for 'doc' page type. Path should point to 'content' directory of
-  # source project.
-  BookEditURL: https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/
+  # Set source repository location.
+  # Used for 'Last Modified' and 'Edit this page' links.
+  BookRepo: https://github.com/alex-shpak/hugo-book
+
+  # Enable "Edit this page" links for 'doc' page type.
+  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+  BookEditPath: edit/master/exampleSite/content
 ```
 
 ### Page Configuration
