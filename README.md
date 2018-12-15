@@ -66,7 +66,7 @@ There are few configuration options you can add to your `config.yml|json|toml` f
 # (Optional) Set this to true if you use captial letters in file names
 disablePathToLower: true
 
-# (Optional) Set this to true to enable 'Last Modified by' Git Author
+# (Optional) Set this to true to enable 'Last Modified by' date and git author
 #  information on 'doc' type pages.
 enableGitInfo: true
 
