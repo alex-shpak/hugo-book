@@ -3,11 +3,12 @@
 baseURL: https://example.com
 title: Hugo Book
 theme: hugo-book
+disableKinds: ["taxonomy", "taxonomyTerm"]
 # themesDir: ../..
 
 # Book configuration
 disablePathToLower: true
-enableGitInfo: false
+enableGitInfo: true
 
 params:
   # show or hide table of contents for page
