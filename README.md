@@ -12,6 +12,9 @@
 * Designed to not interfere with main website
 * Zero initial configuration
 
+## Requirements
+* Hugo 0.43 or higher
+* Hugo extended version, read more [here](https://gohugo.io/news/0.43-relnotes/)
 
 ## Installation
 Navigate to your hugo website root and run:
@@ -23,7 +26,6 @@ Then run hugo (or set `theme: book` in configuration file)
 ```
 hugo server --theme book
 ```
-
 
 ## Menu
 ### File tree menu (default)
