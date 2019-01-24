@@ -9,7 +9,7 @@
 * Clean simple design
 * Mobile friendly
 * Customizable
-* Designed to not interfere with main website
+* Designed to not interfere with other layouts
 * Zero initial configuration
 
 ## Requirements
@@ -39,9 +39,12 @@ menu.
 Given you have this file structure
 ```
 ├── content
-│   └── docs
-│       ├── page-one.md
-│       └── page-two.md
+│   ├── docs
+│   │   ├── page-one.md
+│   │   └── page-two.md
+│   └── posts
+│       ├── post-one.md
+│       └── post-two.md
 ```
 
 Create file `content/docs/menu/index.md` with content
@@ -53,6 +56,7 @@ headless: true
 - [Book Example](/docs/)
   - [Page One](/docs/page-one)
   - [Page Two](/docs/page-two)
+- [Blog](/posts)
 ```
 
 And Enable it by settings `BookMenuBundle: /docs/menu` in Site configuration
@@ -61,6 +65,8 @@ And Enable it by settings `BookMenuBundle: /docs/menu` in Site configuration
 - [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yml)
 - [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
+## Blog
+Simple blog supported for section `posts`
 
 ## Configuration
 ### Site Configuration
@@ -133,7 +139,7 @@ Primary goals are:
  - Keep minimal (or zero) default configuration
  - Avoid interference with user-defined layouts
 
-Feel free to open issue if you missing some configuration or customisation option.
+Feel free to open issue if you missing some configuration or customization option.
 
 ## License
 [MIT](LICENSE)
