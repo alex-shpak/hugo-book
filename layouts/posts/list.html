@@ -8,7 +8,7 @@
     <h5>
       <strong>{{ .Date.Format "January 2, 2006" }}</strong>
     </h5>
-    <p>
+    <p class="markdown">
       {{- .Summary -}}
       {{ if .Truncated }}
         <a href="{{ .Permalink }}">...</a>

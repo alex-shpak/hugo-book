@@ -158,6 +158,7 @@ ul.pagination {
 // Responsive styles
 aside nav,
 .book-page,
+.book-posts,
 .markdown {
   transition: 0.2s ease-in-out;
   transition-property: transform, margin-left, opacity;
@@ -181,7 +182,8 @@ aside nav,
 
   #menu-control:checked + main {
     .book-menu nav,
-    .book-page {
+    .book-page,
+    .book-posts {
       transform: translateX($menu-width);
     }
 
