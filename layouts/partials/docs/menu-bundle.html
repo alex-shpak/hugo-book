@@ -1,6 +1,6 @@
 <style>
 nav ul a[href="{{- .Permalink -}}"] {
-    color: {{ default .Site.Params.BookMenuBundleActiveLinkColor "#004ed0" }};
+    color: {{ default "#004ed0" .Site.Params.BookMenuBundleActiveLinkColor }};
 }
 </style>
 {{ with .Site.GetPage .Site.Params.BookMenuBundle }}
