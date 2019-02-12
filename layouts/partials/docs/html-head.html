@@ -6,3 +6,8 @@
 <link rel="stylesheet" href="{{ "normalize.min.css" | absURL }}">
 {{ $styles := resources.Get "book.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+
+{{ "<!--" | safeHTML }}
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+{{ "-->" | safeHTML }}
