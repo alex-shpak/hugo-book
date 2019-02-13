@@ -1,5 +1,5 @@
 <style>
-nav ul a[href="{{- .Permalink -}}"] {
+nav ul a[href$="{{- .RelPermalink -}}"] {
     color: {{ default "#004ed0" .Site.Params.BookMenuBundleActiveLinkColor }};
 }
 </style>
