@@ -1,8 +1,4 @@
-<style>
-nav ul a[href$="{{- .RelPermalink -}}"] {
-    color: {{ default "#004ed0" .Site.Params.BookMenuBundleActiveLinkColor }};
-}
-</style>
+{{- template "hrefhack" . -}}
 {{ with .Site.GetPage .Site.Params.BookMenuBundle }}
   {{- .Content -}}
 {{ end }}
