@@ -1,6 +1,6 @@
 # hugo server --themesDir ...
 
-baseURL: https://example.com
+baseURL: https://example.com/example/
 title: Hugo Book
 theme: hugo-book
 disableKinds: ["taxonomy", "taxonomyTerm"]
@@ -11,19 +11,24 @@ disablePathToLower: true
 enableGitInfo: true
 
 params:
-  # show or hide table of contents for page
+  # (Optional, default true) Show or hide table of contents globally
+  # You can also specify this parameter per page in front matter
   BookShowToC: true
 
-  # Set bundle to render side menu
-  # if not specified file structure and weights will be used
+  # (Optional, default none) Set leaf bundle to render as side menu
+  # When not specified file structure and weights will be used
   BookMenuBundle: /menu
+
+  # (Optional, default docs) Specify section of content to render as menu
+  # You can also set value to "*" to render all sections to menu
+  BookSection: docs
 
   # This value is duplicate of $link-color for making active link highlight in menu bundle mode
   # BookMenuBundleActiveLinkColor: \#004ed0
 
-  # specify section of content to render as menu
-  # if bookMenuBundle is not set, 'docs' is value by default
-  BookSection: docs
+  # Include JS scripts in pages. Disabled by default.
+  # - Keep side menu on same scroll position during navigation
+  BookEnableJS: true
 
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
@@ -31,4 +36,5 @@ params:
 
   # Enable "Edit this page" links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+  # Path must point to 'content' directory of repo.
   BookEditPath: edit/master/exampleSite/content
