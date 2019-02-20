@@ -2,12 +2,12 @@
 headless: true
 ---
 
-- [**Introduction**]({{< ref "/" >}})
-- [Examples]({{< ref "/docs/examples.md" >}})
-  - [With Table of contents]({{< ref "/docs/with-toc.md" >}})
-  - [Without Table of Contents]({{< ref "/docs/without-toc.md" >}})  
+- [**Introduction**]({{< relref "/" >}})
+- [Examples]({{< relref "/docs/examples.md" >}})
+  - [With Table of contents]({{< relref "/docs/with-toc.md" >}})
+  - [Without Table of Contents]({{< relref "/docs/without-toc.md" >}})  
 - **More Examples**
-- [Server]({{< ref "/docs/server.md" >}})
-- [Client]({{< ref "/docs/client.md" >}})
-- [Advanced]({{< ref "/docs/advanced.md" >}})  
-- [**Blog**]({{< ref "/posts" >}})
+- [Server]({{< relref "/docs/server.md" >}})
+- [Client]({{< relref "/docs/client.md" >}})
+- [Advanced]({{< relref "/docs/advanced.md" >}})  
+- [**Blog**]({{< relref "/posts" >}})

@@ -1,5 +1,5 @@
 {{/*These templates contains some more complex logic and shared between partials*/}}
-{{ define "title" }}
+{{- define "title" -}}
   {{- if .Pages -}}
     {{ $sections := split (trim .Dir "/") "/" }}
     {{ $title := index ($sections | last 1) 0 | humanize | title }}
@@ -8,9 +8,9 @@
     {{ $title :=  .File | humanize | title }}
     {{- default $title .Title -}}
   {{- end -}}
-{{ end }}
+{{- end -}}
 
-{{ define "hrefhack" }}
+{{- define "hrefhack" -}}
   {{ $attrEq := "$=" }}
   {{ $attrVal := .RelPermalink }}
   {{ if eq .RelPermalink "/" }}
@@ -23,9 +23,9 @@
       color: {{ default "#004ed0" .Site.Params.BookMenuBundleActiveLinkColor }};
   }
   </style>
-{{ end }}
+{{- end -}}
 
-{{ define "jsmenu" }}
+{{- define "jsmenu" -}}
 <script>
 (function() {
   var menu = document.querySelector('aside.book-menu nav')
@@ -36,4 +36,4 @@
   menu.scrollTop = localStorage.getItem('menu.scrollTop')
 })()
 </script>
-{{ end }}
+{{- end -}}
