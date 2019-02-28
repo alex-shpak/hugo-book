@@ -79,6 +79,9 @@ disablePathToLower: true
 #  information on 'doc' type pages.
 enableGitInfo: true
 
+# (Warnings) Theme is intended for documentation use, there for it doesn't render taxonomy.
+# You can hide related warning with config below
+disableKinds: ["taxonomy", "taxonomyTerm"]
 
 params:
   # (Optional, default true) Show or hide table of contents globally
