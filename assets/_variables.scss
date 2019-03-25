@@ -23,21 +23,18 @@ $black: #000;
 
 $color-link: #004ed0;
 $color-visited-link: #8440f1;
+$color-dark-link: $gray-800;
 
 $body-background: white;
 $body-font-color: $gray-800;
 $body-font-weight: 400;
-$body-min-width: 25rem;
 
-$nav-background: $body-background;
-$nav-link-color: $gray-800;
-
-$header-height: 3.5rem;
-$menu-width: 18rem;
-$toc-width: 14rem;
-
-$container-min-width: $body-min-width;
+$body-min-width: 20rem;
 $container-max-width: 80rem;
 
-$sm-breakpoint: $menu-width + $body-min-width;
+$header-height: 3.5rem;
+$menu-width: 16rem;
+$toc-width: 14rem;
+
+$sm-breakpoint: $menu-width + $body-min-width + 5;
 $md-breakpoint: $sm-breakpoint + $toc-width;

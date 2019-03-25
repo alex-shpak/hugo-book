@@ -44,7 +44,7 @@
 
 @mixin dark-links {
   a {
-    color: $nav-link-color;
+    color: $color-dark-link;
   }
 
   a.active {
