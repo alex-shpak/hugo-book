@@ -54,7 +54,18 @@ $block-border-radius: 0.15rem;
     :last-child { margin-bottom: 0; }
   }
 
-  table tr td {
-    padding: $padding-8;
+  table {
+    border-spacing: 0;
+    border-collapse: collapse;
+  
+    tr th, tr td {
+      padding: $padding-8 $padding-16;
+      line-height: 1;
+      border: 1px solid $gray-200;
+    }
+
+    tr:nth-child(2n) {
+      background: $gray-100;
+    }
   }
 }
