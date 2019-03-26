@@ -6,7 +6,7 @@
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h2>
     <h5>
-      <strong>{{ .Date.Format "January 2, 2006" }}</strong>
+      <strong>{{ .Date.Format .Site.Params.DateForm }}</strong>
     </h5>
     <p class="markdown">
       {{- .Summary -}}
