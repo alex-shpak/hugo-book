@@ -10,6 +10,10 @@ disableKinds: ["taxonomy", "taxonomyTerm"]
 disablePathToLower: true
 enableGitInfo: true
 
+# Code highlight
+pygmentsStyle: monokailight
+pygmentsCodeFences: true
+
 params:
   # Configure the date format utilised on the pages
   DateFormat: "Jan 2, 2006"

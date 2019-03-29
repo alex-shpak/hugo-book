@@ -108,6 +108,7 @@ ul.pagination {
 
 .book-page {
   min-width: $body-min-width;
+  flex-grow: 1;
   padding: $padding-16;
 }
 
@@ -147,6 +148,7 @@ ul.pagination {
 .book-posts {
   min-width: $body-min-width;
   max-width: $sm-breakpoint;
+  flex-grow: 1;
   padding: $padding-16;
 
   article {

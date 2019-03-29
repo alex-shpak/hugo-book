@@ -12,12 +12,14 @@
 * Designed to not interfere with other layouts
 * Zero initial configuration
 
+
 ## Requirements
 * Hugo 0.43 or higher
 * Hugo extended version, read more [here](https://gohugo.io/news/0.43-relnotes/)
 
+
 ## Installation
-Navigate to your hugo website root and run:
+Navigate to your hugo project root and run:
 ```
 git submodule add https://github.com/alex-shpak/hugo-book themes/book
 ```
@@ -27,10 +29,23 @@ Then run hugo (or set `theme: book` in configuration file)
 hugo server --theme book
 ```
 
+### Creating site from scratch
+Below is example how to create new site from scratch
+```sh
+hugo new site mydocs; cd mydocs
+git init
+git submodule add https://github.com/alex-shpak/hugo-book themes/book
+cp -R themes/book/exampleSite/content .
+```
+```sh
+hugo server --theme book
+```
+
 ## Menu
 ### File tree menu (default)
 By default theme will render pages from `content/docs` section as menu in a tree structure.  
 You can set `title` and `weight` in front matter of pages to adjust order and titles in menu.
+
 
 ### Leaf bundle menu
 You can also use leaf bundle and content of it's `index.md` as 
@@ -65,8 +80,10 @@ And Enable it by settings `BookMenuBundle: /docs/menu` in Site configuration
 - [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yml)
 - [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
+
 ## Blog
 Simple blog supported for section `posts`
+
 
 ## Configuration
 ### Site Configuration
@@ -116,6 +133,7 @@ params:
   BookEditPath: edit/master/exampleSite/content
 ```
 
+
 ### Page Configuration
 You can specify additional params per page in front matter
 ```yaml
@@ -133,6 +151,7 @@ bookFlatSection: true
 bookShowToC: false
 ---
 ```
+
 
 ### Partials
 There are few empty partials you can override in `layouts/partials/`
@@ -153,6 +172,7 @@ Primary goals are:
  - Avoid interference with user-defined layouts
 
 Feel free to open issue if you missing some configuration or customization option.
+
 
 ## License
 [MIT](LICENSE)
