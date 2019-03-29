@@ -85,7 +85,7 @@ disableKinds: ["taxonomy", "taxonomyTerm"]
 
 params:
   # Configure the date format utilised on the pages - TODO, review git-footer.html
-  DateForm: "January 2, 2006"
+  DateFormat: "January 2, 2006"
 
   # (Optional, default true) Show or hide table of contents globally
   # You can also specify this parameter per page in front matter
