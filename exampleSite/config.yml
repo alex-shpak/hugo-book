@@ -11,6 +11,9 @@ disablePathToLower: true
 enableGitInfo: true
 
 params:
+  # Configure the date format utilised on the pages
+  DateFormat: "Jan 2, 2006"
+
   # (Optional, default true) Show or hide table of contents globally
   # You can also specify this parameter per page in front matter
   BookShowToC: true
