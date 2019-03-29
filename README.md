@@ -101,9 +101,6 @@ enableGitInfo: true
 disableKinds: ["taxonomy", "taxonomyTerm"]
 
 params:
-  # Configure the date format utilised on the pages - TODO, review git-footer.html
-  DateFormat: "January 2, 2006"
-
   # (Optional, default true) Show or hide table of contents globally
   # You can also specify this parameter per page in front matter
   BookShowToC: true
@@ -116,10 +113,10 @@ params:
   # You can also set value to "*" to render all sections to menu
   BookSection: docs
 
-  # This value is duplicate of $link-color for making active link highlight in menu bundle mode
+  # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
   # BookMenuBundleActiveLinkColor: \#004ed0
 
-  # Include JS scripts in pages. Disabled by default.
+  # (Optional, default false) Include JS scripts in pages. Disabled by default.
   # - Keep side menu on same scroll position during navigation
   BookEnableJS: true
 
@@ -131,6 +128,11 @@ params:
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Path must point to 'content' directory of repo.
   BookEditPath: edit/master/exampleSite/content
+
+  # (Optional, default January 2, 2006) Configure the date format used on the pages
+  # - In git information
+  # - In blog posts
+  BookDateFormat: "Jan 2, 2006"
 ```
 
 

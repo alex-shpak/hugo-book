@@ -15,9 +15,6 @@ pygmentsStyle: monokailight
 pygmentsCodeFences: true
 
 params:
-  # Configure the date format utilised on the pages
-  DateFormat: "Jan 2, 2006"
-
   # (Optional, default true) Show or hide table of contents globally
   # You can also specify this parameter per page in front matter
   BookShowToC: true
@@ -45,3 +42,8 @@ params:
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Path must point to 'content' directory of repo.
   BookEditPath: edit/master/exampleSite/content
+
+  # Configure the date format used on the pages
+  # - In git information
+  # - In blog posts
+  BookDateFormat: "Jan 2, 2006"
