@@ -133,6 +133,12 @@ params:
   # - In git information
   # - In blog posts
   BookDateFormat: "Jan 2, 2006"
+
+  # (Optional, default false) Show or hide site footer
+  BookShowFooter: false
+
+  # (Optional Copyright notice for footer)
+  Copyright: ["&copy; 2019 Alex Shpak"]
 ```
 
 
