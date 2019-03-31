@@ -145,6 +145,18 @@ ul.pagination {
   }
 }
 
+.book-footer {
+  display: flex;
+  margin-top: $padding-16;
+  font-size: $font-size-14;
+  align-items: baseline;
+
+  img {
+    width: $font-size-14;
+    vertical-align: bottom;
+  }
+}
+
 .book-posts {
   min-width: $body-min-width;
   max-width: $sm-breakpoint;
