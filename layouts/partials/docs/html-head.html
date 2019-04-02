@@ -2,9 +2,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{- template "title" . }} | {{ .Site.Title -}}</title>
 
-<!-- Font Awesome 5.8/1 no need for local files using all.css so all icons are available -->
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-
 <!-- Fonts for the theme -->
 <link href="https://fonts.googleapis.com/css?family=Oxygen|Oxygen+Mono:300,400,700" rel="stylesheet">
 
@@ -14,10 +11,11 @@
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
 <!-- Custom stylesheet - for your changes -->
-<link rel="stylesheet"  href="{{ "custom.css" | relURL }}?v={{ now.Unix }}" type='text/css' media='all'>
+{{ if (fileExists "static/img/banner.jpg") -}}
+<link rel="stylesheet"  href="{{ "styles.css" | relURL }}?v={{ now.Unix }}" type='text/css' media='all'>
+{{- end }}
 
 <!-- Favicon -->
-<link rel="shortcut icon" href="{{ "img/favicon.ico" | absURL }}" type="image/x-icon">
 <link rel="icon" href="{{ "img/favicon.ico" | absURL }}" type="image/x-icon">
 
 <!-- RSS -->
