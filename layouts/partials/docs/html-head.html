@@ -11,12 +11,12 @@
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
 <!-- Custom stylesheet - for your changes -->
-{{ if (fileExists "static/img/banner.jpg") -}}
+{{ if (fileExists "styles.css" | relURL) -}}
 <link rel="stylesheet"  href="{{ "styles.css" | relURL }}?v={{ now.Unix }}" type='text/css' media='all'>
 {{- end }}
 
 <!-- Favicon -->
-<link rel="icon" href="{{ "img/favicon.ico" | absURL }}" type="image/x-icon">
+<link rel="icon" href="{{ "img/favicon.ico" | relURL }}" type="image/x-icon">
 
 <!-- RSS -->
 {{ if .RSSLink }}
