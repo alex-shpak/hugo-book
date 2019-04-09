@@ -167,12 +167,11 @@ There are few empty partials you can override in `layouts/partials/`
 | `layouts/partials/docs/inject/menu-after.html`   | At the end of `<nav>` menu block        |
 
 
-### Extra customization
-#### Favicon
-In order to change favicon add `static/favicon.png` file to your website
-
-#### Custom css
-You can add your custom CSS styles to `static/styles.css` at your website
+### Extra Customization
+| File                  | Description                       |
+| --                    | --                                |
+| `static/favicon.png`  | Override default favicon          |
+| `assets/custom.scss`  | Customize or override scss styles | 
 
 
 ## Contributing
