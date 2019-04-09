@@ -133,12 +133,6 @@ params:
   # - In git information
   # - In blog posts
   BookDateFormat: "Jan 2, 2006"
-
-  # (Optional, default false) Show or hide site footer
-  BookShowFooter: false
-
-  # (Optional Copyright notice for footer)
-  Copyright: ["&copy; 2019 Alex Shpak"]
 ```
 
 
@@ -171,6 +165,14 @@ There are few empty partials you can override in `layouts/partials/`
 | `layouts/partials/docs/inject/footer.html`       | Before closing `<body>` tag             |
 | `layouts/partials/docs/inject/menu-before.html`  | At the beginning of `<nav>` menu block  |
 | `layouts/partials/docs/inject/menu-after.html`   | At the end of `<nav>` menu block        |
+
+
+### Extra customization
+#### Favicon
+In order to change favicon add `static/favicon.png` file to your website
+
+#### Custom css
+You can add your custom CSS styles to `static/styles.css` at your website
 
 
 ## Contributing
