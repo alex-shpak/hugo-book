@@ -175,6 +175,8 @@ There are few empty partials you can override in `layouts/partials/`
 
 
 ## Contributing
+### [Extra credits to contributors](/alex-shpak/hugo-book/graphs/contributors)
+
 Contributions are welcome and I will review and consider pull requests.  
 Primary goals are:
  - Keep it simple
