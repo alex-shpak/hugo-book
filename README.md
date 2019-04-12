@@ -14,7 +14,7 @@
 
 
 ## Requirements
-* Hugo 0.43 or higher
+* Hugo 0.48 or higher
 * Hugo extended version, read more [here](https://gohugo.io/news/0.43-relnotes/)
 
 
