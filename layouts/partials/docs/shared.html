@@ -1,12 +1,14 @@
 {{/*These templates contains some more complex logic and shared between partials*/}}
 {{ define "title" }}
-  {{ if and .File .Pages }}
+  {{ if and .IsSection .File }}
     {{ $sections := split (trim .File.Dir "/") "/" }}
     {{ $title := index ($sections | last 1) 0 | humanize | title }}
     {{ default $title .Title }}
-  {{ else if .File }}
-    {{ $title :=  .File.BaseFileName | humanize | title }}
+  {{ else if and .IsPage .File }}
+    {{ $title := .File.BaseFileName | humanize | title }}
     {{ default $title .Title }}
+  {{ else }}
+    {{ .Title }}
   {{ end }}
 {{ end }}
 
