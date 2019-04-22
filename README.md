@@ -26,7 +26,7 @@ git submodule add https://github.com/alex-shpak/hugo-book themes/book
 
 Then run hugo (or set `theme: book` in configuration file)
 ```
-hugo server --theme book
+hugo server --minify --theme book
 ```
 
 ### Creating site from scratch
@@ -38,7 +38,7 @@ git submodule add https://github.com/alex-shpak/hugo-book themes/book
 cp -R themes/book/exampleSite/content .
 ```
 ```sh
-hugo server --theme book
+hugo server --minify --theme book
 ```
 
 ## Menu

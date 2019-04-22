@@ -106,6 +106,18 @@ ul.pagination {
   @include dark-links;
 }
 
+.book-section-flat {
+  margin-bottom: $padding-16 * 2;
+
+  > a, > span {
+    font-weight: 600
+  }
+
+  > ul {
+    padding-left: 0;
+  }
+}
+
 .book-page {
   min-width: $body-min-width;
   flex-grow: 1;
@@ -213,6 +225,7 @@ aside nav,
 // Extra space for big screens
 @media screen and (min-width: $container-max-width) {
   .book-page,
+  .book-posts,
   .book-menu nav,
   .book-toc nav {
     padding: $padding-16 * 2 $padding-16;

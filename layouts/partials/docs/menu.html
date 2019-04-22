@@ -10,3 +10,7 @@
 
 {{ partial "docs/inject/menu-after" . }}
 </nav>
+
+{{ if .Site.Params.BookEnableJS }}
+  {{ template "jsmenu" . }}
+{{ end }}

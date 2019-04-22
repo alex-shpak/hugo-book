@@ -6,7 +6,7 @@
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
 </head>
-{{- $content := `
+{{ $content := `
 # Hugo Book Theme
 
 This is a placeholder for home page.  
@@ -14,7 +14,7 @@ You can override this page in:
 
  - &#96;/content/_index.md&#96;
  - &#96;/layouts/home.html&#96;
-` -}}
+` }}
 <body>
   <main class="flex justify-center">
     <div class="book-page markdown">

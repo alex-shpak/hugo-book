@@ -1,15 +1,15 @@
 {{ define "main" }}
-  {{- $dateFormat := default "January 2, 2006" .Site.Params.BookDateFormat -}}
+  {{ $dateFormat := default "January 2, 2006" .Site.Params.BookDateFormat }}
   {{ $paginator := .Paginate (where .Pages "Params.hidden" "ne" true) }}
   {{ range sort .Paginator.Pages }}
-  <article>
+  <article class="markdown">
     <h2>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h2>
     <h5>
       <strong>{{ .Date.Format $dateFormat }}</strong>
     </h5>
-    <p class="markdown">
+    <p>
       {{- .Summary -}}
       {{ if .Truncated }}
         <a href="{{ .RelPermalink }}">...</a>
