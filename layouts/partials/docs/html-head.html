@@ -6,7 +6,6 @@
 <link href="https://fonts.googleapis.com/css?family=Oxygen|Oxygen+Mono:300,400,700" rel="stylesheet">
 
 <!-- Theme stylesheet, you can customize scss by creatig `assets/custom.scss` in your website -->
-<link rel="stylesheet" href="{{ "normalize.min.css" | relURL }}">
 {{ $styles := resources.Get "book.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 
