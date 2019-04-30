@@ -15,7 +15,7 @@
   {{ end }}
 {{ else }}
   <ul>
-  {{ range $sections }}
+  {{ range where $sections "Params.bookhidden" "!=" true }}
     {{ template "book-section" (dict "Section" . "CurrentPage" $.Permalink) }}
   {{ end }}
   </ul>
@@ -38,10 +38,10 @@
 {{ define "book-section-children" }}
 {{ with .Section }}
   <ul>
-    {{ range .Sections }}
+    {{ range where .Sections "Params.bookhidden" "!=" true }}
       {{ template "book-section" (dict "Section" . "CurrentPage" $.CurrentPage) }}
     {{ end }}
-    {{ range .Pages }}
+    {{ range where .Pages "Params.bookhidden" "!=" true }}
     <li>
       {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
     </li>
