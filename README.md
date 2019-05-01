@@ -89,7 +89,7 @@ Simple blog supported for section `posts`
 ### Site Configuration
 There are few configuration options you can add to your `config.yml|json|toml` file
 ```yaml
-# (Optional) Set this to true if you use captial letters in file names
+# (Optional) Set this to true if you use capital letters in file names
 disablePathToLower: true
 
 # (Optional) Set this to true to enable 'Last Modified by' date and git author
