@@ -133,6 +133,12 @@ params:
   # - In git information
   # - In blog posts
   BookDateFormat: "Jan 2, 2006"
+  
+  # (Optional, default true) Enable or disable use of Google Fonts
+  # When not specified or set to "true" the theme font Oxygen will be loaded from Google Fonts
+  # When disabled i.e. set to "false" default browser sans-serif fonts will be used
+  # Set your own fonts in your root `assets/custom.scss` (see ‘extra customisation’ below)
+  googleFonts: false
 ```
 
 
