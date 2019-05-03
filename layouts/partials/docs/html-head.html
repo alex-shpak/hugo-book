@@ -3,9 +3,8 @@
 <title>{{- template "title" . }} | {{ .Site.Title -}}</title>
 
 <!-- Fonts for the theme -->
-{{ with .Site.Params.googleFonts | default "true" }}
+{{ if default true .Site.Params.googleFonts }}
 	<link href="https://fonts.googleapis.com/css?family=Oxygen|Oxygen+Mono:300,400,700" rel="stylesheet">
-{{ else }}
 {{ end }}
 
 <!-- Theme stylesheet, you can customize scss by creatig `assets/custom.scss` in your website -->
