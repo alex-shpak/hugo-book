@@ -67,4 +67,11 @@ $block-border-radius: 0.15rem;
       background: $gray-100;
     }
   }
+
+  .highlight {
+    code {
+      padding: 0;
+      background: none;
+    }
+  }
 }
