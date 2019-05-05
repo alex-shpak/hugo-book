@@ -42,6 +42,11 @@ $block-border-radius: 0.15rem;
     border-radius: $block-border-radius;
     font-size: $font-size-14;
     overflow-x: auto;
+
+    code {
+      padding: 0;
+      background: none;
+    }
   }
 
   blockquote {
@@ -65,13 +70,6 @@ $block-border-radius: 0.15rem;
 
     tr:nth-child(2n) {
       background: $gray-100;
-    }
-  }
-
-  .highlight {
-    code {
-      padding: 0;
-      background: none;
     }
   }
 }
