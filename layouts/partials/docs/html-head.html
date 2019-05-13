@@ -4,7 +4,8 @@
 
 <!-- Fonts for the theme -->
 {{ if default true .Site.Params.googleFonts }}
-	<link href="https://fonts.googleapis.com/css?family=Oxygen|Oxygen+Mono:300,400,700" rel="stylesheet">
+	{{ $fonts := resources.Get "_fonts.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+	<link rel="stylesheet" href="{{ $fonts.RelPermalink }}">
 {{ end }}
 
 <!-- Theme stylesheet, you can customize scss by creatig `assets/custom.scss` in your website -->
