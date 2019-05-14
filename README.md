@@ -8,7 +8,7 @@
 ## Features
 * Clean simple design
 * Mobile friendly
-* Customizable
+* Customisable
 * Designed to not interfere with other layouts
 * Zero initial configuration
 
@@ -133,12 +133,6 @@ params:
   # - In git information
   # - In blog posts
   BookDateFormat: "Jan 2, 2006"
-  
-  # (Optional, default true) Enable or disable use of Google Fonts
-  # When not specified or set to "true" the theme font Oxygen will be loaded from Google Fonts
-  # When disabled i.e. set to "false" default browser sans-serif fonts will be used
-  # Set your own fonts in your root `assets/custom.scss` (see ‘extra customisation’ below)
-  googleFonts: false
 ```
 
 
@@ -176,11 +170,12 @@ There are few empty partials you can override in `layouts/partials/`
 | `layouts/partials/docs/inject/menu-after.html`   | At the end of `<nav>` menu block       |
 
 
-### Extra Customization
+### Extra Customisation
 | File                  | Description                       |
 | --                    | --                                |
 | `static/favicon.png`  | Override default favicon          |
-| `assets/custom.scss`  | Customize or override scss styles | 
+| `assets/custom.scss`  | Customise or override scss styles | 
+| `assets/_fonts.scss`  | Load custom font files (e.g. from files hosted locally in your `static` folder) | 
 
 
 ## Contributing
@@ -192,7 +187,7 @@ Primary goals are:
  - Keep minimal (or zero) default configuration
  - Avoid interference with user-defined layouts
 
-Feel free to open issue if you missing some configuration or customization option.
+Feel free to open issue if you missing some configuration or customisation option.
 
 
 ## License
