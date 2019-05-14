@@ -2,12 +2,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{- template "title" . }} | {{ .Site.Title -}}</title>
 
-<!-- Fonts for the theme -->
-{{ if default true .Site.Params.googleFonts }}
-	{{ $fonts := resources.Get "_fonts.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-	<link rel="stylesheet" href="{{ $fonts.RelPermalink }}">
-{{ end }}
-
 <!-- Theme stylesheet, you can customize scss by creatig `assets/custom.scss` in your website -->
 {{ $styles := resources.Get "book.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
