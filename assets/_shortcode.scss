@@ -1,0 +1,52 @@
+@import "variables";
+
+.markdown-inner {
+  :first-child {
+    margin-top: 0;
+  }
+  :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.book-expand {
+  border: 1px solid $gray-200;
+
+  .book-expand-head {
+    background: $gray-100;
+    padding: $padding-8 $padding-16;
+    cursor: pointer;
+  }
+
+  .book-expand-content {
+    display: none;
+    padding: $padding-16;
+  }
+
+  input[type="checkbox"]:checked + .book-expand-content {
+    display: block;
+  }
+}
+
+.book-tabs {
+  border: 1px solid $gray-200;
+
+  .book-tabs-head {
+    border-bottom: $padding-1 solid $gray-100;
+
+    label {
+      display: inline-block;
+      padding: $padding-8 $padding-16;
+      cursor: pointer;
+    }
+  }
+
+  .book-tabs-content {
+    padding: $padding-16;
+    display: none;
+  }
+
+  input[type="radio"]:checked + .book-tabs-content {
+    display: block;
+  }
+}
