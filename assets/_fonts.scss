@@ -3,6 +3,7 @@
   font-family: 'Oxygen';
   font-style: normal;
   font-weight: 300;
+  font-display: swap;
   src: url('/fonts/oxygen-v8-latin-300.eot'); /* IE9 Compat Modes */
   src: local('Oxygen Light'), local('Oxygen-Light'),
        url('/fonts/oxygen-v8-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -16,6 +17,7 @@
   font-family: 'Oxygen';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('/fonts/oxygen-v8-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('Oxygen Regular'), local('Oxygen-Regular'),
        url('/fonts/oxygen-v8-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -29,6 +31,7 @@
   font-family: 'Oxygen';
   font-style: normal;
   font-weight: 700;
+  font-display: swap;
   src: url('/fonts/oxygen-v8-latin-700.eot'); /* IE9 Compat Modes */
   src: local('Oxygen Bold'), local('Oxygen-Bold'),
        url('/fonts/oxygen-v8-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -42,6 +45,7 @@
   font-family: 'Oxygen Mono';
   font-style: normal;
   font-weight: 400;
+  font-display: swap;
   src: url('/fonts/oxygen-mono-v6-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('Oxygen Mono'), local('OxygenMono-Regular'),
        url('/fonts/oxygen-mono-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -49,4 +53,8 @@
        url('/fonts/oxygen-mono-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
        url('/fonts/oxygen-mono-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('/fonts/oxygen-mono-v6-latin-regular.svg#OxygenMono') format('svg'); /* Legacy iOS */
+}
+
+body {
+  font-family: "Oxygen", sans-serif;
 }

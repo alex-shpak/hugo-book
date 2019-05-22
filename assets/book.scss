@@ -2,7 +2,6 @@
 @import "variables";
 @import "markdown";
 @import "utils";
-@import "fonts";
 
 html {
   font-size: $font-size-base;
@@ -19,8 +18,8 @@ body {
 body {
   color: $body-font-color;
   background: $body-background;
-	
-  font-family: "Oxygen",sans-serif;
+
+  font-family: sans-serif;
   font-weight: $body-font-weight;
 
   text-rendering: optimizeLegibility;
@@ -68,7 +67,7 @@ aside nav ul {
   }
 
   a:hover {
-    opacity: .5;
+    opacity: 0.5;
   }
 
   ul {
@@ -111,8 +110,9 @@ ul.pagination {
 .book-section-flat {
   margin-bottom: $padding-16 * 2;
 
-  > a, > span {
-    font-weight: 600
+  > a,
+  > span {
+    font-weight: 600;
   }
 
   > ul {
@@ -238,5 +238,8 @@ aside nav,
   }
 }
 
+// Add fonts
+@import "fonts";
+
 // Add custom defined styles
-@import 'custom'
+@import "custom";
