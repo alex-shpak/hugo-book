@@ -1,0 +1,10 @@
+{{ if .Inner }}
+<div class="flex">
+  <div class="flex-even">
+    {{ .Inner | markdownify }}
+  </div>
+</div>
+{{ else }}
+  </div> <!-- close current column -->
+  <div class="flex-even"> <!-- open new column -->
+{{ end }}
