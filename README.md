@@ -112,7 +112,7 @@ enableGitInfo = true
 
 # (Warnings) Theme is intended for documentation use, there for it doesn't render taxonomy.
 # You can hide related warning with config below
-disableKinds = ["taxonomy", "taxonomyTerm"]
+disableKinds = ['taxonomy', 'taxonomyTerm']
 
 [params]
 # (Optional, default true) Show or hide table of contents globally
@@ -121,14 +121,14 @@ BookShowToC = true
 
 # (Optional, default none) Set leaf bundle to render as side menu
 # When not specified file structure and weights will be used
-BookMenuBundle = /menu
+BookMenuBundle = '/menu'
 
 # (Optional, default docs) Specify section of content to render as menu
 # You can also set value to "*" to render all sections to menu
-BookSection = docs
+BookSection = 'docs'
 
 # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
-# BookMenuBundleActiveLinkColor = \#004ed0
+# BookMenuBundleActiveLinkColor = '\#004ed0'
 
 # (Optional, default false) Include JS scripts in pages. Disabled by default.
 # - Keep side menu on same scroll position during navigation
@@ -136,17 +136,17 @@ BookEnableJS = true
 
 # Set source repository location.
 # Used for 'Last Modified' and 'Edit this page' links.
-BookRepo = https://github.com/alex-shpak/hugo-book
+BookRepo = 'https://github.com/alex-shpak/hugo-book'
 
-# Enable "Edit this page" links for 'doc' page type.
+# Enable 'Edit this page' links for 'doc' page type.
 # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
 # Path must point to 'content' directory of repo.
-BookEditPath = edit/master/exampleSite/content
+BookEditPath = 'edit/master/exampleSite/content'
 
 # (Optional, default January 2, 2006) Configure the date format used on the pages
 # - In git information
 # - In blog posts
-BookDateFormat = "Jan 2, 2006"
+BookDateFormat = 'Jan 2, 2006'
 ```
 
 ### Page Configuration
@@ -156,7 +156,7 @@ You can specify additional params per page in front matter
 ```md
 +++
 # Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
-type = docs
+type = 'docs'
 
 # Set page weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
 weight = 10
