@@ -1,57 +1,67 @@
 # Hugo Book Theme
+
 [![Build Status](https://travis-ci.org/alex-shpak/hugo-book.svg?branch=master)](https://travis-ci.org/alex-shpak/hugo-book)
+
 ### [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
 ![Screenshot](https://github.com/alex-shpak/hugo-book/blob/master/images/screenshot.png)
 
-
 ## Features
-* Clean simple design
-* Mobile friendly
-* Customisable
-* Designed to not interfere with other layouts
-* Zero initial configuration
 
+- Clean simple design
+- Mobile friendly
+- Customisable
+- Designed to not interfere with other layouts
+- Zero initial configuration
 
 ## Requirements
-* Hugo 0.48 or higher
-* Hugo extended version, read more [here](https://gohugo.io/news/0.43-relnotes/)
 
+- Hugo 0.48 or higher
+- Hugo extended version, read more [here](https://gohugo.io/news/0.43-relnotes/)
 
 ## Installation
+
 Navigate to your hugo project root and run:
+
 ```
 git submodule add https://github.com/alex-shpak/hugo-book themes/book
 ```
 
 Then run hugo (or set `theme: book` in configuration file)
+
 ```
 hugo server --minify --theme book
 ```
 
 ### Creating site from scratch
+
 Below is example how to create new site from scratch
+
 ```sh
 hugo new site mydocs; cd mydocs
 git init
 git submodule add https://github.com/alex-shpak/hugo-book themes/book
 cp -R themes/book/exampleSite/content .
 ```
+
 ```sh
 hugo server --minify --theme book
 ```
 
 ## Menu
+
 ### File tree menu (default)
+
 By default theme will render pages from `content/docs` section as menu in a tree structure.  
 You can set `title` and `weight` in front matter of pages to adjust order and titles in menu.
 
-
 ### Leaf bundle menu
-You can also use leaf bundle and content of it's `index.md` as 
+
+You can also use leaf bundle and content of it's `index.md` as
 menu.
 
 Given you have this file structure
+
 ```
 ├── content
 │   ├── docs
@@ -63,10 +73,11 @@ Given you have this file structure
 ```
 
 Create file `content/docs/menu/index.md` with content
+
 ```md
----
-headless: true
----
++++
+headless = true
++++
 
 - [Book Example](/docs/)
   - [Page One](/docs/page-one)
@@ -74,121 +85,128 @@ headless: true
 - [Blog](/posts)
 ```
 
-And Enable it by settings `BookMenuBundle: /docs/menu` in Site configuration
+And Enable it by settings `BookMenuBundle: /menu` in Site configuration
 
 - [Example menu](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/content/menu/index.md)
 - [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yml)
 - [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
-
 ## Blog
+
 Simple blog supported for section `posts`
 
-
 ## Configuration
+
 ### Site Configuration
-There are few configuration options you can add to your `config.yml|json|toml` file
-```yaml
+
+There are few configuration options you can add to your `config.yml|json|toml` file.  
+See `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yml)
+
+```toml
 # (Optional) Set this to true if you use capital letters in file names
-disablePathToLower: true
+disablePathToLower = true
 
 # (Optional) Set this to true to enable 'Last Modified by' date and git author
 #  information on 'doc' type pages.
-enableGitInfo: true
+enableGitInfo = true
 
 # (Warnings) Theme is intended for documentation use, there for it doesn't render taxonomy.
 # You can hide related warning with config below
-disableKinds: ["taxonomy", "taxonomyTerm"]
+disableKinds = ["taxonomy", "taxonomyTerm"]
 
-params:
-  # (Optional, default true) Show or hide table of contents globally
-  # You can also specify this parameter per page in front matter
-  BookShowToC: true
+[params]
+# (Optional, default true) Show or hide table of contents globally
+# You can also specify this parameter per page in front matter
+BookShowToC = true
 
-  # (Optional, default none) Set leaf bundle to render as side menu
-  # When not specified file structure and weights will be used
-  BookMenuBundle: /menu
+# (Optional, default none) Set leaf bundle to render as side menu
+# When not specified file structure and weights will be used
+BookMenuBundle = /menu
 
-  # (Optional, default docs) Specify section of content to render as menu
-  # You can also set value to "*" to render all sections to menu
-  BookSection: docs
+# (Optional, default docs) Specify section of content to render as menu
+# You can also set value to "*" to render all sections to menu
+BookSection = docs
 
-  # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
-  # BookMenuBundleActiveLinkColor: \#004ed0
+# (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
+# BookMenuBundleActiveLinkColor = \#004ed0
 
-  # (Optional, default false) Include JS scripts in pages. Disabled by default.
-  # - Keep side menu on same scroll position during navigation
-  BookEnableJS: true
+# (Optional, default false) Include JS scripts in pages. Disabled by default.
+# - Keep side menu on same scroll position during navigation
+BookEnableJS = true
 
-  # Set source repository location.
-  # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo: https://github.com/alex-shpak/hugo-book
+# Set source repository location.
+# Used for 'Last Modified' and 'Edit this page' links.
+BookRepo = https://github.com/alex-shpak/hugo-book
 
-  # Enable "Edit this page" links for 'doc' page type.
-  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
-  # Path must point to 'content' directory of repo.
-  BookEditPath: edit/master/exampleSite/content
+# Enable "Edit this page" links for 'doc' page type.
+# Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+# Path must point to 'content' directory of repo.
+BookEditPath = edit/master/exampleSite/content
 
-  # (Optional, default January 2, 2006) Configure the date format used on the pages
-  # - In git information
-  # - In blog posts
-  BookDateFormat: "Jan 2, 2006"
+# (Optional, default January 2, 2006) Configure the date format used on the pages
+# - In git information
+# - In blog posts
+BookDateFormat = "Jan 2, 2006"
 ```
-
 
 ### Page Configuration
+
 You can specify additional params per page in front matter
-```yaml
----
+
+```md
++++
 # Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
-type: docs
+type = docs
 
 # Set page weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
-weight: 10
+weight = 10
 
 # (Optional) Set to mark page as flat section in file-tree menu (if BookMenuBundle not set)
-bookFlatSection: true
+bookFlatSection = true
 
 # (Optional) Set true to hide page or section from side menu (if BookMenuBundle not set)
-bookHidden: true
+bookHidden = true
 
 # (Optional) Set true to hide table of contents, overrides global value
-bookShowToC: false
----
+bookShowToC = false
++++
+
+# Markdown content below
 ```
 
-
 ### Partials
+
 There are few empty partials you can override in `layouts/partials/`
 
-| Partial                                          | Placement                              |
-| --                                               | --                                     |
-| `layouts/partials/docs/inject/head.html`         | Before closing `<head>` tag            |
-| `layouts/partials/docs/inject/body.html`         | Before closing `<body>` tag            |
-| `layouts/partials/docs/inject/footer.html`       | After page content                     |
-| `layouts/partials/docs/inject/menu-before.html`  | At the beginning of `<nav>` menu block |
-| `layouts/partials/docs/inject/menu-after.html`   | At the end of `<nav>` menu block       |
-
+| Partial                                         | Placement                              |
+| ----------------------------------------------- | -------------------------------------- |
+| `layouts/partials/docs/inject/head.html`        | Before closing `<head>` tag            |
+| `layouts/partials/docs/inject/body.html`        | Before closing `<body>` tag            |
+| `layouts/partials/docs/inject/footer.html`      | After page content                     |
+| `layouts/partials/docs/inject/menu-before.html` | At the beginning of `<nav>` menu block |
+| `layouts/partials/docs/inject/menu-after.html`  | At the end of `<nav>` menu block       |
 
 ### Extra Customisation
-| File                  | Description                       |
-| --                    | --                                |
-| `static/favicon.png`  | Override default favicon          |
-| `assets/custom.scss`  | Customise or override scss styles | 
-| `assets/_fonts.scss`  | Load custom font files (e.g. from files hosted locally in your `static` folder) | 
 
+| File                  | Description                                                                           |
+| --------------------- | ------------------------------------------------------------------------------------- |
+| `static/favicon.png`  | Override default favicon                                                              |
+| `assets/_custom.scss` | Customise or override scss styles                                                     |
+| `assets/_fonts.scss`  | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
 
 ## Contributing
+
 ### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
 
 Contributions are welcome and I will review and consider pull requests.  
 Primary goals are:
- - Keep it simple
- - Keep minimal (or zero) default configuration
- - Avoid interference with user-defined layouts
+
+- Keep it simple
+- Keep minimal (or zero) default configuration
+- Avoid interference with user-defined layouts
 
 Feel free to open issue if you missing some configuration or customisation option.
 
-
 ## License
+
 [MIT](LICENSE)
