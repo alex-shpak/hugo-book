@@ -88,7 +88,7 @@ headless = true
 And Enable it by settings `BookMenuBundle: /menu` in Site configuration
 
 - [Example menu](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/content/menu/index.md)
-- [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yml)
+- [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml)
 - [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
 ## Blog
@@ -99,8 +99,8 @@ Simple blog supported for section `posts`
 
 ### Site Configuration
 
-There are few configuration options you can add to your `config.yml|json|toml` file.  
-See `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yml)
+There are few configuration options you can add to your `config.toml` file.  
+You can also see `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
 # (Optional) Set this to true if you use capital letters in file names
@@ -153,8 +153,7 @@ BookDateFormat = 'Jan 2, 2006'
 
 You can specify additional params per page in front matter
 
-```md
-+++
+```toml
 # Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
 type = 'docs'
 
@@ -169,9 +168,6 @@ bookHidden = true
 
 # (Optional) Set true to hide table of contents, overrides global value
 bookShowToC = false
-+++
-
-# Markdown content below
 ```
 
 ### Partials
