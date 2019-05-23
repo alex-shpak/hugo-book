@@ -9,6 +9,7 @@
   }
 }
 
+// {{< expand "Label" "icon" >}}
 .book-expand {
   border: 1px solid $gray-200;
 
@@ -28,29 +29,34 @@
   }
 }
 
+// {{< tabs >}}
 .book-tabs {
   border: 1px solid $gray-200;
+  display: flex;
+  flex-wrap: wrap;
 
-  .book-tabs-head {
-    border-bottom: $padding-1 solid $gray-100;
-
-    label {
-      display: inline-block;
-      padding: $padding-8 $padding-16;
-      cursor: pointer;
-    }
+  label {
+    display: inline-block;
+    padding: $padding-8 $padding-16;
+    cursor: pointer;
   }
 
   .book-tabs-content {
+    order: 999; //Move content blocks to the end
+    border-top: $padding-1 solid $gray-100;
     padding: $padding-16;
     display: none;
   }
 
-  input[type="radio"]:checked + .book-tabs-content {
+  input[type="radio"]:checked + label {
+    border-bottom: $padding-1 solid $color-link;
+  }
+  input[type="radio"]:checked + label + .book-tabs-content {
     display: block;
   }
 }
 
+// {{< columns >}}
 .book-columns > {
   div + div {
     margin-left: $padding-16 * 2;
