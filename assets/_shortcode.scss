@@ -1,10 +1,10 @@
 @import "variables";
 
 .markdown-inner {
-  :first-child {
+  > :first-child {
     margin-top: 0;
   }
-  :last-child {
+  > :last-child {
     margin-bottom: 0;
   }
 }
@@ -48,5 +48,11 @@
 
   input[type="radio"]:checked + .book-tabs-content {
     display: block;
+  }
+}
+
+.book-columns > {
+  div + div {
+    margin-left: $padding-16 * 2;
   }
 }

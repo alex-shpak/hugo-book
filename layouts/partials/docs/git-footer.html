@@ -1,5 +1,5 @@
 {{ if or .GitInfo .Site.Params.BookEditPath }}
-<div class="align-center book-git-footer {{ if not .GitInfo }}justify-end{{ else }}justify-between{{ end }}">
+<div class="book-footer {{ if not .GitInfo }}justify-end{{ else }}justify-between{{ end }}">
   {{ with .GitInfo }}
   <div>
     {{ $date := .AuthorDate.Local.Format (default "January 2, 2006" $.Site.Params.BookDateFormat) }}

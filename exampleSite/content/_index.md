@@ -5,6 +5,23 @@ type: docs
 
 # Acerbo datus maxime
 
+{{< columns >}}
+
+## Astris ipse furtiva
+
+Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
+olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
+modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
+
+<--->
+
+## Suis quot vota
+
+Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
+miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
+nunc! Fragosis suae dextra geruntur functus vulgata.
+{{< /columns >}}
+
 ## Tempora nisi nunc
 
 Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
@@ -26,8 +43,8 @@ sequens!
 
 ## Locis suis novi cum suoque decidit eadem
 
-Idmoniae ripis, at aves, ali missa adest, ut *et autem*, et ab? Venit spes
-versus finis sermonibus patefecit murum nec est sine oculis. *Ille* inmota
+Idmoniae ripis, at aves, ali missa adest, ut _et autem_, et ab? Venit spes
+versus finis sermonibus patefecit murum nec est sine oculis. _Ille_ inmota
 macies domoque caelestia cadit tantummodo scelus procul, corde!
 
 1. Dolentem capi parte rostro alvum habentem pudor
@@ -35,22 +52,9 @@ macies domoque caelestia cadit tantummodo scelus procul, corde!
 3. E punior consurgit lentus
 4. Vox hasta eras micantes
 
-## Suis quot
-
-Ea *furtique* risere fratres edidit terrae magis. Colla tam mihi tenebat:
-miseram excita suadent es pecudes iam. Concilio *quam* velatus posset ait quod
-nunc!
-
-## Astris ipse furtiva vota collumque et habe
-
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora *adicit cursu*, ad facies:
-fragosis suae dextra geruntur functus vulgata.
-
 ## Facibus pharetrae indetonsusque indulsit sic incurrite foliis
 
-Nefandam et prisci palmas! Blandita cutis flectitur montis macies, te *nati*
+Nefandam et prisci palmas! Blandita cutis flectitur montis macies, te _nati_
 Latiis; turbaque inferias. Virginis tibi peracta avidusque facies caper nec, e
 at ademptae, mira.
 

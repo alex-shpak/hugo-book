@@ -80,30 +80,77 @@ Miseratus fonte Ditis conubia.
 
 # Multi-Column shortcode
 
-```tpl
-{{</* column */>}} <!-- begin columns block -->
+```html
+{{</* columns */>}} <!-- begin columns block -->
 # Left Content
-...
-{{</* column /*/>}} <!-- columns separator -->
+Lorem markdownum insigne...
+
+<---> <!-- magic sparator, between columns -->
+
+# Mid Content
+Lorem markdownum insigne...
+
+<---> <!-- magic sparator, between columns -->
+
 # Right Content
-...
-{{</* /column */>}} <!-- end columns block -->
+Lorem markdownum insigne...
+{{</* /columns */>}}
 ```
 
-{{< column >}}
-# Left Content
+{{< columns >}}
+## Left Content
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
-{{< column />}}
-# Mid Content
+
+<--->
+
+## Mid Content
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter!
-{{< column />}}
-# Right Content
+
+<--->
+
+## Right Content
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
-{{< /column >}}
+{{< /columns >}}
+
+
+# Mermaid Chart Shortcode
+
+{{< columns >}}
+```tpl
+{{</* mermaid */>}}
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+        Bob->>Alice: Not so good :(
+    else is well
+        Bob->>Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob->>Alice: Thanks for asking
+    end
+{{</* /mermaid */>}}
+```
+
+<--->
+
+{{< mermaid >}}
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+        Bob->>Alice: Not so good :(
+    else is well
+        Bob->>Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob->>Alice: Thanks for asking
+    end
+{{< /mermaid >}}
+
+{{< /columns >}}
