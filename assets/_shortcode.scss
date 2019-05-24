@@ -60,6 +60,9 @@
 
 // {{< columns >}}
 .book-columns > {
+  div {
+    max-width: 50%;
+  }
   div + div {
     margin-left: $padding-16 * 2;
   }
