@@ -14,7 +14,7 @@ Lorem markdownum insigne...
 Lorem markdownum insigne...
 {{< /expand >}}
 
-## Custom label
+## With Custom Label
 
 ```tpl
 {{</* expand "Custom Label" "..." */>}}
@@ -78,7 +78,7 @@ Miseratus fonte Ditis conubia.
 {{< /tab >}}
 {{< /tabs >}}
 
-# Multi-Column shortcode
+# Columns
 
 ```html
 {{</* columns */>}} <!-- begin columns block -->
@@ -120,7 +120,7 @@ Miseratus fonte Ditis conubia.
 {{< /columns >}}
 
 
-# Mermaid Chart Shortcode
+# Mermaid Chart
 
 {{< columns >}}
 ```tpl

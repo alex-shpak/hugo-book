@@ -4,7 +4,7 @@ headless: true
 
 - [**Introduction**]({{< relref "/" >}})
 - [Examples]({{< relref "/docs/examples.md" >}})
-  - [With Table of contents]({{< relref "/docs/with-toc.md" >}})
+  - [With Table of Contents]({{< relref "/docs/with-toc.md" >}})
   - [Without Table of Contents]({{< relref "/docs/without-toc.md" >}})
   - [Shortcodes]({{< relref "/docs/shortcodes.md" >}})  
 - **More Examples**

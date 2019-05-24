@@ -1,10 +1,19 @@
 # Hugo Book Theme
 
 [![Build Status](https://travis-ci.org/alex-shpak/hugo-book.svg?branch=master)](https://travis-ci.org/alex-shpak/hugo-book)
+[![Hugo](https://img.shields.io/badge/hugo-0.48-green.svg)](gohugo.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ### [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
 ![Screenshot](https://github.com/alex-shpak/hugo-book/blob/master/images/screenshot.png)
+
+- [Features](#features)
+- [Installation](#installation)
+- [Menu](#menu)
+- [Configuration](#configuration)
+- [Shortcodes](#shortcodes)
+- [Contributing](#contributing)
 
 ## Features
 
@@ -13,11 +22,12 @@
 - Customisable
 - Designed to not interfere with other layouts
 - Zero initial configuration
+- Handy shortcodes
 
 ## Requirements
 
 - Hugo 0.48 or higher
-- Hugo extended version, read more [here](https://gohugo.io/news/0.43-relnotes/)
+- Hugo extended version, read more [here](https://gohugo.io/news/0.48-relnotes/)
 
 ## Installation
 
@@ -27,7 +37,7 @@ Navigate to your hugo project root and run:
 git submodule add https://github.com/alex-shpak/hugo-book themes/book
 ```
 
-Then run hugo (or set `theme: book` in configuration file)
+Then run hugo (or set `theme = "book"`/`theme: book` in configuration file)
 
 ```
 hugo server --minify --theme book
@@ -57,9 +67,7 @@ You can set `title` and `weight` in front matter of pages to adjust order and ti
 
 ### Leaf bundle menu
 
-You can also use leaf bundle and content of it's `index.md` as
-menu.
-
+You can also use leaf bundle and content of it's `index.md` as menu.  
 Given you have this file structure
 
 ```
@@ -190,6 +198,65 @@ There are few empty partials you can override in `layouts/partials/`
 | `assets/_custom.scss` | Customise or override scss styles                                                     |
 | `assets/_fonts.scss`  | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
 
+## Shortcodes
+
+### Expand
+
+Provides clickable panel that show extra hidden content.
+
+```
+{{< expand >}}
+## Markdown content
+{{< /expand >}}
+```
+
+### Tabs
+
+Useful if you want to show alternative information per platform or setting.
+
+```
+{{< tabs "uniqueid" >}}
+{{< tab "MacOS" >}} # MacOS Content {{< /tab >}}
+{{< tab "Linux" >}} # Linux Content {{< /tab >}}
+{{< tab "Windows" >}} # Windows Content {{< /tab >}}
+{{< /tabs >}}
+```
+
+### Multi column text
+
+Organize text in 2 or more columns to use space efficiently.
+
+```html
+{{< columns >}}
+<!-- begin columns block -->
+# Left Content Lorem markdownum insigne... <--->
+<!-- magic sparator, between columns -->
+
+# Mid Content Lorem markdownum insigne... <--->
+<!-- magic sparator, between columns -->
+
+# Right Content Lorem markdownum insigne... {{< /columns >}}
+```
+
+### Mermaid Chat
+
+Render various charts with [mermaidjs](https://mermaidjs.github.io/)
+
+```
+{{< mermaid >}}
+sequenceDiagram
+    Alice->>Bob: Hello Bob, how are you?
+    alt is sick
+        Bob->>Alice: Not so good :(
+    else is well
+        Bob->>Alice: Feeling fresh like a daisy
+    end
+    opt Extra response
+        Bob->>Alice: Thanks for asking
+    end
+{{< /mermaid >}}
+```
+
 ## Contributing
 
 ### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
@@ -202,7 +269,3 @@ Primary goals are:
 - Avoid interference with user-defined layouts
 
 Feel free to open issue if you missing some configuration or customisation option.
-
-## License
-
-[MIT](LICENSE)

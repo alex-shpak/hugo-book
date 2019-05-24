@@ -38,11 +38,13 @@
   label {
     display: inline-block;
     padding: $padding-8 $padding-16;
+    border-bottom: $padding-1 transparent;
     cursor: pointer;
   }
 
   .book-tabs-content {
     order: 999; //Move content blocks to the end
+    width: 100%;
     border-top: $padding-1 solid $gray-100;
     padding: $padding-16;
     display: none;
