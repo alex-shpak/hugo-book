@@ -31,6 +31,16 @@ protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
 {{< /expand >}}
 
+# Buttons
+
+```tpl
+{{</* button relref="/" */>}}Get Home{{</* /button */>}}
+{{</* button href="https://github.com/alex-shpak/hugo-book" */>}}Contribute{{</* /button */>}}
+```
+
+{{< button relref="/" >}}Get Home{{< /button >}}
+{{< button href="https://github.com/alex-shpak/hugo-book" >}}Contribute{{< /button >}}
+
 # Tabs
 
 ```tpl
