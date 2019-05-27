@@ -235,7 +235,8 @@ Organize text in 2 or more columns to use space efficiently.
 # Mid Content Lorem markdownum insigne... <--->
 <!-- magic sparator, between columns -->
 
-# Right Content Lorem markdownum insigne... {{< /columns >}}
+# Right Content Lorem markdownum insigne... 
+{{< /columns >}}
 ```
 
 ### Mermaid Chat
