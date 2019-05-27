@@ -147,6 +147,16 @@ ul.pagination {
   nav > ul > li:first-child {
     margin-top: 0;
   }
+
+  // Classes to hide nested levels of ToC (can be replaced by @for, but it's more clear like this)
+  &.level-1 ul ul,
+  &.level-2 ul ul ul,
+  &.level-3 ul ul ul ul,
+  &.level-4 ul ul ul ul ul,
+  &.level-5 ul ul ul ul ul ul,
+  &.level-6 ul ul ul ul ul ul ul {
+    display: none;
+  }
 }
 
 .book-footer {

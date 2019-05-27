@@ -1,6 +1,6 @@
-{{ $showToC := default (default true .Site.Params.BookShowToC) .Params.bookshowtoc }}
-  {{ if and ($showToC) (.Page.TableOfContents) }}
-  <aside class="book-toc fixed">
+{{ $tocLevels := default (default 6 .Site.Params.BookToC) .Params.BookToC }}
+{{ if and $tocLevels .Page.TableOfContents }}
+  <aside class="book-toc level-{{$tocLevels}} fixed">
     {{ .Page.TableOfContents }}
   </aside>
 {{ end }}

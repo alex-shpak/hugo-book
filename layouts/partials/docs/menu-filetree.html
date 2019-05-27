@@ -23,7 +23,7 @@
 
 {{ define "book-section" }}
 {{ with .Section }}
-  <li {{ if .Params.bookFlatSection}} class="book-section-flat" {{ end }}>
+  <li {{ if .Params.BookFlatSection}} class="book-section-flat" {{ end }}>
     {{ if .Content }}
       {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
     {{ else }}
