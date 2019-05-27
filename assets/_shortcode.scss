@@ -1,6 +1,6 @@
 @import "variables";
 
-.markdown-inner {
+.markdown-inner { // Util class to remove extra margin in nested markdown content
   > :first-child {
     margin-top: 0;
   }

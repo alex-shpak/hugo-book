@@ -1,6 +1,6 @@
 <div class="book-columns flex">
   {{ range split .Inner "<--->" }}
-  <div class="flex-even">
+  <div class="flex-even markdown-inner">
     {{ . | markdownify }}
   </div>
   {{ end }}
