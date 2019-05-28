@@ -5,9 +5,6 @@
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
-  {{ range .Site.Params.custom_css -}}
-    <link rel="stylesheet" href="{{ . | absURL }}">
-  {{- end }}
 </head>
 {{ $content := `
 # Hugo Book Theme
