@@ -110,7 +110,10 @@ ul.pagination {
 
 .book-section-flat {
   margin-bottom: $padding-16 * 2;
-  margin-top: $padding-16 * 2;
+
+  &:not(:first-child) {
+    margin-top: $padding-16 * 2;
+  }
 
   > a,
   > span {
