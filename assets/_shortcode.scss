@@ -12,6 +12,8 @@
 // {{< expand "Label" "icon" >}}
 .book-expand {
   border: 1px solid $gray-200;
+  margin-top: $padding-16;
+  margin-bottom: $padding-16;
 
   .book-expand-head {
     background: $gray-100;
