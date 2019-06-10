@@ -6,7 +6,7 @@ $block-border-radius: 0.15rem;
   line-height: 1.7;
 
   h1, h2, h3, h4, h5 {
-    font-weight: 400;
+    font-weight: $body-font-weight;
     line-height: 1.25;
   }
 
@@ -17,7 +17,7 @@ $block-border-radius: 0.15rem;
   }
 
   b, optgroup, strong {
-    font-weight: 700;
+    font-weight: bolder;
   }
   
   a {
@@ -29,8 +29,6 @@ $block-border-radius: 0.15rem;
   }
 
   code {
-    font-family: 'Oxygen Mono', monospace;
-
     padding: 0 $padding-4;
     background: $gray-100;
     border-radius: $block-border-radius;
