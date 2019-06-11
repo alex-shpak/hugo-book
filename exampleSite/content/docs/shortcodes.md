@@ -34,7 +34,7 @@ Miseratus fonte Ditis conubia.
 # Buttons
 
 ```tpl
-{{</* button relref="/" */>}}Get Home{{</* /button */>}}
+{{</* button relref="/" [class="..."] */>}}Get Home{{</* /button */>}}
 {{</* button href="https://github.com/alex-shpak/hugo-book" */>}}Contribute{{</* /button */>}}
 ```
 
@@ -134,7 +134,7 @@ Miseratus fonte Ditis conubia.
 
 {{< columns >}}
 ```tpl
-{{</* mermaid */>}}
+{{</* mermaid [class="text-center"]*/>}}
 sequenceDiagram
     Alice->>Bob: Hello Bob, how are you?
     alt is sick

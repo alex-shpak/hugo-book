@@ -28,6 +28,10 @@ $block-border-radius: 0.15rem;
     }
   }
 
+  img {
+    max-width: 100%;
+  }
+
   code {
     padding: 0 $padding-4;
     background: $gray-100;

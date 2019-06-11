@@ -34,6 +34,10 @@
   margin: 0 auto;
 }
 
+.text-center {
+  text-align: center;
+}
+
 @mixin fixed {
   position: fixed;
   top: 0;
