@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .markdown-inner { // Util class to remove extra margin in nested markdown content
   > :first-child {
@@ -61,6 +61,10 @@
 }
 
 // {{< columns >}}
+.book-columns {
+  margin-top: $padding-16;
+  margin-bottom: $padding-16;
+}
 .book-columns > {
   div {
     max-width: 50%;

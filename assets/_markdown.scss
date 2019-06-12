@@ -3,17 +3,18 @@
 $block-border-radius: 0.15rem;
 
 .markdown {
-  line-height: 1.7;
+  line-height: 1.6;
 
   h1, h2, h3, h4, h5 {
-    font-weight: $body-font-weight;
-    line-height: 1.25;
+    font-weight: normal;
+    line-height: 1;
+    margin-top: $padding-16 * 2;
+    margin-bottom: $padding-8;
   }
 
   // remove padding at the beginning of page
   > :first-child {
     margin-top: 0;
-    line-height: 1;
   }
 
   b, optgroup, strong {
@@ -42,7 +43,7 @@ $block-border-radius: 0.15rem;
     padding: $padding-16;
     background: $gray-100;
     border-radius: $block-border-radius;
-    font-size: $font-size-14;
+    font-size: .875em;
     overflow-x: auto;
 
     code {
@@ -53,7 +54,7 @@ $block-border-radius: 0.15rem;
 
   blockquote {
     border-left: $padding-1*2 solid $gray-300;
-    margin: 0;
+    margin: $padding-16 0;
     padding: $padding-1 $padding-16;
 
     :first-child { margin-top: 0; }
@@ -63,11 +64,13 @@ $block-border-radius: 0.15rem;
   table {
     border-spacing: 0;
     border-collapse: collapse;
+    margin-top: $padding-16;
+    margin-bottom: $padding-16;
   
     tr th, tr td {
       padding: $padding-8 $padding-16;
       line-height: 1;
-      border: 1px solid $gray-200;
+      border: $padding-1 solid $gray-200;
     }
 
     tr:nth-child(2n) {

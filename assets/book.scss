@@ -1,8 +1,8 @@
 @import "normalize";
 @import "variables";
-@import "markdown";
-@import "shortcode";
 @import "utils";
+@import "markdown";
+@import "shortcodes";
 
 html {
   font-size: $font-size-base;
