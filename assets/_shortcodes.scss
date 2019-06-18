@@ -62,15 +62,14 @@
 
 // {{< columns >}}
 .book-columns {
-  margin-top: $padding-16;
-  margin-bottom: $padding-16;
-}
-.book-columns > {
-  div {
-    max-width: 50%;
-  }
-  div + div {
-    margin-left: $padding-16 * 2;
+  margin-left: -$padding-16;
+  margin-right: -$padding-16;
+
+  > div {
+    margin: $padding-16 0;
+    // max-width: 50%;
+    min-width: $body-min-width * 0.66;
+    padding: 0 $padding-16;
   }
 }
 

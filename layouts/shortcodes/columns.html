@@ -1,4 +1,4 @@
-<div class="book-columns flex">
+<div class="book-columns flex flex-wrap">
   {{ range split .Inner "<--->" }}
   <div class="flex-even markdown-inner">
     {{ . | markdownify }}
