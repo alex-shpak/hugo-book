@@ -83,4 +83,20 @@ $block-border-radius: 0.15rem;
     border: none;
     background: $gray-200;
   }
+
+  ul, ol {
+    padding-left: $padding-16 * 2;
+  }
+
+  dl {
+    // padding-left: $padding-16;
+    dt {
+      font-weight: bolder;
+      margin-top: $padding-16;
+    }
+
+    dd {
+      margin-left: $padding-16 * 2;
+    }
+  }
 }
