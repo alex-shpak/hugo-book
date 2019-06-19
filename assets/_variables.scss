@@ -9,6 +9,8 @@ $font-size-12: 0.75rem;
 $font-size-14: 0.875rem;
 $font-size-16: 1rem;
 
+$border-radius: 0.15rem;
+
 // Grayscale
 $white: #ffffff;
 $gray-100: #f8f9fa;
@@ -37,5 +39,5 @@ $header-height: 3.5rem;
 $menu-width: 16rem;
 $toc-width: 16rem;
 
-$sm-breakpoint: $menu-width + $body-min-width + 5;
-$md-breakpoint: $sm-breakpoint + $toc-width;
+$md-breakpoint: $menu-width + $body-min-width * 1.25 + $toc-width;
+$sm-breakpoint: $menu-width + $body-min-width;

@@ -1,6 +1,7 @@
-@import 'variables';
+@import "variables";
 
-.markdown-inner { // Util class to remove extra margin in nested markdown content
+.markdown-inner {
+  // Util class to remove extra margin in nested markdown content
   > :first-child {
     margin-top: 0;
   }
@@ -11,9 +12,13 @@
 
 // {{< expand "Label" "icon" >}}
 .book-expand {
-  border: 1px solid $gray-200;
   margin-top: $padding-16;
   margin-bottom: $padding-16;
+
+  border: $padding-1 solid $gray-200;
+  border-radius: $border-radius;
+
+  overflow: hidden;
 
   .book-expand-head {
     background: $gray-100;
@@ -33,7 +38,14 @@
 
 // {{< tabs >}}
 .book-tabs {
-  border: 1px solid $gray-200;
+  margin-top: $padding-16;
+  margin-bottom: $padding-16;
+
+  border: $padding-1 solid $gray-200;
+  border-radius: $border-radius;
+
+  overflow: hidden;
+
   display: flex;
   flex-wrap: wrap;
 
@@ -79,7 +91,7 @@ a.book-btn {
   color: $color-link !important;
   text-decoration: none !important;
   border: $padding-1 solid $color-link;
-  border-radius: $padding-4;
+  border-radius: $border-radius;
   padding: $padding-4 $padding-16;
   margin-top: $padding-8;
   margin-bottom: $padding-8;
