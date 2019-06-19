@@ -51,7 +51,7 @@ a {
 }
 
 img {
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 aside nav ul {
@@ -147,6 +147,10 @@ ul.pagination {
     @include fixed;
   }
 
+  img {
+    height: 1em;
+  }
+
   nav > ul > li:first-child {
     margin-top: 0;
   }
@@ -166,10 +170,8 @@ ul.pagination {
   display: flex;
   padding-top: $padding-16;
   font-size: $font-size-14;
-  align-items: baseline;
 
   img {
-    width: 1em;
     height: 1em;
   }
 }
