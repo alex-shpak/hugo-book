@@ -137,6 +137,23 @@ ul.pagination {
   display: none;
 }
 
+.book-search {
+  border: 0;
+  border-bottom: $padding-1 solid $gray-200;
+  outline: none;
+  // padding: $padding-4 $padding-8 $padding-4 $padding-16+$padding-4;
+  padding: $padding-4 $padding-8 $padding-4 0;
+  margin-bottom: $padding-4;
+  width: 100%;
+
+  // background: url("svg/search.svg") left center no-repeat;
+  // background-size: $padding-16;
+
+  &:focus {
+    border-bottom-color: $body-font-color;
+  }
+}
+
 .book-toc {
   flex: 0 0 $toc-width;
   font-size: $font-size-12;
@@ -211,6 +228,7 @@ aside nav,
 @media screen and (max-width: $sm-breakpoint) {
   .book-menu {
     margin-left: -$menu-width;
+    font-size: $font-size-base;
   }
 
   .book-header {

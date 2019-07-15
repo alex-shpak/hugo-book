@@ -1,10 +1,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{- template "title" . }} | {{ .Site.Title -}}</title>
+<title>{{ partial "docs/title" . }} | {{ .Site.Title -}}</title>
 
-<!-- Theme stylesheet, you can customize scss by creatig `assets/custom.scss` in your website -->
-{{ $styles := resources.Get "book.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+<!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
+{{- $styles := resources.Get "book.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+
+{{- $search := resources.Get "search.js" | resources.ExecuteAsTemplate "search.js" . | resources.Minify | resources.Fingerprint }}
+<script src="{{ $search.RelPermalink }}"></script>
 
 <!-- Favicon -->
 <link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">

@@ -27,7 +27,7 @@
     {{ if .Content }}
       {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
     {{ else }}
-      <span>{{ template "title" . }}</span>
+      <span>{{ partial "docs/title" . }}</span>
     {{ end }}
 
     {{ template "book-section-children" (dict "Section" . "CurrentPage" $.CurrentPage) }}
@@ -53,7 +53,7 @@
 {{ define "book-page-link" }}
 {{ with .Page }}
   <a href="{{ .RelPermalink }}" {{ if eq $.CurrentPage .Permalink }} class="active"{{ end }}>
-    {{ template "title" . }}
+      {{ partial "docs/title" . }}
   </a>
 {{ end }}
 {{ end }}

@@ -8,7 +8,7 @@ description = "Hugo documentation theme as simple as plain book"
 homepage = "https://github.com/alex-shpak/hugo-book"
 tags = ["responsive", "clean", "documentation", "docs", "flexbox"]
 features = []
-min_version = "0.48"
+min_version = "0.55"
 
 [author]
   name = "Alex Shpak"
