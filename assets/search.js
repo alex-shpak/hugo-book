@@ -36,12 +36,6 @@
     }
   }
 
-  function newLi(href, title) {
-    
-
-    return li;
-  }
-
   function loadScript(src, callback) {
     const script = document.createElement("script");
     script.defer = true;
