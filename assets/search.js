@@ -8,6 +8,7 @@
   input.addEventListener("focus", init);
 
   function init() {
+    loadScript("{{ "lunr.min.js" | relURL }}")
     loadScript("{{ $searchData.RelPermalink }}", function() {
       input.disabled = false;
       input.addEventListener("keyup", search);

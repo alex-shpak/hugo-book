@@ -8,7 +8,6 @@
 
 {{ if default true .Site.Params.BookSearch }}
 {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate "search.js" . | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ "lunr.min.js" | relURL }}"></script>
 <script defer src="{{ $searchJS.RelPermalink }}"></script>
 {{ end }}
 
