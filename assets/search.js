@@ -1,41 +1,53 @@
-addEventListener("load", function() {
-  let input = document.querySelector("#book-search");
-  let results = document.querySelector("#book-search-results");
+{{- $searchData := resources.Get "search-data.js" | resources.ExecuteAsTemplate "search-data.js" . | resources.Minify | resources.Fingerprint }}
 
-  Promise.all([
-    loadScript("{{ "lunr.min.js" | relURL }}"),
-    loadScript("{{ "index.json" | relURL }}")
-  ]).then(enableLunr);
+(function() {
+  const input = document.querySelector("#book-search-input");
+  const results = document.querySelector("#book-search-results");
+  const dummy = document.querySelector("#book-search-dummy");
 
-  function enableLunr() {
-    results.idx = lunr(function() { 
-      this.ref('href')
-      this.field('title')
-      this.field('content')
+  input.addEventListener("focus", init);
 
-      window.lunrData.forEach(function (page) {
-        this.add(page)
-      }, this)
+  function init() {
+    loadScript("{{ $searchData.RelPermalink }}", function() {
+      input.disabled = false;
+      input.addEventListener("keyup", search);
+      search();
     });
-    input.addEventListener("keyup", search);
+    input.removeEventListener("focus", init);
   }
 
   function search() {
+    while (results.firstChild) {
+      results.removeChild(results.firstChild);
+    }
+
     if (input.value) {
-      var hits = results.idx.search(`${input.value}*`);
-      results.innerHTML = JSON.stringify(hits);
-    } else {
-      results.innerHTML = '';
+      const hits = window.bookSearch.idx.search(`${input.value}*`);
+      hits.slice(0, 10).forEach(function(hit) {
+        const page = window.bookSearch.pages[hit.ref];
+        const li = dummy.querySelector("li").cloneNode(true),
+              a = li.querySelector("a");
+
+        a.href = page.href;
+        a.textContent = page.title;
+
+        results.appendChild(li);
+      });
     }
   }
 
-  function loadScript(src) {
-    return new Promise(function(resolve, reject) {
-      let script = document.createElement('script');
-      script.src = src;
-      script.onload = () => resolve(script);
-  
-      document.head.append(script);
-    });
+  function newLi(href, title) {
+    
+
+    return li;
   }
-});
+
+  function loadScript(src, callback) {
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = src;
+    script.onload = callback;
+
+    document.head.append(script);
+  }
+})();

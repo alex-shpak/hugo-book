@@ -1,2 +1,9 @@
-<input type="text" placeholder="Search" class="book-search" id="book-search" />
-<ul id="book-search-results"></ul>
+{{ if default true .Site.Params.BookSearch }}
+<div class="book-search">
+  <ul id="book-search-dummy" class="hidden">
+    <li><a href></a></li>
+  </ul>
+  <input type="text" placeholder="Search" id="book-search-input" />
+  <ul id="book-search-results"></ul>
+</div>
+{{ end }}

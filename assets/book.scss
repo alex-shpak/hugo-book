@@ -138,21 +138,27 @@ ul.pagination {
 }
 
 .book-search {
-  border: 0;
-  border-bottom: $padding-1 solid $gray-200;
-  outline: none;
-  // padding: $padding-4 $padding-8 $padding-4 $padding-16+$padding-4;
-  padding: $padding-4 $padding-8 $padding-4 0;
-  margin-bottom: $padding-4;
-  width: 100%;
+  #book-search-input {
+    border: 0;
+    border-bottom: $padding-1 solid $gray-200;
+    outline: none;
+    padding: $padding-4 $padding-8 $padding-4 $padding-16 + $padding-4;
 
-  // background: url("svg/search.svg") left center no-repeat;
-  // background-size: $padding-16;
+    width: 85%;
+  
+    background: url("svg/search.svg") left center no-repeat;
+    background-size: $padding-16;
+  
+    &:focus {
+      border-bottom-color: $body-font-color;
+    }
+  }
 
-  &:focus {
-    border-bottom-color: $body-font-color;
+  #book-search-results li:last-child {
+    margin-bottom: $padding-16 * 2;
   }
 }
+
 
 .book-toc {
   flex: 0 0 $toc-width;
@@ -196,7 +202,7 @@ ul.pagination {
 
 .book-posts {
   min-width: $body-min-width;
-  max-width: $sm-breakpoint;
+  max-width: $body-min-width * 2;
   flex-grow: 1;
   padding: $padding-16;
 

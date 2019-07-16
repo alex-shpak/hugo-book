@@ -14,9 +14,6 @@ enableGitInfo = true
 # pygmentsStyle = 'monokailight'
 pygmentsCodeFences = true
 
-[outputs]
-  home = ["HTML", "JSON"]
-
 [params]
   # (Optional, default 6) Set how many table of contents levels to be showed on page.
   # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
@@ -48,5 +45,6 @@ pygmentsCodeFences = true
   # - In blog posts
   BookDateFormat = 'Jan 2, 2006'
 
-  # (Optional, default true) Enables or disables search function with lunr.js
+  # (Optional, default true) Enables search function with lunr.js, 
+  # Index is built on fly, therefore it might slowdown your website.
   BookSearch = true

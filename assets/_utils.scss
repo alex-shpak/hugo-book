@@ -42,6 +42,10 @@
   text-align: center;
 }
 
+.hidden {
+  display: none;
+}
+
 @mixin fixed {
   position: fixed;
   top: 0;

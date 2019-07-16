@@ -153,7 +153,8 @@ BookEditPath = 'edit/master/exampleSite/content'
 # - In blog posts
 BookDateFormat = 'Jan 2, 2006'
 
-# (Optional, default true) Enables or disables search function with lunr.js
+# (Optional, default true) Enables search function with lunr.js, 
+# Index is built on fly, therefore it might slowdown your website.
 BookSearch = true
 ```
 
