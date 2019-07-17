@@ -10,7 +10,10 @@
 
   function init() {
     loadScript("{{ "lunr.min.js" | relURL }}")
-    loadScript("{{ $searchData.RelPermalink }}", search);
+    loadScript("{{ $searchData.RelPermalink }}", function() {
+      input.readOnly = false;
+      search();
+    });
 
     input.removeEventListener("focus", init);
   }

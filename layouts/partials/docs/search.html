@@ -1,9 +1,9 @@
 {{ if default true .Site.Params.BookSearch }}
 <div class="book-search">
   <ul id="book-search-dummy" class="hidden">
-    <li><a href></a></li>
+    <li><a href></a></li><!-- used to clone search result -->
   </ul>
-  <input type="text" placeholder="Search" id="book-search-input" />
+  <input type="text" placeholder="Search" id="book-search-input" maxlength="64" readonly />
   <ul id="book-search-results"></ul>
 </div>
 {{ end }}

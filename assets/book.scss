@@ -139,18 +139,17 @@ ul.pagination {
 
 .book-search {
   #book-search-input {
-    opacity: .33;
-
     border: 0;
     border-bottom: $padding-1 solid $body-font-color;
     outline: none;
 
-    padding: $padding-4 $padding-8 $padding-4 $padding-16 + $padding-4;
-    width: 85%;
-  
+    padding: $padding-4 $padding-4 $padding-4 $padding-16 + $padding-4;
+    width: 100%;
+
     background: url("svg/search.svg") left center no-repeat;
     background-size: $padding-16;
 
+    opacity: 0.33;
     &:focus {
       opacity: 1;
     }
@@ -160,7 +159,6 @@ ul.pagination {
     margin-bottom: $padding-16 * 2;
   }
 }
-
 
 .book-toc {
   flex: 0 0 $toc-width;
