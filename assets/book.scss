@@ -138,12 +138,15 @@ ul.pagination {
 }
 
 .book-search {
-  #book-search-input {
+  position: relative;
+  margin: $padding-16 0;
+
+  input {
     border: 0;
     border-bottom: $padding-1 solid $body-font-color;
     outline: none;
 
-    padding: $padding-4 $padding-4 $padding-4 $padding-16 + $padding-4;
+    padding: $padding-4 $padding-16 + $padding-4;
     width: 100%;
 
     background: url("svg/search.svg") left center no-repeat;
@@ -153,9 +156,28 @@ ul.pagination {
     &:focus {
       opacity: 1;
     }
+
+    &:required + .book-search-spinner {
+      display: block;
+    }
   }
 
-  #book-search-results li:last-child {
+  .book-search-spinner {
+    position: absolute;
+    right: 0;
+    top: $padding-4;
+
+    width: $padding-16;
+    height: $padding-16;
+
+    border: $padding-1 solid transparent;
+    border-top-color: $body-font-color;
+    border-radius: 50%;
+
+    @include spin(1s)
+  }
+
+  li:last-child {
     margin-bottom: $padding-16 * 2;
   }
 }
