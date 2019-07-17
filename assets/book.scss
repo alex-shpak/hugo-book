@@ -139,20 +139,20 @@ ul.pagination {
 
 .book-search {
   #book-search-input {
+    opacity: .33;
+
     border: 0;
-    border-bottom: $padding-1 solid $gray-200;
+    border-bottom: $padding-1 solid $body-font-color;
     outline: none;
 
     padding: $padding-4 $padding-8 $padding-4 $padding-16 + $padding-4;
-    margin-bottom: $padding-4;
-
     width: 85%;
   
     background: url("svg/search.svg") left center no-repeat;
     background-size: $padding-16;
-  
+
     &:focus {
-      border-bottom-color: $body-font-color;
+      opacity: 1;
     }
   }
 

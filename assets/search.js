@@ -6,14 +6,12 @@
   const dummy = document.querySelector("#book-search-dummy");
 
   input.addEventListener("focus", init);
+  input.addEventListener("keyup", search);
 
   function init() {
     loadScript("{{ "lunr.min.js" | relURL }}")
-    loadScript("{{ $searchData.RelPermalink }}", function() {
-      input.disabled = false;
-      input.addEventListener("keyup", search);
-      search();
-    });
+    loadScript("{{ $searchData.RelPermalink }}", search);
+
     input.removeEventListener("focus", init);
   }
 
@@ -22,19 +20,34 @@
       results.removeChild(results.firstChild);
     }
 
-    if (input.value) {
-      const hits = window.bookSearch.idx.search(`${input.value}*`);
-      hits.slice(0, 10).forEach(function(hit) {
-        const page = window.bookSearch.pages[hit.ref];
-        const li = dummy.querySelector("li").cloneNode(true),
-              a = li.querySelector("a");
-
-        a.href = page.href;
-        a.textContent = page.title;
-
-        results.appendChild(li);
-      });
+    if (!input.value || !window.bookSearch) {
+      return
     }
+
+    const terms = lunr.tokenizer(input.value);
+    const searchHits = window.bookSearch.idx.query(function(query) {
+      query.term(terms, {
+        boost: 100,
+      });
+      query.term(terms, {
+        boost: 10,
+        wildcard: lunr.Query.wildcard.LEADING | lunr.Query.wildcard.TRAILING,
+      });
+      query.term(terms, {
+        editDistance: 2
+      });
+    });
+
+    searchHits.slice(0, 10).forEach(function(hit) {
+      const page = window.bookSearch.pages[hit.ref];
+      const li = dummy.querySelector("li").cloneNode(true),
+            a = li.querySelector("a");
+
+      a.href = page.href;
+      a.textContent = page.title;
+
+      results.appendChild(li);
+    });
   }
 
   function loadScript(src, callback) {

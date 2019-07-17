@@ -14,9 +14,9 @@
   window.bookSearch = {
     pages: pages,
     idx: lunr(function() { 
-      this.ref('idx');
-      this.field('title');
-      this.field('content');
+      this.ref("idx");
+      this.field("title", { boost: 10000 });
+      this.field("content");
 
       pages.forEach(this.add, this);
     }),
