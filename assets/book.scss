@@ -143,19 +143,12 @@ ul.pagination {
 
   input {
     border: 0;
-    border-bottom: $padding-1 solid $body-font-color;
-    outline: none;
+    border-radius: $padding-4;
 
-    padding: $padding-4 $padding-16 + $padding-4;
+    padding: $padding-8;
     width: 100%;
 
-    background: url("svg/search.svg") left center no-repeat;
-    background-size: $padding-16;
-
-    opacity: 0.33;
-    &:focus {
-      opacity: 1;
-    }
+    background: $gray-100;
 
     &:required + .book-search-spinner {
       display: block;
@@ -164,8 +157,9 @@ ul.pagination {
 
   .book-search-spinner {
     position: absolute;
+    margin: $padding-8;
     right: 0;
-    top: $padding-4;
+    top: 0;
 
     width: $padding-16;
     height: $padding-16;
@@ -174,7 +168,7 @@ ul.pagination {
     border-top-color: $body-font-color;
     border-radius: 50%;
 
-    @include spin(1s)
+    @include spin(1s);
   }
 
   li:last-child {
