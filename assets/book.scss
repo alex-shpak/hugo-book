@@ -140,13 +140,20 @@ ul.pagination {
 .book-search {
   position: relative;
   margin: $padding-16 0;
+  border-bottom: 1px solid transparent;
+
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
 
   input {
+    width: 100%;
+    padding: $padding-8;
+
     border: 0;
     border-radius: $padding-4;
-
-    padding: $padding-8;
-    width: 100%;
 
     background: $gray-100;
 
@@ -169,10 +176,6 @@ ul.pagination {
     border-radius: 50%;
 
     @include spin(1s);
-  }
-
-  li:last-child {
-    margin-bottom: $padding-16 * 2;
   }
 }
 
