@@ -5,7 +5,7 @@
       {
         "idx": {{ $index }},
         "href": "{{ $page.RelPermalink }}",
-        "title": {{ (partial "docs/title" $page) | jsonify}},
+        "title": {{ (partial "docs/title" $page) | jsonify }},
         "content": {{ $page.Plain | jsonify }}
       }
     {{- end -}}
