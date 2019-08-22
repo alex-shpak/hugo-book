@@ -1,0 +1,12 @@
+name: Build Example Site
+
+on: [push]
+
+jobs:
+  hugo:
+    container: klakegg/hugo:ext-alpine
+    steps:
+    - name: Install Hugo
+      run: apt-get install hugo
+    - name: Run Hugo
+      run: (cd exampleSite; hugo)
