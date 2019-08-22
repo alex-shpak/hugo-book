@@ -260,6 +260,19 @@ sequenceDiagram
 {{< /mermaid >}}
 ```
 
+### KaTeX Syntax
+
+Render math formulas with [KaTeX](https://katex.org/)
+
+```
+{{< katex >}}
+$$ x = \begin{cases}
+   a &\text{if } b \\
+   c &\text{if } d
+\end{cases} $$
+{{< /katex >}}
+```
+
 ## Contributing
 
 ### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
