@@ -1,2 +1,0 @@
-language: generic
-script: docker run --rm -it -v $(pwd)/exampleSite:/src -v $(pwd):/src/themes/hugo-book klakegg/hugo:ext-alpine --enableGitInfo=false
