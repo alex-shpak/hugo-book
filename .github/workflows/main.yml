@@ -4,9 +4,9 @@ on: [push]
 
 jobs:
   hugo:
-    container: klakegg/hugo:ext-alpine
+    runs-on: ubuntu-18.04
     steps:
     - name: Install Hugo
-      run: apt-get install hugo
+      run: sudo apt-get install hugo
     - name: Run Hugo
       run: (cd exampleSite; hugo)
