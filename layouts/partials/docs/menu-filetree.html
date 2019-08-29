@@ -38,13 +38,14 @@
 {{ define "book-section-children" }}
 {{ with .Section }}
   <ul>
-    {{ range where .Sections "Params.bookhidden" "!=" true }}
-      {{ template "book-section" (dict "Section" . "CurrentPage" $.CurrentPage) }}
-    {{ end }}
-    {{ range where .Pages "Params.bookhidden" "!=" true }}
-    <li>
-      {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
-    </li>
+    {{ range where .Pages "Params.bookhidden" "!=" "true" }}
+      {{ if eq .Kind "section" }}
+        {{ template "book-section" (dict "Section" . "CurrentPage" $.CurrentPage) }}
+      {{ else if and (eq .Kind "page") .Content }}
+        <li>
+        {{- template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) -}}
+        </li>
+      {{ end }}
     {{ end }}
   </ul>
 {{ end }}
