@@ -4,7 +4,7 @@
 
 <div class="book-tabs">
 {{ range $index, $tab :=  .Scratch.Get $group }}
-  <input type="radio" name="{{ $group }}" style="display: none;" id="{{ printf "%s-%d" $group $index }}" {{ if not $index }}checked="checked"{{ end }} />
+  <input type="radio" class="book-tabs-radio" name="{{ $group }}" id="{{ printf "%s-%d" $group $index }}" {{ if not $index }}checked="checked"{{ end }} />
   <label for="{{ printf "%s-%d" $group $index }}">
     {{ $tab.Name }}
   </label>
