@@ -4,7 +4,7 @@
       <span>{{ default "Expand" (.Get 0) }}</span>
       <span>{{ default "↕" (.Get 1) }}</span>
     </div>
-    <input type="checkbox" class="book-expand-expander" />
+    <input type="checkbox" class="hidden" />
     <div class="book-expand-content markdown-inner">
       {{ .Inner | markdownify }}
     </div>
