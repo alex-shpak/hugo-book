@@ -31,10 +31,6 @@
     padding: $padding-16;
   }
 
-  .book-expand-expander {
-    display: none;
-  }
-
   input[type="checkbox"]:checked + .book-expand-content {
     display: block;
   }
@@ -58,10 +54,6 @@
     padding: $padding-8 $padding-16;
     border-bottom: $padding-1 transparent;
     cursor: pointer;
-  }
-
-  .book-tabs-radio {
-    display: none;
   }
 
   .book-tabs-content {
