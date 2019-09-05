@@ -1,4 +1,4 @@
-name: Build Example Site
+name: Build with Hugo
 
 on: [push]
 
