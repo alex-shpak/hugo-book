@@ -128,8 +128,8 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 BookToC = 3
 
 # (Optional, default none) Set the path to a logo for the book. If the logo is
-# /static/logo.png then the path would be /logo.png
-BookLogo = '/logo.png'
+# /static/logo.png then the path would be 'logo.png'
+BookLogo = 'logo.png'
 
 # (Optional, default none) Set leaf bundle to render as side menu
 # When not specified file structure and weights will be used
@@ -270,10 +270,10 @@ Render math formulas with [KaTeX](https://katex.org/)
 
 ```
 {{< katex >}}
-$$ x = \begin{cases}
+x = \begin{cases}
    a &\text{if } b \\
    c &\text{if } d
-\end{cases} $$
+\end{cases}
 {{< /katex >}}
 ```
 

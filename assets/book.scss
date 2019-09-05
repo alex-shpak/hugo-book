@@ -95,10 +95,10 @@ ul.pagination {
   margin-top: 0;
 
   img {
-    max-width: 40px;
-    max-height: 40px;
+    height: 1.5em;
+    width: auto;
     vertical-align: middle;
-    margin-right: 0.5rem;
+    margin-right: $padding-8;
   }
 }
 
