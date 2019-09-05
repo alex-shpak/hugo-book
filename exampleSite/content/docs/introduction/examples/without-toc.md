@@ -1,4 +1,6 @@
 ---
+title: Without Table of Contents
+weight: 2
 bookToc: false
 ---
 
