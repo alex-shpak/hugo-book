@@ -245,7 +245,7 @@ Organize text in 2 or more columns to use space efficiently.
 {{< /columns >}}
 ```
 
-### Mermaid Chat
+### Mermaid Charts
 
 Render various charts with [mermaidjs](https://mermaidjs.github.io/)
 
