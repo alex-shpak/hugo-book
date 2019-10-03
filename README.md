@@ -100,7 +100,8 @@ And Enable it by settings `BookMenuBundle: /menu` in Site configuration
 
 ## Blog
 
-Simple blog supported for section `posts`
+Simple blog supported for section `posts`.  
+Blog is not primary use case so book theme so it has only minimal features
 
 ## Configuration
 
@@ -156,7 +157,7 @@ BookEditPath = 'edit/master/exampleSite/content'
 # - In blog posts
 BookDateFormat = 'Jan 2, 2006'
 
-# (Optional, default true) Enables search function with lunr.js, 
+# (Optional, default true) Enables search function with lunr.js,
 # Index is built on fly, therefore it might slowdown your website.
 BookSearch = true
 ```
@@ -202,6 +203,13 @@ There are few empty partials you can override in `layouts/partials/`
 | `assets/_custom.scss` | Customise or override scss styles                                                     |
 | `assets/_fonts.scss`  | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
 
+### Hugo Internal Templates
+
+There are few hugo tempaltes inserted in `<head>`
+
+- [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
+- [Open Graph](https://gohugo.io/templates/internal/#open-graph)
+
 ## Shortcodes
 
 ### Expand
@@ -231,18 +239,16 @@ Useful if you want to show alternative information per platform or setting.
 Organize text in 2 or more columns to use space efficiently.
 
 ```html
-{{< columns >}} <!-- begin columns block -->
+{{< columns >}}
+<!-- begin columns block -->
 
-# Left Content Lorem markdownum insigne...
+# Left Content Lorem markdownum insigne... <--->
+<!-- magic sparator, between columns -->
 
-<---> <!-- magic sparator, between columns -->
+# Mid Content Lorem markdownum insigne... <--->
+<!-- magic sparator, between columns -->
 
-# Mid Content Lorem markdownum insigne...
-
-<---> <!-- magic sparator, between columns -->
-
-# Right Content Lorem markdownum insigne...
-{{< /columns >}}
+# Right Content Lorem markdownum insigne... {{< /columns >}}
 ```
 
 ### Mermaid Charts
