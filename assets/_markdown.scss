@@ -52,7 +52,7 @@
 
   blockquote {
     margin: $padding-16 0;
-    padding: $padding-4 ($padding-16 - $padding-4); //to keep total left space 16dp
+    padding: $padding-8 $padding-16 $padding-8 ($padding-16 - $padding-4); //to keep total left space 16dp
 
     border-left: $padding-4 solid $gray-200;
     border-radius: $border-radius;

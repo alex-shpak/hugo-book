@@ -141,7 +141,7 @@ BookMenuBundle = '/menu'
 BookSection = 'docs'
 
 # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
-# BookMenuBundleActiveLinkColor = '\#004ed0'
+# BookMenuBundleActiveLinkColor = '\#05b'
 
 # Set source repository location.
 # Used for 'Last Modified' and 'Edit this page' links.
@@ -212,15 +212,27 @@ There are few hugo tempaltes inserted in `<head>`
 
 ## Shortcodes
 
-### Expand
+### Hint
 
-Provides clickable panel that show extra hidden content.
+Hint shortcode can be used as hint/alerts/notification block. There are 3 colors to choose: `info`, `warning` and `danger`.
+
+```tpl
+{{< hint [info|warning|danger] >}}
+**Markdown content**  
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+{{< /hint >}}
+```
+
+### Buttons
+
+Buttons are styled links to internal of external pages
 
 ```
-{{< expand >}}
-## Markdown content
-{{< /expand >}}
+{{< button relref="/" >}}Get Home{{< /button >}}
+{{< button href="https://github.com/alex-shpak/hugo-book" >}}Contribute{{< /button >}}
 ```
+
 
 ### Tabs
 
@@ -249,6 +261,16 @@ Organize text in 2 or more columns to use space efficiently.
 <!-- magic sparator, between columns -->
 
 # Right Content Lorem markdownum insigne... {{< /columns >}}
+```
+
+### Expand
+
+Provides clickable panel that show extra hidden content.
+
+```
+{{< expand >}}
+## Markdown content
+{{< /expand >}}
 ```
 
 ### Mermaid Charts

@@ -4,38 +4,34 @@ weight: 3
 
 # Shortcodes
 
-## Expand shortcode
+## Hints
 
-### Default
-
+Hint shortcode can be used as hint/alerts/notification block. There are 3 colors to choose: `info`, `warning` and `danger`.
 ```tpl
-{{</* expand */>}}
-## Markdown content
-Lorem markdownum insigne...
-{{</* /expand */>}}
-```
-
-{{< expand >}}
-## Markdown content
-Lorem markdownum insigne...
-{{< /expand >}}
-
-### With Custom Label
-
-```tpl
-{{</* expand "Custom Label" "..." */>}}
-## Markdown content
-Lorem markdownum insigne...
-{{</* /expand */>}}
-```
-
-{{< expand "Custom Label" "..." >}}
-## Markdown content
+{{</* hint [info|warning|danger] */>}}
+**Markdown content**  
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
-Miseratus fonte Ditis conubia.
-{{< /expand >}}
+{{</* /hint */>}}
+```
+
+{{< hint info >}}
+**Markdown content**  
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+{{< /hint >}}
+
+{{< hint warning >}}
+**Markdown content**  
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+{{< /hint >}}
+
+{{< hint danger >}}
+**Markdown content**  
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+{{< /hint >}}
 
 ## Buttons
 
@@ -135,6 +131,40 @@ protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
 {{< /columns >}}
 
+## Expand shortcode
+
+Expand shortcode can help to decrease clutter on screen by hiding part of text
+
+### Default
+
+```tpl
+{{</* expand */>}}
+## Markdown content
+Lorem markdownum insigne...
+{{</* /expand */>}}
+```
+
+{{< expand >}}
+## Markdown content
+Lorem markdownum insigne...
+{{< /expand >}}
+
+### With Custom Label
+
+```tpl
+{{</* expand "Custom Label" "..." */>}}
+## Markdown content
+Lorem markdownum insigne...
+{{</* /expand */>}}
+```
+
+{{< expand "Custom Label" "..." >}}
+## Markdown content
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
+Miseratus fonte Ditis conubia.
+{{< /expand >}}
 
 ## Mermaid Chart
 

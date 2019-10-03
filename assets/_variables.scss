@@ -24,7 +24,7 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black: #000 !default;
 
-$color-link: #004ed0 !default;
+$color-link: #05b !default;
 $color-visited-link: #8440f1 !default;
 $color-dark-link: $gray-800 !default;
 
@@ -41,3 +41,10 @@ $toc-width: 16rem !default;
 
 $md-breakpoint: $menu-width + $body-min-width * 1.25 + $toc-width !default;
 $sm-breakpoint: $menu-width + $body-min-width !default;
+
+// Panel colors
+$hint-colors: (
+  info: #6bf,
+  warning: #fd6,
+  danger: #f66
+);
