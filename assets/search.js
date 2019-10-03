@@ -57,6 +57,7 @@
   function loadScript(src, callback) {
     const script = document.createElement("script");
     script.defer = true;
+    script.async = false;
     script.src = src;
     script.onload = callback;
 
