@@ -13,7 +13,6 @@
 
     loadScript("{{ "lunr.min.js" | relURL }}");
     loadScript("{{ $searchData.RelPermalink }}", function() {
-      input.readOnly = false;
       input.required = false;
       search();
     });
