@@ -111,6 +111,10 @@ There are few configuration options you can add to your `config.toml` file.
 You can also see `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
+# (Optional) Set Google Analytics if you use it to track your website.
+# Always put it on the top of the configuration file, otherwise it won't work
+googleAnalytics = "UA-XXXXXXXXX-X"
+
 # (Optional) Set this to true if you use capital letters in file names
 disablePathToLower = true
 
