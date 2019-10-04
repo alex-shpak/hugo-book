@@ -1,3 +1,7 @@
+---
+title: With Table of Contents
+weight: 1
+---
 # Caput vino delphine in tamen vias
 
 ## Cognita laeva illo fracta

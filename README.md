@@ -100,7 +100,8 @@ And Enable it by settings `BookMenuBundle: /menu` in Site configuration
 
 ## Blog
 
-Simple blog supported for section `posts`
+Simple blog supported for section `posts`.  
+Blog is not primary use case so book theme so it has only minimal features
 
 ## Configuration
 
@@ -127,6 +128,10 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 # You can also specify this parameter per page in front matter
 BookToC = 3
 
+# (Optional, default none) Set the path to a logo for the book. If the logo is
+# /static/logo.png then the path would be 'logo.png'
+BookLogo = 'logo.png'
+
 # (Optional, default none) Set leaf bundle to render as side menu
 # When not specified file structure and weights will be used
 BookMenuBundle = '/menu'
@@ -136,7 +141,7 @@ BookMenuBundle = '/menu'
 BookSection = 'docs'
 
 # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
-# BookMenuBundleActiveLinkColor = '\#004ed0'
+# BookMenuBundleActiveLinkColor = '\#05b'
 
 # Set source repository location.
 # Used for 'Last Modified' and 'Edit this page' links.
@@ -152,7 +157,7 @@ BookEditPath = 'edit/master/exampleSite/content'
 # - In blog posts
 BookDateFormat = 'Jan 2, 2006'
 
-# (Optional, default true) Enables search function with lunr.js, 
+# (Optional, default true) Enables search function with lunr.js,
 # Index is built on fly, therefore it might slowdown your website.
 BookSearch = true
 ```
@@ -198,17 +203,36 @@ There are few empty partials you can override in `layouts/partials/`
 | `assets/_custom.scss` | Customise or override scss styles                                                     |
 | `assets/_fonts.scss`  | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
 
+### Hugo Internal Templates
+
+There are few hugo tempaltes inserted in `<head>`
+
+- [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
+- [Open Graph](https://gohugo.io/templates/internal/#open-graph)
+
 ## Shortcodes
 
-### Expand
+### Hint
 
-Provides clickable panel that show extra hidden content.
+Hint shortcode can be used as hint/alerts/notification block. There are 3 colors to choose: `info`, `warning` and `danger`.
+
+```tpl
+{{< hint [info|warning|danger] >}}
+**Markdown content**  
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+{{< /hint >}}
+```
+
+### Buttons
+
+Buttons are styled links to internal of external pages
 
 ```
-{{< expand >}}
-## Markdown content
-{{< /expand >}}
+{{< button relref="/" >}}Get Home{{< /button >}}
+{{< button href="https://github.com/alex-shpak/hugo-book" >}}Contribute{{< /button >}}
 ```
+
 
 ### Tabs
 
@@ -227,21 +251,29 @@ Useful if you want to show alternative information per platform or setting.
 Organize text in 2 or more columns to use space efficiently.
 
 ```html
-{{< columns >}} <!-- begin columns block -->
+{{< columns >}}
+<!-- begin columns block -->
 
-# Left Content Lorem markdownum insigne...
+# Left Content Lorem markdownum insigne... <--->
+<!-- magic sparator, between columns -->
 
-<---> <!-- magic sparator, between columns -->
+# Mid Content Lorem markdownum insigne... <--->
+<!-- magic sparator, between columns -->
 
-# Mid Content Lorem markdownum insigne...
-
-<---> <!-- magic sparator, between columns -->
-
-# Right Content Lorem markdownum insigne...
-{{< /columns >}}
+# Right Content Lorem markdownum insigne... {{< /columns >}}
 ```
 
-### Mermaid Chat
+### Expand
+
+Provides clickable panel that show extra hidden content.
+
+```
+{{< expand >}}
+## Markdown content
+{{< /expand >}}
+```
+
+### Mermaid Charts
 
 Render various charts with [mermaidjs](https://mermaidjs.github.io/)
 
@@ -266,10 +298,10 @@ Render math formulas with [KaTeX](https://katex.org/)
 
 ```
 {{< katex >}}
-$$ x = \begin{cases}
+x = \begin{cases}
    a &\text{if } b \\
    c &\text{if } d
-\end{cases} $$
+\end{cases}
 {{< /katex >}}
 ```
 

@@ -1,5 +1,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{- template "_internal/opengraph.html" . -}}
+
 <title>{{ partial "docs/title" . }} | {{ .Site.Title -}}</title>
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
@@ -23,3 +25,5 @@
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
 {{ "-->" | safeHTML }}
+
+{{ template "_internal/google_analytics_async.html" . }}

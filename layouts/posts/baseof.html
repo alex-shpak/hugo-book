@@ -9,6 +9,7 @@
 <body>
   <input type="checkbox" class="hidden" id="menu-control" />
   <main class="flex container">
+
     <aside class="book-menu fixed">
       {{ partial "docs/menu" . }}
     </aside>
@@ -16,12 +17,14 @@
     <div class="book-posts">
       {{ partial "docs/mobile-header" . }}
       {{ template "main" . }}
+      {{ partial "docs/git-footer" . }}
       {{ partial "docs/inject/footer" . }}
     </div>
+
+    {{ template "toc" . }}
   </main>
 
   {{ partial "docs/inject/body" . }}
-  {{ template "_internal/google_analytics_async.html" . }}
 </body>
 
 </html>

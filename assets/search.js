@@ -13,7 +13,6 @@
 
     loadScript("{{ "lunr.min.js" | relURL }}");
     loadScript("{{ $searchData.RelPermalink }}", function() {
-      input.readOnly = false;
       input.required = false;
       search();
     });
@@ -57,6 +56,7 @@
   function loadScript(src, callback) {
     const script = document.createElement("script");
     script.defer = true;
+    script.async = false;
     script.src = src;
     script.onload = callback;
 
