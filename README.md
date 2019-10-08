@@ -125,45 +125,45 @@ enableGitInfo = true
 # (Optional) Theme is intended for documentation use, therefore it doesn't render taxonomy.
 # You can remove related files with config below
 disableKinds = ['taxonomy', 'taxonomyTerm']
-
+  
 [params]
-# (Optional, default 6) Set how many table of contents levels to be showed on page.
-# Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
-# You can also specify this parameter per page in front matter
-BookToC = 3
-
-# (Optional, default none) Set the path to a logo for the book. If the logo is
-# /static/logo.png then the path would be 'logo.png'
-BookLogo = 'logo.png'
-
-# (Optional, default none) Set leaf bundle to render as side menu
-# When not specified file structure and weights will be used
-BookMenuBundle = '/menu'
-
-# (Optional, default docs) Specify section of content to render as menu
-# You can also set value to "*" to render all sections to menu
-BookSection = 'docs'
-
-# (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
-# BookMenuBundleActiveLinkColor = '\#05b'
-
-# Set source repository location.
-# Used for 'Last Modified' and 'Edit this page' links.
-BookRepo = 'https://github.com/alex-shpak/hugo-book'
-
-# Enable 'Edit this page' links for 'doc' page type.
-# Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
-# Path must point to 'content' directory of repo.
-BookEditPath = 'edit/master/exampleSite/content'
-
-# (Optional, default January 2, 2006) Configure the date format used on the pages
-# - In git information
-# - In blog posts
-BookDateFormat = 'Jan 2, 2006'
-
-# (Optional, default true) Enables search function with lunr.js,
-# Index is built on fly, therefore it might slowdown your website.
-BookSearch = true
+  # (Optional, default 6) Set how many table of contents levels to be showed on page.
+  # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
+  # You can also specify this parameter per page in front matter
+  BookToC = 3
+  
+  # (Optional, default none) Set the path to a logo for the book. If the logo is
+  # /static/logo.png then the path would be 'logo.png'
+  BookLogo = 'logo.png'
+  
+  # (Optional, default none) Set leaf bundle to render as side menu
+  # When not specified file structure and weights will be used
+  BookMenuBundle = '/menu'
+  
+  # (Optional, default docs) Specify section of content to render as menu
+  # You can also set value to "*" to render all sections to menu
+  BookSection = 'docs'
+  
+  # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
+  # BookMenuBundleActiveLinkColor = '\#05b'
+  
+  # Set source repository location.
+  # Used for 'Last Modified' and 'Edit this page' links.
+  BookRepo = 'https://github.com/alex-shpak/hugo-book'
+  
+  # Enable 'Edit this page' links for 'doc' page type.
+  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
+  # Path must point to 'content' directory of repo.
+  BookEditPath = 'edit/master/exampleSite/content'
+  
+  # (Optional, default January 2, 2006) Configure the date format used on the pages
+  # - In git information
+  # - In blog posts
+  BookDateFormat = 'Jan 2, 2006'
+  
+  # (Optional, default true) Enables search function with lunr.js,
+  # Index is built on fly, therefore it might slowdown your website.
+  BookSearch = true
 ```
 
 ### Page Configuration
