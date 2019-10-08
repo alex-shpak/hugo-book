@@ -144,9 +144,6 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # You can also set value to "*" to render all sections to menu
   BookSection = 'docs'
   
-  # (Optional) This value is duplicate of $link-color for making active link highlight in menu bundle mode
-  # BookMenuBundleActiveLinkColor = '\#05b'
-  
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
   BookRepo = 'https://github.com/alex-shpak/hugo-book'

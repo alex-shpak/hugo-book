@@ -156,6 +156,7 @@ ul.pagination {
     border-radius: $padding-4;
 
     background: $gray-100;
+    color: $body-font-color;
 
     &:required + .book-search-spinner {
       display: block;
