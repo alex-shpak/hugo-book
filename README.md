@@ -8,8 +8,10 @@
 ![Screenshot](https://github.com/alex-shpak/hugo-book/blob/master/images/screenshot.png)
 
 - [Features](#features)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Menu](#menu)
+- [Blog](#blog)
 - [Configuration](#configuration)
 - [Shortcodes](#shortcodes)
 - [Contributing](#contributing)
@@ -17,7 +19,7 @@
 ## Features
 
 - Clean simple design
-- Mobile friendly
+- Light and Mobile-Friendly
 - Customisable
 - Designed to not interfere with other layouts
 - Zero initial configuration
@@ -86,10 +88,10 @@ Create file `content/docs/menu/index.md` with content
 headless = true
 +++
 
-- [Book Example](/docs/)
-  - [Page One](/docs/page-one)
-  - [Page Two](/docs/page-two)
-- [Blog](/posts)
+- [Book Example]({{< relref "/docs/" >}})
+  - [Page One]({{< relref "/docs/page-one" >}})
+  - [Page Two]({{< relref "/docs/page-two" >}})
+- [Blog]({{< relref "/posts" >}})
 ```
 
 And Enable it by settings `BookMenuBundle: /menu` in Site configuration
