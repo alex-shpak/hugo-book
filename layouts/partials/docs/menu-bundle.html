@@ -1,19 +1,4 @@
-{{ template "hrefhack" . }}
 {{ with .Site.GetPage .Site.Params.BookMenuBundle }}
-  {{- .Content -}}
-{{ end }}
-
-{{ define "hrefhack" }}
-  {{ $attrEq := "$=" }}
-  {{ $attrVal := .RelPermalink }}
-  {{ if eq .RelPermalink "/" }}
-    {{ $attrEq = "=" }}
-    {{ $attrVal = .Permalink }}
-  {{ end }}
-
-  <style>
-  nav ul a[href{{ $attrEq }}"{{ $attrVal }}"] {
-      color: {{ default "#004ed0" .Site.Params.BookMenuBundleActiveLinkColor }};
-  }
-  </style>
+  {{- $href := printf "href=\"%s\"" $.RelPermalink -}}
+  {{- replace .Content $href (print $href "class=active") | safeHTML -}}
 {{ end }}

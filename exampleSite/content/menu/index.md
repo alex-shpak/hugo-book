@@ -2,13 +2,16 @@
 headless: true
 ---
 
-- [**Introduction**]({{< relref "/docs/introduction" >}})
-- [Examples]({{< relref "/docs/introduction/examples" >}})
-  - [With Table of Contents]({{< relref "/docs/introduction/examples/with-toc" >}})
-  - [Without Table of Contents]({{< relref "/docs/introduction/examples/without-toc" >}})
-  - [Shortcodes]({{< relref "/docs/introduction/examples/shortcodes" >}})  
-- **More Examples**
-- [Server]({{< relref "/docs/more-examples/server" >}})
-- [Client]({{< relref "/docs/more-examples/client" >}})
-- [Advanced]({{< relref "/docs/more-examples/advanced" >}})  
+- [**Example Site**]({{< relref "/docs/example" >}})
+- [Table of Contents]({{< relref "/docs/example/table-of-contents" >}})
+  - [With ToC]({{< relref "/docs/example/table-of-contents/with-toc" >}})
+  - [Without ToC]({{< relref "/docs/example/table-of-contents/without-toc" >}})  
+- **Shortcodes**
+- [Buttons]({{< relref "/docs/shortcodes/buttons" >}})
+- [Columns]({{< relref "/docs/shortcodes/columns" >}})
+- [Expand]({{< relref "/docs/shortcodes/expand" >}})
+- [Hints]({{< relref "/docs/shortcodes/hints" >}})
+- [Katex]({{< relref "/docs/shortcodes/katex" >}})
+- [Mermaid]({{< relref "/docs/shortcodes/mermaid" >}})
+- [Tabs]({{< relref "/docs/shortcodes/tabs" >}})  
 - [**Blog**]({{< relref "/posts" >}})
