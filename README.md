@@ -258,16 +258,17 @@ Useful if you want to show alternative information per platform or setting.
 Organize text in 2 or more columns to use space efficiently.
 
 ```html
-{{< columns >}}
-<!-- begin columns block -->
+{{< columns >}} <!-- begin columns block -->
+# Left Content Lorem markdownum insigne...
 
-# Left Content Lorem markdownum insigne... <--->
-<!-- magic sparator, between columns -->
+<---> <!-- magic sparator, between columns -->
 
-# Mid Content Lorem markdownum insigne... <--->
-<!-- magic sparator, between columns -->
+# Mid Content Lorem markdownum insigne...
 
-# Right Content Lorem markdownum insigne... {{< /columns >}}
+<---> <!-- magic sparator, between columns -->
+
+# Right Content Lorem markdownum insigne...
+{{< /columns >}}
 ```
 
 ### Expand
