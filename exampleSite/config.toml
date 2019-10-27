@@ -1,10 +1,9 @@
-# hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/example
+# hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
 baseURL = 'https://example.com/'
 title = 'Hugo Book'
 theme = 'hugo-book'
 disableKinds = ['taxonomy', 'taxonomyTerm']
-# themesDir = '../..'
 
 # Book configuration
 disablePathToLower = true
@@ -49,3 +48,8 @@ pygmentsCodeFences = true
   # (Optional, default true) Enables search function with lunr.js, 
   # Index is built on fly, therefore it might slowdown your website.
   BookSearch = true
+
+  # (Optional, default none) Search config for flexsearch index.
+  # Read documentation at https://github.com/nextapps-de/flexsearch#usage. By default 'balance' preset is used.
+  # This option allows to set specific configs for languages support. Must be valid JavaScript object.
+  BookSearchConfig = '{ cache: true }'

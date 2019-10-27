@@ -1,30 +1,25 @@
+'use strict';
+
 (function() {
-  const pages = [
-    {{ range $index, $page := .Site.Pages }}
-      {{- if $index -}},{{- end }}
-      {
-        'idx': {{ $index }},
-        'href': '{{ $page.RelPermalink }}',
-        'title': {{ (partial "docs/title" $page) | jsonify }},
-        'content': {{ $page.Plain | jsonify }}
-      }
-    {{- end -}}
-  ];
+  const indexCfg = {{ with .Site.Params.BookSearchConfig }}
+    {{ . }}
+  {{ end }};
 
-  var index = new FlexSearch({
-    cache: true,
-    encode: 'balance',
-    /* tokenize: function(str) {
-      return str.replace(/[\x00-\x7F]/g, ' ').split('');
-    } */
+  indexCfg.doc = {
+    id: 'id',
+    field: ['title', 'content'],
+    store: ['title', 'href'],
+  };
+
+  const index = FlexSearch.create('balance', indexCfg);
+  window.bookSearchIndex = index;
+
+  {{ range $index, $page := .Site.Pages }}
+  index.add({
+    'id': {{ $index }},
+    'href': '{{ $page.RelPermalink }}',
+    'title': {{ (partial "docs/title" $page) | jsonify }},
+    'content': {{ $page.Plain | jsonify }}
   });
-
-  pages.forEach(function(page, x) {
-    index.add(x, pages[x].content);
-  })
-
-  window.bookSearch = {
-    pages: pages,
-    index: index,
-  }
+  {{- end -}}
 })();

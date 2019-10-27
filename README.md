@@ -163,6 +163,11 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # (Optional, default true) Enables search function with lunr.js,
   # Index is built on fly, therefore it might slowdown your website.
   BookSearch = true
+
+  # (Optional, default none) Search config for flexsearch index.
+  # Read documentation at https://github.com/nextapps-de/flexsearch#usage. By default 'balance' preset is used.
+  # This option allows to set specific configs for languages support. Must be valid JavaScript object.
+  BookSearchConfig = '{ cache: true }'
 ```
 
 ### Page Configuration

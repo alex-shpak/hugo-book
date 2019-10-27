@@ -1,5 +1,6 @@
-{{- $searchData := resources.Get "search-data.js" | resources.ExecuteAsTemplate "search-data.js" . | resources.Minify | resources.Fingerprint }}
+'use strict';
 
+{{- $searchData := resources.Get "search-data.js" | resources.ExecuteAsTemplate "search-data.js" . | resources.Minify | resources.Fingerprint }}
 (function() {
   const input = document.querySelector('#book-search-input');
   const results = document.querySelector('#book-search-results');
@@ -8,10 +9,10 @@
   input.addEventListener('keyup', search);
 
   function init() {
-    input.removeEventListener('focus', init); //init once
+    input.removeEventListener('focus', init); // init once
     input.required = true;
 
-    loadScript('{{ "flexsearch.light.js" | relURL }}');
+    loadScript('{{ "flexsearch.min.js" | relURL }}');
     loadScript('{{ $searchData.RelPermalink }}', function() {
       input.required = false;
       search();
@@ -27,9 +28,8 @@
       return;
     }
 
-    let searchHits = window.bookSearch.index.search(input.value, 10);
-    searchHits.forEach(function(hit) {
-      const page = window.bookSearch.pages[hit];
+    const searchHits = window.bookSearchIndex.search(input.value, 10);
+    searchHits.forEach(function(page) {
       const li = document.createElement('li'),
             a = li.appendChild(document.createElement('a'));
 
@@ -47,6 +47,6 @@
     script.src = src;
     script.onload = callback;
 
-    document.head.append(script);
+    document.head.appendChild(script);
   }
 })();
