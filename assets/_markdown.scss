@@ -71,7 +71,6 @@
   
     tr th, tr td {
       padding: $padding-8 $padding-16;
-      line-height: 1;
       border: $padding-1 solid $gray-200;
     }
 
@@ -91,7 +90,6 @@
   }
 
   dl {
-    // padding-left: $padding-16;
     dt {
       font-weight: bolder;
       margin-top: $padding-16;
@@ -99,6 +97,18 @@
 
     dd {
       margin-left: $padding-16 * 2;
+    }
+  }
+
+  // Special case for highlighted code with line numbers
+  .highlight table tr {
+    td:nth-child(1) pre {
+      margin: 0;
+      padding-right: 0;
+    }
+    td:nth-child(2) pre {
+      margin: 0;
+      padding-left: 0;
     }
   }
 }
