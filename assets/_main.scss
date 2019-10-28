@@ -69,6 +69,16 @@ aside nav ul {
   }
 }
 
+// Classes to hide nested levels of ToC/Menu
+.levels-1 ul ul,
+.levels-2 ul ul ul,
+.levels-3 ul ul ul ul,
+.levels-4 ul ul ul ul ul,
+.levels-5 ul ul ul ul ul ul,
+.levels-6 ul ul ul ul ul ul ul {
+  display: none;
+}
+
 ul.pagination {
   display: flex;
   justify-content: center;
@@ -106,7 +116,13 @@ ul.pagination {
     @include fixed;
   }
 
-  @include dark-links;
+  a {
+    color: inherit;
+  }
+
+  a.active {
+    color: $color-link;
+  }
 }
 
 .book-section-flat {
@@ -197,16 +213,6 @@ ul.pagination {
 
   nav > ul > li:first-child {
     margin-top: 0;
-  }
-
-  // Classes to hide nested levels of ToC (can be replaced by @for, but it's more clear like this)
-  &.level-1 ul ul,
-  &.level-2 ul ul ul,
-  &.level-3 ul ul ul ul,
-  &.level-4 ul ul ul ul ul,
-  &.level-5 ul ul ul ul ul ul,
-  &.level-6 ul ul ul ul ul ul ul {
-    display: none;
   }
 }
 
