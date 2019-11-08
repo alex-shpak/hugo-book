@@ -294,3 +294,10 @@ aside nav,
     padding: $padding-16 * 2 $padding-16;
   }
 }
+
+// Printing styles
+@media print {
+ .book-menu, .book-toc, .book-footer {
+   display: none;
+ } 
+}
