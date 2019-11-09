@@ -23,6 +23,9 @@ languages:
   ru:
     languageName: Russian
     weight: 2
+  cn:
+    languageName: Chinese
+    weight: 3
 
 params:
   # (Optional, default 6) Set how many table of contents levels to be showed on page.

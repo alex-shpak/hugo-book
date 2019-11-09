@@ -10,11 +10,6 @@
 {{ end }}
 
 {{ partial "docs/inject/menu-after" . }}
-
-{{ if .Site.IsMultiLingual }}
-    {{ partial "docs/translation-switch" . }}
-    {{ partial "docs/language-switch" . }}
-{{ end }}
 </nav>
 
 <!-- Restore menu position as soon as possible to avoid flickering -->

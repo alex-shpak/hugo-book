@@ -1,5 +1,6 @@
 {{ if or .GitInfo .Site.Params.BookEditPath }}
 <div class="book-footer {{ if not .GitInfo }}justify-end{{ else }}justify-between{{ end }}">
+  {{ partial "docs/languages" . }}
   {{ with .GitInfo }}
   <div>
     {{ $date := .AuthorDate.Local.Format (default "January 2, 2006" $.Site.Params.BookDateFormat) }}
@@ -14,7 +15,7 @@
     {{ if $.File }}
     <a class="flex align-center" href="{{ $.Site.Params.BookRepo }}/{{ . }}/{{ $.File.Path }}" target="_blank" rel="noopener">
       <img src="{{ "svg/edit.svg" | relURL }}" alt="Edit" />
-      <span>Edit this page</span>
+      <span>{{ i18n "Edit this page" }}</span>
     </a>
     {{ end }}
   </div>

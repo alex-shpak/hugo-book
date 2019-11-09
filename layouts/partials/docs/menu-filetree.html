@@ -15,7 +15,7 @@
   {{ end }}
 {{ else }}
   <ul>
-  {{ range where $sections "Params.bookhidden" "!=" true }}
+  {{ range where $sections "Params.bookHidden" "!=" true }}
     {{ template "book-section" (dict "Section" . "CurrentPage" $) }}
   {{ end }}
   </ul>
