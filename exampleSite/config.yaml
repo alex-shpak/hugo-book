@@ -13,6 +13,17 @@ enableGitInfo: true
 # pygmentsStyle: monokailight
 pygmentsCodeFences: true
 
+# Multilang config
+defaultContentLanguage: en
+
+languages:
+  en:
+    languageName: English
+    weight: 1
+  ru:
+    languageName: Russian
+    weight: 2
+
 params:
   # (Optional, default 6) Set how many table of contents levels to be showed on page.
   # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)

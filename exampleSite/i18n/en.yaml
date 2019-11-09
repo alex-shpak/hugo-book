@@ -1,0 +1,6 @@
+# General
+- id: translations
+  translation: Translations
+
+- id: languages
+  translation: Languages
