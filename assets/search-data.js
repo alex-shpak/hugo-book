@@ -2,8 +2,10 @@
 
 (function() {
   const indexCfg = {{ with .Site.Params.BookSearchConfig }}
-    {{ . }}
-  {{ end }};
+    {{ . }};
+  {{ else }}
+   {};
+  {{ end }}
 
   indexCfg.doc = {
     id: 'id',
