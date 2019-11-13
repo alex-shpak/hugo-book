@@ -20,6 +20,7 @@
 
 - Clean simple design
 - Light and Mobile-Friendly
+- Multi-language support
 - Customisable
 - Designed to not interfere with other layouts
 - Zero initial configuration
@@ -239,7 +240,6 @@ Buttons are styled links to internal of external pages
 {{< button relref="/" >}}Get Home{{< /button >}}
 {{< button href="https://github.com/alex-shpak/hugo-book" >}}Contribute{{< /button >}}
 ```
-
 
 ### Tabs
 
