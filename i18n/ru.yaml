@@ -3,3 +3,6 @@
 
 - id: Edit this page
   translation: Редактировать эту сраницу
+
+- id: bookSearchConfig
+  translation: '{ split: /[^a-zа-яё0-9\w]/gi }'

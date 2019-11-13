@@ -1,5 +1,5 @@
 {{ if or .GitInfo .Site.Params.BookEditPath }}
-<div class="book-footer {{ if not .GitInfo }}justify-end{{ else }}justify-between{{ end }}">
+<div class="book-footer justify-between">
   {{ partial "docs/languages" . }}
   {{ with .GitInfo }}
   <div>
@@ -14,7 +14,7 @@
   <div>
     {{ if $.File }}
     <a class="flex align-center" href="{{ $.Site.Params.BookRepo }}/{{ . }}/{{ $.File.Path }}" target="_blank" rel="noopener">
-      <img src="{{ "svg/edit.svg" | relURL }}" alt="Edit" />
+      <img src="{{ "svg/edit.svg" | relURL }}" alt="{{ i18n "Edit this page" }}" />
       <span>{{ i18n "Edit this page" }}</span>
     </a>
     {{ end }}

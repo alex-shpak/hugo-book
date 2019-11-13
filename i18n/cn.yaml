@@ -3,3 +3,12 @@
 
 - id: Edit this page
   translation: Edit this page
+
+- id: bookSearchConfig
+  translation: |
+    {
+      encode: false,
+      tokenize: function(str) {
+        return str.replace(/[\x00-\x7F]/g, '').split('');
+      }
+    }

@@ -1,6 +1,6 @@
 'use strict';
 
-{{ $searchDataFile := printf "%s.%s" .Language.Lang "search-data.js" }}
+{{ $searchDataFile := printf "%s.search-data.js" .Language.Lang }}
 {{ $searchData := resources.Get "search-data.js" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
 
 (function() {

@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-  const indexCfg = {{ with .Site.Params.BookSearchConfig }}
+  const indexCfg = {{ with .Scratch.Get "bookSearchConfig" }}
     {{ . }};
   {{ else }}
    {};

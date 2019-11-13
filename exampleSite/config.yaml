@@ -59,12 +59,6 @@ params:
   # - In blog posts
   BookDateFormat: 'Jan 2, 2006'
 
-  # (Optional, default true) Enables search function with lunr.js,
+  # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
   BookSearch: true
-
-  # (Optional, default {}) Search config for flexsearch index.
-  # Read documentation at https://github.com/nextapps-de/flexsearch#usage. By default 'balance' preset is used.
-  # This option allows to set specific configs for languages support. Must be valid JavaScript object.
-  BookSearchConfig: |
-    { cache: true }
