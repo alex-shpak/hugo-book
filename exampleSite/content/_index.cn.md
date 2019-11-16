@@ -1,9 +1,9 @@
 ---
-title: Введение
+title: 介绍
 type: docs
 ---
 
-# Стартовая страница на русском языке
+# 中文索引页
 
 {{< columns >}}
 ## Astris ipse furtiva
