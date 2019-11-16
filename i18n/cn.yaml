@@ -4,6 +4,9 @@
 - id: Edit this page
   translation: Edit this page
 
+- id: Last modified by
+  translation: Last modified by
+
 - id: bookSearchConfig
   translation: |
     {
