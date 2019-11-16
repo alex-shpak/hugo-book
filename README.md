@@ -166,6 +166,9 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   BookSearch = true
 ```
 
+### Multi-Language Support
+Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/multilingual/), just follow configuration guide there. You can also tweak search indexing configuration per language in `i18n` folder.
+
 ### Page Configuration
 
 You can specify additional params per page in front matter
