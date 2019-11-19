@@ -3,20 +3,6 @@ title: Introduction
 type: docs
 ---
 
-# Acerbo datus maxime
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-## Acerbo datus maxime
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-### Acerbo datus maxime
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-#### Acerbo datus maxime
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-##### Acerbo datus maxime
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-###### Acerbo datus maxime
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-
-
 {{< columns >}}
 ## Astris ipse furtiva
 
