@@ -13,20 +13,24 @@ enableGitInfo = true
 # pygmentsStyle = 'monokailight'
 pygmentsCodeFences = true
 
-# Multilang config
-defaultContentLanguage = 'en'
-
+# Multi-lingual mode config
+# There are different options to translate files
+# See https://gohugo.io/content-management/multilingual/#translation-by-filename
+# And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
 [languages]
 [languages.en]
   languageName = 'English'
+  contentDir = 'content'
   weight = 1
 
 [languages.ru]
   languageName = 'Russian'
+  contentDir = 'content.ru'
   weight = 2
 
 [languages.cn]
   languageName = 'Chinese'
+  contentDir = 'content.cn'
   weight = 3
 
 [params]
