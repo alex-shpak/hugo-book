@@ -1,6 +1,6 @@
 # Hugo Book Theme
 
-[![Hugo](https://img.shields.io/badge/hugo-0.56-blue.svg)](https://gohugo.io)
+[![Hugo](https://img.shields.io/badge/hugo-0.60-blue.svg)](https://gohugo.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ### [Hugo](https://gohugo.io) documentation theme as simple as plain book

@@ -9,9 +9,9 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 disablePathToLower = true
 enableGitInfo = true
 
-# Code highlight
-# pygmentsStyle = 'monokailight'
-pygmentsCodeFences = true
+# Needed for mermaid/katex shortcodes
+[markup.goldmark.renderer]
+unsafe = true
 
 # Multi-lingual mode config
 # There are different options to translate files
