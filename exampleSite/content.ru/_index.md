@@ -1,7 +1,9 @@
 ---
-title: Introduction
+title: Введение
 type: docs
 ---
+
+# Стартовая страница на русском языке
 
 {{< columns >}}
 ## Astris ipse furtiva

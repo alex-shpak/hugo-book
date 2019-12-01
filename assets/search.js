@@ -1,6 +1,8 @@
 'use strict';
 
-{{- $searchData := resources.Get "search-data.js" | resources.ExecuteAsTemplate "search-data.js" . | resources.Minify | resources.Fingerprint }}
+{{ $searchDataFile := printf "%s.search-data.js" .Language.Lang }}
+{{ $searchData := resources.Get "search-data.js" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
+
 (function() {
   const input = document.querySelector('#book-search-input');
   const results = document.querySelector('#book-search-results');

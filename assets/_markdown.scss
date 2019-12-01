@@ -3,16 +3,28 @@
 .markdown {
   line-height: 1.6em;
 
-  h1, h2, h3, h4, h5 {
+  // remove padding at the beginning of page
+  > :first-child {
+    margin-top: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
     line-height: 1em;
     margin-top: 1.5em;
     margin-bottom: $padding-16;
   }
 
-  // remove padding at the beginning of page
-  > :first-child {
-    margin-top: 0;
+  h4, h5, h6 {
+    font-weight: bolder;
+  }
+
+  h5 {
+    font-size: .875em;
+  }
+
+  h6 {
+    font-size: .75em;
   }
 
   b, optgroup, strong {

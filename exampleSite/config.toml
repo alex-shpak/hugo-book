@@ -13,6 +13,26 @@ enableGitInfo = true
 # pygmentsStyle = 'monokailight'
 pygmentsCodeFences = true
 
+# Multi-lingual mode config
+# There are different options to translate files
+# See https://gohugo.io/content-management/multilingual/#translation-by-filename
+# And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
+[languages]
+[languages.en]
+  languageName = 'English'
+  contentDir = 'content'
+  weight = 1
+
+[languages.ru]
+  languageName = 'Russian'
+  contentDir = 'content.ru'
+  weight = 2
+
+[languages.cn]
+  languageName = 'Chinese'
+  contentDir = 'content.cn'
+  weight = 3
+
 [params]
   # (Optional, default 6) Set how many table of contents levels to be showed on page.
   # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
@@ -45,11 +65,7 @@ pygmentsCodeFences = true
   # - In blog posts
   BookDateFormat = 'Jan 2, 2006'
 
-  # (Optional, default true) Enables search function with lunr.js, 
+  # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
   BookSearch = true
 
-  # (Optional, default none) Search config for flexsearch index.
-  # Read documentation at https://github.com/nextapps-de/flexsearch#usage. By default 'balance' preset is used.
-  # This option allows to set specific configs for languages support. Must be valid JavaScript object.
-  BookSearchConfig = '{ cache: true }'
