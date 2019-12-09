@@ -22,7 +22,6 @@
 - Light and Mobile-Friendly
 - Multi-language support
 - Customisable
-- Designed to not interfere with other layouts
 - Zero initial configuration
 - Handy shortcodes
 
