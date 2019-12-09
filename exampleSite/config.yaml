@@ -14,6 +14,8 @@ markup:
   goldmark:
     renderer:
       unsafe: true
+  tableOfContents:
+    startLevel: 1
 
 # Multi-lingual mode config
 # There are different options to translate files
