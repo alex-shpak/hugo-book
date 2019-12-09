@@ -8,7 +8,7 @@
   <div>
     {{ $date := .AuthorDate.Local.Format (default "January 2, 2006" $.Site.Params.BookDateFormat) }}
     <a class="flex align-center" href="{{ $.Site.Params.BookRepo }}/commit/{{ .Hash }}" title='{{ i18n "Last modified by" }} {{ .AuthorName }} | {{ $date }}' target="_blank">
-      <img src="{{ "svg/calendar.svg" | relURL }}" alt="Calendar" />
+      <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Calendar" />
       <span>{{ $date }}</span>
     </a>
   </div>
@@ -18,7 +18,7 @@
   {{ if and .File .Site.Params.BookRepo .Site.Params.BookEditPath }}
   <div>
     <a class="flex align-center" href="{{ .Site.Params.BookRepo }}/{{ .Site.Params.BookEditPath }}/{{ .File.Path }}" target="_blank">
-      <img src="{{ "svg/edit.svg" | relURL }}" alt="Edit" />
+      <img src="{{ "svg/edit.svg" | relURL }}" class="book-icon" alt="Edit" />
       <span>{{ i18n "Edit this page" }}</span>
     </a>
   </div>

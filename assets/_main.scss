@@ -94,6 +94,10 @@ ul.pagination {
   margin: 0 auto;
 }
 
+.book-icon {
+  filter: $icon-filter;
+}
+
 .book-brand {
   margin-top: 0;
 
@@ -272,17 +276,6 @@ ul.pagination {
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-}
-
-.book-posts {
-  min-width: $body-min-width;
-  max-width: $body-min-width * 2;
-  flex-grow: 1;
-  padding: $padding-16;
-
-  article {
-    padding-bottom: $padding-16;
   }
 }
 

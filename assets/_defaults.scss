@@ -41,9 +41,11 @@ $toc-width: 16rem !default;
 $md-breakpoint: $menu-width + $body-min-width * 1.25 + $toc-width !default;
 $sm-breakpoint: $menu-width + $body-min-width !default;
 
-// Panel colors
+// Hint colors
 $hint-colors: (
   info: #6bf,
   warning: #fd6,
   danger: #f66
 ) !default;
+
+$icon-filter: none !default;

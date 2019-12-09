@@ -11,7 +11,7 @@
 
   <ul>
     <li class="flex">
-      <img src="{{ "svg/translate.svg" | relURL }}" alt="Languages" />
+      <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
       {{ $.Site.Language.LanguageName }}
     </li> 
   </ul>
@@ -20,7 +20,7 @@
     {{ range sort $langs }}
     <li class="{{ if (eq $.Site.Language .Language ) }}active{{ end }}">
       <a href="{{ .Permalink }}" class="flex">
-        <img src="{{ "svg/translate.svg" | relURL }}" alt="Languages" />
+        <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
         {{ .Language.LanguageName }}
       </a>
     </li>
