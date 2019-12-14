@@ -152,6 +152,10 @@ ul.pagination {
   padding: $padding-16;
 }
 
+.book-post {
+  margin-bottom: $padding-16 * 2;
+}
+
 .book-header {
   margin-bottom: $padding-16;
   display: none;
@@ -286,7 +290,6 @@ ul.pagination {
 // Responsive styles
 aside nav,
 .book-page,
-.book-posts,
 .markdown {
   transition: 0.2s ease-in-out;
   transition-property: transform, margin-left, opacity;
@@ -311,8 +314,7 @@ aside nav,
 
   #menu-control:checked + main {
     .book-menu nav,
-    .book-page,
-    .book-posts {
+    .book-page {
       transform: translateX($menu-width);
     }
 
@@ -329,7 +331,6 @@ aside nav,
 // Extra space for big screens
 @media screen and (min-width: $container-max-width) {
   .book-page,
-  .book-posts,
   .book-menu nav,
   .book-toc nav {
     padding: $padding-16 * 2 $padding-16;
