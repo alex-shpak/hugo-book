@@ -1,16 +1,11 @@
 {{ define "main" }}
-  {{ $dateFormat := default "January 2, 2006" .Site.Params.BookDateFormat }}
   {{ $paginator := .Paginate (where .Pages "Params.hidden" "ne" true) }}
   {{ range sort .Paginator.Pages }}
   <article class="markdown book-post">
     <h2>
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h2>
-    {{ with .Date }}
-    <h5>
-      <strong>{{ .Format $dateFormat }}</strong>
-    </h5>
-    {{ end }}
+    {{ partial "docs/post-meta" . }}
     <p>
       {{- .Summary -}}
       {{ if .Truncated }}
@@ -19,9 +14,10 @@
     </p>
   </article>
   {{ end }}
+
   {{ template "_internal/pagination.html" . }}
 {{ end }}
 
 {{ define "toc" }}
-
+  {{ partial "docs/taxonomy" . }}
 {{ end }}

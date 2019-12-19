@@ -1,0 +1,18 @@
+{{ $dateFormat := default "January 2, 2006" .Site.Params.BookDateFormat }}
+{{ if or .Date .Params.tags }}
+<div>
+{{ with .Date}}
+  <h5>{{ .Format $dateFormat }}</h5>
+{{ end }}
+
+{{ range $term, $_ := .Site.Taxonomies }}
+  {{ with $list := index $.Params $term }}
+    {{ range $n, $single := $list }}{{ if $n }}, {{ end -}}
+      <a href="/{{$term}}/{{$single}}/">{{ $single }}</a>
+    {{- end }}
+    <br />
+  {{ end }}
+{{ end }}
+
+</div>
+{{ end }}

@@ -1,16 +1,13 @@
 {{ define "main" }}
-  {{ $dateFormat := default "January 2, 2006" .Site.Params.BookDateFormat }}
-  <header class="markdown">
-    <h1>{{ .Title }}</h1>
-    {{ with .Date }}
-    <h5>
-      <strong>{{ .Format $dateFormat }}</strong>
-    </h5>
-    {{ end }}
-  </header>
-  <article class="markdown">
+<article class="markdown">
+  <h1>
+    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+  </h1>
+  {{ partial "docs/post-meta" . }}
+  <p>
     {{- .Content -}}
-  </article>
+  </p>
+</article>
 {{ end }}
 
 {{ define "toc" }}
