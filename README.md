@@ -119,8 +119,8 @@ You can also see `yaml` example [here](https://github.com/alex-shpak/hugo-book/b
 googleAnalytics = "UA-XXXXXXXXX-X"
 
 # (Optional) If you provide a Disqus shortname, comments will be enabled on
-# pages.
-# disqusShortname = "my-site"
+# all pages.
+disqusShortname = "my-site"
 
 # (Optional) Set this to true if you use capital letters in file names
 disablePathToLower = true
@@ -195,6 +195,9 @@ bookHidden = true
 
 # (Optional) Set how many levels of ToC to show. use 'false' to hide ToC completely
 bookToC = 3
+
+# If you have enabled Disqus for the site, you can disable it for specific pages.
+bookDisableComments = true
 ```
 
 ### Partials
