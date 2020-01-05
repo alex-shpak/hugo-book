@@ -6,3 +6,9 @@
     <span>{{ .Site.Title }}</span>
   </a>
 </h2>
+{{ if .Site.Params.Subtitle }}
+<h2 class="book-subtitle">
+  <span>{{ .Site.Params.Subtitle }}</span>
+</h2>
+{{ end }}
+

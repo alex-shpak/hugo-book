@@ -129,6 +129,10 @@ enableGitInfo = true
 disableKinds = ['taxonomy', 'taxonomyTerm']
   
 [params]
+
+  # (Optional, default is empty) a subtitle to show below the main book title.
+  Subtitle = "By Author Name"
+  
   # (Optional, default 6) Set how many table of contents levels to be showed on page.
   # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
   # You can also specify this parameter per page in front matter
