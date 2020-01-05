@@ -24,6 +24,7 @@
 - Customisable
 - Zero initial configuration
 - Handy shortcodes
+- Optional support for Disqus
 
 ## Requirements
 
@@ -116,6 +117,10 @@ You can also see `yaml` example [here](https://github.com/alex-shpak/hugo-book/b
 # (Optional) Set Google Analytics if you use it to track your website.
 # Always put it on the top of the configuration file, otherwise it won't work
 googleAnalytics = "UA-XXXXXXXXX-X"
+
+# (Optional) If you provide a Disqus shortname, comments will be enabled on
+# pages.
+# disqusShortname = "my-site"
 
 # (Optional) Set this to true if you use capital letters in file names
 disablePathToLower = true
