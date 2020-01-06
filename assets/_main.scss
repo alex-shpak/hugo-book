@@ -322,8 +322,6 @@ aside nav,
       transform: rotate(90deg);
     }
   }
-  //html body main.flex.container aside.book-menu.fixed nav
-  //html body main.flex.container aside.book-toc.levels-3.fixed nav#TableOfContents
   #toc-menu-control:checked ~ main {
     aside #TableOfContents,
     .book-page {
