@@ -295,7 +295,7 @@ aside nav,
   will-change: transform, margin;
 }
 
-@media screen and (max-width: $sm-breakpoint) {
+@media screen and (max-width: $md-breakpoint) {
   .book-menu {
     margin-left: -$menu-width;
     font-size: $font-size-base;
