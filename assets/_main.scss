@@ -322,7 +322,7 @@ aside nav,
       transform: rotate(90deg);
     }
   }
-  #toc-menu-control:checked ~ main {
+  #toc-control:checked ~ main {
     aside #TableOfContents,
     .book-page {
       transform: translateX(-$menu-width);

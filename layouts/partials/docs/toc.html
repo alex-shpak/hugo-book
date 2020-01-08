@@ -2,7 +2,7 @@
 {{ if and $tocLevels .Page.TableOfContents }}
   <aside class="book-toc levels-{{$tocLevels}} fixed">
     {{ with .Page.TableOfContents }}
-    <label id="tos-menu-control" for="toc-menu-control">
+    <label id="toc-control" for="toc-control">
     {{ . }}
     </label>
     {{ end }}
