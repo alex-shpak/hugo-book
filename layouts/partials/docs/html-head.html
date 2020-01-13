@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
 
 {{ if default true .Site.Params.BookSearch }}
-{{- .Scratch.Set "bookSearchConfig" (i18n "bookSearchConfig") -}} <!-- Remove after https://github.com/gohugoio/hugo/issues/6331 -->
 {{- $searchJSFile := printf "%s.search.js" .Language.Lang -}}
 {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
 <script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
