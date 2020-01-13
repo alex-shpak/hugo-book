@@ -235,6 +235,12 @@ ul.pagination {
   }
 }
 
+// Give a little extra space before showing Disqus comments. See:
+// https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/disqus.html#L3
+#disqus_thread {
+  padding-top: $padding-16;
+}
+
 .book-languages {
   position: relative;
   overflow: visible;

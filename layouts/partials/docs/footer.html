@@ -25,3 +25,7 @@
   {{ end }}
 
 </div>
+
+{{ if and (not (eq .Site.DisqusShortname "")) (not .Params.bookDisableComments ) }}
+  {{ template "_internal/disqus.html" . }}
+{{ end }}
