@@ -7,7 +7,8 @@
 {{ .Page.Scratch.Set "katex" true }}
 {{ end }}
 
-<p class="katex{{ with .Get "class" }} {{ . }}{{ end }}">
-  $$ {{- .Inner -}} $$
-</p>
-
+<span class="katex{{ with .Get "class" }} {{ . }}{{ end }}">
+  {{ if in .Params "display" }}\[{{ else }}\({{ end -}}
+  {{ $.Inner }}
+  {{- if in .Params "display" }}\]{{ else }}\){{ end }}
+</span>
