@@ -168,6 +168,11 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
   BookSearch = true
+
+  # (Optional, default true) Enables disqus template on pages
+  # See https://gohugo.io/content-management/comments/#configure-disqus
+  # Can be overwritten by same param in page frontmatter
+  BookDisqus = true
 ```
 
 ### Multi-Language Support
@@ -196,8 +201,8 @@ bookHidden = true
 # (Optional) Set how many levels of ToC to show. use 'false' to hide ToC completely
 bookToC = 3
 
-# If you have enabled Disqus for the site, you can disable it for specific pages.
-bookDisableComments = true
+# (Optional) If you have enabled Disqus for the site, you can disable it for specific pages.
+bookDisqus = true
 ```
 
 ### Partials
