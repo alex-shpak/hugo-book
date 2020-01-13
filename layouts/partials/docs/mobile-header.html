@@ -1,6 +1,8 @@
 <header class="flex align-center justify-between book-header">
-  <label for="menu-control">
+  <label id="menu-control" for="menu-control">
     <img src="{{ "svg/menu.svg" | relURL }}" class="book-icon" alt="Menu" />
   </label>
+  <label id="toc-control" for="toc-control">
   <strong>{{ partial "docs/title" . }}</strong>
+  </label>
 </header>

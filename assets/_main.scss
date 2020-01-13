@@ -291,19 +291,17 @@ aside nav,
 .book-page,
 .markdown {
   transition: 0.2s ease-in-out;
-  transition-property: transform, margin-left, opacity;
-  will-change: transform, margin-left;
+  transition-property: transform, margin, opacity;
+  will-change: transform, margin;
 }
 
 @media screen and (max-width: $md-breakpoint) {
-  .book-toc {
-    display: none;
-  }
-}
-
-@media screen and (max-width: $sm-breakpoint) {
   .book-menu {
     margin-left: -$menu-width;
+    font-size: $font-size-base;
+  }
+  .book-toc {
+    margin-right: -$toc-width;
     font-size: $font-size-base;
   }
 
@@ -311,16 +309,24 @@ aside nav,
     display: flex;
   }
 
-  #menu-control:checked + main {
-    .book-menu nav,
+  
+  #menu-control:checked ~ main {
+    .book-menu #BookMenu,
     .book-page {
       transform: translateX($menu-width);
     }
-
-    .book-header label {
+    .markdown {
+      opacity: 0.25;
+    }
+    .book-header #menu-control {
       transform: rotate(90deg);
     }
-
+  }
+  #toc-control:checked ~ main {
+    aside #TableOfContents,
+    .book-page {
+      transform: translateX(-$menu-width);
+    }
     .markdown {
       opacity: 0.25;
     }
