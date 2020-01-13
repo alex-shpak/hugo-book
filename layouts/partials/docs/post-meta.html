@@ -7,8 +7,10 @@
 
 {{ range $term, $_ := .Site.Taxonomies }}
   {{ with $list := index $.Params $term }}
-    {{ range $n, $single := $list }}{{ if $n }}, {{ end -}}
-      <a href="/{{$term}}/{{$single}}/">{{ $single }}</a>
+    {{ range $n, $single := $list }}{{ if $n }}, {{ end }}
+      {{ with $.Site.GetPage (printf "/%s/%s" $term $single) }}
+        <a href="{{ . }}">{{ $single }}</a>
+      {{- end }}
     {{- end }}
     <br />
   {{ end }}
