@@ -47,6 +47,11 @@ img {
   vertical-align: baseline;
 }
 
+main {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
 aside nav ul {
   padding: 0;
   margin: 0;
@@ -315,7 +320,7 @@ aside nav,
     display: flex;
   }
 
-  
+
   #menu-control:checked ~ main {
     .book-menu #BookMenu,
     .book-page {
