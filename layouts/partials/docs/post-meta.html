@@ -9,7 +9,7 @@
   {{ with $list := index $.Params $term }}
     {{ range $n, $single := $list }}{{ if $n }}, {{ end }}
       {{ with $.Site.GetPage (printf "/%s/%s" $term $single) }}
-        <a href="{{ . }}">{{ $single }}</a>
+        <a href="{{ .RelPermalink }}">{{ $single }}</a>
       {{- end }}
     {{- end }}
     <br />
