@@ -2,7 +2,7 @@
 <nav>
   <ul>
   {{ range $term, $_ := .Site.Taxonomies }}
-  {{ with $.Site.GetPage (printf "/%s" $term) }}
+    {{ with $.Site.GetPage (printf "/%s" $term | urlize) }}
     <li class="book-section-flat">
       <strong>{{ .Title | title }}</strong>
       <ul>
@@ -13,7 +13,7 @@
       {{ end }}
       </ul>
     </li>
-  {{ end }}
+    {{ end }}
   {{ end }}
   </ul>
 </nav>

@@ -7,12 +7,13 @@
 
 {{ range $term, $_ := .Site.Taxonomies }}
   {{ with $list := index $.Params $term }}
+  <div>
     {{ range $n, $single := $list }}{{ if $n }}, {{ end }}
-      {{ with $.Site.GetPage (printf "/%s/%s" $term $single) }}
-        <a href="{{ .RelPermalink }}">{{ $single }}</a>
+      {{ with $.Site.GetPage (printf "/%s/%s" $term $single | urlize) }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       {{- end }}
     {{- end }}
-    <br />
+  </div>
   {{ end }}
 {{ end }}
 
