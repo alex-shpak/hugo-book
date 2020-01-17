@@ -26,6 +26,8 @@
 
 </div>
 
-{{ if (default true (default .Site.Params.BookDisqus .Params.bookDisqus)) }}
-  {{ template "_internal/disqus.html" . }}
+{{ if (default true (default .Site.Params.BookComments .Params.bookComments)) }}
+<div class="book-comments">
+  {{ partial "docs/comments" . }}
+</div>
 {{ end }}

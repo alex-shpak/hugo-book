@@ -70,7 +70,8 @@ params:
   # Index is built on fly, therefore it might slowdown your website.
   BookSearch: true
 
-  # (Optional, default true) Enables disqus template on pages
+  # (Optional, default true) Enables comments template on pages
+  # By default partals/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
-  BookDisqus: true
+  BookComments: true
