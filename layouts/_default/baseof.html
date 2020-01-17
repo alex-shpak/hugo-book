@@ -9,11 +9,8 @@
 <body>
   <input type="checkbox" class="hidden" id="toc-control" />
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="flex container">
-
-    <aside class="book-menu fixed">
-      {{ partial "docs/menu" . }}
-    </aside>
+  <main class="container">
+    {{ template "toc" . }}
 
     <div class="book-page">
       {{ partial "docs/mobile-header" . }}
@@ -22,7 +19,9 @@
       {{ partial "docs/inject/footer" . }}
     </div>
 
-    {{ template "toc" . }}
+    <aside class="book-menu fixed">
+      {{ partial "docs/menu" . }}
+    </aside>
   </main>
 
   {{ partial "docs/inject/body" . }}
