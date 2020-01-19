@@ -10,6 +10,34 @@
   input.addEventListener('focus', init);
   input.addEventListener('keyup', search);
 
+  document.addEventListener('keypress', focusSearchFieldOnKeyPress);
+
+  function focusSearchFieldOnKeyPress(e) {
+    if (input === document.activeElement) {
+      return;
+    }
+
+    const characterPressed = String.fromCharCode(e.charCode);
+    if (!isHotkey(characterPressed)) {
+      return;
+    }
+
+    input.focus();
+    e.preventDefault();
+  }
+
+  function isHotkey(character) {
+    const dataHotkeys = input.getAttribute('data-hotkeys') || '';
+    const hotkeys = dataHotkeys.split(' ');
+
+    for (var i = 0; i < hotkeys.length; i++) {
+      if (hotkeys[i] === character) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   function init() {
     input.removeEventListener('focus', init); // init once
     input.required = true;
