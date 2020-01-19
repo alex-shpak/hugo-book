@@ -30,12 +30,7 @@
     const dataHotkeys = input.getAttribute('data-hotkeys') || '';
     const hotkeys = dataHotkeys.split(' ');
 
-    for (var i = 0; i < hotkeys.length; i++) {
-      if (hotkeys[i] === character) {
-        return true;
-      }
-    }
-    return false;
+    return dataHotkeys.indexOf(character) >= 0;
   }
 
   function init() {
