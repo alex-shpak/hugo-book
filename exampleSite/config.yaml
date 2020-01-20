@@ -15,6 +15,8 @@ markup:
       unsafe: true
   tableOfContents:
     startLevel: 1
+  highlight:
+    codeFences: true
 
 # Multi-lingual mode config
 # There are different options to translate files
