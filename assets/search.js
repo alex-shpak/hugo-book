@@ -28,8 +28,6 @@
 
   function isHotkey(character) {
     const dataHotkeys = input.getAttribute('data-hotkeys') || '';
-    const hotkeys = dataHotkeys.split(' ');
-
     return dataHotkeys.indexOf(character) >= 0;
   }
 
