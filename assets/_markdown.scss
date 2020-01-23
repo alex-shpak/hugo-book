@@ -123,4 +123,15 @@
       padding-left: 0;
     }
   }
+
+  details {
+    padding: $padding-16;
+    border: $padding-1 solid $gray-200;
+    border-radius: $border-radius;
+
+    summary {
+      line-height: 1;
+      cursor: pointer;
+    }
+  }
 }
