@@ -134,10 +134,10 @@ enableGitInfo = true
 disableKinds = ['taxonomy', 'taxonomyTerm']
   
 [params]
-  # (Optional, default 6) Set how many table of contents levels to be showed on page.
-  # Use false to hide ToC, note that 0 will default to 6 (https://gohugo.io/functions/default/)
-  # You can also specify this parameter per page in front matter
-  BookToC = 3
+  # (Optional, default true) Controls table of contents visibility on right side of pages.
+  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # You can also specify this parameter per page in front matter.
+  BookToC = true
   
   # (Optional, default none) Set the path to a logo for the book. If the logo is
   # /static/logo.png then the path would be 'logo.png'
@@ -199,7 +199,7 @@ bookCollapseSection = true
 # (Optional) Set true to hide page or section from side menu (if BookMenuBundle not set)
 bookHidden = true
 
-# (Optional) Set how many levels of ToC to show. use 'false' to hide ToC completely
+# (Optional) Set 'false' to hide ToC from page
 bookToC = true
 
 # (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
