@@ -46,6 +46,12 @@
   display: none;
 }
 
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 @mixin spin($duration) {
   animation: spin $duration ease infinite;
   @keyframes spin {

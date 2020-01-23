@@ -47,11 +47,6 @@ img {
   vertical-align: baseline;
 }
 
-main {
-  display: flex;
-  flex-direction: row-reverse;
-}
-
 aside nav ul {
   padding: 0;
   margin: 0;
@@ -162,8 +157,12 @@ ul.pagination {
 }
 
 .book-header {
-  margin-bottom: $padding-16;
   display: none;
+  margin-bottom: $padding-16;
+
+  label {
+    line-height: 0;
+  }
 }
 
 .book-search {
@@ -230,7 +229,6 @@ ul.pagination {
 }
 
 .book-footer {
-  display: flex;
   padding-top: $padding-16;
   font-size: $font-size-14;
 
@@ -272,7 +270,7 @@ ul.pagination {
     }
 
     img {
-      opacity: .1;
+      opacity: 0.1;
     }
 
     li.active img {
@@ -298,46 +296,41 @@ ul.pagination {
 // Responsive styles
 aside nav,
 .book-page,
+.book-header aside,
 .markdown {
   transition: 0.2s ease-in-out;
   transition-property: transform, margin, opacity;
   will-change: transform, margin;
 }
 
-@media screen and (max-width: $md-breakpoint) {
+@media screen and (max-width: $mobile-breakpoint) {
   .book-menu {
     margin-left: -$menu-width;
     font-size: $font-size-base;
   }
+
   .book-toc {
-    margin-right: -$toc-width;
-    font-size: $font-size-base;
+    display: none;
   }
 
   .book-header {
-    display: flex;
+    display: block;
   }
 
-  #menu-control:checked ~ main {
-    .book-menu #BookMenu,
+  #menu-control:checked + main {
+    .book-menu nav,
     .book-page {
       transform: translateX($menu-width);
     }
+
+    .book-header aside,
     .markdown {
       opacity: 0.25;
-    }
-    .book-header #menu-control {
-      transform: rotate(90deg);
     }
   }
-  #toc-control:checked ~ main {
-    aside #TableOfContents,
-    .book-page {
-      transform: translateX(-$menu-width);
-    }
-    .markdown {
-      opacity: 0.25;
-    }
+
+  #toc-control:checked + aside {
+    display: block;
   }
 }
 

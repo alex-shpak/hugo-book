@@ -1,12 +1,12 @@
-<nav id="BookMenu">
+<nav>
 {{ partial "docs/brand" . }}
 {{ partial "docs/search" . }}
 {{ partial "docs/inject/menu-before" . }}
 
 {{ if .Site.Params.BookMenuBundle }}
-    {{ partial "docs/menu-bundle" . }}
+  {{ partial "docs/menu-bundle" . }}
 {{ else }}
-    {{ partial "docs/menu-filetree" . }}
+  {{ partial "docs/menu-filetree" . }}
 {{ end }}
 
 {{ partial "docs/inject/menu-after" . }}

@@ -200,7 +200,7 @@ bookCollapseSection = true
 bookHidden = true
 
 # (Optional) Set how many levels of ToC to show. use 'false' to hide ToC completely
-bookToC = 3
+bookToC = true
 
 # (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
 bookComments = true
@@ -328,6 +328,12 @@ x = \begin{cases}
 \end{cases}
 {{< /katex >}}
 ```
+
+## Versioning
+
+Theme follows simple incremental versioning. e.g. `v1`, `v2` and so on. There might be breaking changes between versions.
+
+If you want lower maintenance use one of released versions. If you want to live on the edge of changes you can use `master` branch and update your website when needed.
 
 ## Contributing
 

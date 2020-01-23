@@ -77,8 +77,7 @@
 
   > div {
     margin: $padding-16 0;
-    // max-width: 50%;
-    min-width: $body-min-width * 0.66;
+    min-width: $body-min-width / 2;
     padding: 0 $padding-16;
   }
 }
@@ -102,7 +101,6 @@ a.book-btn {
     &.#{$name} {
       border-left-color: $color;
       background-color: rgba($color, 0.1);
-      // background-color: $gray-100;
     }
   };
 }

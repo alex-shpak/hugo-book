@@ -7,24 +7,69 @@
 </head>
 
 <body>
-  <input type="checkbox" class="hidden" id="toc-control" />
   <input type="checkbox" class="hidden" id="menu-control" />
-  <main class="container">
-    {{ template "toc" . }}
+  <main class="container flex">
+    <aside class="book-menu">
+      {{ template "menu" . }} <!-- Left menu Content -->
+    </aside>
 
     <div class="book-page">
-      {{ partial "docs/mobile-header" . }}
-      {{ template "main" . }}
-      {{ partial "docs/footer" . }}
+      <header class="book-header">
+        {{ template "header" . }} <!-- Mobile layout header -->
+      </header>
+
+      {{ template "main" . }} <!-- Page Content -->
+
+      <footer class="book-footer">
+        {{ template "footer" . }} <!-- Footer under page content -->
+        {{ template "comments" . }} <!-- Comments block -->
+      </footer>
       {{ partial "docs/inject/footer" . }}
     </div>
 
-    <aside class="book-menu fixed">
-      {{ partial "docs/menu" . }}
+    {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+    <aside class="book-toc">
+      {{ template "toc" . }} <!-- Table of Contents -->
     </aside>
+    {{ end }}
   </main>
 
   {{ partial "docs/inject/body" . }}
 </body>
 
 </html>
+
+{{ define "menu" }}
+  {{ partial "docs/menu" . }}
+{{ end }}
+
+{{ define "header" }}
+  {{ partial "docs/header" . }}
+
+  {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      {{ template "toc" . }}
+    </aside>
+  {{ end }}
+{{ end }}
+
+{{ define "footer" }}
+  {{ partial "docs/footer" . }}
+{{ end }}
+
+{{ define "comments" }}
+  {{ if and .Content (default true (default .Site.Params.BookComments .Params.BookComments)) }}
+  <div class="book-comments">
+    {{- partial "docs/comments" . -}}
+  </div>
+  {{ end }}
+{{ end }}
+
+{{ define "main" }}
+  {{ .Content }}
+{{ end }}
+
+{{ define "toc" }}
+  {{ .TableOfContents }}
+{{ end }}

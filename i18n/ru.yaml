@@ -2,10 +2,13 @@
   translation: Поиск
 
 - id: Edit this page
-  translation: Редактировать эту сраницу
+  translation: Редактировать
 
 - id: Last modified by
   translation: Last modified by
+
+- id: Expand
+  translation: Развернуть
 
 - id: bookSearchConfig
   translation: '{ split: /[^a-zа-яё0-9\w]/gi }'

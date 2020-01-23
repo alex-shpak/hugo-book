@@ -1,33 +1,24 @@
-<div class="book-footer justify-between">
-  {{ if .Site.IsMultiLingual }}
+<div class="flex justify-between">
+{{ if .Site.IsMultiLingual }}
   {{ partial "docs/languages" . }}
-  {{ end }}
+{{ end }}
 
-  {{ if and .GitInfo .Site.Params.BookRepo }}
-  {{ with .GitInfo }}
+{{ if and .GitInfo .Site.Params.BookRepo }}
   <div>
-    {{ $date := .AuthorDate.Local.Format (default "January 2, 2006" $.Site.Params.BookDateFormat) }}
-    <a class="flex align-center" href="{{ $.Site.Params.BookRepo }}/commit/{{ .Hash }}" title='{{ i18n "Last modified by" }} {{ .AuthorName }} | {{ $date }}' target="_blank">
+    {{ $date := .GitInfo.AuthorDate.Local.Format (default "January 2, 2006" .Site.Params.BookDateFormat) }}
+    <a class="flex align-center" href="{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}" title='{{ i18n "Last modified by" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
       <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Calendar" />
       <span>{{ $date }}</span>
     </a>
   </div>
-  {{ end }}
-  {{ end }}
+{{ end }}
 
-  {{ if and .File .Site.Params.BookRepo .Site.Params.BookEditPath }}
+{{ if and .File .Site.Params.BookRepo .Site.Params.BookEditPath }}
   <div>
-    <a class="flex align-center" href="{{ .Site.Params.BookRepo }}/{{ .Site.Params.BookEditPath }}/{{ replace .File.Path "\\" "/" }}" target="_blank">
+    <a class="flex align-center" href="{{ .Site.Params.BookRepo }}/{{ .Site.Params.BookEditPath }}/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener">
       <img src="{{ "svg/edit.svg" | relURL }}" class="book-icon" alt="Edit" />
       <span>{{ i18n "Edit this page" }}</span>
     </a>
   </div>
-  {{ end }}
-
-</div>
-
-{{ if (default true (default .Site.Params.BookComments .Params.bookComments)) }}
-<div class="book-comments">
-  {{ partial "docs/comments" . }}
-</div>
 {{ end }}
+</div>

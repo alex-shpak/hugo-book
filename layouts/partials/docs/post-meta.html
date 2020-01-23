@@ -1,4 +1,4 @@
-{{ $dateFormat := default "January 2, 2006" .Site.Params.BookDateFormat }}
+{{ $dateFormat := (default "January 2, 2006" .Site.Params.BookDateFormat) }}
 {{ if or .Date .Params.tags }}
 <div>
 {{ with .Date}}
@@ -6,10 +6,10 @@
 {{ end }}
 
 {{ range $term, $_ := .Site.Taxonomies }}
-  {{ with $list := index $.Params $term }}
+  {{ with $list := $.Param $term }}
   <div>
     {{ range $n, $single := $list }}{{ if $n }}, {{ end }}
-      {{ with $.Site.GetPage (printf "/%s/%s" $term $single | urlize) }}
+      {{- with $.Site.GetPage (printf "/%s/%s" $term $single | urlize) }}
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       {{- end }}
     {{- end }}
