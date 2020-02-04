@@ -167,6 +167,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   
   # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
+  # Configuration for indexing can be adjusted in i18n folder per language.
   BookSearch = true
 
   # (Optional, default true) Enables comments template on pages
