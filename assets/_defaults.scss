@@ -31,14 +31,14 @@ $body-background: white !default;
 $body-font-color: $gray-800 !default;
 $body-font-weight: normal !default;
 
-$body-min-width: 25rem !default;
+$body-min-width: 20rem !default;
 $container-max-width: 80rem !default;
 
 $header-height: 3.5rem !default;
 $menu-width: 16rem !default;
 $toc-width: 16rem !default;
 
-$mobile-breakpoint: $menu-width + $body-min-width + $toc-width !default;
+$mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
 
 // Hint colors
 $hint-colors: (
