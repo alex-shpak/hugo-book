@@ -249,12 +249,23 @@ ul.pagination {
   padding: $padding-16;
   margin: -$padding-16;
 
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      white-space: nowrap;
+      cursor: pointer;
+    }
+  }
+
   &:hover,
   &:focus,
   &:focus-within {
     .book-languages-list {
       display: block;
-    }  
+    }
   }
 
   .book-languages-list {
@@ -268,15 +279,12 @@ ul.pagination {
     background: $body-background;
     box-shadow: 0 0 $padding-4 rgba(0, 0, 0, 0.1);
 
-    li {
-      white-space: nowrap;
+    li img {
+      opacity: 0.25;
     }
 
-    img {
-      opacity: 0.1;
-    }
-
-    li.active img {
+    li.active img,
+    li:hover img {
       opacity: 1;
     }
 
@@ -284,12 +292,6 @@ ul.pagination {
       color: inherit;
       padding: $padding-8 $padding-16;
     }
-  }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
   }
 }
 

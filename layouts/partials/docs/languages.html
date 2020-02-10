@@ -1,10 +1,10 @@
 <!-- Merge home and current page translations -->
-{{ $langs := dict }}
+{{ $translations := dict }}
 {{ range .Site.Home.AllTranslations }}
-  {{ $langs = merge $langs (dict .Language.Lang .) }}
+  {{ $translations = merge $translations (dict .Language.Lang .) }}
 {{ end }}
 {{ range .Translations }}
-  {{ $langs = merge $langs (dict .Language.Lang .) }}
+  {{ $translations = merge $translations (dict .Language.Lang .) }}
 {{ end }}
 
 <div class="book-languages" tabindex="0" aria-haspopup="true">
@@ -16,14 +16,14 @@
   </ul>
 
   <ul class="book-languages-list">
-    {{ range sort $langs }}
+    {{ range .Site.Languages }}{{ with index $translations .Lang }}
     <li class="{{ if (eq $.Site.Language .Language) }}active{{ end }}">
-      <a href="{{ .Permalink }}" class="flex">
+      <a href="{{ .RelPermalink }}" class="flex">
         <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
         {{ .Language.LanguageName }}
       </a>
     </li>
-    {{ end }}
+    {{ end }}{{ end }}
   </ul>
 
 </div>
