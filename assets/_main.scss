@@ -249,15 +249,19 @@ ul.pagination {
   padding: $padding-16;
   margin: -$padding-16;
 
-  &:hover .book-languages-list {
-    display: block;
+  &:hover,
+  &:focus,
+  &:focus-within {
+    .book-languages-list {
+      display: block;
+    }  
   }
 
   .book-languages-list {
     display: none;
 
     position: absolute;
-    bottom: 0;
+    bottom: 100%;
     left: 0;
     padding: $padding-8 0;
 
@@ -265,7 +269,6 @@ ul.pagination {
     box-shadow: 0 0 $padding-4 rgba(0, 0, 0, 0.1);
 
     li {
-      padding: $padding-8 $padding-16;
       white-space: nowrap;
     }
 
@@ -279,6 +282,7 @@ ul.pagination {
 
     a {
       color: inherit;
+      padding: $padding-8 $padding-16;
     }
   }
 

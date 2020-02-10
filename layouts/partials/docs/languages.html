@@ -7,8 +7,7 @@
   {{ $langs = merge $langs (dict .Language.Lang .) }}
 {{ end }}
 
-<div class="book-languages">
-
+<div class="book-languages" tabindex="0" aria-haspopup="true">
   <ul>
     <li class="flex">
       <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
@@ -18,7 +17,7 @@
 
   <ul class="book-languages-list">
     {{ range sort $langs }}
-    <li class="{{ if (eq $.Site.Language .Language ) }}active{{ end }}">
+    <li class="{{ if (eq $.Site.Language .Language) }}active{{ end }}">
       <a href="{{ .Permalink }}" class="flex">
         <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
         {{ .Language.LanguageName }}
