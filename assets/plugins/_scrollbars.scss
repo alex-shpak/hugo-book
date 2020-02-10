@@ -1,0 +1,15 @@
+@import "defaults";
+@import "variables";
+
+::-webkit-scrollbar {
+  width: $padding-8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: $padding-8;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  background: $gray-500;
+}

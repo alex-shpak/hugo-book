@@ -14,6 +14,7 @@
 - [Blog](#blog)
 - [Configuration](#configuration)
 - [Shortcodes](#shortcodes)
+- [Versioning](#versioning)
 - [Contributing](#contributing)
 
 ## Features
@@ -24,7 +25,9 @@
 - Customisable
 - Zero initial configuration
 - Handy shortcodes
-- Optional support for Disqus
+- Comments support
+- Simple blog and taxonomy
+- Primary features work without JavaScript
 
 ## Requirements
 
@@ -228,6 +231,18 @@ There are few empty partials you can override in `layouts/partials/`
 | `assets/_variables.scss` | Override default SCSS variables                                                       |
 | `assets/_fonts.scss`     | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
 
+### Plugins
+
+There are few features implemented as plugable `scss` styles. Usually this are features that doesn't make it to the core but still might be useful.
+
+| Plugin                            | Description                                                 |
+| --------------------------------- | ----------------------------------------------------------- |
+| `assets/plugins/_dark.scss`       | Switches site to dark mode                                  |
+| `assets/plugins/_numbered.scss`   | Makes headings in markdown numbered, e.g. `1.1`, `1.2`      |
+| `assets/plugins/_scrollbars.scss` | Overrides scrollbar styles to look similar across platforms |
+
+To enable plugin add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root. Exception is `_dark.scss` which contains only variables and should be added to `assets/_variables.scss`.
+
 ### Hugo Internal Templates
 
 There are few hugo tempaltes inserted in `<head>`
@@ -237,98 +252,13 @@ There are few hugo tempaltes inserted in `<head>`
 
 ## Shortcodes
 
-### Hint
-
-Hint shortcode can be used as hint/alerts/notification block. There are 3 colors to choose: `info`, `warning` and `danger`.
-
-```tpl
-{{< hint [info|warning|danger] >}}
-**Markdown content**  
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-{{< /hint >}}
-```
-
-### Buttons
-
-Buttons are styled links to internal of external pages
-
-```
-{{< button relref="/" >}}Get Home{{< /button >}}
-{{< button href="https://github.com/alex-shpak/hugo-book" >}}Contribute{{< /button >}}
-```
-
-### Tabs
-
-Useful if you want to show alternative information per platform or setting.
-
-```
-{{< tabs "uniqueid" >}}
-{{< tab "MacOS" >}} # MacOS Content {{< /tab >}}
-{{< tab "Linux" >}} # Linux Content {{< /tab >}}
-{{< tab "Windows" >}} # Windows Content {{< /tab >}}
-{{< /tabs >}}
-```
-
-### Multi column text
-
-Organize text in 2 or more columns to use space efficiently.
-
-```html
-{{< columns >}} <!-- begin columns block -->
-# Left Content Lorem markdownum insigne...
-
-<---> <!-- magic sparator, between columns -->
-
-# Mid Content Lorem markdownum insigne...
-
-<---> <!-- magic sparator, between columns -->
-
-# Right Content Lorem markdownum insigne...
-{{< /columns >}}
-```
-
-### Expand
-
-Provides clickable panel that show extra hidden content.
-
-```
-{{< expand >}}
-## Markdown content
-{{< /expand >}}
-```
-
-### Mermaid Charts
-
-Render various charts with [mermaidjs](https://mermaidjs.github.io/)
-
-```
-{{< mermaid >}}
-sequenceDiagram
-    Alice->>Bob: Hello Bob, how are you?
-    alt is sick
-        Bob->>Alice: Not so good :(
-    else is well
-        Bob->>Alice: Feeling fresh like a daisy
-    end
-    opt Extra response
-        Bob->>Alice: Thanks for asking
-    end
-{{< /mermaid >}}
-```
-
-### KaTeX Syntax
-
-Render math formulas with [KaTeX](https://katex.org/)
-
-```
-{{< katex >}}
-x = \begin{cases}
-   a &\text{if } b \\
-   c &\text{if } d
-\end{cases}
-{{< /katex >}}
-```
+ - [Buttons](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/buttons/)
+ - [Columns](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/columns/)
+ - [Expand](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/expand/)
+ - [Hints](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/hints/)
+ - [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
+ - [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
+ - [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
 
 ## Versioning
 
@@ -343,8 +273,9 @@ If you want lower maintenance use one of released versions. If you want to live 
 Contributions are welcome and I will review and consider pull requests.  
 Primary goals are:
 
-- Keep it simple
-- Keep minimal (or zero) default configuration
-- Avoid interference with user-defined layouts
+- Keep it simple.
+- Keep minimal (or zero) default configuration.
+- Avoid interference with user-defined layouts.
+- Avoid using JS if it can be solved by CSS.
 
 Feel free to open issue if you missing some configuration or customisation option.
