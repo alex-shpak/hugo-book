@@ -3,7 +3,7 @@ bookCollapseSection: true
 weight: 20
 ---
 
-# 2nd Level of Menu
+# Collapsed Level of Menu
 
 ## Cognita laeva illo fracta
 
