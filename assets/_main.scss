@@ -69,16 +69,6 @@ aside nav ul {
   }
 }
 
-// Classes to hide nested levels of ToC/Menu
-.levels-1 ul ul,
-.levels-2 ul ul ul,
-.levels-3 ul ul ul ul,
-.levels-4 ul ul ul ul ul,
-.levels-5 ul ul ul ul ul ul,
-.levels-6 ul ul ul ul ul ul ul {
-  display: none;
-}
-
 ul.pagination {
   display: flex;
   justify-content: center;
