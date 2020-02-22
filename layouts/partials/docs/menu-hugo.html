@@ -3,6 +3,10 @@
   https://gohugo.io/variables/menus/
 -->
 {{ if . }}
+  {{ template "book-menu-hugo" . }}
+{{ end }}
+
+{{ define "book-menu-hugo" }}
 <ul>
   {{ range . }}
   <li>
@@ -15,6 +19,9 @@
       {{ end }}
       {{- .Post -}}
     </a>
+    {{- with .Children }}
+      {{ template "book-menu-hugo" . }}
+    {{- end }}
   </li>
   {{ end }}
 </ul>
