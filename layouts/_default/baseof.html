@@ -18,7 +18,9 @@
         {{ template "header" . }} <!-- Mobile layout header -->
       </header>
 
+      {{ partial "docs/inject/content-before" . }}
       {{ template "main" . }} <!-- Page Content -->
+      {{ partial "docs/inject/content-after" . }}
 
       <footer class="book-footer">
         {{ template "footer" . }} <!-- Footer under page content -->
