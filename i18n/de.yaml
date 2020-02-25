@@ -5,10 +5,10 @@
   translation: Seite bearbeiten
 
 - id: Last modified by
-  translation: zuletzt geändert am
+  translation: Zuletzt geändert am
 
 - id: Expand
-  translation: erweitern
+  translation: Erweitern
 
 - id: bookSearchConfig
   translation: '{ cache: true }'
