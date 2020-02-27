@@ -27,6 +27,8 @@
         {{ template "comments" . }} <!-- Comments block -->
       </footer>
       {{ partial "docs/inject/footer" . }}
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
