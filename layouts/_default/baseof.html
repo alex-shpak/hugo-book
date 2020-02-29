@@ -24,9 +24,10 @@
 
       <footer class="book-footer">
         {{ template "footer" . }} <!-- Footer under page content -->
-        {{ template "comments" . }} <!-- Comments block -->
+        {{ partial "docs/inject/footer" . }}  
       </footer>
-      {{ partial "docs/inject/footer" . }}
+
+      {{ template "comments" . }} <!-- Comments block -->
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
