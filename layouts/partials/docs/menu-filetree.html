@@ -56,7 +56,7 @@
 {{ with .Page }}
   {{ if .Content }}
   <a href="{{ .RelPermalink }}" class="
-      {{- if .Params.bookCollapseSection }}collapsed {{ end }}
+      {{- if and .Params.bookCollapseSection .IsSection }}collapsed {{ end }}
       {{- if eq $.CurrentPage . }}active{{ end }}">
     {{- partial "docs/title" . -}}
   </a>
