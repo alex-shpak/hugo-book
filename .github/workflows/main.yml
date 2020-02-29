@@ -10,7 +10,9 @@ jobs:
 
       - name: Install Hugo
         run: |
-          wget https://github.com/gohugoio/hugo/releases/download/v0.60.1/hugo_extended_0.60.1_Linux-64bit.deb -O /tmp/hugo.deb
+          LATEST_VERSION=`curl --silent "https://api.github.com/repos/gohugoio/hugo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'`
+          VERSION_NO_PREFIX=`echo $LATEST_VERSION | cut -c 2-`
+          wget "https://github.com/gohugoio/hugo/releases/download/$LATEST_VERSION/hugo_extended_${VERSION_NO_PREFIX}_Linux-64bit.deb" -O /tmp/hugo.deb
           sudo dpkg -i /tmp/hugo.deb
 
       - name: Run Hugo
