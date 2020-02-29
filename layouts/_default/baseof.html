@@ -71,9 +71,11 @@
 {{ end }}
 
 {{ define "main" }}
-  {{ .Content }}
+  <article class="markdown">
+    {{- .Content -}}
+  </article>
 {{ end }}
 
 {{ define "toc" }}
-  {{ .TableOfContents }}
+  {{ partial "docs/toc" . }}
 {{ end }}
