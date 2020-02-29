@@ -118,6 +118,11 @@ ul.pagination {
   a.active {
     color: $color-link;
   }
+
+  a.collapsed::after {
+    content: "▸";
+    margin-left: $padding-8;
+  }
 }
 
 .book-section-flat {
