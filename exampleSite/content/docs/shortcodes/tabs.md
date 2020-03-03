@@ -1,5 +1,7 @@
 # Tabs
 
+## Single level
+
 Tabs let you organize content by context, for example installation instructions for each supported platform.
 
 ```tpl
@@ -10,7 +12,7 @@ Tabs let you organize content by context, for example installation instructions 
 {{</* /tabs */>}}
 ```
 
-## Example
+### Example
 
 {{< tabs "uniqueid" >}}
 {{< tab "MacOS" >}}
@@ -46,5 +48,84 @@ Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
+{{< /tab >}}
+{{< /tabs >}}
+
+
+## Multiple levels
+
+You can have multiple levels of tabs. For example, information on countries by continent
+Note that you can only have markdown content in the lowest level
+
+```tpl
+{{</* tabs "continents" */>}}
+{{</* tab "America" */>}}
+
+{{</* tabs "countries_america" */>}}
+{{</* tab "Canada" */>}} # Canada {{</* /tab */>}}
+{{</* tab "US" */>}} # US {{</* /tab */>}}
+{{</* /tabs */>}}
+
+{{</* /tab */>}}
+
+{{</* tab "Europe" */>}}
+
+{{</* tabs "countries_europe" */>}}
+{{</* tab "UK" */>}} # UK {{</* /tab */>}}
+{{</* tab "France" */>}} # France {{</* /tab */>}}
+{{</* /tabs */>}}
+
+{{</* /tab */>}}
+
+{{</* tab "Asia" */>}}
+
+{{</* tabs "countries_asia" */>}}
+{{</* tab "China" */>}} # China {{</* /tab */>}}
+{{</* tab "Japan" */>}} # Japan {{</* /tab */>}}
+{{</* /tabs */>}}
+
+{{</* /tab */>}}
+{{</* /tabs */>}}
+```
+
+### Example
+{{< tabs "continents" >}}
+{{< tab "America" >}}
+
+{{< tabs "countries_america" >}}
+{{< tab "Canada" >}}
+# Canada
+{{< /tab >}}
+{{< tab "US" >}}
+# US
+{{< /tab >}}
+{{< /tabs >}}
+
+{{< /tab >}}
+
+{{< tab "Europe" >}}
+
+{{< tabs "countries_europe" >}}
+{{< tab "UK" >}}
+# UK 
+{{< /tab >}}
+{{< tab "France" >}}
+# France 
+{{< /tab >}}
+{{< /tabs >}}
+
+{{< /tab >}}
+
+{{< tab "Asia" >}}
+
+{{< tabs "countries_asia" >}}
+{{< tab "China" >}}
+# China
+{{< /tab >}}
+{{< tab "Japan" >}}
+# Japan
+{{< /tab >}}
+{{< /tabs >}}
+
 {{< /tab >}}
 {{< /tabs >}}

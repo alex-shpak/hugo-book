@@ -9,7 +9,7 @@
     {{ $tab.Name }}
   </label>
   <div class="book-tabs-content markdown-inner">
-    {{ .Content | markdownify }}
+    {{ cond (in (string .Content) `<div class="book-tabs">`) .Content (.Content | markdownify) }}
   </div>
 {{- end -}}
 </div>
