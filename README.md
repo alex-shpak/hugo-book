@@ -1,6 +1,6 @@
 # Hugo Book Theme
 
-[![Hugo](https://img.shields.io/badge/hugo-0.60-blue.svg)](https://gohugo.io)
+[![Hugo](https://img.shields.io/badge/hugo-0.62-blue.svg)](https://gohugo.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ### [Hugo](https://gohugo.io) documentation theme as simple as plain book
@@ -178,6 +178,12 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
   BookComments = true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
+  # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
+  # Theme will print warning if page referenced in markdown does not exists.
+  BookPortableLinks = true
 ```
 
 ### Multi-Language Support
