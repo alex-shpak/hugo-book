@@ -5,7 +5,7 @@
   {{ if not (.Parent.Scratch.Get $group) }}
     {{ .Parent.Scratch.Set $group slice }}
   {{ end }}
-    
+
   {{ .Parent.Scratch.Add $group (dict "Name" $name "Content" .Inner) }}
 {{ else }}
   {{ errorf "%q: 'tab' shortcode must be inside 'tabs' shortcode" .Page.Path }}
