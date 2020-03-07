@@ -55,6 +55,7 @@ aside nav ul {
 
   li {
     margin: 1em 0;
+    position: relative;
   }
 
   a {
@@ -113,6 +114,7 @@ ul.pagination {
 
   a {
     color: inherit;
+    word-wrap: break-word;
   }
 
   a.active {
@@ -121,7 +123,8 @@ ul.pagination {
 
   a.collapsed::after {
     content: "▸";
-    margin-left: $padding-8;
+    position: absolute;
+    right: 0;
   }
 }
 
