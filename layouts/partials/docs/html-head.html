@@ -3,7 +3,8 @@
 <meta name="description" content="{{ partial "docs/title" . }}">
 {{- template "_internal/opengraph.html" . -}}
 
-<title>{{ partial "docs/title" . }} | {{ .Site.Title -}}</title>
+<title>{{ if .IsHome }}{{ with .Title }}{{ . }}{{ else }}{{ $.Site.Title }}{{ end }}{{ else }}{{ partial "docs/title" . }} | {{ .Site.Title -}}{{ end }}</title>
+
 <link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
