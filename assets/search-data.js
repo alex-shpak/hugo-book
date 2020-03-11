@@ -16,7 +16,7 @@
   const index = FlexSearch.create('balance', indexCfg);
   window.bookSearchIndex = index;
 
-  {{ range $index, $page := .Site.Pages }}
+  {{ range $index, $page := .Site.RegularPages }}
   index.add({
     'id': {{ $index }},
     'href': '{{ $page.RelPermalink }}',
