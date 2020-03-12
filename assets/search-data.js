@@ -16,7 +16,7 @@
   const index = FlexSearch.create('balance', indexCfg);
   window.bookSearchIndex = index;
 
-  {{ range $index, $page := .Site.RegularPages }}
+  {{ range $index, $page := where .Site.Pages "Kind" "in" (slice "page" "section") }}
   index.add({
     'id': {{ $index }},
     'href': '{{ $page.RelPermalink }}',
