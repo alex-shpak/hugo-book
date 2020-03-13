@@ -1,6 +1,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ with .Description }} {{ . }} {{ else }} {{ with .Summary }} {{ . }} {{ else }} {{ with .Site.Params.description }} {{ . }} {{ else }} {{ partial "docs/title" . }} {{ end }} {{ end }} {{ end }}">
+<meta name="description" content="{{ default .Summary .Description }}">
 
 {{- template "_internal/opengraph.html" . -}}
 
