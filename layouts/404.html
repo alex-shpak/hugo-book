@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
 
-<head>
-  {{ partial "docs/html-head" . }}
-  {{ partial "docs/inject/head" . }}
-</head>
+  <head>
+    {{ partial "docs/html-head" . }}
+    {{ partial "docs/inject/head" . }}
+  </head>
 
-<body>
-  <main class="flex justify-center">
-    <h1>404 Not Found</h1>
-  </main>
+  <body>
+    <main class="flex justify-center">
+      <div>
+        <h1>404 Not Found</h1>
+        <a href="{{ "/" | relURL }}">Go Home</a>
+      </div>
+    </main>
 
-  {{ partial "docs/inject/body" . }}
-  {{ template "_internal/google_analytics_async.html" . }}
-</body>
+    {{ partial "docs/inject/body" . }}
+    {{ template "_internal/google_analytics_async.html" . }}
+  </body>
 
 </html>
