@@ -1,8 +1,8 @@
-{{ if .Page.Site.Params.BookPortableLinks }}
+{{- if .Page.Site.Params.BookPortableLinks -}}
   {{- template "portable-link" . -}}
-{{ else }}
+{{- else -}}
   <a href="{{ .Destination | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
-{{ end }}
+{{- end -}}
 
 {{- define "portable-link" -}}
   {{- $destination := .Destination }}
