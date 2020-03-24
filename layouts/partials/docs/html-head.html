@@ -27,3 +27,7 @@
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
 {{ "-->" | safeHTML }}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+{{- $asciidocTocFixJS := resources.Get "asciidoc_toc_fix.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $asciidocTocFixJS.RelPermalink }}" integrity="{{ $asciidocTocFixJS.Data.Integrity }}"></script>
