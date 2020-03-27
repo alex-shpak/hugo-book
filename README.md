@@ -28,6 +28,7 @@
 - Comments support
 - Simple blog and taxonomy
 - Primary features work without JavaScript
+- Dark Mode
 
 ## Requirements
 
