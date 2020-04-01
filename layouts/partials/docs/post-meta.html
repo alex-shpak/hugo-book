@@ -3,13 +3,11 @@
   <h5>{{ .Format $dateFormat }}</h5>
 {{ end }}
 
-{{ range $term, $_ := .Site.Taxonomies }}
-  {{ with $list := $.Param $term }}
+{{ range $taxonomy, $_ := .Site.Taxonomies }}
+  {{ with $terms := $.GetTerms $taxonomy }}
   <div>
-    {{ range $n, $single := $list }}{{ if $n }}, {{ end }}
-      {{- with $.Site.GetPage (printf "/%s/%s" $term $single | urlize) }}
-        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-      {{- end }}
+    {{ range $n, $term := $terms }}{{ if $n }}, {{ end }}
+        <a href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
     {{- end }}
   </div>
   {{ end }}

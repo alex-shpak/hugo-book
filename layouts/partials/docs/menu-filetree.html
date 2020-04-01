@@ -38,9 +38,9 @@
   {{ with .Section }}
   <ul>
     {{ range where .Pages "Params.bookhidden" "!=" "true" }}
-      {{ if eq .Kind "section" }}
+      {{ if .IsSection }}
         {{ template "book-section" (dict "Section" . "CurrentPage" $.CurrentPage) }}
-      {{ else if and (eq .Kind "page") .Content }}
+      {{ else if and .IsPage .Content }}
         <li>
         {{- template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) -}}
         </li>
@@ -57,7 +57,7 @@
   {{ if .Content }}
   <a href="{{ .RelPermalink }}" class="
       {{- if and .Params.bookCollapseSection .IsSection }}collapsed {{ end }}
-      {{- if eq $.CurrentPage . }}active{{ end }}">
+      {{- if eq $.CurrentPage.RelPermalink .RelPermalink }}active{{ end }}">
     {{- partial "docs/title" . -}}
   </a>
   {{ else }}
