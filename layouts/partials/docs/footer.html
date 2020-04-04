@@ -21,4 +21,24 @@
     </a>
   </div>
 {{ end }}
-</div>
+
+{{ if default true (default .Site.Params.MonakoGitLinks .Params.MonakoGitLinks) }}
+
+  <div class="flex align-right">
+    <a href="{{ .Params.MonakoGitURL }}" target="_blank" rel="noopener">
+      <img src="{{ "svg/edit.svg" | relURL }}" class="book-icon" alt="Edit" />
+      <span>{{ i18n "Edit this page" }}</span>
+    </a>
+  </div>
+
+  <div class="flex align-left">
+    <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Edit" />
+    {{ $lastmod := .Params.lastmod.Format (default "January 2, 2006" .Site.Params.BookDateFormat) }}
+    <span>Last edit:
+      <a href="mailto:{{ .Params.MonakoGitLastCommitAuthorEmail }}" target="_blank" rel="noopener">
+        {{ .Params.MonakoGitLastCommitAuthor}}
+      </a> on <a href="{{ .Params.MonakoGitURLCommit}}">{{$lastmod}}</href>
+    </span>
+  </div>
+
+{{ end }}
