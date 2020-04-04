@@ -34,7 +34,7 @@
   <div class="flex align-left">
     <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Edit" />
     {{ $lastmod := .Params.lastmod.Format (default "January 2, 2006" .Site.Params.BookDateFormat) }}
-    <span>Last edit:
+    <span>Last edit by
       <a href="mailto:{{ .Params.MonakoGitLastCommitAuthorEmail }}" target="_blank" rel="noopener">
         {{ .Params.MonakoGitLastCommitAuthor}}
       </a> on <a href="{{ .Params.MonakoGitURLCommit}}">{{$lastmod}}</href>
