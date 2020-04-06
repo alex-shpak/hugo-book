@@ -37,6 +37,9 @@
     &:hover {
       text-decoration: underline;
     }
+    &:visited {
+      color: $color-visited-link;
+    }
   }
 
   img {
@@ -133,5 +136,15 @@
       line-height: 1;
       cursor: pointer;
     }
+  }
+}
+
+.markdown-inner {
+  // Util class to remove extra margin in nested markdown content
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
   }
 }
