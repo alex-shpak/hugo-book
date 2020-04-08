@@ -100,3 +100,4 @@ enableGitInfo = true
   # Monako specific feature. Monako will append Git information of every origin
   # to the frontmatter.
   MonakoGitLinks = true
+  MonakoDisableGitCommit = false
