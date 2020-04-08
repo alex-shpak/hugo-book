@@ -31,6 +31,7 @@
     </a>
   </div>
 
+  {{ if not (default .Site.Params.MonakoDisableGitCommit .Params.MonakoGitLinks) }}
   <div class="flex align-left">
     <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Edit" />
     {{ $lastmod := .Params.lastmod.Format (default "January 2, 2006" .Site.Params.BookDateFormat) }}
@@ -40,5 +41,6 @@
       </a> on <a href="{{ .Params.MonakoGitURLCommit}}">{{$lastmod}}</href>
     </span>
   </div>
+  {{ end }}
 
 {{ end }}
