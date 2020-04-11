@@ -42,6 +42,14 @@
   text-align: center;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .hidden {
   display: none;
 }
@@ -50,6 +58,14 @@
   content: "";
   display: table;
   clear: both;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
 }
 
 @mixin spin($duration) {
