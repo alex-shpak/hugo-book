@@ -1,5 +1,4 @@
 {{ define "main" }}
-  {{ $paginator := .Paginate (where .Pages "Params.hidden" "ne" true) }}
   {{ range sort .Paginator.Pages }}
   <article class="markdown book-post">
     <h2>
@@ -9,11 +8,12 @@
     <p>
       {{- .Summary -}}
       {{ if .Truncated }}
-      <a href="{{ .RelPermalink }}">...</a>
+        <a href="{{ .RelPermalink }}">...</a>
       {{ end }}
     </p>
   </article>
   {{ end }}
+
   {{ template "_internal/pagination.html" . }}
 {{ end }}
 
