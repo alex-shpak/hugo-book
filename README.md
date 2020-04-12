@@ -185,6 +185,10 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
   # Theme will print warning if page referenced in markdown does not exists.
   BookPortableLinks = true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
+  BookServiceWorker = true
 ```
 
 ### Multi-Language Support

@@ -12,20 +12,27 @@
 
   document.addEventListener('keypress', focusSearchFieldOnKeyPress);
 
-  function focusSearchFieldOnKeyPress(e) {
+  /**
+   * @param {Event} event
+   */
+  function focusSearchFieldOnKeyPress(event) {
     if (input === document.activeElement) {
       return;
     }
 
-    const characterPressed = String.fromCharCode(e.charCode);
+    const characterPressed = String.fromCharCode(event.charCode);
     if (!isHotkey(characterPressed)) {
       return;
     }
 
     input.focus();
-    e.preventDefault();
+    event.preventDefault();
   }
 
+  /**
+   * @param {String} character
+   * @returns {Boolean} 
+   */
   function isHotkey(character) {
     const dataHotkeys = input.getAttribute('data-hotkeys') || '';
     return dataHotkeys.indexOf(character) >= 0;
@@ -63,6 +70,10 @@
     });
   }
 
+  /**
+   * @param {String} src 
+   * @param {Function} callback 
+   */
   function loadScript(src, callback) {
     const script = document.createElement('script');
     script.defer = true;
