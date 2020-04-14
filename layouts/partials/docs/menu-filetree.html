@@ -8,10 +8,11 @@
 {{ end }}
 
 {{ define "book-section-children" }}{{/* (dict "Section" .Section "CurrentPage" .CurrentPage) */}}
-  {{ $ancestor := .Section.IsAncestor .CurrentPage }}
+  {{ $self := eq .CurrentPage .Section }}
+  {{ $ancestor := strings.HasPrefix .CurrentPage.RelPermalink .Section.RelPermalink }}
   {{ $collapsed := .Section.Params.bookCollapseSection }}
 
-  {{ if or $ancestor (not $collapsed) }}
+  {{ if or $self $ancestor (not $collapsed) }}
   <ul>
     {{ range (where .Section.Pages "Params.bookhidden" "ne" true) }}
       {{ if .IsSection }}
@@ -33,7 +34,7 @@
   {{ if .Page.Content }}
     <a href="{{ .Page.RelPermalink }}" class="
         {{- if and .Page.Params.bookCollapseSection .Page.IsSection }}collapsed {{ end }}
-        {{- if eq .CurrentPage.RelPermalink .Page.RelPermalink }}active{{ end }}">
+        {{- if eq .CurrentPage .Page }}active{{ end }}">
       {{- partial "docs/title" .Page -}}
     </a>
   {{ else }}
