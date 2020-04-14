@@ -2,22 +2,26 @@
 {{ if eq $bookSection "*" }}
   {{ $bookSection = "/" }}{{/* Backward compatibility */}}
 {{ end }}
-{{ $page := .Site.GetPage $bookSection }}
+{{ $root := .Site.GetPage $bookSection }}
+{{ $pages := partialCached "docs/prev-next-cache" $root.Pages }}
+{{ $prev := $pages.Next . }}
+{{ $next := $pages.Prev . }}
 
-{{ $pages := partialCached "docs/prev-next-cache" $page.Pages }}
-<div class="flex justify-between">
+{{- if or $prev $next }}
+<div class="clearfix">
   {{ with ($pages.Next .) }}
-    <a href="{{ .RelPermalink }}" class="flex align-center">
-      <img src="{{ "svg/backward.svg" | relURL }}" class="book-icon" title="{{ partial "docs/title" . }}" />
-      &nbsp;
-      {{ partial "docs/title" . }}
+    <a href="{{ .RelPermalink }}" class="flex align-center float-left">
+      <img src="{{ "svg/backward.svg" | relURL }}" class="book-icon" alt="Previous" title="{{ partial "docs/title" . }}" />
+      {{/* &nbsp;
+      {{ partial "docs/title" . }} */}}
     </a>
   {{ end }}
   {{ with ($pages.Prev .) }}
-    <a href="{{ .RelPermalink }}" class="flex align-center">
-      {{ partial "docs/title" . }}
-      &nbsp;
-      <img src="{{ "svg/forward.svg" | relURL }}" class="book-icon" title="{{ partial "docs/title" . }}" />
+    <a href="{{ .RelPermalink }}" class="flex align-center float-right">
+      {{/* {{ partial "docs/title" . }}
+      &nbsp; */}}
+      <img src="{{ "svg/forward.svg" | relURL }}" class="book-icon"  alt="Next" title="{{ partial "docs/title" . }}" />
     </a>
   {{ end }}
 </div>
+{{ end -}}

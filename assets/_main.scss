@@ -78,7 +78,6 @@ ul.pagination {
 
 .book-icon {
   filter: $icon-filter;
-  height: 1em;
 }
 
 .book-brand {
@@ -218,10 +217,10 @@ ul.pagination {
 }
 
 .book-footer {
-  padding-top: $padding-16;
+  margin-top: $padding-16;
   font-size: $font-size-14;
 
-  img {
+  img.book-icon {
     height: 1em;
     margin-inline-end: $padding-8;
   }
