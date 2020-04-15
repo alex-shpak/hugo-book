@@ -7,6 +7,10 @@
   const input = document.querySelector('#book-search-input');
   const results = document.querySelector('#book-search-results');
 
+  if (!input) {
+    return
+  }
+
   input.addEventListener('focus', init);
   input.addEventListener('keyup', search);
 
