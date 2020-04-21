@@ -1,23 +1,36 @@
-.book-page {
-  .markdown {
-    @for $h from 1 through 6 {
-      > h#{$h} {
-        counter-increment: h#{$h};
-        counter-reset: h#{$h + 1};
+$startLevel: 1;
+$endLevel: 6;
 
-        $content: "";
-        @for $n from 1 through $h {
-          $content: $content + 'counter(h#{$n})"."';
-        }
+.book-page .markdown {
+  @for $currentLevel from $startLevel through $endLevel {
+    > h#{$currentLevel} {
+      counter-increment: h#{$currentLevel};
+      counter-reset: h#{$currentLevel + 1};
 
-        &::before {
-          content: unquote($content) " ";
-        }
+      $content: "";
+      @for $n from $startLevel through $currentLevel {
+        $content: $content + 'counter(h#{$n})"."';
+      }
+
+      &::before {
+        content: unquote($content) " ";
       }
     }
   }
+}
 
-  + .book-toc nav ul {
-    list-style: decimal;
+.book-toc nav ul {
+  li {
+    counter-increment: item;
+
+    &:first-child {
+      counter-reset: item;
+    }
+
+    &:before {
+      content: counters(item, ".") ". ";
+      float: left;
+      margin-right: $padding-4;
+    }
   }
 }
