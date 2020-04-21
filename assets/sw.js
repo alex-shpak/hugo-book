@@ -1,11 +1,21 @@
+const cacheName = self.location.pathname
+const pages = [
+  {{ range .Site.AllPages -}}
+  "{{ .RelPermalink }}",
+  {{ end }}
+];
+
 self.addEventListener("install", function (event) {
   self.skipWaiting();
+
+  const precache = caches.open(cacheName).then((cache) => {
+    return cache.addAll(pages);
+  });
+  event.waitUntil(precache);
 });
 
 self.addEventListener("fetch", (event) => {
-  const cacheName = self.location.pathname
   const request = event.request;
-
   if (request.method !== "GET") {
     return;
   }

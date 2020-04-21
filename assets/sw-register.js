@@ -1,6 +1,7 @@
+{{ $swJS := resources.Get "sw.js" | resources.ExecuteAsTemplate "sw.js" . }}
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register(
-    "{{ "/sw.js" | relURL }}", 
+    "{{ $swJS.RelPermalink }}", 
     { scope: "{{ "/" | relURL }}" }
   );
 }
