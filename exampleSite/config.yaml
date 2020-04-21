@@ -29,9 +29,9 @@ languages:
     languageName: Russian
     contentDir: content.ru
     weight: 2
-  cn:
+  zh:
     languageName: Chinese
-    contentDir: content.cn
+    contentDir: content.zh
     weight: 3
 
 menu:
