@@ -134,7 +134,13 @@
 
     summary {
       line-height: 1;
+      padding: $padding-16;
+      margin: -$padding-16;
       cursor: pointer;
+    }
+
+    &[open] summary {
+      margin-bottom: 0;
     }
   }
 }
