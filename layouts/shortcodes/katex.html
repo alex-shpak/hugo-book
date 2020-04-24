@@ -7,7 +7,7 @@
 {{- end -}}
 
 <span {{- with .Get "class" }} class="{{ . }}"{{ end }}>
-  {{- cond (in .Params "display") "\\[" "\\(" -}}
+  {{ cond (in .Params "display") "\\[" "\\(" -}}
   {{- trim .Inner "\n" -}}
-  {{- cond (in .Params "display") "\\]" "\\)" -}}
+  {{- cond (in .Params "display") "\\]" "\\)" }}
 </span>
