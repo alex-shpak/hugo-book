@@ -8,6 +8,21 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.3
+        with:
+          source: assets/book.scss
+          destination: assets/book.static.css
+          - name: Commit changes
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v4
+        with:
+          message: "Auto Compiled css"
+          add: "assets/book.static.css"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Install Hugo
         run: |
           LATEST_VERSION=`curl --silent "https://api.github.com/repos/gohugoio/hugo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'`
