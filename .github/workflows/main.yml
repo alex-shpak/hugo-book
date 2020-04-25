@@ -32,7 +32,7 @@ jobs:
 
       - name: Run Hugo
         working-directory: exampleSite
-        run: hugo --themesDir ../..
+        run: hugo --themesDir ../.. --theme monako-book
   hugo-minimum:
     runs-on: ubuntu-latest
     steps:
