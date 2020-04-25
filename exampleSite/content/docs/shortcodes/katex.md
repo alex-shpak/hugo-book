@@ -7,20 +7,14 @@ KaTeX shortcode let you render math typesetting in markdown document. See [KaTeX
 
 ```latex
 {{</* katex [display] [class="text-center"]  */>}}
-x = \begin{cases}
-   a &\text{if } b \\
-   c &\text{if } d
-\end{cases}
+f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 {{</* /katex */>}}
 ```
 
 <--->
 
-{{< katex >}}
-x = \begin{cases}
-   a &\text{if } b \\
-   c &\text{if } d
-\end{cases}
+{{< katex display >}}
+f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 {{< /katex >}}
 
 {{< /columns >}}
@@ -29,9 +23,6 @@ x = \begin{cases}
 
 Here is some inline example: {{< katex >}}\pi(x){{< /katex >}}, rendered in the same line. And below is `display` example, having `display: block`
 {{< katex display >}}
-x = \begin{cases}
-   a &\text{if } b \\
-   c &\text{if } d
-\end{cases}
+f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 {{< /katex >}}
 Text continues here.

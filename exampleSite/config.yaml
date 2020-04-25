@@ -29,9 +29,9 @@ languages:
     languageName: Russian
     contentDir: content.ru
     weight: 2
-  cn:
+  zh:
     languageName: Chinese
-    contentDir: content.cn
+    contentDir: content.zh
     weight: 3
 
 menu:
@@ -58,8 +58,9 @@ params:
   # When not specified file structure and weights will be used
   # BookMenuBundle: /menu
 
-  # (Optional, default docs) Specify section of content to render as menu
-  # You can also set value to '*' to render all sections to menu
+  # (Optional, default docs) Specify root page to render child pages as menu.
+  # Page is resoled by .GetPage function: https://gohugo.io/functions/getpage/
+  # For backward compatibility you can set '*' to render all sections to menu. Acts same as '/'
   BookSection: docs
 
   # Set source repository location.
@@ -68,13 +69,13 @@ params:
 
   # Enable "Edit this page" links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
-  # Path must point to 'content' directory of repo.
-  BookEditPath: edit/master/exampleSite/content
+  # Edit path must point to root directory of repo.
+  BookEditPath: edit/master/exampleSite
 
   # Configure the date format used on the pages
   # - In git information
   # - In blog posts
-  BookDateFormat: "Jan 2, 2006"
+  BookDateFormat: "January 2, 2006"
 
   # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
@@ -92,3 +93,7 @@ params:
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
   # Theme will print warning if page referenced in markdown does not exists.
   BookPortableLinks: true
+
+  # /!\ This is an experimental feature, might be removed or changed at any time
+  # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
+  BookServiceWorker: true
