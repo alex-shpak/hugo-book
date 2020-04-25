@@ -45,4 +45,4 @@ jobs:
 
       - name: Run Hugo
         working-directory: exampleSite
-        run: hugo --themesDir ../..
+        run: hugo --themesDir ../.. --theme monako-book
