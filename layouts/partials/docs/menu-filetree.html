@@ -9,7 +9,7 @@
 
 {{ define "book-section-children" }}{{/* (dict "Section" .Section "CurrentPage" .CurrentPage) */}}
   {{ $self := eq .CurrentPage .Section }}
-  {{ $ancestor := strings.HasPrefix .CurrentPage.RelPermalink .Section.RelPermalink }}
+  {{ $ancestor := .Section.IsAncestor .CurrentPage }}
   {{ $collapsed := .Section.Params.bookCollapseSection }}
 
   {{ if or $self $ancestor (not $collapsed) }}
