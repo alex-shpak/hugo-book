@@ -8,10 +8,9 @@ const pages = [
 self.addEventListener("install", function (event) {
   self.skipWaiting();
 
-  const precache = caches.open(cacheName).then((cache) => {
+  caches.open(cacheName).then((cache) => {
     return cache.addAll(pages);
   });
-  event.waitUntil(precache);
 });
 
 self.addEventListener("fetch", (event) => {
