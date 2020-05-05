@@ -175,7 +175,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # Configuration for indexing can be adjusted in i18n folder per language.
   BookSearch = true
 
-  # (Optional, default true) Enables comments template on pages
+  # (Optional, default true) Enables comments late on pages
   # By default partals/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
@@ -191,6 +191,17 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
   BookServiceWorker = true
 ```
+
+
+### KaTex
+By default, Goldmark doees not render KaTex. To enable it, append the following to your config.toml file. 
+
+```toml
+[markup.goldmark.renderer]
+  unsafe = false
+```
+
+If you are using config.yaml or config.json, consult [configuation markup]https://gohugo.io/getting-started/configuration-markup/
 
 ### Multi-Language Support
 Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/multilingual/), just follow configuration guide there. You can also tweak search indexing configuration per language in `i18n` folder.
@@ -259,7 +270,7 @@ To enable plugin add `@import "plugins/{name}";` to `assets/_custom.scss` in you
 
 ### Hugo Internal Templates
 
-There are few hugo tempaltes inserted in `<head>`
+There are few hugo templates inserted in `<head>`
 
 - [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
 - [Open Graph](https://gohugo.io/templates/internal/#open-graph)
