@@ -194,14 +194,14 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 
 
 ### KaTex
-By default, Goldmark doees not render KaTex. To enable it, append the following to your config.toml file. 
+By default, Goldmark doees not render KaTex. To enable it, append the following to your ```config.toml``` file. 
 
 ```toml
 [markup.goldmark.renderer]
   unsafe = false
 ```
 
-If you are using config.yaml or config.json, consult [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
+If you are using ```config.yaml``` or ```config.json```, consult [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
 
 ### Multi-Language Support
 Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/multilingual/), just follow configuration guide there. You can also tweak search indexing configuration per language in `i18n` folder.
