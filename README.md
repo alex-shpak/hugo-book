@@ -198,7 +198,7 @@ By default, Goldmark doees not render KaTex. To enable it, append the following 
 
 ```toml
 [markup.goldmark.renderer]
-  unsafe = false
+  unsafe = true
 ```
 
 If you are using ```config.yaml``` or ```config.json```, consult [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
