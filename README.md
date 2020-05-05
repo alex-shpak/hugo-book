@@ -175,7 +175,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # Configuration for indexing can be adjusted in i18n folder per language.
   BookSearch = true
 
-  # (Optional, default true) Enables comments late on pages
+  # (Optional, default true) Enables comments template on pages
   # By default partals/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
