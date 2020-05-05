@@ -192,17 +192,6 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   BookServiceWorker = true
 ```
 
-
-### KaTex
-By default, Goldmark doees not render KaTex. To enable it, append the following to your ```config.toml``` file. 
-
-```toml
-[markup.goldmark.renderer]
-  unsafe = true
-```
-
-If you are using ```config.yaml``` or ```config.json```, consult [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
-
 ### Multi-Language Support
 Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/multilingual/), just follow configuration guide there. You can also tweak search indexing configuration per language in `i18n` folder.
 
@@ -284,6 +273,14 @@ There are few hugo templates inserted in `<head>`
  - [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
  - [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
  - [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
+ 
+By default, Goldmark doees not render KaTex. To enable it, append the following to your ```config.toml``` file. 
+
+```toml
+[markup.goldmark.renderer]
+  unsafe = true
+```
+If you are using ```config.yaml``` or ```config.json```, consult [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
 
 ## Versioning
 
