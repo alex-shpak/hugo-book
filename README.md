@@ -162,8 +162,8 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   
   # Enable 'Edit this page' links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
-  # Path must point to 'content' directory of repo.
-  BookEditPath = 'edit/master/exampleSite/content'
+  # Path must point to the site directory.
+  BookEditPath = 'edit/master/exampleSite'
   
   # (Optional, default January 2, 2006) Configure the date format used on the pages
   # - In git information
