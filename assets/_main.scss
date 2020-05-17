@@ -63,7 +63,7 @@ aside nav ul {
   }
 
   ul {
-    padding-left: $padding-16;
+    padding-inline-start: $padding-16;
   }
 }
 
@@ -93,7 +93,7 @@ ul.pagination {
     height: 1.5em;
     width: auto;
     vertical-align: middle;
-    margin-right: $padding-8;
+    margin-inline-end: $padding-8;
   }
 }
 
@@ -117,10 +117,13 @@ ul.pagination {
     color: $color-link;
   }
 
-  a.collapsed::after {
-    content: "▸";
-    position: absolute;
-    right: 0;
+  a.collapsed {
+    display: flex;
+    justify-content: space-between;
+
+    &::after {
+      content: "▸";
+    }
   }
 }
 
@@ -137,7 +140,7 @@ ul.pagination {
   }
 
   > ul {
-    padding-left: 0;
+    padding-inline-start: 0;
   }
 }
 
@@ -229,7 +232,7 @@ ul.pagination {
 
   img {
     height: 1em;
-    margin-right: $padding-8;
+    margin-inline-end: $padding-8;
   }
 }
 
@@ -306,7 +309,7 @@ aside nav,
 
 @media screen and (max-width: $mobile-breakpoint) {
   .book-menu {
-    margin-left: -$menu-width;
+    margin-inline-start: -$menu-width;
     font-size: $font-size-base;
   }
 

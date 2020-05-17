@@ -69,7 +69,7 @@
     margin: $padding-16 0;
     padding: $padding-8 $padding-16 $padding-8 ($padding-16 - $padding-4); //to keep total left space 16dp
 
-    border-left: $padding-4 solid $gray-200;
+    border-inline-start: $padding-4 solid $gray-200;
     border-radius: $border-radius;
 
     :first-child { margin-top: 0; }
@@ -101,7 +101,7 @@
   }
 
   ul, ol {
-    padding-left: $padding-16 * 2;
+    padding-inline-start: $padding-16 * 2;
   }
 
   dl {
@@ -111,7 +111,7 @@
     }
 
     dd {
-      margin-left: $padding-16 * 2;
+      margin-inline-start: $padding-16 * 2;
     }
   }
 
@@ -119,11 +119,11 @@
   .highlight table tr {
     td:nth-child(1) pre {
       margin: 0;
-      padding-right: 0;
+      padding-inline-end: 0;
     }
     td:nth-child(2) pre {
       margin: 0;
-      padding-left: 0;
+      padding-inline-start: 0;
     }
   }
 

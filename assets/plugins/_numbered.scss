@@ -30,7 +30,7 @@ $endLevel: 6;
     &:before {
       content: counters(item, ".") ". ";
       float: left;
-      margin-right: $padding-4;
+      margin-inline-end: $padding-4;
     }
   }
 }
