@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Hugo
         run: |
-          wget "https://github.com/gohugoio/hugo/releases/download/v0.65.0/hugo_extended_0.65.0_Linux-64bit.deb" -O /tmp/hugo.deb
+          wget "https://github.com/gohugoio/hugo/releases/download/v0.68.0/hugo_extended_0.68.0_Linux-64bit.deb" -O /tmp/hugo.deb
           sudo dpkg -i /tmp/hugo.deb
 
       - name: Run Hugo
