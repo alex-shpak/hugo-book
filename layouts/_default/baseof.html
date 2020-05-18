@@ -6,7 +6,7 @@
   {{ partial "docs/inject/head" . }}
 </head>
 
-<body>
+<body dir={{ .Site.Language.LanguageDirection }}>
   <input type="checkbox" class="hidden" id="menu-control" />
   <main class="container flex">
     <aside class="book-menu">

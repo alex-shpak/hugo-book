@@ -168,12 +168,6 @@ ul.pagination {
   margin: $padding-16 0;
   border-bottom: 1px solid transparent;
 
-  &::after {
-    display: block;
-    content: "";
-    clear: both;
-  }
-
   input {
     width: 100%;
     padding: $padding-8;
@@ -339,6 +333,14 @@ aside nav,
       bottom: 0;
       left: 0;
       right: 0;
+    }
+  }
+
+  //for RTL support
+  body[dir="rtl"] #menu-control:checked + main {
+    .book-menu nav,
+    .book-page {
+      transform: translateX(-$menu-width);
     }
   }
 
