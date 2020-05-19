@@ -185,9 +185,9 @@ ul.pagination {
 
   .book-search-spinner {
     position: absolute;
-    margin: $padding-8;
-    right: 0;
     top: 0;
+    margin: $padding-8;
+    margin-inline-start: calc(100% - #{$padding-16 + $padding-8});
 
     width: $padding-16;
     height: $padding-16;
