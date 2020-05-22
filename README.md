@@ -259,7 +259,7 @@ To enable plugin add `@import "plugins/{name}";` to `assets/_custom.scss` in you
 
 ### Hugo Internal Templates
 
-There are few hugo tempaltes inserted in `<head>`
+There are few hugo templates inserted in `<head>`
 
 - [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
 - [Open Graph](https://gohugo.io/templates/internal/#open-graph)
@@ -273,6 +273,14 @@ There are few hugo tempaltes inserted in `<head>`
  - [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
  - [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
  - [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
+ 
+By default, Goldmark trims unsafe output which might prevent some shortcodes from rendeting. It's recommended to set `markup.goldmark.renderer.unsafe=true` in case of problems.
+
+```toml
+[markup.goldmark.renderer]
+  unsafe = true
+```
+If you are using ```config.yaml``` or ```config.json```, consult [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
 
 ## Versioning
 
