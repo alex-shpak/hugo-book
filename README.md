@@ -274,7 +274,7 @@ There are few hugo templates inserted in `<head>`
  - [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
  - [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
  
-By default, Goldmark doees not render KaTex. To enable it, append the following to your ```config.toml``` file. 
+By default, Goldmark trims unsafe output which might prevent some shortcodes from rendeting. It's recommended to set `markup.goldmark.renderer.unsafe=true` in case of problems.
 
 ```toml
 [markup.goldmark.renderer]
