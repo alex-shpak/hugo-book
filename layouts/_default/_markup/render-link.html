@@ -6,7 +6,7 @@
 
 {{- define "portable-link" -}}
   {{- $destination := .Destination }}
-  {{- $isRemote := or (in .Destination "://") (strings.HasPrefix .Destination "//") }}
+  {{- $isRemote := or (in .Destination ":") (strings.HasPrefix .Destination "//") }}
   {{- if not $isRemote }}
     {{- $url := urls.Parse .Destination }}
     {{- $path := strings.TrimSuffix "/_index.md" $url.Path }}

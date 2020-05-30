@@ -1,33 +1,53 @@
-@import 'variables';
+@import "variables";
 
 .markdown {
-  line-height: 1.6em;
+  line-height: 1.6;
 
   // remove padding at the beginning of page
   > :first-child {
     margin-top: 0;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-weight: normal;
-    line-height: 1em;
+    line-height: 1;
     margin-top: 1.5em;
     margin-bottom: $padding-16;
+
+    a.anchor {
+      display: none;
+      font-size: .75em;
+      vertical-align: middle;
+      text-decoration: none;
+    }
+
+    &:hover a.anchor {
+      display: initial;
+    }
   }
 
-  h4, h5, h6 {
+  h4,
+  h5,
+  h6 {
     font-weight: bolder;
   }
 
   h5 {
-    font-size: .875em;
+    font-size: 0.875em;
   }
 
   h6 {
-    font-size: .75em;
+    font-size: 0.75em;
   }
 
-  b, optgroup, strong {
+  b,
+  optgroup,
+  strong {
     font-weight: bolder;
   }
 
@@ -50,7 +70,7 @@
     padding: 0 $padding-4;
     background: $gray-200;
     border-radius: $border-radius;
-    font-size: .875em;
+    font-size: 0.875em;
   }
 
   pre {
@@ -72,8 +92,12 @@
     border-inline-start: $padding-4 solid $gray-200;
     border-radius: $border-radius;
 
-    :first-child { margin-top: 0; }
-    :last-child { margin-bottom: 0; }
+    :first-child {
+      margin-top: 0;
+    }
+    :last-child {
+      margin-bottom: 0;
+    }
   }
 
   table {
@@ -84,7 +108,8 @@
     margin-top: $padding-16;
     margin-bottom: $padding-16;
 
-    tr th, tr td {
+    tr th,
+    tr td {
       padding: $padding-8 $padding-16;
       border: $padding-1 solid $gray-200;
     }
@@ -100,7 +125,8 @@
     background: $gray-200;
   }
 
-  ul, ol {
+  ul,
+  ol {
     padding-inline-start: $padding-16 * 2;
   }
 
