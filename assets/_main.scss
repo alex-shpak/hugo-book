@@ -9,6 +9,7 @@ html,
 body {
   min-width: $body-min-width;
   overflow-x: hidden;
+  height: 100vh; // For sticky elements
 }
 
 body {
@@ -321,8 +322,7 @@ aside nav,
       transform: translateX($menu-width);
     }
 
-    .book-header aside,
-    .markdown {
+    .book-page {
       opacity: 0.25;
     }
 
