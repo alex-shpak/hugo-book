@@ -1,23 +1,16 @@
 html {
   font-size: $font-size-base;
-  letter-spacing: 0.33px;
   scroll-behavior: smooth;
   touch-action: manipulation;
 }
 
-html,
 body {
   min-width: $body-min-width;
-  overflow-x: hidden;
-  height: 100vh; // For sticky elements
-}
-
-body {
   color: $body-font-color;
   background: $body-background;
 
+  letter-spacing: 0.33px;
   font-weight: $body-font-weight;
-
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -105,6 +98,8 @@ ul.pagination {
   nav {
     width: $menu-width;
     padding: $padding-16;
+    z-index: 1;
+    background: $body-background;
 
     @include fixed;
   }
@@ -298,12 +293,13 @@ aside nav,
 .book-header aside,
 .markdown {
   transition: 0.2s ease-in-out;
-  transition-property: transform, margin, opacity;
-  will-change: transform, margin;
+  transition-property: transform, margin, opacity, visibility;
+  will-change: transform, margin, opacity;
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
   .book-menu {
+    visibility: hidden;
     margin-inline-start: -$menu-width;
     font-size: $font-size-base;
   }
@@ -317,9 +313,13 @@ aside nav,
   }
 
   #menu-control:checked + main {
-    .book-menu nav,
-    .book-page {
+    .book-menu {
+      visibility: initial;
+    }
+
+    .book-menu nav {
       transform: translateX($menu-width);
+      box-shadow: 0 0 $padding-8 rgba(0, 0, 0, 0.1);
     }
 
     .book-page {
@@ -338,8 +338,7 @@ aside nav,
 
   //for RTL support
   body[dir="rtl"] #menu-control:checked + main {
-    .book-menu nav,
-    .book-page {
+    .book-menu nav {
       transform: translateX(-$menu-width);
     }
   }
