@@ -8,20 +8,18 @@
 {{ $next := $pages.Prev . }}
 
 {{- if or $prev $next }}
-<div class="clearfix">
+<p class="flex align-center justify-between">
   {{ with ($pages.Next .) }}
-    <a href="{{ .RelPermalink }}" class="flex align-center float-left">
-      <img src="{{ "svg/backward.svg" | relURL }}" class="book-icon" alt="Previous" title="{{ partial "docs/title" . }}" />
-      {{/* &nbsp;
-      {{ partial "docs/title" . }} */}}
+    <a href="{{ .RelPermalink }}" class="flex align-center float-left book-icon">
+      <img src="{{ "svg/backward.svg" | relURL }}" class="" alt="Previous" title="{{ partial "docs/title" . }}" />
+      <span>{{ partial "docs/title" . }}</span>
     </a>
   {{ end }}
   {{ with ($pages.Prev .) }}
-    <a href="{{ .RelPermalink }}" class="flex align-center float-right">
-      {{/* {{ partial "docs/title" . }}
-      &nbsp; */}}
-      <img src="{{ "svg/forward.svg" | relURL }}" class="book-icon"  alt="Next" title="{{ partial "docs/title" . }}" />
+    <a href="{{ .RelPermalink }}" class="flex align-center float-right book-icon">
+      <span>{{ partial "docs/title" . }}</span>
+      <img src="{{ "svg/forward.svg" | relURL }}" class=""  alt="Next" title="{{ partial "docs/title" . }}" />
     </a>
   {{ end }}
-</div>
+</p>
 {{ end -}}

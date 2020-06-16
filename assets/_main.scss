@@ -76,8 +76,19 @@ ul.pagination {
   margin: 0 auto;
 }
 
-.book-icon {
+img.book-icon {
   filter: $icon-filter;
+}
+
+.book-icon {
+  img {
+    filter: $icon-filter;
+    height: 1em;
+  }
+
+  * + * {
+    margin-inline-start: $padding-8;
+  }
 }
 
 .book-brand {
@@ -98,7 +109,6 @@ ul.pagination {
   nav {
     width: $menu-width;
     padding: $padding-16;
-    z-index: 1;
     background: $body-background;
 
     @include fixed;
@@ -219,11 +229,6 @@ ul.pagination {
 .book-footer {
   margin-top: $padding-16;
   font-size: $font-size-14;
-
-  img.book-icon {
-    height: 1em;
-    margin-inline-end: $padding-8;
-  }
 }
 
 .book-comments {
@@ -300,6 +305,7 @@ aside nav,
 @media screen and (max-width: $mobile-breakpoint) {
   .book-menu {
     visibility: hidden;
+    z-index: 1;
     margin-inline-start: -$menu-width;
     font-size: $font-size-base;
   }
