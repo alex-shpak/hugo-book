@@ -69,6 +69,3 @@ Tamen inde, vos videt e flammis Scythica parantem rupisque pectora umbras. Haec
 ficta canistris repercusso simul ego aris Dixit! Esse Fama trepidare hunc
 crescendo vigor ululasse vertice *exspatiantur* celer tepidique petita aversata
 oculis iussa est me ferro.
-
-{{< figure src="https://image.freepik.com/free-vector/abstract-dynamic-pattern-wallpaper-vector_53876-59131.jpg" class="text-left" caption="meh">}}
-
