@@ -194,6 +194,12 @@ ul.pagination {
 
     @include spin(1s);
   }
+
+  #book-search-results {
+    small {
+      opacity: .5;
+    }
+  }
 }
 
 .book-toc {

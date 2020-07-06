@@ -3,7 +3,7 @@
 {{ $searchDataFile := printf "%s.search-data.js" .Language.Lang }}
 {{ $searchData := resources.Get "search-data.js" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
 
-(function() {
+(function () {
   const input = document.querySelector('#book-search-input');
   const results = document.querySelector('#book-search-results');
 
@@ -47,7 +47,7 @@
     input.required = true;
 
     loadScript('{{ "flexsearch.min.js" | relURL }}');
-    loadScript('{{ $searchData.RelPermalink }}', function() {
+    loadScript('{{ $searchData.RelPermalink }}', function () {
       input.required = false;
       search();
     });
@@ -63,12 +63,13 @@
     }
 
     const searchHits = window.bookSearchIndex.search(input.value, 10);
-    searchHits.forEach(function(page) {
-      const li = document.createElement('li'),
-            a = li.appendChild(document.createElement('a'));
+    searchHits.forEach(function (page) {
+      const li = element('<li><a href></a><small></small></li>');
+      const a = li.querySelector('a'), small = li.querySelector('small');
 
       a.href = page.href;
       a.textContent = page.title;
+      small.textContent = page.section;
 
       results.appendChild(li);
     });
@@ -86,5 +87,15 @@
     script.onload = callback;
 
     document.head.appendChild(script);
+  }
+
+  /**
+   * @param {String} content
+   * @returns {Node}
+   */
+  function element(content) {
+    const div = document.createElement('div');
+    div.innerHTML = content;
+    return div.firstChild;
   }
 })();
