@@ -59,6 +59,9 @@
     input[type="radio"]:checked + label + .book-tabs-content {
       display: block;
     }
+    input[type="radio"]:focus + label {
+      @include outline
+    }
   }
 
   // {{< columns >}}

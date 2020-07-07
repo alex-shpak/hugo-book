@@ -20,14 +20,14 @@
     margin-bottom: $padding-16;
 
     a.anchor {
-      display: none;
+      opacity: 0;
       font-size: .75em;
       vertical-align: middle;
       text-decoration: none;
     }
 
-    &:hover a.anchor {
-      display: initial;
+    &:hover a.anchor, a.anchor:focus {
+      opacity: initial;
     }
   }
 

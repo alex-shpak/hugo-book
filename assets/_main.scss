@@ -38,6 +38,10 @@ img {
   vertical-align: baseline;
 }
 
+:focus {
+  @include outline;
+}
+
 aside nav ul {
   padding: 0;
   margin: 0;
@@ -98,7 +102,6 @@ ul.pagination {
   nav {
     width: $menu-width;
     padding: $padding-16;
-    z-index: 1;
     background: $body-background;
 
     @include fixed;
@@ -195,10 +198,8 @@ ul.pagination {
     @include spin(1s);
   }
 
-  #book-search-results {
-    small {
-      opacity: .5;
-    }
+  small {
+    opacity: 0.5;
   }
 }
 
@@ -279,7 +280,7 @@ ul.pagination {
 
     li.active img,
     li:hover img {
-      opacity: 1;
+      opacity: initial;
     }
 
     a {
@@ -304,10 +305,16 @@ aside nav,
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
+  #menu-control,
+  #toc-control {
+    display: inline;
+  }
+
   .book-menu {
     visibility: hidden;
     margin-inline-start: -$menu-width;
     font-size: $font-size-base;
+    z-index: 1;
   }
 
   .book-toc {
@@ -318,7 +325,11 @@ aside nav,
     display: block;
   }
 
-  #menu-control:checked + main {
+  #menu-control:focus ~ main label[for="menu-control"] {
+    @include outline;
+  }
+
+  #menu-control:checked ~ main {
     .book-menu {
       visibility: initial;
     }
@@ -342,15 +353,21 @@ aside nav,
     }
   }
 
+  #toc-control:focus ~ main label[for="toc-control"] {
+    @include outline;
+  }
+
+  #toc-control:checked ~ main {
+    .book-header aside {
+      display: block;
+    }
+  }
+
   //for RTL support
   body[dir="rtl"] #menu-control:checked + main {
     .book-menu nav {
       transform: translateX(-$menu-width);
     }
-  }
-
-  #toc-control:checked + aside {
-    display: block;
   }
 }
 

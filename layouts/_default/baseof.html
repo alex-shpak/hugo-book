@@ -7,7 +7,8 @@
 </head>
 
 <body dir={{ .Site.Language.LanguageDirection }}>
-  <input type="checkbox" class="hidden" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
       {{ template "menu" . }} <!-- Left menu Content -->
@@ -52,10 +53,9 @@
   {{ partial "docs/header" . }}
 
   {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
-    <input type="checkbox" class="hidden" id="toc-control" />
-    <aside class="hidden clearfix">
-      {{ template "toc" . }}
-    </aside>
+  <aside class="hidden clearfix">
+    {{ template "toc" . }}
+  </aside>
   {{ end }}
 {{ end }}
 
