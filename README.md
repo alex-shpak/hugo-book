@@ -176,7 +176,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   BookSearch = true
 
   # (Optional, default true) Enables comments template on pages
-  # By default partals/docs/comments.html includes Disqus template
+  # By default partials/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
   BookComments = true
