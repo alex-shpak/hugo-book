@@ -52,7 +52,7 @@ hugo server --minify --theme book
 
 ### Creating site from scratch
 
-Below is example how to create new site from scratch
+Below is an example on how to create a new site from scratch:
 
 ```sh
 hugo new site mydocs; cd mydocs
@@ -69,13 +69,13 @@ hugo server --minify --theme book
 
 ### File tree menu (default)
 
-By default theme will render pages from `content/docs` section as menu in a tree structure.  
-You can set `title` and `weight` in front matter of pages to adjust order and titles in menu.
+By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.  
+You can set `title` and `weight` in the front matter of pages to adjust the order and titles in the menu.
 
 ### Leaf bundle menu
 
-You can also use leaf bundle and content of it's `index.md` as menu.  
-Given you have this file structure
+You can also use leaf bundle and the content of its `index.md` file as menu.  
+Given you have the following file structure:
 
 ```
 ├── content
@@ -87,7 +87,7 @@ Given you have this file structure
 │       └── post-two.md
 ```
 
-Create file `content/docs/menu/index.md` with content
+Create a file `content/menu/index.md` with the content:
 
 ```md
 +++
@@ -100,7 +100,7 @@ headless = true
 - [Blog]({{< relref "/posts" >}})
 ```
 
-And Enable it by settings `BookMenuBundle: /menu` in Site configuration
+And Enable it by setting `BookMenuBundle: /menu` in Site configuration.
 
 - [Example menu](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/content/menu/index.md)
 - [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml)
@@ -108,15 +108,15 @@ And Enable it by settings `BookMenuBundle: /menu` in Site configuration
 
 ## Blog
 
-Simple blog supported for section `posts`.  
-Blog is not primary use case so book theme so it has only minimal features
+A simple blog is supported in the section `posts`.  
+A blog is not the primary usecase of this theme, so it has only minimal features.
 
 ## Configuration
 
 ### Site Configuration
 
-There are few configuration options you can add to your `config.toml` file.  
-You can also see `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
+There are a few configuration options that you can add to your `config.toml` file.  
+You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
 # (Optional) Set Google Analytics if you use it to track your website.
@@ -193,11 +193,12 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 ```
 
 ### Multi-Language Support
+
 Theme supports Hugo's [multilingual mode](https://gohugo.io/content-management/multilingual/), just follow configuration guide there. You can also tweak search indexing configuration per language in `i18n` folder.
 
 ### Page Configuration
 
-You can specify additional params per page in front matter
+You can specify additional params in the front matter of individual pages:
 
 ```toml
 # Set type to 'docs' if you want to render page outside of configured section or if you render section other than 'docs'
@@ -247,7 +248,7 @@ There are few empty partials you can override in `layouts/partials/`
 
 ### Plugins
 
-There are few features implemented as plugable `scss` styles. Usually this are features that doesn't make it to the core but still might be useful.
+There are a few features implemented as plugable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
 
 | Plugin                            | Description                                                 |
 | --------------------------------- | ----------------------------------------------------------- |
@@ -255,11 +256,11 @@ There are few features implemented as plugable `scss` styles. Usually this are f
 | `assets/plugins/_numbered.scss`   | Makes headings in markdown numbered, e.g. `1.1`, `1.2`      |
 | `assets/plugins/_scrollbars.scss` | Overrides scrollbar styles to look similar across platforms |
 
-To enable plugin add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root. Exception is `_dark.scss` which contains only variables and should be added to `assets/_variables.scss`.
+To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root. One exception is `_dark.scss` which contains variables only and should be added to `assets/_variables.scss`.
 
 ### Hugo Internal Templates
 
-There are few hugo templates inserted in `<head>`
+There are a few hugo templates inserted in `<head>`
 
 - [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
 - [Open Graph](https://gohugo.io/templates/internal/#open-graph)
@@ -274,19 +275,19 @@ There are few hugo templates inserted in `<head>`
  - [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
  - [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
  
-By default, Goldmark trims unsafe output which might prevent some shortcodes from rendeting. It's recommended to set `markup.goldmark.renderer.unsafe=true` in case of problems.
+By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
 
 ```toml
 [markup.goldmark.renderer]
   unsafe = true
 ```
-If you are using ```config.yaml``` or ```config.json```, consult [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
+If you are using ```config.yaml``` or ```config.json```, consult the [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
 
 ## Versioning
 
-Theme follows simple incremental versioning. e.g. `v1`, `v2` and so on. There might be breaking changes between versions.
+This theme follows a simple incremental versioning. e.g. `v1`, `v2` and so on. There might be breaking changes between versions.
 
-If you want lower maintenance use one of released versions. If you want to live on the edge of changes you can use `master` branch and update your website when needed.
+If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `master` branch and update your website when needed.
 
 ## Contributing
 
@@ -300,4 +301,4 @@ Primary goals are:
 - Avoid interference with user-defined layouts.
 - Avoid using JS if it can be solved by CSS.
 
-Feel free to open issue if you missing some configuration or customisation option.
+Feel free to open issues if you find missing configuration or customisation options.
