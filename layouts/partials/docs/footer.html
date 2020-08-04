@@ -25,4 +25,6 @@
 {{ end }}
 </div>
 
+{{ if not .Params.BookNavigationDisabled }}
 {{ partial "docs/prev-next" . }}
+{{ end }}
