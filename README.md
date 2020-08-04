@@ -220,6 +220,9 @@ bookToC = true
 
 # (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
 bookComments = true
+
+# (Optional) Disable prev/next buttons in the footer for this page
+bookNavigationDisabled = true
 ```
 
 ### Partials
