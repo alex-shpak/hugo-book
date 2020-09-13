@@ -11,24 +11,6 @@ $font-size-16: 1rem !default;
 
 $border-radius: $padding-4 !default;
 
-// Grayscale
-$white: #ffffff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #868e96 !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #212529 !default;
-$black: #000 !default;
-
-$color-link: #05b !default;
-$color-visited-link: #8440f1 !default;
-
-$body-background: white !default;
-$body-font-color: $black !default;
 $body-font-weight: normal !default;
 
 $body-min-width: 20rem !default;
@@ -40,11 +22,45 @@ $toc-width: 16rem !default;
 
 $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
 
-// Hint colors
 $hint-colors: (
   info: #6bf,
   warning: #fd6,
-  danger: #f66
+  danger: #f66,
 ) !default;
 
-$icon-filter: none !default;
+// Themes
+@mixin theme-light {
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-500: #adb5bd;
+
+  --color-link: #0055bb;
+  --color-visited-link: #8440f1;
+
+  --body-background: white;
+  --body-font-color: black;
+
+  --icon-filter: none;
+
+  --hint-color-info: #6bf;
+  --hint-color-warning: #fd6;
+  --hint-color-danger: #f66;
+}
+
+@mixin theme-dark {
+  --gray-100: rgba(255, 255, 255, 0.1);
+  --gray-200: rgba(255, 255, 255, 0.2);
+  --gray-500: rgba(255, 255, 255, 0.5);
+
+  --color-link: #84b2ff;
+  --color-visited-link: #b88dff;
+
+  --body-background: #343a40;
+  --body-font-color: #e9ecef;
+
+  --icon-filter: brightness(0) invert(1);
+
+  --hint-color-info: #6bf;
+  --hint-color-warning: #fd6;
+  --hint-color-danger: #f66;
+}

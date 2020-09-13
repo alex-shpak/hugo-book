@@ -139,6 +139,10 @@ enableGitInfo = true
 disableKinds = ['taxonomy', 'taxonomyTerm']
   
 [params]
+  # (Optional, default light) Sets color theme: light, dark or auto.
+  # Theme 'auto' switches between dark and light modes based on browser/os preferences
+  BookTheme = 'light'
+
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
@@ -252,11 +256,10 @@ There are a few features implemented as plugable `scss` styles. Usually these ar
 
 | Plugin                            | Description                                                 |
 | --------------------------------- | ----------------------------------------------------------- |
-| `assets/plugins/_dark.scss`       | Switches site to dark mode                                  |
 | `assets/plugins/_numbered.scss`   | Makes headings in markdown numbered, e.g. `1.1`, `1.2`      |
 | `assets/plugins/_scrollbars.scss` | Overrides scrollbar styles to look similar across platforms |
 
-To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root. One exception is `_dark.scss` which contains variables only and should be added to `assets/_variables.scss`.
+To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root.
 
 ### Hugo Internal Templates
 
