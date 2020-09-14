@@ -107,8 +107,10 @@ ul.pagination {
     @include fixed;
   }
 
-  a {
+  a,
+  label {
     color: inherit;
+    cursor: pointer;
     word-wrap: break-word;
   }
 
@@ -116,13 +118,12 @@ ul.pagination {
     color: var(--color-link);
   }
 
-  a.collapsed {
-    display: flex;
-    justify-content: space-between;
+  input.toggle + label + ul {
+    display: none;
+  }
 
-    &::after {
-      content: "▸";
-    }
+  input.toggle:checked + label + ul {
+    display: block;
   }
 }
 
