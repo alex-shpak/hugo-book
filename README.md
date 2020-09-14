@@ -137,7 +137,7 @@ enableGitInfo = true
 # (Optional) Theme is intended for documentation use, therefore it doesn't render taxonomy.
 # You can remove related files with config below
 disableKinds = ['taxonomy', 'taxonomyTerm']
-  
+
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
   # Theme 'auto' switches between dark and light modes based on browser/os preferences
@@ -147,33 +147,33 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # Start and end levels can be controlled with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
   BookToC = true
-  
+
   # (Optional, default none) Set the path to a logo for the book. If the logo is
   # /static/logo.png then the path would be 'logo.png'
   BookLogo = 'logo.png'
-  
+
   # (Optional, default none) Set leaf bundle to render as side menu
   # When not specified file structure and weights will be used
   BookMenuBundle = '/menu'
-  
+
   # (Optional, default docs) Specify section of content to render as menu
   # You can also set value to "*" to render all sections to menu
   BookSection = 'docs'
-  
+
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
   BookRepo = 'https://github.com/alex-shpak/hugo-book'
-  
+
   # Enable 'Edit this page' links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Path must point to the site directory.
   BookEditPath = 'edit/master/exampleSite'
-  
+
   # (Optional, default January 2, 2006) Configure the date format used on the pages
   # - In git information
   # - In blog posts
   BookDateFormat = 'Jan 2, 2006'
-  
+
   # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
   # Configuration for indexing can be adjusted in i18n folder per language.
@@ -211,20 +211,23 @@ type = 'docs'
 # Set page weight to re-arrange items in file-tree menu (if BookMenuBundle not set)
 weight = 10
 
-# (Optional) Set to mark page as flat section in file-tree menu (if BookMenuBundle not set)
-bookFlatSection = true
+# (Optional) Set to 'true' to mark page as flat section in file-tree menu (if BookMenuBundle not set)
+bookFlatSection = false
 
-# (Optional, Experimental) Set to hide nested sections or pages at that level. Works only with file-tree menu mode
+# (Optional) Set to hide nested sections or pages at that level. Works only with file-tree menu mode
 bookCollapseSection = true
 
 # (Optional) Set true to hide page or section from side menu (if BookMenuBundle not set)
-bookHidden = true
+bookHidden = false
 
 # (Optional) Set 'false' to hide ToC from page
 bookToC = true
 
 # (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
 bookComments = true
+
+# (Optional) Set to 'false' to exclude page from search index.
+bookSearchExclude = true
 ```
 
 ### Partials
@@ -270,21 +273,22 @@ There are a few hugo templates inserted in `<head>`
 
 ## Shortcodes
 
- - [Buttons](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/buttons/)
- - [Columns](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/columns/)
- - [Expand](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/expand/)
- - [Hints](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/hints/)
- - [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
- - [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
- - [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
- 
+- [Buttons](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/buttons/)
+- [Columns](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/columns/)
+- [Expand](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/expand/)
+- [Hints](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/hints/)
+- [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
+- [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
+- [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
+
 By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
 
 ```toml
 [markup.goldmark.renderer]
   unsafe = true
 ```
-If you are using ```config.yaml``` or ```config.json```, consult the [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
+
+If you are using `config.yaml` or `config.json`, consult the [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
 
 ## Versioning
 
