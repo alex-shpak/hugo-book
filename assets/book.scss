@@ -1,6 +1,6 @@
 @import "defaults";
 @import "variables";
-@import "themes/{{ default "auto" .Site.Params.BookTheme }}";
+@import "themes/{{ default "light" .Site.Params.BookTheme }}";
 
 @import "normalize";
 @import "utils";
