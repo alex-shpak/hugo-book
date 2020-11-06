@@ -17,17 +17,17 @@
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
 {{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}"{{ if not .Site.Params.disable_sri }} integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous"{{ end }}>
 
 {{- if default true .Site.Params.BookSearch }}
 {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
 {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
+<script defer src="{{ $searchJS.RelPermalink }}"{{ if not .Site.Params.disable_sri }} integrity="{{ $searchJS.Data.Integrity }}" crossorigin="anonymous"{{ end }}></script>
 {{ end -}}
 
 {{- if .Site.Params.BookServiceWorker }}
 {{- $swJS := resources.Get "sw-register.js" | resources.ExecuteAsTemplate "sw.js" . | resources.Minify | resources.Fingerprint }}
-<script defer src="{{ $swJS.RelPermalink }}" integrity="{{ $swJS.Data.Integrity }}"></script>
+<script defer src="{{ $swJS.RelPermalink }}"{{ if not .Site.Params.disable_sri }} integrity="{{ $swJS.Data.Integrity }}" crossorigin="anonymous"{{ end }}></script>
 {{ end -}}
 
 {{- template "_internal/google_analytics_async.html" . -}}
