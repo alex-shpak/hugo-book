@@ -2,6 +2,7 @@
 <html lang="{{ .Site.Language.Lang }}" dir={{ .Site.Language.LanguageDirection }}>
 
 <head>
+  {{ hugo.Generator }}
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
 </head>
