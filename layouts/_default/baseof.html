@@ -36,7 +36,11 @@
 
     {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
     <aside class="book-toc">
-      {{ template "toc" . }} <!-- Table of Contents -->
+      <nav>
+        {{ partial "docs/inject/toc-before" . }}
+        {{ template "toc" . }} <!-- Table of Contents -->
+        {{ partial "docs/inject/toc-after" . }}
+      </nav>
     </aside>
     {{ end }}
   </main>
