@@ -1,3 +1,4 @@
+{{ $currentpage := .Permalink }}
 <!-- Merge home and current page translations -->
 {{ $translations := dict }}
 {{ range .Site.Home.AllTranslations }}
@@ -18,7 +19,7 @@
   <ul class="book-languages-list">
     {{ range .Site.Languages }}{{ with index $translations .Lang }}
     <li class="{{ if (eq $.Site.Language .Language) }}active{{ end }}">
-      <a href="{{ .Permalink }}" class="flex align-center">
+      <a href="{{ if (eq $.Site.Language .Language) }}{{ $currentpage }}{{ else }}{{ .Permalink }}{{ end }}" class="flex align-center">
         <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
         {{ .Language.LanguageName }}
       </a>
