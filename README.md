@@ -69,12 +69,12 @@ hugo server --minify --theme book
 
 ### File tree menu (default)
 
-By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.  
+By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.
 You can set `title` and `weight` in the front matter of pages to adjust the order and titles in the menu.
 
 ### Leaf bundle menu
 
-You can also use leaf bundle and the content of its `index.md` file as menu.  
+You can also use leaf bundle and the content of its `index.md` file as menu.
 Given you have the following file structure:
 
 ```
@@ -108,14 +108,14 @@ And Enable it by setting `BookMenuBundle: /menu` in Site configuration.
 
 ## Blog
 
-A simple blog is supported in the section `posts`.  
+A simple blog is supported in the section `posts`.
 A blog is not the primary usecase of this theme, so it has only minimal features.
 
 ## Configuration
 
 ### Site Configuration
 
-There are a few configuration options that you can add to your `config.toml` file.  
+There are a few configuration options that you can add to your `config.toml` file.
 You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
@@ -234,15 +234,17 @@ bookSearchExclude = true
 
 There are few empty partials you can override in `layouts/partials/`
 
-| Partial                                            | Placement                              |
-| -------------------------------------------------- | -------------------------------------- |
-| `layouts/partials/docs/inject/head.html`           | Before closing `<head>` tag            |
-| `layouts/partials/docs/inject/body.html`           | Before closing `<body>` tag            |
-| `layouts/partials/docs/inject/footer.html`         | After page footer content              |
-| `layouts/partials/docs/inject/menu-before.html`    | At the beginning of `<nav>` menu block |
-| `layouts/partials/docs/inject/menu-after.html`     | At the end of `<nav>` menu block       |
-| `layouts/partials/docs/inject/content-before.html` | Before page content                    |
-| `layouts/partials/docs/inject/content-after.html`  | After page content                     |
+| Partial                                            | Placement                                   |
+| -------------------------------------------------- | ------------------------------------------- |
+| `layouts/partials/docs/inject/head.html`           | Before closing `<head>` tag                 |
+| `layouts/partials/docs/inject/body.html`           | Before closing `<body>` tag                 |
+| `layouts/partials/docs/inject/footer.html`         | After page footer content                   |
+| `layouts/partials/docs/inject/menu-before.html`    | At the beginning of `<nav>` menu block      |
+| `layouts/partials/docs/inject/menu-after.html`     | At the end of `<nav>` menu block            |
+| `layouts/partials/docs/inject/content-before.html` | Before page content                         |
+| `layouts/partials/docs/inject/content-after.html`  | After page content                          |
+| `layouts/partials/docs/inject/toc-before.html`     | At the beginning of table of contents block |
+| `layouts/partials/docs/inject/toc-after.html`      | At the end of table of contents block       |
 
 ### Extra Customisation
 
@@ -300,7 +302,7 @@ If you want lower maintenance, use one of the released versions. If you want to 
 
 ### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
 
-Contributions are welcome and I will review and consider pull requests.  
+Contributions are welcome and I will review and consider pull requests.
 Primary goals are:
 
 - Keep it simple.
