@@ -12,7 +12,9 @@
   <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     <aside class="book-menu">
-      {{ template "menu" . }} <!-- Left menu Content -->
+      <div class="book-menu-content">
+        {{ template "menu" . }} <!-- Left menu Content -->
+      </div>
     </aside>
 
     <div class="book-page">
@@ -36,11 +38,9 @@
 
     {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
     <aside class="book-toc">
-      <nav>
-        {{ partial "docs/inject/toc-before" . }}
+      <div class="book-toc-content">
         {{ template "toc" . }} <!-- Table of Contents -->
-        {{ partial "docs/inject/toc-after" . }}
-      </nav>
+      </div>
     </aside>
     {{ end }}
   </main>
