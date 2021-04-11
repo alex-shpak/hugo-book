@@ -254,6 +254,7 @@ There are few empty partials you can override in `layouts/partials/`
 | `assets/_custom.scss`    | Customise or override scss styles                                                     |
 | `assets/_variables.scss` | Override default SCSS variables                                                       |
 | `assets/_fonts.scss`     | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
+| `assets/mermaid.json`    | Replace Mermaid initialization config                                                 |
 
 ### Plugins
 
