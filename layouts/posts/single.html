@@ -4,9 +4,7 @@
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
   </h1>
   {{ partial "docs/post-meta" . }}
-  <p>
-    {{- .Content -}}
-  </p>
+  {{- .Content -}}
 </article>
 {{ end }}
 

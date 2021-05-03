@@ -11,3 +11,13 @@
   </div>
   {{ end }}
 {{ end }}
+
+<p>
+{{ if .Params.image}}
+  {{ with .Resources.GetMatch .Params.image }}
+    <img src={{ .RelPermalink }} />
+  {{ else }}
+    <img src={{ .Params.image | relURL }} />
+  {{ end }}
+{{ end }}
+</p>
