@@ -1,7 +1,7 @@
 {{ define "main" }}
 <article class="markdown">
   <h1>
-    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    <a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a>
   </h1>
   {{ partial "docs/post-meta" . }}
   {{- .Content -}}
