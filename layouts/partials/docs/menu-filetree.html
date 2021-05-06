@@ -4,32 +4,32 @@
 {{ end }}
 
 {{ with .Site.GetPage $bookSection }}
-  {{ template "book-section-children" (dict "Section" . "CurrentPage" $) }}
+  {{ template "book-section-children" (dict "Section" . "CurrentPage" $ "Level" 1) }}
 {{ end }}
 
-{{ define "book-section-children" }}{{/* (dict "Section" .Section "CurrentPage" .CurrentPage) */}}
+{{ define "book-section-children" }}{{/* (dict "Section" .Section "CurrentPage" .CurrentPage "Level" .Level) */}}
   <ul>
     {{ range (where .Section.Pages "Params.bookhidden" "ne" true) }}
       {{ if .IsSection }}
         <li {{- if .Params.BookFlatSection }} class="book-section-flat" {{ end -}}>
-          {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
-          {{ template "book-section-children" (dict "Section" . "CurrentPage" $.CurrentPage) }}
+          {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $.Level) }}
+          {{ template "book-section-children" (dict "Section" . "CurrentPage" $.CurrentPage "Level" (add $.Level 1)) }}
         </li>
       {{ else if and .IsPage .Content }}
         <li>
-          {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage) }}
+          {{ template "book-page-link" (dict "Page" . "CurrentPage" $.CurrentPage "Level" $.Level) }}
         </li>
       {{ end }}
     {{ end }}
   </ul>
 {{ end }}
 
-{{ define "book-page-link" }}{{/* (dict "Page" .Page "CurrentPage" .CurrentPage) */}}
+{{ define "book-page-link" }}{{/* (dict "Page" .Page "CurrentPage" .CurrentPage "Level" .Level) */}}
   {{ $current := eq .CurrentPage .Page }}
   {{ $ancestor := .Page.IsAncestor .CurrentPage }}
 
-  {{ if .Page.Params.bookCollapseSection }}
-    <input type="checkbox" id="section-{{ md5 .Page }}" class="toggle" {{ if or $current $ancestor }}checked{{ end }} />
+  {{ if (and .Page.IsSection (default .Page.Site.Params.BookCollapseSection .Page.Params.BookCollapseSection)) }}
+    <input type="checkbox" id="section-{{ md5 .Page }}" class="toggle"{{ if or (or $current $ancestor) (le .Level (default 0 .Page.Site.Params.BookCollapseSectionLevel)) }} checked{{ end }}/>
     <label for="section-{{ md5 .Page }}" class="flex justify-between">
       <a {{ if .Page.Content }}href="{{ .Page.Permalink }}"{{ end }} class="{{ if $current }}active{{ end }}">
         {{- partial "docs/title" .Page -}}
