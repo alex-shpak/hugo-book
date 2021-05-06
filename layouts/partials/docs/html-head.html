@@ -3,7 +3,8 @@
 <meta name="description" content="{{ default .Summary .Description }}">
 <meta name="theme-color" content="#FFFFFF">
 
-{{- template "_internal/opengraph.html" . -}}
+{{- if default true .Site.Params.BookOpenGraph }}{{- template "_internal/opengraph.html" . -}}{{ end -}}
+{{- if default true .Site.Params.BookTwitterCards }}{{- template "_internal/twitter_cards.html" . -}}{{ end -}}
 
 <title>{{ partial "docs/title" . }} | {{ .Site.Title -}}</title>
 
