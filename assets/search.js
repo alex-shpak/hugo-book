@@ -87,7 +87,6 @@
       results.appendChild(li);
     });
   }
-  }
 
   /**
    * @param {String} content
