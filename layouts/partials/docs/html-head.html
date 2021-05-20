@@ -17,18 +17,18 @@
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
 {{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ template "integrity" $styles }}>
 
 {{- if default true .Site.Params.BookSearch -}}
   {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
   {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
   <script defer src="{{ "flexsearch.min.js" | relURL }}"></script>
-  <script defer src="{{ $searchJS.RelPermalink }}" integrity="{{ $searchJS.Data.Integrity }}"></script>
+  <script defer src="{{ $searchJS.RelPermalink }}" {{ template "integrity" $searchJS }}></script>
 {{ end -}}
 
 {{- if .Site.Params.BookServiceWorker -}}
   {{- $swJS := resources.Get "sw-register.js" | resources.ExecuteAsTemplate "sw.js" . | resources.Minify | resources.Fingerprint }}
-  <script defer src="{{ $swJS.RelPermalink }}" integrity="{{ $swJS.Data.Integrity }}"></script>
+  <script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
 {{ end -}}
 
 {{- template "_internal/google_analytics_async.html" . -}}
@@ -42,3 +42,9 @@
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
 {{ "-->" | safeHTML }}
+
+{{- define "integrity" -}}
+  {{- if (urls.Parse .Permalink).Host -}}
+    integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
+  {{- end -}}
+{{- end -}}
