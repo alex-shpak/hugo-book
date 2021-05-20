@@ -1,14 +1,5 @@
-{{ $page := slice }}
-{{ if .Site.IsMultiLingual }}
-  {{/* Prefer existing and translated variant of home page */}}
-  {{ range .Site.Home.AllTranslations }}
-    {{ if (and .Content (or (not $page) (eq .Language.Lang $.Language.Lang))) }}
-      {{ $page = . }}
-    {{ end }}
-  {{ end }}
-{{ end }}
 <h2 class="book-brand">
-  <a href="{{ (default .Site.Home $page).RelPermalink }}">
+  <a href="{{ cond (not .Site.Home.File) .Sites.First.Home.RelPermalink .Site.Home.RelPermalink }}">
     {{- with .Site.Params.BookLogo -}}
     <img src="{{ . | relURL }}" alt="Logo" />
     {{- end -}}
