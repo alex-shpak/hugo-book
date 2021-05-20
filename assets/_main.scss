@@ -170,6 +170,11 @@ ul.pagination {
   label {
     line-height: 0;
   }
+
+  img.book-icon {
+    height: 1.5em;
+    width: 1.5em;
+  }
 }
 
 .book-search {
@@ -226,6 +231,7 @@ ul.pagination {
 
   img {
     height: 1em;
+    width: 1em;
   }
 
   nav > ul > li:first-child {
@@ -239,6 +245,7 @@ ul.pagination {
 
   img {
     height: 1em;
+    width: 1em;
     margin-inline-end: $padding-8;
   }
 }

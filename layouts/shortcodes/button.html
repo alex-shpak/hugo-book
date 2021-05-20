@@ -7,6 +7,6 @@
 {{ with .Get "relref" }}
   {{ $ref = relref $ . }}
 {{ end }}
-<a {{ with $ref }} href="{{.}}" {{ end }} {{ with $target }} target="{{.}}" {{ end }} class="book-btn{{ with .Get "class" }} {{ . }}{{ end }}">
+<a {{ with $ref }} href="{{.}}" {{ end }} {{ with $target }} target="{{.}}" rel="noopener" {{ end }} class="book-btn{{ with .Get "class" }} {{ . }}{{ end }}">
   {{ $.Inner | markdownify }}
 </a>
