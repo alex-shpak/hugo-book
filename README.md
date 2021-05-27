@@ -281,6 +281,12 @@ There are a few hugo templates inserted in `<head>`
 - [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
 - [Open Graph](https://gohugo.io/templates/internal/#open-graph)
 
+To disable Open Graph inclusion you can create your own empty file `\layouts\_internal\opengraph.html`.
+In fact almost empty not quite empty because an empty file looks like absent for HUGO. For example:
+```
+<!-- -->
+```
+
 ## Shortcodes
 
 - [Buttons](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/buttons/)
