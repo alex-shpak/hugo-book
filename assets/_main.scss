@@ -382,7 +382,7 @@ ul.pagination {
   }
 
   //for RTL support
-  body[dir="rtl"] #menu-control:checked + main {
+  body[dir="rtl"] #menu-control:checked ~ main {
     .book-menu .book-menu-content {
       transform: translateX(-$menu-width);
     }
