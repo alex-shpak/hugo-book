@@ -7,6 +7,12 @@
 (function () {
   const searchDataURL = '{{ $searchData.RelPermalink }}';
   const indexConfig = Object.assign({{ $searchConfig }}, {
+    {{ if eq .Site.Language.LanguageDirection "rtl" }}
+    encode: false,
+    rtl: true,
+    split: /\s+/,
+    tokenize: "forward",
+    {{ end }}
     doc: {
       id: 'id',
       field: ['title', 'content'],
