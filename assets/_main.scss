@@ -135,6 +135,17 @@ ul.pagination {
   }
 }
 
+// for RTL support
+body[dir="rtl"] .book-menu {
+  input.toggle + label::after {
+    content: "◂";
+  }
+
+  input.toggle:checked + label::after {
+    content: "▾";
+  }
+}
+
 .book-section-flat {
   margin-bottom: $padding-16 * 2;
 
@@ -381,7 +392,7 @@ ul.pagination {
     }
   }
 
-  //for RTL support
+  // for RTL support
   body[dir="rtl"] #menu-control:checked ~ main {
     .book-menu .book-menu-content {
       transform: translateX(-$menu-width);
