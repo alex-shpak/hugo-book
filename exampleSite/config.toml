@@ -3,6 +3,7 @@
 baseURL = 'https://example.com/'
 title = 'Hugo Book'
 theme = 'hugo-book'
+# defaultContentLanguage = "en"
 
 # Book configuration
 disablePathToLower = true
@@ -23,7 +24,7 @@ enableGitInfo = true
 [languages]
 [languages.en]
   languageName = 'English'
-  contentDir = 'content'
+  contentDir = 'content.en'
   weight = 1
 
 [languages.ru]
