@@ -3,7 +3,6 @@
 baseURL: https://example.com/
 title: Hugo Book
 theme: hugo-book
-# defaultContentLanguage: en
 
 # Book configuration
 disablePathToLower: true
@@ -24,7 +23,7 @@ markup:
 languages:
   en:
     languageName: English
-    contentDir: content.en
+    contentDir: content
     weight: 1
   ru:
     languageName: Russian
