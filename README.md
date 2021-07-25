@@ -289,13 +289,13 @@ In fact almost empty not quite empty because an empty file looks like absent for
 
 ## Shortcodes
 
-- [Buttons](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/buttons/)
-- [Columns](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/columns/)
-- [Expand](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/expand/)
-- [Hints](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/hints/)
-- [KaTeX](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/katex/)
-- [Mermaid](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/mermaid/)
-- [Tabs](https://themes.gohugo.io/theme/hugo-book/docs/shortcodes/tabs/)
+- [Buttons](https://hugo-book-demo.netlify.app/docs/shortcodes/buttons/)
+- [Columns](https://hugo-book-demo.netlify.app/docs/shortcodes/columns/)
+- [Details](https://hugo-book-demo.netlify.app/docs/shortcodes/details/)
+- [Hints](https://hugo-book-demo.netlify.app/docs/shortcodes/hints/)
+- [KaTeX](https://hugo-book-demo.netlify.app/docs/shortcodes/katex/)
+- [Mermaid](https://hugo-book-demo.netlify.app/docs/shortcodes/mermaid/)
+- [Tabs](https://hugo-book-demo.netlify.app/docs/shortcodes/tabs/)
 
 By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
 
