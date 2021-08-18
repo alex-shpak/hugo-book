@@ -1,7 +1,4 @@
 <div class="flex flex-wrap justify-between">
-{{ if .Site.IsMultiLingual }}
-  {{ partial "docs/languages" . }}
-{{ end }}
 
 {{ if and .GitInfo .Site.Params.BookRepo }}
   <div>
@@ -22,6 +19,7 @@
     </a>
   </div>
 {{ end }}
+
 </div>
 
 {{ $script := resources.Get "clipboard.js" | resources.Minify }}

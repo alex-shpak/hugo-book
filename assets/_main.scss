@@ -86,11 +86,11 @@ ul.pagination {
 
 .book-brand {
   margin-top: 0;
+  margin-bottom: $padding-16;
 
   img {
     height: 1.5em;
-    width: auto;
-    vertical-align: middle;
+    width: 1.5em;
     margin-inline-end: $padding-8;
   }
 }
@@ -147,11 +147,7 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-section-flat {
-  margin-bottom: $padding-16 * 2;
-
-  &:not(:first-child) {
-    margin-top: $padding-16 * 2;
-  }
+  margin: $padding-16 * 2 0;
 
   > a,
   > span,
@@ -266,60 +262,17 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-languages {
-  position: relative;
-  overflow: visible;
+  margin-block-end: $padding-16 * 2;
 
-  padding: $padding-16;
-  margin: -$padding-16;
+  .book-icon {
+    height: 1em;
+    width: 1em;
+    margin-inline-end: .5em;
+  }
 
   ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-
-    li {
-      white-space: nowrap;
-      cursor: pointer;
-    }
+    padding-inline-start: 1.5em;
   }
-
-  &:hover,
-  &:focus,
-  &:focus-within {
-    .book-languages-list {
-      display: block;
-    }
-  }
-
-  .book-languages-list {
-    display: none;
-
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    padding: $padding-8 0;
-
-    background: var(--body-background);
-    box-shadow: 0 0 $padding-4 rgba(0, 0, 0, 0.1);
-
-    li img {
-      opacity: 0.25;
-    }
-
-    li.active img,
-    li:hover img {
-      opacity: initial;
-    }
-
-    a {
-      color: inherit;
-      padding: $padding-8 $padding-16;
-    }
-  }
-}
-
-.book-home {
-  padding: $padding-16;
 }
 
 // Responsive styles

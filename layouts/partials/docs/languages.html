@@ -2,7 +2,7 @@
 {{ $bookTranslatedOnly := default false .Site.Params.BookTranslatedOnly }}
 {{ $translations := dict }}
 {{ if (eq $bookTranslatedOnly false ) }}
-  {{ range .Site.Home.AllTranslations }}
+  {{ range .Site.Home.Translations }}
     {{ $translations = merge $translations (dict .Language.Lang .) }}
   {{ end }}
 {{ end }}
@@ -10,22 +10,24 @@
   {{ $translations = merge $translations (dict .Language.Lang .) }}
 {{ end }}
 
-<div class="book-languages" tabindex="0" aria-haspopup="true">
-  <ul>
-    <li class="flex align-center">
-      <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
-      {{ $.Site.Language.LanguageName }}
-    </li> 
-  </ul>
-
-  <ul class="book-languages-list">
-    {{ range .Site.Languages }}{{ with index $translations .Lang }}
-    <li class="{{ if (eq $.Site.Language .Language) }}active{{ end }}">
-      <a href="{{ .Permalink }}" class="flex align-center">
+<ul class="book-languages">
+  <li>
+    <input type="checkbox" id="languages" class="toggle" />
+    <label for="languages" class="flex justify-between">
+      <a role="button" class="flex align-center">
         <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
-        {{ .Language.LanguageName }}
+        {{ $.Site.Language.LanguageName }}
       </a>
-    </li>
-    {{ end }}{{ end }}
-  </ul>
-</div>
+    </label>
+
+    <ul>
+      {{ range .Site.Languages }}{{ with index $translations .Lang }}
+      <li>
+        <a href="{{ .Permalink }}">
+          {{ .Language.LanguageName }}
+        </a>
+      </li>
+      {{ end }}{{ end }}
+    </ul>
+  </li>
+</ul>
