@@ -48,3 +48,7 @@ https://github.com/alex-shpak/hugo-book
     integrity="{{ .Data.Integrity }}" crossorigin="anonymous"
   {{- end -}}
 {{- end -}}
+
+{{ if .Params.mathjax }}
+	{{ partial "docs/mathjax_support.html" . }}
+{{ end }}

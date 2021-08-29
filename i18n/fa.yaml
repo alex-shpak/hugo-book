@@ -1,0 +1,20 @@
+- id: Search
+  translation: جستجو
+
+- id: Edit this page
+  translation: این صفحه را ویرایش کنید
+
+- id: Last modified by
+  translation: آخرین بار ویرایش شده توسط
+
+- id: Expand
+  translation: بسط دادن
+
+- id: Categories
+  translation: دسته بندی ها
+
+- id: Tags
+  translation: تگ ها
+
+- id: bookSearchConfig
+  translation: '{ cache: true, encode: false, rtl: true, split: /\s+/, tokenize: "forward"}'

@@ -6,6 +6,7 @@ license = "MIT"
 licenselink = "https://github.com/alex-shpak/hugo-book/blob/master/LICENSE"
 description = "Hugo documentation theme as simple as plain book"
 homepage = "https://github.com/alex-shpak/hugo-book"
+demosite = "https://hugo-book-demo.netlify.app"
 tags = ["responsive", "clean", "documentation", "docs", "flexbox", "search", "mobile", "multilingual", "disqus"]
 features = []
 min_version = "0.68"
