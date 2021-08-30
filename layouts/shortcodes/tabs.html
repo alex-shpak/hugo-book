@@ -9,7 +9,7 @@
     {{- $tab.Name -}}
   </label>
   <div class="book-tabs-content markdown-inner">
-    {{- .Content | markdownify -}}
+    {{- .Content | $.Page.RenderString -}}
   </div>
 {{- end -}}
 </div>
