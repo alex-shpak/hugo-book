@@ -1,0 +1,14 @@
+{{ $scratch := newScratch }}
+{{ template "recurse" (dict "Scratch" $scratch "Sections" .) }}
+{{ define "recurse" }}
+  {{ range .Sections }}
+    {{ if and .Content (not .Params.BookHidden) }}
+      {{ $.Scratch.Add "BookPages" (slice .) }}
+    {{ end }}
+    {{ if .IsSection }}
+      {{ template "recurse" (dict "Scratch" $.Scratch "Sections" .Pages) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return $scratch.Get "BookPages" }}
