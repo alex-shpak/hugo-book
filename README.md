@@ -50,6 +50,29 @@ Then run hugo (or set `theme = "book"`/`theme: book` in configuration file)
 hugo server --minify --theme book
 ```
 
+### Via Module
+
+You can also add this theme as a Hugo module instead of a git submodule.
+Navigate to your hugo project root and edit your `config.toml`:
+
+```toml
+[module]
+[[module.imports]]
+path = 'github.com/alex-shpak/hugo-book'
+```
+
+Then, to load/update the theme module, run:
+
+```sh
+hugo mod get -u
+```
+
+Finally, run hugo:
+
+```sh
+hugo server --minify
+```
+
 ### Creating site from scratch
 
 Below is an example on how to create a new site from scratch:
