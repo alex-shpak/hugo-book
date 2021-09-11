@@ -38,6 +38,7 @@
 
 ## Installation
 
+### Install as git submodule
 Navigate to your hugo project root and run:
 
 ```
@@ -50,10 +51,16 @@ Then run hugo (or set `theme = "book"`/`theme: book` in configuration file)
 hugo server --minify --theme book
 ```
 
-### Via Module
+### Install as hugo module
 
 You can also add this theme as a Hugo module instead of a git submodule.
-Navigate to your hugo project root and edit your `config.toml`:
+
+Start with initializing hugo modules, if not done yet:
+```
+hugo mod init github.com/repo/path
+```
+
+Navigate to your hugo project root and add [module] section to your `config.toml`:
 
 ```toml
 [module]
@@ -61,15 +68,10 @@ Navigate to your hugo project root and edit your `config.toml`:
 path = 'github.com/alex-shpak/hugo-book'
 ```
 
-Then, to load/update the theme module, run:
+Then, to load/update the theme module and run hugo:
 
 ```sh
 hugo mod get -u
-```
-
-Finally, run hugo:
-
-```sh
 hugo server --minify
 ```
 
@@ -95,7 +97,7 @@ hugo server --minify --theme book
 By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.  
 You can set `title` and `weight` in the front matter of pages to adjust the order and titles in the menu.
 
-### Leaf bundle menu
+### Leaf bundle menu (Deprecated)
 
 You can also use leaf bundle and the content of its `index.md` file as menu.  
 Given you have the following file structure:
