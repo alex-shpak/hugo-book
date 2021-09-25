@@ -42,7 +42,7 @@
 Navigate to your hugo project root and run:
 
 ```
-git submodule add https://github.com/alex-shpak/hugo-book themes/book
+git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
 ```
 
 Then run hugo (or set `theme = "book"`/`theme: book` in configuration file)
