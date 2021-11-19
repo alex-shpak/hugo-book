@@ -45,10 +45,10 @@ Navigate to your hugo project root and run:
 git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
 ```
 
-Then run hugo (or set `theme = "book"`/`theme: book` in configuration file)
+Then run hugo (or set `theme = "hugo-book"`/`theme: hugo-book` in configuration file)
 
 ```
-hugo server --minify --theme book
+hugo server --minify --theme hugo-book
 ```
 
 ### Install as hugo module
@@ -82,12 +82,12 @@ Below is an example on how to create a new site from scratch:
 ```sh
 hugo new site mydocs; cd mydocs
 git init
-git submodule add https://github.com/alex-shpak/hugo-book themes/book
+git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
 cp -R themes/book/exampleSite/content .
 ```
 
 ```sh
-hugo server --minify --theme book
+hugo server --minify --theme hugo-book
 ```
 
 ## Menu
