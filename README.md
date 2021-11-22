@@ -260,6 +260,15 @@ bookComments = true
 
 # (Optional) Set to 'false' to exclude page from search index.
 bookSearchExclude = true
+
+# (Optional) Set an external URL to be opened in a new tab when this navigation item is clicked
+bookExternalUrl = "https://github.com/alex-shpak/hugo-book"
+
+# (Optional) Use an image as an icon for the menu item
+bookIconImage = "/images/my-icon.png"
+
+# (Optional) Use a fontawesome icon as an icon for the menu item
+bookIconFa = "fa-address-book"
 ```
 
 ### Partials

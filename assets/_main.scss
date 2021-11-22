@@ -361,3 +361,13 @@ body[dir="rtl"] .book-menu {
     padding: $padding-16 * 2 $padding-16;
   }
 }
+
+// Settings for icons or iconless padding
+.navigation-icon {
+  width: 1.28571429em;
+  max-height: 14px;
+}
+
+li.navigation-icon-pad {
+  padding-left: 1.28571429em;
+}
