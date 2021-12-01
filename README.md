@@ -83,7 +83,7 @@ Below is an example on how to create a new site from scratch:
 hugo new site mydocs; cd mydocs
 git init
 git submodule add https://github.com/alex-shpak/hugo-book themes/hugo-book
-cp -R themes/book/exampleSite/content .
+cp -R themes/hugo-book/exampleSite/content .
 ```
 
 ```sh
