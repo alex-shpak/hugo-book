@@ -14,7 +14,7 @@
   h4,
   h5,
   h6 {
-    font-weight: normal;
+    font-weight: 700;
     line-height: 1;
     margin-top: 1.5em;
     margin-bottom: $padding-16;
@@ -140,6 +140,7 @@
     dt {
       font-weight: bolder;
       margin-top: $padding-16;
+      font-size: 18px;
     }
 
     dd {
