@@ -36,7 +36,7 @@
       </a>
     </label>
   {{ else if .Page.Content }}
-    <a href="{{ .Page.RelPermalink }}" class="{{ if $current }} active{{ end }}">
+    <a href="{{ .Page.RelPermalink }}" class="{{ if $current }} active{{ end }}" title='{{- partial "docs/title" .Page -}}'>
       {{- partial "docs/title" .Page -}}
     </a>
   {{ else }}

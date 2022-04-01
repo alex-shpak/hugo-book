@@ -158,6 +158,13 @@ body[dir="rtl"] .book-menu {
   > ul {
     padding-inline-start: 0;
   }
+  
+  ul li > a[href] {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+  }
 }
 
 .book-page {
