@@ -1,0 +1,26 @@
+{{ if or .Page.Params.plantuml .Site.Params.plantuml }}
+<!-- PlantUML -->
+<script src="https://cdn.jsdelivr.net/gh/jmnote/plantuml-encoder@1.2.4/dist/plantuml-encoder.min.js"
+    integrity="sha256-Qsk2KRBCN5qVZX7B+8+2IvQl1Aqc723qV1tBCQaVoqo=" crossorigin="anonymous"></script>
+<script>
+    (function () {
+        let plantumlPrefix = "language-plantuml";
+        Array.prototype.forEach.call(document.querySelectorAll("[class^=" + plantumlPrefix + "]"), function (code) {
+            let image = document.createElement("IMG");
+            image.loading = 'lazy'; // Lazy loading
+                image.src = {{ .Site.Params.plantuml_server }} + '/plantuml/svg/' + plantumlEncoder.encode(code.innerText);
+            code.parentNode.insertBefore(image, code);
+            code.style.display = 'none';
+        });
+    })();
+</script>
+{{ end }}
+
+{{ if or .Page.Params.mermaid .Site.Params.mermaid }}
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+            //mermaid.initialize();
+            mermaid.init(".language-mermaid");
+</script>
+{{ end }}
+
