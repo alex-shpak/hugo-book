@@ -88,10 +88,15 @@ ul.pagination {
   margin-top: 0;
   margin-bottom: $padding-16;
 
-  img {
+  img.base {
     height: 1.5em;
     width: 1.5em;
     margin-inline-end: $padding-8;
+  }
+  img.only {
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
   }
 }
 

@@ -177,6 +177,10 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # /static/logo.png then the path would be 'logo.png'
   BookLogo = 'logo.png'
 
+  # (Optional, default none) Set the path to a logo for the book, to be displayed solely,
+  # without trailing text. Otherwise behaves identically to `BookLogo`.
+  OnlyBookLogo = 'logo.png'
+
   # (Optional, default none) Set leaf bundle to render as side menu
   # When not specified file structure and weights will be used
   BookMenuBundle = '/menu'
