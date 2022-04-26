@@ -4,6 +4,10 @@
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light dark">
 
+{{- with .Page.Params.BookHref -}}
+  <meta http-equiv="Refresh" content="0; url='{{ . }}'" />
+{{- end -}}
+
 {{- template "_internal/opengraph.html" . -}}
 
 <title>{{ partial "docs/html-head-title" . }}</title>

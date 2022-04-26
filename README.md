@@ -97,7 +97,7 @@ hugo server --minify --theme hugo-book
 By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.  
 You can set `title` and `weight` in the front matter of pages to adjust the order and titles in the menu.
 
-### Leaf bundle menu (Deprecated)
+### Leaf bundle menu (Deprecated, to be removed in June 2022)
 
 You can also use leaf bundle and the content of its `index.md` file as menu.  
 Given you have the following file structure:
@@ -179,6 +179,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
 
   # (Optional, default none) Set leaf bundle to render as side menu
   # When not specified file structure and weights will be used
+  # Deprecated, to be removed in June 2022
   BookMenuBundle = '/menu'
 
   # (Optional, default docs) Specify section of content to render as menu
@@ -260,6 +261,9 @@ bookComments = true
 
 # (Optional) Set to 'false' to exclude page from search index.
 bookSearchExclude = true
+
+# (Optional) Set explicit href attribute for this page in a menu (if BookMenuBundle not set)
+bookHref = ''
 ```
 
 ### Partials
