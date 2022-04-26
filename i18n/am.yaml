@@ -1,0 +1,14 @@
+- id: Search
+  translation: ፈልግ
+
+- id: Edit this page
+  translation: ይህንን ገጽ አስተካክል
+
+- id: Last modified by
+  translation: መጨረሻ የከለሰው ሰው
+
+- id: Expand
+  translation: አስፋ
+
+- id: bookSearchConfig
+  translation: '{ cache: true }'
