@@ -14,7 +14,11 @@
 
 {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . }}
 <link rel="manifest" href="{{ $manifest.RelPermalink }}">
-<link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
+{{- if default false .Site.Params.BookFaviconExt -}}
+  <link rel="icon" href="{{ printf `favicon.%s` .Site.Params.BookFaviconExt | relURL }}" type="image/x-icon">
+{{- else -}}
+  <link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
+{{- end -}}
 
 {{- range .Translations }}
   <link rel="alternate" hreflang="{{ default .Language.Lang .Site.LanguageCode }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">

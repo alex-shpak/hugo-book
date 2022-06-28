@@ -218,6 +218,11 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # Can be overwritten by same param in page frontmatter
   BookComments = true
 
+  # (Optional, default png) Configure the favicon extension.
+  # By default favicon.png is used. If you want to use other extention(e.g. webp),
+  # set value you like.
+  BookFaviconExt = 'png'
+
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
