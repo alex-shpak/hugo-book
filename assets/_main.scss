@@ -69,6 +69,7 @@ ul.pagination {
   display: flex;
   justify-content: center;
   list-style-type: none;
+  padding-inline-start: 0px;
 
   .page-item a {
     padding: $padding-16;
