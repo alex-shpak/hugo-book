@@ -1051,6 +1051,7 @@
   display: block;
   margin: 1em 0;
   text-align: center;
+  overflow: auto hidden;
 }
 .katex-display > .katex {
   display: block;
