@@ -127,8 +127,8 @@ headless = true
 
 And Enable it by setting `BookMenuBundle: /menu` in Site configuration.
 
-- [Example menu](exampleSite/content/menu/index.md)
-- [Example config file](exampleSite/config.yaml)
+- Example menu: [exampleSite/content/menu/index.md](exampleSite/content/menu/index.md)
+- Example config file: [exampleSite/config.yaml](exampleSite/config.yaml)
 - [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
 ## Blog
@@ -141,7 +141,7 @@ A blog is not the primary usecase of this theme, so it has only minimal features
 ### Site Configuration
 
 There are a few configuration options that you can add to your `config.toml` file.  
-You can also see the `yaml` example [here](exampleSite/config.yaml).
+You can also see the `yaml` example in [exampleSite/config.yaml](exampleSite/config.yaml).
 
 ```toml
 # (Optional) Set Google Analytics if you use it to track your website.
