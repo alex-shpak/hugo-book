@@ -9,7 +9,6 @@ body {
   color: var(--body-font-color);
   background: var(--body-background);
 
-  letter-spacing: 0.33px;
   font-weight: $body-font-weight;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -48,7 +47,7 @@ aside nav ul {
   list-style: none;
 
   li {
-    margin: 1em 0;
+    margin: $padding-4 0;
     position: relative;
   }
 
@@ -56,14 +55,15 @@ aside nav ul {
     display: block;
   }
 
-  a:hover {
-    opacity: 0.5;
-  }
-
   ul {
     padding-inline-start: $padding-16;
   }
 }
+
+.book-menu-content nav>ul {
+  padding-inline-start: 0;
+}
+
 
 ul.pagination {
   display: flex;
@@ -77,7 +77,7 @@ ul.pagination {
 }
 
 .container {
-  max-width: $container-max-width;
+  max-width: calc(1064px + 2rem);
   margin: 0 auto;
 }
 
@@ -97,26 +97,68 @@ ul.pagination {
 }
 
 .book-menu {
+  user-select: none;
   flex: 0 0 $menu-width;
-  font-size: $font-size-14;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #736E7D;
 
   .book-menu-content {
     width: $menu-width;
     padding: $padding-16;
     background: var(--body-background);
-
-    @include fixed;
   }
 
   a,
-  label {
+  label,span {
+    display: inline-block;
     color: inherit;
     cursor: pointer;
     word-wrap: break-word;
+    font-weight: 400;
+    width: 100%;
+  }
+
+  nav > ul > li {
+    margin-bottom: $padding-16 * 2;
+  }
+
+  ul {
+    padding-inline-start: $padding-8 * 3;
+  }
+
+  span,label {
+    margin-bottom: $padding-8;
+  }
+
+  a,label {
+    cursor: pointer;
+  }
+
+  a[role=button], span {
+    font-weight: 600;
+    color: #0D0D17;
+    
   }
 
   a.active {
-    color: var(--color-link);
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  a.active::before {
+    content: "\2022";
+    color: var(--primary);
+    // font-weight: bold;
+    // display: inline-block;
+    // width: 1em;
+    // margin-left: -1em;
+    display: inline-block;
+    position: absolute;
+    font-size: 1.6rem;
+    left: -17px;
+    top: -1px;
   }
 
   input.toggle + label + ul {
@@ -127,12 +169,20 @@ ul.pagination {
     display: block;
   }
 
-  input.toggle + label::after {
+  input.toggle + label::before {
+    color: #0D0D17;
+    display: inline-block;
+    width: 10px;
+    margin-left: -1em;
     content: "▸";
   }
 
-  input.toggle:checked + label::after {
+  input.toggle:checked + label::before {
     content: "▾";
+  }
+
+  li {
+    margin: 0 0 $padding-8 0;
   }
 }
 
@@ -192,13 +242,30 @@ body[dir="rtl"] .book-menu {
 
   input {
     width: 100%;
-    padding: $padding-8;
+    padding: 7px 20px 7px 48px;
 
     border: 0;
     border-radius: $border-radius;
 
     background: var(--gray-100);
     color: var(--body-font-color);
+
+    height: 40px;
+    border-radius: 20px;
+
+    border: 1px solid rgba(115, 110, 125, 0.24);
+
+    background: white;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+
+    /* identical to box height, or 153% */
+    letter-spacing: -0.2px;
+
+    color: #736E7D;
+
+
 
     &:required + .book-search-spinner {
       display: block;
@@ -207,12 +274,13 @@ body[dir="rtl"] .book-menu {
 
   .book-search-spinner {
     position: absolute;
-    top: 0;
+    top: 14px;
+    right: 16px;
     margin: $padding-8;
     margin-inline-start: calc(100% - #{$padding-16 + $padding-8});
 
-    width: $padding-16;
-    height: $padding-16;
+    width: 1.5em;
+    height: 1.5em;
 
     border: $padding-1 solid transparent;
     border-top-color: var(--body-font-color);
@@ -220,9 +288,30 @@ body[dir="rtl"] .book-menu {
 
     @include spin(1s);
   }
+}
 
-  small {
-    opacity: 0.5;
+.tabs-header {
+  position: relative;
+}
+
+#book-search-results {
+  position: absolute;
+  z-index: 9999;
+  background: cyan;
+  li {
+    list-style: none;
+  }
+}
+
+@media screen and (min-width: $mobile-breakpoint) {
+  .book-search {
+    position: relative;
+    right: 0;
+    top: 0;
+    margin: 0;
+    float: right;
+    padding: 12px;
+    width: 356px;
   }
 }
 
@@ -234,7 +323,11 @@ body[dir="rtl"] .book-menu {
     width: $toc-width;
     padding: $padding-16;
 
-    @include fixed;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   img {
@@ -322,10 +415,6 @@ body[dir="rtl"] .book-menu {
       box-shadow: 0 0 $padding-8 rgba(0, 0, 0, 0.1);
     }
 
-    .book-page {
-      opacity: 0.25;
-    }
-
     .book-menu-overlay {
       display: block;
       position: absolute;
@@ -359,6 +448,46 @@ body[dir="rtl"] .book-menu {
   .book-page,
   .book-menu .book-menu-content,
   .book-toc .book-toc-content {
-    padding: $padding-16 * 2 $padding-16;
+    padding: 8px $padding-16;
+  }
+}
+
+@import '_dcl-ui.scss';
+@import 'syntax.scss';
+
+.tabs-navigation {
+  font-family: 'Inter UI';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 26px;
+
+  /* identical to box height, or 153% */
+  letter-spacing: -0.2px;
+  color: var(--text);
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .dcl.navbar .ui.menu {
+    .item {
+      display: none;
+    }
+  }
+
+  .dcl.tabs {
+    margin-top: 0;
+  }
+
+  .dcl.tab {
+    display: inline-block;
+    padding: $padding-16 0;
+    margin-right: $padding-16;
+  }
+  .tabs-navigation {
+    font-size: 16px;
+  }
+  .dcl.tab.active {
+    border-left: 0;
+    border-bottom: 2px solid;
   }
 }

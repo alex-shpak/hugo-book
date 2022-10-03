@@ -1,7 +1,8 @@
 @import "variables";
 
 .markdown {
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 24px;
 
   // remove padding at the beginning of page
   > :first-child {
@@ -14,10 +15,13 @@
   h4,
   h5,
   h6 {
-    font-weight: normal;
     line-height: 1;
-    margin-top: 1.5em;
-    margin-bottom: $padding-16;
+    margin-top: $padding-16 * 3;
+    margin-bottom: $padding-4;
+
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 30px;
 
     a.anchor {
       opacity: 0;
@@ -30,6 +34,14 @@
     a.anchor:focus {
       opacity: initial;
     }
+  }
+
+  h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 12px;
   }
 
   h4,
@@ -72,12 +84,14 @@
     padding: 0 $padding-4;
     background: var(--gray-200);
     border-radius: $border-radius;
-    font-size: 0.875em;
   }
 
   pre {
+    border: 1px solid rgba(92,92,110,.16);
+    border-radius: 8px;
+
     padding: $padding-16;
-    background: var(--gray-100);
+    background: white;
     border-radius: $border-radius;
     overflow-x: auto;
 
@@ -88,15 +102,14 @@
   }
 
   p {
-    word-wrap:break-word;
+    word-wrap: break-word;
   }
 
   blockquote {
     margin: $padding-16 0;
-    padding: $padding-8 $padding-16 $padding-8 ($padding-16 - $padding-4); //to keep total left space 16dp
+    padding: $padding-8 $padding-16; //to keep total left space 16dp
 
-    border-inline-start: $padding-4 solid var(--gray-200);
-    border-radius: $border-radius;
+    border-inline-start: $padding-4 solid #5c5c6e30;
 
     :first-child {
       margin-top: 0;
@@ -134,6 +147,23 @@
   ul,
   ol {
     padding-inline-start: $padding-16 * 2;
+  }
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
+
+  ul li::before {
+    content: "\2022";
+    color: var(--primary);
+    font-weight: bold;
+    display: inline-block;
+    margin-left: -1em;
+    position: absolute;
+    width: 1em;
+  }
+
+  li {
+    margin-bottom: $padding-16;
   }
 
   dl {
@@ -184,6 +214,7 @@
     }
   }
 }
+
 
 .markdown-inner {
   // Util class to remove extra margin in nested markdown content
