@@ -48,13 +48,13 @@
     .book-tabs-content {
       order: 999; //Move content blocks to the end
       width: 100%;
-      border-top: $padding-1 solid var(--gray-100);
+      border-top: $padding-1 solid var(--divider);
       padding: $padding-16;
       display: none;
     }
 
     input[type="radio"]:checked + label {
-      border-bottom: $padding-1 solid var(--color-link);
+      border-bottom: $padding-1 * 2 solid var(--primary);
     }
     input[type="radio"]:checked + label + .book-tabs-content {
       display: block;
