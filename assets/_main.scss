@@ -39,7 +39,7 @@ img {
   vertical-align: baseline;
 }
 
-:focus {
+pre:focus {
   @include outline;
 }
 
