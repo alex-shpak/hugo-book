@@ -80,10 +80,10 @@
   a.book-btn {
     display: inline-block;
     font-size: $font-size-14;
-    color: var(--color-link);
+    color: var(--primary);
     line-height: $padding-16 * 2;
     padding: 0 $padding-16;
-    border: $padding-1 solid var(--color-link);
+    border: $padding-1 solid var(--primary);
     border-radius: $border-radius;
     cursor: pointer;
 
