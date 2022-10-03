@@ -1,7 +1,7 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
-baseURL = 'https://example.com/'
-title = 'Hugo Book'
+baseURL = 'https://documentation-theme.pages.dev/'
+title = 'Decentraland Documentation'
 theme = 'documentation-theme'
 
 # Book configuration
