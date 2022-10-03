@@ -8,7 +8,7 @@
   "theme_color": "#000000",
   "icons": [
     {
-      "src": "{{ "/favicon.svg" | relURL }}",
+      "src": "{{ "/favicon.png" | relURL }}",
       "sizes": "512x512"
     }
   ]
