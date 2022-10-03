@@ -4,13 +4,16 @@
   font-size: 15px;
   line-height: 24px;
 
+  p {
+    line-height: 24px;
+  }
+
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    line-height: 1;
     margin-top: $padding-16 * 3;
     margin-bottom: $padding-4;
 
@@ -66,7 +69,7 @@
       text-decoration: underline;
     }
     &:visited {
-      color: var(--color-visited-link);
+      color: var(--primary);
     }
   }
 
@@ -155,6 +158,10 @@
     margin-left: -1em;
     position: absolute;
     width: 1em;
+  }
+
+  li>p {
+    margin-bottom: $padding-16;
   }
 
   dl {

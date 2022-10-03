@@ -1,3 +1,5 @@
+@import "_dcl-ui.scss";
+
 html {
   font-size: $font-size-base;
   scroll-behavior: smooth;
@@ -60,10 +62,9 @@ aside nav ul {
   }
 }
 
-.book-menu-content nav>ul {
+.book-menu-content nav > ul {
   padding-inline-start: 0;
 }
-
 
 ul.pagination {
   display: flex;
@@ -102,7 +103,7 @@ ul.pagination {
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
-  color: #736E7D;
+  color: #736e7d;
 
   .book-menu-content {
     width: $menu-width;
@@ -111,13 +112,18 @@ ul.pagination {
   }
 
   a,
-  label,span {
+  label,
+  span {
     display: inline-block;
     color: inherit;
-    cursor: pointer;
     word-wrap: break-word;
     font-weight: 400;
     width: 100%;
+  }
+
+  a,
+  label {
+    cursor: pointer;
   }
 
   nav > ul > li {
@@ -128,18 +134,20 @@ ul.pagination {
     padding-inline-start: $padding-8 * 3;
   }
 
-  span,label {
+  span,
+  label {
     margin-bottom: $padding-8;
   }
 
-  a,label {
+  a,
+  label {
     cursor: pointer;
   }
 
-  a[role=button], span {
+  a[role="button"],
+  span {
     font-weight: 600;
-    color: #0D0D17;
-    
+    color: #0d0d17;
   }
 
   a.active {
@@ -170,7 +178,7 @@ ul.pagination {
   }
 
   input.toggle + label::before {
-    color: #0D0D17;
+    color: #0d0d17;
     display: inline-block;
     width: 10px;
     margin-left: -1em;
@@ -263,9 +271,7 @@ body[dir="rtl"] .book-menu {
     /* identical to box height, or 153% */
     letter-spacing: -0.2px;
 
-    color: #736E7D;
-
-
+    color: #736e7d;
 
     &:required + .book-search-spinner {
       display: block;
@@ -364,7 +370,7 @@ body[dir="rtl"] .book-menu {
   .book-icon {
     height: 1em;
     width: 1em;
-    margin-inline-end: .5em;
+    margin-inline-end: 0.5em;
   }
 
   ul {
@@ -455,11 +461,10 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-@import '_dcl-ui.scss';
-@import 'syntax.scss';
+@import "syntax.scss";
 
 .tabs-navigation {
-  font-family: 'Inter UI';
+  font-family: "Inter UI";
   font-style: normal;
   font-weight: 500;
   font-size: 17px;
