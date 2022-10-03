@@ -292,6 +292,9 @@ body[dir="rtl"] .book-menu {
 
 .tabs-header {
   position: relative;
+  .dcl.tab {
+    cursor: default;
+  }
 }
 
 #book-search-results {
