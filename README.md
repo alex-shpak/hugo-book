@@ -1,5 +1,6 @@
 # Hugo Book Theme
 
+
 [![Hugo](https://img.shields.io/badge/hugo-0.68-blue.svg)](https://gohugo.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Build with Hugo](https://github.com/alex-shpak/hugo-book/workflows/Build%20with%20Hugo/badge.svg)
@@ -94,12 +95,12 @@ hugo server --minify --theme hugo-book
 
 ### File tree menu (default)
 
-By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.  
+By default, the theme will render pages from the `content/docs` section as a menu in a tree structure.
 You can set `title` and `weight` in the front matter of pages to adjust the order and titles in the menu.
 
 ### Leaf bundle menu (Deprecated, to be removed in June 2022)
 
-You can also use leaf bundle and the content of its `index.md` file as menu.  
+You can also use leaf bundle and the content of its `index.md` file as menu.
 Given you have the following file structure:
 
 ```
@@ -133,14 +134,14 @@ And Enable it by setting `BookMenuBundle: /menu` in Site configuration.
 
 ## Blog
 
-A simple blog is supported in the section `posts`.  
+A simple blog is supported in the section `posts`.
 A blog is not the primary usecase of this theme, so it has only minimal features.
 
 ## Configuration
 
 ### Site Configuration
 
-There are a few configuration options that you can add to your `config.toml` file.  
+There are a few configuration options that you can add to your `config.toml` file.
 You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
@@ -347,7 +348,7 @@ If you want lower maintenance, use one of the released versions. If you want to 
 
 ### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
 
-Contributions are welcome and I will review and consider pull requests.  
+Contributions are welcome and I will review and consider pull requests.
 Primary goals are:
 
 - Keep it simple.
