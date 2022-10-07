@@ -244,11 +244,65 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-search {
+  z-index: 2;
   position: relative;
   margin: $padding-16 0;
   border-bottom: 1px solid transparent;
+  #book-search-input {
+    display: flex;
+    align-items: center;
+    img {
+      z-index: 5;
+      position: absolute;
+      left: 30px;
+    }
+  }
+  #search-overlay {
+    background-color: #000;
+    pointer-events: auto;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+  }
+  #book-search-results {
+    position: absolute;
+    z-index: 3;
+    #book-search-hits {
+      overflow-y: scroll;
+      max-height: calc(100vh - 130px); // 130px -> uitopbar + content topbar
+      background-color: var(--body-background);
+      border-radius: 10px;
+      box-shadow: 0 16px 32px 16px rgba(0, 0, 0, 0.16);
+      margin-top: 5px;
+      padding: 16px;
+      position: relative;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          box-sizing: border-box;
+          cursor: pointer;
+          list-style-type: none;
+          padding: 10px;
+          h4 {
+            font-weight: 700;
+            color: var(--body-font-color);
+          }
+          &:hover {
+            background-color: var(--gray-100);
+          }
+        }
+      }
+    }
+  }
 
   input {
+    z-index: 4;
+    position: relative;
     width: 100%;
     padding: 7px 20px 7px 48px;
 
@@ -303,14 +357,6 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-#book-search-results {
-  position: absolute;
-  z-index: 9999;
-  background: cyan;
-  li {
-    list-style: none;
-  }
-}
 
 @media screen and (min-width: $mobile-breakpoint) {
   .book-search {

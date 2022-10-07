@@ -1,7 +1,15 @@
 {{ if default true .Site.Params.BookSearch }}
 <div class="book-search">
-  <input type="text" id="book-search-input" placeholder="{{ i18n "Search" }}" aria-label="{{ i18n "Search" }}" maxlength="64" data-hotkeys="s/" />
+  <div id="search-overlay" class="hidden"></div>
+  <div id="book-search-input">
+    <img src="{{ "svg/search.svg" | relURL }}" class="book-icon" alt="Search" />
+    <input type="text" placeholder="{{ i18n "Search" }}" aria-label="{{ i18n "Search" }}" maxlength="64" data-hotkeys="s/" />
+  </div>
   <div class="book-search-spinner hidden"></div>
-  <ul id="book-search-results"></ul>
+  <div id="book-search-results">
+    <div id="book-search-hits" class="hidden" tabindex="0">
+      <ul id="book-search-list"></ul>
+    </div>
+  </div>
 </div>
 {{ end }}
