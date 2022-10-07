@@ -1,4 +1,5 @@
 @import "_dcl-ui.scss";
+@import "_home.scss";
 
 html {
   font-size: $font-size-base;
@@ -290,10 +291,10 @@ body[dir="rtl"] .book-menu {
     z-index: 3;
   }
   #book-search-results {
+    width: 100%;
     position: absolute;
     z-index: 3;
     #book-search-hits {
-      max-width: 340px;
       overflow-x: hidden;
       overflow-y: auto;
       max-height: calc(100vh - 130px); // 130px -> uitopbar + content topbar
