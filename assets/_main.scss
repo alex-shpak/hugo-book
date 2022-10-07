@@ -6,6 +6,27 @@ html {
   touch-action: manipulation;
 }
 
+*, body {
+  ::-webkit-scrollbar {
+    height: 6px;
+    margin-left: 10px;
+    width: 6px ;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ededed;
+    border-radius: 2px
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #b7b7b7;
+    border-radius: 2px
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999
+  }
+}
+
 body {
   min-width: $body-min-width;
   color: var(--body-font-color);
@@ -272,7 +293,9 @@ body[dir="rtl"] .book-menu {
     position: absolute;
     z-index: 3;
     #book-search-hits {
-      overflow-y: scroll;
+      max-width: 340px;
+      overflow-x: hidden;
+      overflow-y: auto;
       max-height: calc(100vh - 130px); // 130px -> uitopbar + content topbar
       background-color: var(--body-background);
       border-radius: 10px;
