@@ -74,3 +74,19 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .home {
+    .book-search {
+      width: unset;
+    }
+
+    .section-cards-container {
+      flex-direction: column;
+    }
+
+    .user-card {
+      margin: 8px 0;
+    }
+  }
+}
