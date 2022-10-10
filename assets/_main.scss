@@ -1,5 +1,6 @@
 @import "_dcl-ui.scss";
 @import "_home.scss";
+@import "_footer.scss";
 
 html {
   font-size: $font-size-base;
@@ -82,6 +83,11 @@ aside nav ul {
   ul {
     padding-inline-start: $padding-16;
   }
+}
+
+.book-menu-content label a {
+  font-weight: 400 !important;
+  color: #736e7d !important;
 }
 
 .book-menu-content nav > ul {
@@ -533,8 +539,11 @@ body[dir="rtl"] .book-menu {
 
 @import "syntax.scss";
 
+.code {
+  font-family: 'monospace' !important;
+}
 .tabs-navigation {
-  font-family: "Inter UI";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 17px;
