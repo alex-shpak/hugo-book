@@ -36,6 +36,10 @@
   <script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
 {{ end -}}
 
+{{- if .Site.Params.SegmentApiKey -}}
+  {{- partial "docs/segment.html" . -}}
+{{ end -}}
+
 {{- template "_internal/google_analytics.html" . -}}
 
 <!-- RSS -->
