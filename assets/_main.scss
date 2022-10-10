@@ -94,6 +94,10 @@ aside nav ul {
   padding-inline-start: 0;
 }
 
+.book-menu ul li ul{
+  padding-inline-start: 16px !important;
+}
+
 ul.pagination {
   display: flex;
   justify-content: center;
