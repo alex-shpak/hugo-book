@@ -1,6 +1,5 @@
 @import "_dcl-ui.scss";
 @import "_home.scss";
-
 html {
   font-size: $font-size-base;
   scroll-behavior: smooth;
@@ -279,6 +278,7 @@ body[dir="rtl"] .book-menu {
   position: relative;
   margin: $padding-16 0;
   border-bottom: 1px solid transparent;
+  width: 356px;
   #book-search-input {
     display: flex;
     align-items: center;
@@ -390,6 +390,12 @@ body[dir="rtl"] .book-menu {
   }
 }
 
+
+@media screen and (max-width: 991px) {
+  .book-search {
+    width: auto !important;
+  }
+}
 
 @media screen and (min-width: $mobile-breakpoint) {
   .book-search {
