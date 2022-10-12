@@ -17,7 +17,7 @@ $body-min-width: 20rem !default;
 $container-max-width: 1064px !default;
 
 $header-height: 3.5rem !default;
-$menu-width: 340px !default;
+$menu-width: 248px + $padding-16 + $padding-16 !default;
 $toc-width: 16rem !default;
 
 $mobile-breakpoint: 768px;

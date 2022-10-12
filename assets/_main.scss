@@ -137,8 +137,8 @@ ul.pagination {
 
   .book-menu-content {
     width: $menu-width;
-    padding: $padding-16;
     background: var(--body-background);
+    padding: $padding-16;
   }
 
   a,
@@ -252,7 +252,7 @@ body[dir="rtl"] .book-menu {
 .book-page {
   min-width: $body-min-width;
   flex-grow: 1;
-  padding: $padding-16;
+  padding: $padding-8
 }
 
 .book-post {
@@ -539,10 +539,8 @@ body[dir="rtl"] .book-menu {
 
 // Extra space for big screens
 @media screen and (min-width: $container-max-width) {
-  .book-page,
-  .book-menu .book-menu-content,
   .book-toc .book-toc-content {
-    padding: 8px $padding-16;
+    padding: $padding-16;
   }
 }
 
