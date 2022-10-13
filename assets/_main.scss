@@ -546,12 +546,23 @@ body[dir="rtl"] .book-menu {
 
 @import "syntax.scss";
 
+.book-menu > div > nav > ul > li > a,span {
+  font-weight: 600 !important;
+  color: #0d0d17;
+  svg {
+    path: {
+      fill: #0d0d17;
+    }
+  }
+}
+
 .book-menu .external-link {
   display: flex;
   align-items: center;
-  font-weight: 600 !important;
-  color: #0d0d17;
-  img {
+  svg {
+    path {
+      fill: #736e7d;
+    }
     width: 12px;
     margin-left: 6px;
   }
