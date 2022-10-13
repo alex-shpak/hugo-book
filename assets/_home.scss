@@ -23,6 +23,9 @@
       #book-search-hits {
         max-height: calc(100vh - 400px) !important; // 130px -> uitopbar + titles + search input
       }
+      #book-search-input img {
+        left: 16px;
+      }
     }
     .section-cards-container {
       display: flex;
