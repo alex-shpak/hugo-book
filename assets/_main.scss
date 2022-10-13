@@ -549,9 +549,11 @@ body[dir="rtl"] .book-menu {
 .book-menu > div > nav > ul > li > a,span {
   font-weight: 600 !important;
   color: #0d0d17;
-  svg {
-    path: {
-      fill: #0d0d17;
+  &.external-link {
+    svg {
+      path {
+        fill: #0d0d17 !important;
+      }
     }
   }
 }
