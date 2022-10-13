@@ -36,11 +36,12 @@
       </a>
     </label>
   {{ else if .Page.Params.BookHref }}
-    <a href="{{ .Page.Params.BookHref }}" class="{{ if $current }}active{{ end }}" target="_blank" rel="noopener">
+    <a href="{{ .Page.Params.BookHref }}" class="external-link {{ if $current }}active{{ end }}" target="_blank" rel="noopener">
       {{- partial "docs/title" .Page -}}
+      <img src="{{ "svg/external-link.svg" | relURL }}" class="book-icon" alt="external-link" />
     </a>
   {{ else if .Page.Content }}
-    <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }}" id="{{ .Page.Kind }}">
+    <a href="{{ .Page.RelPermalink }}" class="{{ if $current }}active{{ end }}" >
       {{- partial "docs/sidebar-title" .Page -}}
     </a>
   {{ else }}

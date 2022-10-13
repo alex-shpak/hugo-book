@@ -546,6 +546,17 @@ body[dir="rtl"] .book-menu {
 
 @import "syntax.scss";
 
+.book-menu .external-link {
+  display: flex;
+  align-items: center;
+  font-weight: 600 !important;
+  color: #0d0d17;
+  img {
+    width: 12px;
+    margin-left: 6px;
+  }
+}
+
 .code {
   font-family: 'monospace' !important;
 }
