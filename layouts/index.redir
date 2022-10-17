@@ -1,0 +1,2 @@
+{{ range $r := .Site.Pages }}{{if .Aliases}}{{ range $l := .Aliases }}
+{{ . }} {{ $r.Permalink }} 302{{ end }}{{ end }}{{ end }}
