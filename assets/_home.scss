@@ -1,0 +1,100 @@
+.main-home {
+  .home {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    .welcome-wrapper {
+      .welcome-header {
+        font-size: 48px;
+        font-weight: 700;
+        line-height: 56px;
+      }
+      .welcome-subheader {
+        color: var(--gray);
+        font-size: 21px;
+        margin-bottom: 20px;
+      }
+    }
+    .book-search {
+      width: 420px;
+      padding: unset;
+      margin-top: 16px;
+      margin-bottom: 32px;
+      #book-search-hits {
+        max-height: calc(100vh - 400px) !important; // 130px -> uitopbar + titles + search input
+      }
+      #book-search-input img {
+        left: 16px;
+      }
+    }
+    .section-cards-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 auto;
+      padding-top: 30px;
+      .user-card {
+        font-weight: 500;
+        border-radius: 8px;
+        box-shadow: 0 10px 9px -8px rgba(0, 0, 0, 0.48);
+        flex: 1 1;
+        height: 280px;
+        margin-right: 20px;
+        padding: 20px;
+        text-align: left;
+
+        * {
+          color: white
+        }
+
+        h3 {
+          font-weight: 700;
+        }
+        .card-img {
+          border-style: none;
+          padding: 20px 0;
+        }
+
+        .card-info {
+          flex: 1 1;
+          width: 100%;
+          padding-bottom: 30px;
+        }
+
+        .card-cta {
+          align-items: center;
+          display: flex;
+          span {
+            margin-right: 10px;
+          }
+          img {
+            border-style: none;
+          }
+        }
+        &:hover {
+          box-shadow: 0 20px 18px -16px rgba(0, 0, 0, 0.48);
+          -webkit-filter: brightness(1.2);
+          filter: brightness(1.2);
+          margin-top: -10px;
+        }
+        transition: all .5s ease-in-out;
+
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home {
+      .book-search {
+        width: unset;
+      }
+
+      .section-cards-container {
+        flex-direction: column;
+      }
+
+      .user-card {
+        margin: 8px 0;
+      }
+    }
+  }
+}

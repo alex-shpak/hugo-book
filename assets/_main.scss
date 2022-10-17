@@ -1,9 +1,30 @@
 @import "_dcl-ui.scss";
-
+@import "_home.scss";
 html {
   font-size: $font-size-base;
   scroll-behavior: smooth;
   touch-action: manipulation;
+}
+
+*, body {
+  ::-webkit-scrollbar {
+    height: 6px;
+    margin-left: 10px;
+    width: 6px ;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ededed;
+    border-radius: 2px
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #b7b7b7;
+    border-radius: 2px
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999
+  }
 }
 
 body {
@@ -62,8 +83,17 @@ aside nav ul {
   }
 }
 
+.book-menu-content label a {
+  font-weight: 400 !important;
+  color: #736e7d !important;
+}
+
 .book-menu-content nav > ul {
   padding-inline-start: 0;
+}
+
+.book-menu ul li ul{
+  padding-inline-start: 16px !important;
 }
 
 ul.pagination {
@@ -107,8 +137,8 @@ ul.pagination {
 
   .book-menu-content {
     width: $menu-width;
-    padding: $padding-16;
     background: var(--body-background);
+    padding: $padding-16;
   }
 
   a,
@@ -222,7 +252,7 @@ body[dir="rtl"] .book-menu {
 .book-page {
   min-width: $body-min-width;
   flex-grow: 1;
-  padding: $padding-16;
+  padding: $padding-8
 }
 
 .book-post {
@@ -244,11 +274,68 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-search {
+  z-index: 2;
   position: relative;
   margin: $padding-16 0;
   border-bottom: 1px solid transparent;
+  width: 356px;
+  #book-search-input {
+    display: flex;
+    align-items: center;
+    img {
+      z-index: 5;
+      position: absolute;
+      left: 30px;
+    }
+  }
+  #search-overlay {
+    background-color: #000;
+    pointer-events: auto;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+  }
+  #book-search-results {
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    #book-search-hits {
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: calc(100vh - 130px); // 130px -> uitopbar + content topbar
+      background-color: var(--body-background);
+      border-radius: 10px;
+      box-shadow: 0 16px 32px 16px rgba(0, 0, 0, 0.16);
+      margin-top: 5px;
+      padding: 16px;
+      position: relative;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          box-sizing: border-box;
+          cursor: pointer;
+          list-style-type: none;
+          padding: 10px;
+          h4 {
+            font-weight: 700;
+            color: var(--body-font-color);
+          }
+          &:hover {
+            background-color: var(--gray-100);
+          }
+        }
+      }
+    }
+  }
 
   input {
+    z-index: 4;
+    position: relative;
     width: 100%;
     padding: 7px 20px 7px 48px;
 
@@ -303,12 +390,10 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-#book-search-results {
-  position: absolute;
-  z-index: 9999;
-  background: cyan;
-  li {
-    list-style: none;
+
+@media screen and (max-width: 991px) {
+  .book-search {
+    width: auto !important;
   }
 }
 
@@ -454,17 +539,42 @@ body[dir="rtl"] .book-menu {
 
 // Extra space for big screens
 @media screen and (min-width: $container-max-width) {
-  .book-page,
-  .book-menu .book-menu-content,
   .book-toc .book-toc-content {
-    padding: 8px $padding-16;
+    padding: $padding-16;
   }
 }
 
 @import "syntax.scss";
 
+.sidebar > div > nav > ul > li > a {
+  font-weight: 600;
+  color: #0d0d17;
+  &.external-link {
+    svg {
+      path {
+        fill: #0d0d17 !important;
+      }
+    }
+  }
+}
+
+.sidebar .external-link {
+  display: flex;
+  align-items: center;
+  svg {
+    path {
+      fill: #736e7d;
+    }
+    width: 12px;
+    margin-left: 6px;
+  }
+}
+
+.code {
+  font-family: 'monospace' !important;
+}
 .tabs-navigation {
-  font-family: "Inter UI";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-size: 17px;

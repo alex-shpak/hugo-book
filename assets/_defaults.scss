@@ -17,7 +17,7 @@ $body-min-width: 20rem !default;
 $container-max-width: 1064px !default;
 
 $header-height: 3.5rem !default;
-$menu-width: 280px !default;
+$menu-width: 248px + $padding-16 + $padding-16 !default;
 $toc-width: 16rem !default;
 
 $mobile-breakpoint: 768px;
@@ -30,6 +30,7 @@ $hint-colors: (
 
 // Themes
 @mixin theme-light {
+  --gray: #736e7d;
   --gray-100: #f8f9fa;
   --gray-200: #e9ecef;
   --gray-500: #adb5bd;
