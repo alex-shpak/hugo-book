@@ -546,8 +546,8 @@ body[dir="rtl"] .book-menu {
 
 @import "syntax.scss";
 
-.book-menu > div > nav > ul > li > a,span {
-  font-weight: 600 !important;
+.sidebar > div > nav > ul > li > a {
+  font-weight: 600;
   color: #0d0d17;
   &.external-link {
     svg {
@@ -558,7 +558,7 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-.book-menu .external-link {
+.sidebar .external-link {
   display: flex;
   align-items: center;
   svg {
