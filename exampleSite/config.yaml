@@ -23,7 +23,7 @@ markup:
 languages:
   en:
     languageName: English
-    contentDir: content
+    contentDir: content.en
     weight: 1
   ru:
     languageName: Russian
