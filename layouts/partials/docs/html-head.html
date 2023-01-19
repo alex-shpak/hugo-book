@@ -40,6 +40,11 @@
   {{- partial "docs/segment.html" . -}}
 {{ end -}}
 
+{{- if .Site.Params.IntercomAppId -}}
+  {{- $intercomJS := resources.Get "intercom.js" | resources.ExecuteAsTemplate "intercom.js" . | resources.Minify | resources.Fingerprint }}
+  <script defer src="{{ $intercomJS.RelPermalink }}" {{ template "integrity" $intercomJS }}></script>
+{{ end -}}
+
 {{- template "_internal/google_analytics.html" . -}}
 
 <!-- RSS -->

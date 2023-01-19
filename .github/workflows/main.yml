@@ -1,4 +1,4 @@
-name: Build with Hugo
+  name: Build with Hugo
 
 on: [push, pull_request]
 
@@ -14,7 +14,7 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: 'latest'
+          hugo-version: '0.108.0'
           # extended: true
 
       - name: Build
