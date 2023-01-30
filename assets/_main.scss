@@ -108,7 +108,7 @@ ul.pagination {
 }
 
 .container {
-  max-width: calc(1064px + 2rem);
+  max-width: calc(1200px + 2rem);
   margin: 0 auto;
 }
 
@@ -129,7 +129,7 @@ ul.pagination {
 
 .book-menu {
   user-select: none;
-  flex: 0 0 $menu-width;
+  // flex: 0 0 $menu-width;
   font-weight: 400;
   font-size: 15px;
   line-height: 24px;
@@ -251,9 +251,16 @@ body[dir="rtl"] .book-menu {
 
 .book-page {
   min-width: $body-min-width;
-  flex-grow: 1;
-  padding: $padding-8
+  // flex-grow: 1;
+  padding: $padding-8;
+  width: 100%;
 }
+
+iframe {
+  width: 100%;
+  height: calc(100vh - 32px - 100px);
+}
+
 
 .book-post {
   margin-bottom: $padding-16 * 3;
