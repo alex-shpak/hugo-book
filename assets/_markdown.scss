@@ -134,6 +134,7 @@
   ul,
   ol {
     padding-inline-start: $padding-16 * 2;
+    word-wrap: break-word;
   }
 
   dl {
