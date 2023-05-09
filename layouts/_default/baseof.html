@@ -7,24 +7,7 @@
 <body dir="{{ default "ltr" .Site.Language.LanguageDirection }}" >
   <input type="checkbox" class="hidden toggle" id="menu-control" />
   <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <div class="dcl navbar fullscreen" role="navigation">
-    <div class="ui container">
-      <div class="dcl navbar-menu">
-        <div class="ui secondary stackable menu">
-          <a class="dcl navbar-logo" href="https://decentraland.org">
-            <i class="dcl logo"></i>
-          </a>
-          <a href="https://market.decentraland.org" class="item">Marketplace</a>
-          <a href="https://builder.decentraland.org" class="item">Builder</a>
-          <a href="https://docs.decentraland.org" class="active item">Docs</a>
-          <a href="https://places.decentraland.org" class="item">Places</a>
-          <a href="https://events.decentraland.org" class="item">Events</a>
-          <a href="https://dao.decentraland.org" class="item">DAO</a>
-          <a href="https://decentraland.org/blog" class="item">Blog</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{ partial "docs/navbar" . }}
 
   {{ if .IsHome }}
   <main class="main-home">
