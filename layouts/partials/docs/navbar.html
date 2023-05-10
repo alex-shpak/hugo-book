@@ -69,3 +69,10 @@
     </div>
   </div>
 </div>
+
+<!-- Restore menu position as soon as possible to avoid flickering -->
+{{ $script := resources.Get "navbar.js" | resources.Minify }} {{ with $script.Content }}
+<script>
+  {{ . | safeJS }}
+</script>
+{{ end }}
