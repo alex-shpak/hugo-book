@@ -2694,7 +2694,7 @@ a.ui.card:hover,
   z-index: 0;
 }
 
-.dcl.navbar .ui.menu .item .item.submenu.active {
+.dcl.navbar .ui.menu > div.item:hover .item.submenu {
   display: block;
 }
 
