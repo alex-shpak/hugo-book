@@ -41,6 +41,11 @@
         margin-right: 20px;
         padding: 20px;
         text-align: left;
+        a:first-child {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+        }
 
         * {
           color: white
@@ -57,7 +62,6 @@
         .card-info {
           flex: 1 1;
           width: 100%;
-          padding-bottom: 30px;
         }
 
         .card-cta {
@@ -79,6 +83,12 @@
         transition: all .5s ease-in-out;
 
       }
+    }
+  }
+
+  @media (max-width: 900px) {
+    .home .user-card .card-img {
+      padding: 0px !important;
     }
   }
 

@@ -1,0 +1,26 @@
+<style>
+  .code-playground {
+    position: relative;
+  }
+
+  .external-button {
+    display: none;
+  }
+
+  .code-playground:hover .external-button {
+    display: inline-block;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    background-color: var(--primary);
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    text-decoration: unset;
+  }
+</style>
+
+<div class="code-playground">
+  {{ .Inner | markdownify }}
+  <a href="{{ .Params.link }}" target="_blank" rel="noopener" class="external-button">Try in playground</a>
+</div>
