@@ -130,7 +130,10 @@
   function resultCard(title, content, href) {
     const li = element('<li><a href><h4></h4><span></span></a></li>');
     if (href) li.querySelector('a').href = href;
-    li.querySelector('h4').textContent = title;
+    const sdk6 = href && href.includes('creator/development-guide') && !href.includes('sdk7') && ' [SDK 6]'
+    const sdk7 = href && href.includes('creator/development-guide') && href.includes('sdk7') && ' [SDK 7]'
+    const extraTitle = sdk6 || sdk7 || ''
+    li.querySelector('h4').textContent = title + extraTitle;
     li.querySelector('span').innerHTML = content
     results.appendChild(li);
   }
