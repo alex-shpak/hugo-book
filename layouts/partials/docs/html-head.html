@@ -15,7 +15,7 @@
 
 {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . }}
 <link rel="manifest" href="{{ $manifest.RelPermalink }}">
-<link rel="icon" href="{{ "favicon.png" | relURL }}" type="image/x-icon">
+<link rel="icon" href="{{ .Params.BookFavicon | default "favicon.png" | relURL }}" >
 
 {{- range .Translations }}
   <link rel="alternate" hreflang="{{ default .Language.Lang .Site.LanguageCode }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">

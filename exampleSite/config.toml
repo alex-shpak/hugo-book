@@ -58,8 +58,12 @@ enableGitInfo = true
   # You can also specify this parameter per page in front matter.
   BookToC = true
 
-  # (Optional, default none) Set the path to a logo for the book. If the logo is
-  # /static/logo.png then the path would be logo.png
+  # (Optional, default favicon.png) Set the path to a favicon file.
+  # If the favicon is /static/favicon.png then the path would be favicon.png
+  # BookFavicon = 'favicon.png'
+
+  # (Optional, default none) Set the path to a logo for the book.
+  # If the logo is /static/logo.png then the path would be logo.png
   # BookLogo = 'logo.png'
 
   # (Optional, default none) Set leaf bundle to render as side menu
