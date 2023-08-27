@@ -19,13 +19,12 @@ $endLevel: 6;
   }
 }
 
-.book-toc nav ul {
+.book-toc nav ul,
+#TableOfContents ul {
+  counter-reset: item;
+
   li {
     counter-increment: item;
-
-    &:first-child {
-      counter-reset: item;
-    }
 
     &:before {
       content: counters(item, ".") ". ";
