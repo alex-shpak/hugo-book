@@ -1,21 +1,11 @@
 <div class="flex flex-wrap justify-between">
 
-{{ if and .GitInfo .Site.Params.BookRepo }}
+{{ if .Params.date }} <!-- Check if the date is specified in the page's front matter -->
   <div>
-    {{- $date := partial "docs/date" (dict "Date" .GitInfo.AuthorDate.Local "Format" .Site.Params.BookDateFormat) -}}
-    {{- $commitPath := default "commit" .Site.Params.BookCommitPath -}}
-    <a class="flex align-center" href="{{ .Site.Params.BookRepo }}/{{ $commitPath }}/{{ .GitInfo.Hash }}" title='{{ i18n "Last modified by" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
+    {{- $date := .Params.date.Format .Site.Params.BookDateFormat }} <!-- Format the date based on your site's parameters -->
+    <a class="flex align-center" title='{{ i18n "Page dated" }} | {{ $date }}'>
       <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Calendar" />
       <span>{{ $date }}</span>
-    </a>
-  </div>
-{{ end }}
-
-{{ if and .File .Site.Params.BookRepo .Site.Params.BookEditPath }}
-  <div>
-    <a class="flex align-center" href="{{ .Site.Params.BookRepo }}/{{ .Site.Params.BookEditPath }}/{{ .Site.Params.contentDir | default "content" }}/{{ replace .File.Path "\\" "/" }}" target="_blank" rel="noopener">
-      <img src="{{ "svg/edit.svg" | relURL }}" class="book-icon" alt="Edit" />
-      <span>{{ i18n "Edit this page" }}</span>
     </a>
   </div>
 {{ end }}
