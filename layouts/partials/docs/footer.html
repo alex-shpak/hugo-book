@@ -1,16 +1,15 @@
-<div class="flex flex-wrap justify-between">
-
 {{ if .Params.date }} <!-- Check if the date is specified in the page's front matter -->
-  <div>
-    {{- $date := .Params.date.Format .Site.Params.BookDateFormat }} <!-- Format the date based on your site's parameters -->
-    <a class="flex align-center" title='{{ i18n "Page dated" }} | {{ $date }}'>
-      <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Calendar" />
-      <span>{{ $date }}</span>
-    </a>
+  <hr> <!-- This horizontal rule will only render if .Params.date exists -->
+  <div class="flex flex-wrap justify-between">
+    <div>
+      {{- $date := .Params.date.Format .Site.Params.BookDateFormat }} <!-- Format the date based on your site's parameters -->
+      <a class="flex align-center" title='{{ i18n "Page dated" }} | {{ $date }}'>
+        <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="Calendar" />
+        <span>{{ $date }}</span>
+      </a>
+    </div>
   </div>
 {{ end }}
-
-</div>
 
 {{ $script := resources.Get "clipboard.js" | resources.Minify }}
 {{ with $script.Content }}
