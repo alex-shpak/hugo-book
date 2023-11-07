@@ -2,6 +2,6 @@
 if (navigator.serviceWorker) {
   navigator.serviceWorker.register(
     "{{ $swJS.RelPermalink }}", 
-    { scope: "{{ "/" | relURL }}" }
+    { scope: "{{ "./" | relURL }}" }
   );
 }
