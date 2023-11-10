@@ -1,8 +1,15 @@
 {{- if not (.Page.Scratch.Get "katex") -}}
-<!-- Include katext only first time -->
+<!-- Include katex only first time -->
 <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
 <script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
-<script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body);"></script>
+<script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {
+  delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '\\[', right: '\\]', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false}
+  ]
+});"></script>
 {{- .Page.Scratch.Set "katex" true -}}
 {{- end -}}
 
