@@ -1,5 +1,5 @@
 {{ define "main" }}
-<article class="markdown">
+<article class="markdown book-post">
   <h1>{{ .Title | title }}</h1>
   {{ $taxonomies := index .Site.Taxonomies .Page.Type }}
   {{ range $taxonomies }}
