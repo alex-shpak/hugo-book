@@ -3,11 +3,7 @@
   Accepts Page as context
 -->
 {{ $title := "" }}
-{{ $icon := "" }}
 
-{{ if .Params.Icon }}
-  {{ $icon = printf "<img src=\"%s\" class=\"book-filetree-icon\" />" .Params.Icon }}
-{{ end }}
 {{ if .LinkTitle }}
   {{ $title = .LinkTitle }}
 {{ else if .Title }}
@@ -18,5 +14,4 @@
   {{ $title = .File.BaseFileName | humanize | title }}
 {{ end }}
 
-{{ $out := printf "%s %s" $icon $title | safeHTML }}
-{{ return $out }}
+{{ return $title }}

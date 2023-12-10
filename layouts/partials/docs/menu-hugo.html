@@ -13,7 +13,7 @@
     <a href="{{ .URL }}" {{ with .Params.class }}class="{{ . }}"{{ end }} {{ if not .Page }}target="_blank" rel="noopener"{{ end }}>
       {{- .Pre -}}
       {{ with .Page }}
-        {{ partial "docs/title" .Page }}
+        {{ partial "docs/title-with-icon" .Page }}
       {{ else }}
         {{ .Name }}
       {{ end }}
