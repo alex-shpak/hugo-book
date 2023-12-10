@@ -287,6 +287,12 @@ body[dir="rtl"] .book-menu {
   will-change: transform, margin, opacity;
 }
 
+.book-filetree-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
 @media screen and (max-width: $mobile-breakpoint) {
   #menu-control,
   #toc-control {
