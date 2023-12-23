@@ -27,7 +27,7 @@ should become
 Additionally, you'll want any files that should reside at the root (such as `CNAME`) to be moved to `static`.
 
 ## Create your Hugo configuration file
-Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the [Hugo configuration documentation](/overview/configuration/) for details.
+Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the [Hugo configuration documentation](https://gohugo.io/getting-started/configuration/) for details.
 
 ## Set your configuration publish folder to `_site`
 The default is for Jekyll to publish to `_site` and for Hugo to publish to `public`. If, like me, you have [`_site` mapped to a git submodule on the `gh-pages` branch](http://blog.blindgaenger.net/generate_github_pages_in_a_submodule.html), you'll want to do one of two alternatives:
@@ -47,12 +47,12 @@ The default is for Jekyll to publish to `_site` and for Hugo to publish to `publ
         }
 
 ## Convert Jekyll templates to Hugo templates
-That's the bulk of the work right here. The documentation is your friend. You should refer to [Jekyll's template documentation](http://jekyllrb.com/docs/templates/) if you need to refresh your memory on how you built your blog and [Hugo's template](/layout/templates/) to learn Hugo's way.
+That's the bulk of the work right here. The documentation is your friend. You should refer to [Jekyll's template documentation](https://jekyllrb.com/docs/liquid/) if you need to refresh your memory on how you built your blog and [Hugo's template](https://gohugo.io/categories/templates/) to learn Hugo's way.
 
-As a single reference data point, converting my templates for [heyitsalex.net](http://heyitsalex.net/) took me no more than a few hours.
+As a single reference data point, converting my templates for [heyitsalex.net](https://heyitsalex.net/) took me no more than a few hours.
 
 ## Convert Jekyll plugins to Hugo shortcodes
-Jekyll has [plugins](http://jekyllrb.com/docs/plugins/); Hugo has [shortcodes](/doc/shortcodes/). It's fairly trivial to do a port.
+Jekyll has [plugins](https://jekyllrb.com/docs/plugins/); Hugo has [shortcodes](https://gohugo.io/content-management/shortcodes/). It's fairly trivial to do a port.
 
 ### Implementation
 As an example, I was using a custom [`image_tag`](https://github.com/alexandre-normand/alexandre-normand/blob/74bb12036a71334fdb7dba84e073382fc06908ec/_plugins/image_tag.rb) plugin to generate figures with caption when running Jekyll. As I read about shortcodes, I found Hugo had a nice built-in shortcode that does exactly the same thing.
