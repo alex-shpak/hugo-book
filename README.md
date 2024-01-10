@@ -296,7 +296,7 @@ In addition to this, there are several empty partials you can override to easily
 
 ### Plugins
 
-There are a few features implemented as plugable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
+There are a few features implemented as pluggable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
 
 | Plugin                            | Description                                                 |
 | --------------------------------- | ----------------------------------------------------------- |
