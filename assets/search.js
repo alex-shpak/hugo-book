@@ -81,81 +81,56 @@
 
     const searchHits = window.bookSearchIndex.search(input.value, 10);
     searchHits.forEach(function (page) {
-      const li = element('<li><a href></a><span></span><small></small></li>');
-      const a = li.querySelector('a'), small = li.querySelector('small'),span = li.querySelector('span');
+      const li = element('<li><a href></a><small contenteditable="false" ></small></li>');
+      const a = li.querySelector('a'), small = li.querySelector('small');
 
       a.href = page.href;
       a.textContent = page.title;
-      small.textContent = page.section;
 
-      // 使用 Promise+async 实现
-      async function asyncFn() {
-        let returnData = await getSomething(page.href)
-        return returnData
-      }
-
-      // 因为asyncFn()返回的是 Promise对象，而不是直接返回值，所以需要.then来获取值进行操作
-      asyncFn().then(content => {
-        // 去除html标签
-        content = content.replace(/(<([^>]+)>)/ig, '');
-        // 按换行符分割成数组
-        let contentArray = lengthCutting(content, 15);
-        console.log(contentArray)
-        contentArray.forEach(line => {
-          if (line.match(/^\s+$/) || line.match(/^[ ]+$/) || line.match(/^[ ]*$/) || line.match(/^\s*$/)) {
-            console.log(1+line);
-            return;
-          }
-          if (line.search(input.value) != -1 && span.textContent == '') {
-            console.log(2 + line);
-            span.textContent = line;
-            return;
-          }
-        })
-        if (span.textContent == '') {
+      fetch(page.href)
+        .then((response) => response.text())
+        .then((content) => {
+          // Initialize the DOM parser
+          var parser = new DOMParser();
+          // Parse the text
+          var doc = parser.parseFromString(content, "text/html");
+          // You can now even select part of that html as you would in the regular DOM
+          // Example:
+          // var docArticle = doc.querySelector('article').innerHTML;
+          content = doc.querySelector('#content').querySelector('article').textContent
+          let contentArray = lengthSplit(content, 20);
           contentArray.forEach(line => {
             if (line.match(/^\s+$/) || line.match(/^[ ]+$/) || line.match(/^[ ]*$/) || line.match(/^\s*$/)) {
-              console.log(3 + line);
               return;
             }
-            input.value.split('').forEach(s => {
-              console.log(1111 + s)
-              console.log(2222 +line) 
-              if (line.search(s) != -1 && span.textContent == '') {
-                console.log(4 + line);
-                span.textContent = line;
+            if (line.search(input.value) != -1 && small.innerHTML == '') {
+              small.innerHTML = line.replaceAll(input.value, String.raw`<strong style="color:red" >${input.value}</strong>`);
+              return;
+            }
+          })
+          if (small.innerHTML == '') {
+            contentArray.forEach(line => {
+              if (line.match(/^\s+$/) || line.match(/^[ ]+$/) || line.match(/^[ ]*$/) || line.match(/^\s*$/)) {
                 return;
               }
+              input.value.split('').forEach(s => {
+                if (line.search(s) != -1 && small.innerHTML == '') {
+                  small.innerHTML = line.replaceAll(s, String.raw`<strong style="color:red" >${s}</strong>`);
+                  return;
+                }
+              })
             })
-          })
-        }
-        console.log(888+span.textContent)
-      })
-
+          }
+        });
+      
       results.appendChild(li);
     });
   }
 
-function lengthCutting(str, num) {
+function lengthSplit(str, num) {
   let strArr = [];
-
   for (let i = 0; i < str.length; i += num) strArr.push(str.slice(i, i + num));
-
   return strArr;
-}
-
-// 封装数据请求方法（异步）
-function getSomething(link) {
-  return new Promise(resolve => {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', link, true);
-    xhr.send();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        resolve(xhr.responseText);
-      }
-    }
-  })
 }
 
   /**
