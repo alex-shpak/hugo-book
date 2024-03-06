@@ -14,7 +14,14 @@
   translation: |
     {
       encode: false,
-      tokenize: function(str) {
-        return str.replace(/[\x00-\x7F]/g, '').split('');
+      tokenize: function(str){
+        let result = []
+        result.push.apply(result, str.replace(/[\x00-\x7F]/g, "").split(""));
+        str.split(/[^a-zA-Z0-9]|[\u4E00-\u9FA5]/g).forEach(t => {
+          if (t.length > 0) {
+            result.push.apply(result, t.toLowerCase().split(/[\p{Z}\p{S}\p{P}\p{C}]+/u));
+          }
+        });
+        return result;
       }
     }
