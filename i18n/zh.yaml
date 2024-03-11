@@ -15,6 +15,7 @@
     {
       encode: false,
       tokenize: function(str) {
-        return str.replace(/[\x00-\x7F]/g, '').split('');
+        // 只去除空白行，标点符号保留、表情符号保留、数字保留、英文保留
+        return str.replace(/\n*\s*\r*/g, '').split('');
       }
     }
