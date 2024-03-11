@@ -9,16 +9,13 @@
     selection.addRange(range);
   }
 
-  document.querySelectorAll("pre code").forEach(code => {
-    code.addEventListener("click", function (event) {
-      if (window.getSelection().toString()) {
-        return;
-      }
-      select(code.parentElement);
+  document.addEventListener("click", onCodeblock, { capture: true });
 
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(code.parentElement.textContent);
-      }
-    });
-  });
+  function onCodeblock(event) {
+    const code = event.target.closest("pre code");
+    if (!code || window.getSelection().toString()) return
+    select(code.parentElement);
+    if (!navigator.clipboard) return;
+    navigator.clipboard.writeText(code.parentElement.textContent);
+  }
 })();
