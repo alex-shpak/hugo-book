@@ -41,7 +41,7 @@ menu:
       url: "https://github.com/alex-shpak/hugo-book"
       weight: 10
     - name: "Hugo Themes"
-      url: "https://themes.gohugo.io/hugo-book/"
+      url: "https://themes.gohugo.io/themes/hugo-book/"
       weight: 20
 
 params:

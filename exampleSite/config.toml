@@ -45,7 +45,7 @@ enableGitInfo = true
 
 [[menu.after]]
   name = "Hugo Themes"
-  url = "https://themes.gohugo.io/hugo-book/"
+  url = "https://themes.gohugo.io/themes/hugo-book/"
   weight = 20
 
 [params]
