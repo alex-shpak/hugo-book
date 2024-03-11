@@ -7,11 +7,21 @@
 (function () {
   const searchDataURL = '{{ $searchData.RelPermalink }}';
   const indexConfig = Object.assign({{ $searchConfig }}, {
-    doc: {
-      id: 'id',
-      field: ['title', 'content'],
-      store: ['title', 'href', 'section']
-    }
+    includeScore: true,
+    useExtendedSearch: true,
+    fieldNormWeight: 1.5,
+    threshold: 0.2,
+    ignoreLocation: true,
+    keys: [
+      {
+        name: 'title',
+        weight: 0.7
+      },
+      {
+        name: 'content',
+        weight: 0.3
+      }
+    ]
   });
 
   const input = document.querySelector('#book-search-input');
@@ -63,8 +73,7 @@
     fetch(searchDataURL)
       .then(pages => pages.json())
       .then(pages => {
-        window.bookSearchIndex = FlexSearch.create('balance', indexConfig);
-        window.bookSearchIndex.add(pages);
+        window.bookSearchIndex = new Fuse(pages, indexConfig);
       })
       .then(() => input.required = false)
       .then(search);
@@ -79,14 +88,14 @@
       return;
     }
 
-    const searchHits = window.bookSearchIndex.search(input.value, 10);
+    const searchHits = window.bookSearchIndex.search(input.value).slice(0,10);
     searchHits.forEach(function (page) {
       const li = element('<li><a href></a><small></small></li>');
       const a = li.querySelector('a'), small = li.querySelector('small');
 
-      a.href = page.href;
-      a.textContent = page.title;
-      small.textContent = page.section;
+      a.href = page.item.href;
+      a.textContent = page.item.title;
+      small.textContent = page.item.section;
 
       results.appendChild(li);
     });
