@@ -1,0 +1,9 @@
+{{ $title := (partial "docs/title" .) }}
+{{ $icon := "" }}
+
+{{ if .Params.Icon }}
+  {{ $icon = printf "<img src=\"%s\" class=\"book-filetree-icon\" />" .Params.Icon }}
+{{ end }}
+
+{{ $out := printf "%s %s" $icon $title | safeHTML }}
+{{ return $out }}
