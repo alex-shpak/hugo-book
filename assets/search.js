@@ -5,7 +5,7 @@
 {{ $searchConfig := i18n "bookSearchConfig" | default "{}" }}
 
 (function () {
-  const searchDataURL = '{{ $searchData.RelPermalink }}';
+  const searchDataURL = '{{ $searchData.Permalink }}';
   const indexConfig = Object.assign({{ $searchConfig }}, {
     doc: {
       id: 'id',
