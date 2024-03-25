@@ -1,7 +1,7 @@
 <nav>
 {{ partial "docs/brand" . }}
 {{ partial "docs/search" . }}
-{{ if .Site.IsMultiLingual }}
+{{ if hugo.IsMultilingual }}
   {{ partial "docs/languages" . }}
 {{ end }}
 
