@@ -81,16 +81,57 @@
 
     const searchHits = window.bookSearchIndex.search(input.value, 10);
     searchHits.forEach(function (page) {
-      const li = element('<li><a href></a><small></small></li>');
+      const li = element('<li><a href></a><small contenteditable="false" ></small></li>');
       const a = li.querySelector('a'), small = li.querySelector('small');
 
       a.href = page.href;
       a.textContent = page.title;
-      small.textContent = page.section;
 
+      fetch(page.href)
+        .then((response) => response.text())
+        .then((content) => {
+          // Initialize the DOM parser
+          var parser = new DOMParser();
+          // Parse the text
+          var doc = parser.parseFromString(content, "text/html");
+          // You can now even select part of that html as you would in the regular DOM
+          // Example:
+          // var docArticle = doc.querySelector('article').innerHTML;
+          content = doc.querySelector('#content').querySelector('article').textContent
+          let contentArray = lengthSplit(content, 20);
+          contentArray.forEach(line => {
+            if (line.match(/^\s+$/) || line.match(/^[ ]+$/) || line.match(/^[ ]*$/) || line.match(/^\s*$/)) {
+              return;
+            }
+            if (line.search(input.value) != -1 && small.innerHTML == '') {
+              small.innerHTML = line.replaceAll(input.value, String.raw`<strong style="color:red" >${input.value}</strong>`);
+              return;
+            }
+          })
+          if (small.innerHTML == '') {
+            contentArray.forEach(line => {
+              if (line.match(/^\s+$/) || line.match(/^[ ]+$/) || line.match(/^[ ]*$/) || line.match(/^\s*$/)) {
+                return;
+              }
+              input.value.split('').forEach(s => {
+                if (line.search(s) != -1 && small.innerHTML == '') {
+                  small.innerHTML = line.replaceAll(s, String.raw`<strong style="color:red" >${s}</strong>`);
+                  return;
+                }
+              })
+            })
+          }
+        });
+      
       results.appendChild(li);
     });
   }
+
+function lengthSplit(str, num) {
+  let strArr = [];
+  for (let i = 0; i < str.length; i += num) strArr.push(str.slice(i, i + num));
+  return strArr;
+}
 
   /**
    * @param {String} content
