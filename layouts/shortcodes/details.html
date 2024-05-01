@@ -1,7 +1,19 @@
-<details {{ if or (.Get "open") (in .Params "open") }}open{{ end }}>
-  {{- $summary := cond .IsNamedParams (.Get "title") (.Get 0) -}}
-  <summary>{{ $summary | .Page.RenderString }}</summary>
+{{- $class := cond .IsNamedParams (.Get "class") (.Get 0) -}}
+{{- $summary := cond .IsNamedParams (.Get "title") (.Get 0) -}}
+{{- $slug := $summary | urlize | lower -}}
+<details {{ if or (.Get "open") (in .Params "open") }}open{{ end }} {{ if $class }}class="{{ $class }}"{{ end }} {{ if $slug }}id="{{ $slug }}"{{ end }}>
+  <summary>
+    {{ $summary | .Page.RenderString }}
+    {{ if or (.Get "anchor") (in .Params "anchor") }}
+      <a class="anchor" href="#{{ $slug }}">#</a>
+    {{ end }}
+  </summary>
   <div class="markdown-inner">
     {{ .Inner | .Page.RenderString }}
   </div>
 </details>
+{{ $script := resources.Get "details.js" | resources.Minify }} {{ with $script.Content }}
+<script>
+  {{ . | safeJS }}
+</script>
+{{ end }}

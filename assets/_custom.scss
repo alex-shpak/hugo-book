@@ -1,3 +1,24 @@
 /* You can add custom styles here. */
 
 // @import "plugins/numbered";
+details.faq-details {
+  border: unset;
+
+  summary {
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 30px;
+    font-family: var(--font-family);
+    color: var(--text);
+
+    a.anchor {
+      opacity: 0;
+    }
+
+    &:hover {
+      a.anchor {
+        opacity: 1;
+      }
+    }
+  }
+}
