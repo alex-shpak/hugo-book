@@ -9,7 +9,7 @@ homepage = "https://github.com/alex-shpak/hugo-book"
 demosite = "https://hugo-book-demo.netlify.app"
 tags = ["responsive", "clean", "documentation", "docs", "flexbox", "search", "mobile", "multilingual", "disqus"]
 features = []
-min_version = "0.68"
+min_version = "0.124"
 
 [author]
   name = "Alex Shpak"
