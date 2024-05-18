@@ -60,7 +60,7 @@ Start with initializing hugo modules, if not done yet:
 hugo mod init github.com/repo/path
 ```
 
-Navigate to your hugo project root and add [module] section to your `config.toml`:
+Navigate to your hugo project root and add [module] section to your `hugo.toml`:
 
 ```toml
 [module]
@@ -140,7 +140,7 @@ A blog is not the primary usecase of this theme, so it has only minimal features
 
 ### Site Configuration
 
-There are a few configuration options that you can add to your `config.toml` file.  
+There are a few configuration options that you can add to your `hugo.toml` file.  
 You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
 
 ```toml
