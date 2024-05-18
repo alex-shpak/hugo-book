@@ -128,7 +128,7 @@ headless = true
 And Enable it by setting `BookMenuBundle: /menu` in Site configuration.
 
 - [Example menu](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/content.en/menu/index.md)
-- [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml)
+- [Example config file](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/hugo.yaml)
 - [Leaf bundles](https://gohugo.io/content-management/page-bundles/)
 
 ## Blog
