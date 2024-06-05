@@ -15,7 +15,7 @@
     {
       encode: false,
       tokenize: function(str) {
-        // 只去除空白行，标点符号保留、表情符号保留、数字保留、英文保留
+        // Only remove blank lines, keep punctuation marks, keep emoticons, keep numbers, keep English
         return str.replace(/\n*\s*\r*/g, '').split('');
       }
     }
