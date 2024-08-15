@@ -17,10 +17,6 @@
     margin-top: $padding-16 * 3;
     margin-bottom: $padding-4;
 
-    font-weight: 500;
-    font-size: 21px;
-    line-height: 30px;
-
     a.anchor {
       opacity: 0;
       font-size: 0.75em;
@@ -35,26 +31,35 @@
   }
 
   h1 {
-    font-style: normal;
+    font-size: 48px;
     font-weight: 600;
-    font-size: 28px;
-    line-height: 34px;
+    line-height: 56.02px;
+    font-style: normal;
     margin-bottom: 12px;
   }
-
-  h4,
-  h5,
-  h6 {
-    font-weight: bolder;
+  
+  h2 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 39.52px;
   }
-
+  
+  h3 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32.02px;
+  }
+  
+  h4 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+  
   h5 {
-    font-size: 0.875em;
-  }
-
-  h6 {
-    margin-top: 28px;
-    font-size: 1.15em;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
   }
 
   .goat {
