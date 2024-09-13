@@ -23,7 +23,7 @@
 {{- end -}}
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
-{{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+{{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | css.Sass | resources.Minify | resources.Fingerprint }}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ template "integrity" $styles }}>
 
 {{- if default true .Site.Params.BookSearch -}}
