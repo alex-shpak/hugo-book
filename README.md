@@ -141,7 +141,7 @@ A blog is not the primary usecase of this theme, so it has only minimal features
 ### Site Configuration
 
 There are a few configuration options that you can add to your `hugo.toml` file.  
-You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/config.yaml).
+You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/hugo.yaml).
 
 ```toml
 # (Optional) Set Google Analytics if you use it to track your website.
