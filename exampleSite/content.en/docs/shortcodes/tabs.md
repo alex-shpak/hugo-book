@@ -3,7 +3,7 @@
 Tabs let you organize content by context, for example installation instructions for each supported platform.
 
 ```tpl
-{{</* tabs "uniqueid" */>}}
+{{</* tabs */>}}
 {{</* tab "MacOS" */>}} # MacOS Content {{</* /tab */>}}
 {{</* tab "Linux" */>}} # Linux Content {{</* /tab */>}}
 {{</* tab "Windows" */>}} # Windows Content {{</* /tab */>}}
@@ -12,7 +12,7 @@ Tabs let you organize content by context, for example installation instructions 
 
 ## Example
 
-{{< tabs "uniqueid" >}}
+{{< tabs >}}
 {{< tab "MacOS" >}}
 # MacOS
 
