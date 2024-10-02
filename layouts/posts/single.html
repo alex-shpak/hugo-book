@@ -1,10 +1,12 @@
 {{ define "main" }}
 <article class="markdown book-post">
-  <h1>
-    <a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a>
-  </h1>
+  <h2>
+    {{ partial "docs/title.html" . }}
+  </h2>
   {{ partial "docs/post-meta" . }}
-  {{- .Content -}}
+  <div class="book-post-content">
+    {{- .Content -}}
+  </div>
 </article>
 {{ end }}
 
