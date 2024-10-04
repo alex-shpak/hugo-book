@@ -20,12 +20,10 @@ $endLevel: 6;
 }
 
 .book-toc nav#TableOfContents ul {
+  counter-reset: item;
+
   li {
     counter-increment: item;
-
-    &:first-child {
-      counter-reset: item;
-    }
 
     &:before {
       content: counters(item, ".") ". ";
