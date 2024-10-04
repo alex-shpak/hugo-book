@@ -7,6 +7,6 @@
 {{ .Page.Scratch.Set "mermaid" true }}
 {{ end }}
 
-<p class="mermaid{{ with .Get "class" }} {{ . }}{{ end }}">
+<pre class="mermaid{{ with .Get "class" }} {{ . }}{{ end }}">
   {{- .Inner -}}
-</p>
+</pre>

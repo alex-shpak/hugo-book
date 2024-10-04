@@ -1,0 +1,2 @@
+{{- $commitPath := default "commit" .Site.Params.BookCommitPath -}}
+{{- .Site.Params.BookRepo }}/{{ $commitPath }}/{{ .GitInfo.Hash -}}

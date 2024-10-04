@@ -25,13 +25,14 @@ languages:
     languageName: English
     contentDir: content.en
     weight: 1
-  ru:
-    languageName: Russian
-    contentDir: content.ru
-    weight: 2
   zh:
     languageName: Chinese
     contentDir: content.zh
+    weight: 2
+  he:
+    languageName: Hebrew
+    contentDir: content.he
+    languageDirection: rtl
     weight: 3
 
 menu:
@@ -41,7 +42,7 @@ menu:
       url: "https://github.com/alex-shpak/hugo-book"
       weight: 10
     - name: "Hugo Themes"
-      url: "https://themes.gohugo.io/hugo-book/"
+      url: "https://themes.gohugo.io/themes/hugo-book/"
       weight: 20
 
 params:
@@ -61,10 +62,6 @@ params:
   # (Optional, default none) Set the path to a logo for the book.
   # If the logo is /static/logo.png then the path would be logo.png
   # BookLogo: /logo.png
-
-  # (Optional, default none) Set leaf bundle to render as side menu
-  # When not specified file structure and weights will be used
-  # BookMenuBundle: /menu
 
   # (Optional, default docs) Specify root page to render child pages as menu.
   # Page is resoled by .GetPage function: https://gohugo.io/functions/getpage/

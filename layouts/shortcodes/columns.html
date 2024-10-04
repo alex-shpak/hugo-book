@@ -1,7 +1,9 @@
-<div class="book-columns flex flex-wrap">
-{{ range split .Inner "<--->" }}
-  <div class="flex-even markdown-inner">
-    {{ . | $.Page.RenderString }}
+{{- $ratio := (split (.Get "ratio") ":") -}}
+<div class="book-columns flex flex-wrap{{ with .Get "class" }} {{ . }}{{ end }}">
+{{ range $index, $content := split .InnerDeindent "<--->" }}
+  {{- $grow := default 1 (index $ratio $index) -}}
+  <div class="flex-even markdown-inner" style="flex-grow: {{ $grow }};">
+    {{ $content | safeHTML }}
   </div>
 {{ end }}
 </div>

@@ -4,19 +4,19 @@ Details shortcode is a helper for `details` html5 element. It is going to replac
 
 ## Example
 ```tpl
-{{</* details "Title" [open] */>}}
+{{%/* details "Title" [open] */%}}
 ## Markdown content
 Lorem markdownum insigne...
-{{</* /details */>}}
+{{%/* /details */%}}
 ```
 ```tpl
-{{</* details title="Title" open=true */>}}
+{{%/* details title="Title" open=true */%}}
 ## Markdown content
 Lorem markdownum insigne...
-{{</* /details */>}}
+{{%/* /details */%}}
 ```
 
-{{< details "Title" open >}}
+{{% details "Title" open %}}
 ## Markdown content
 Lorem markdownum insigne...
-{{< /details >}}
+{{% /details %}}

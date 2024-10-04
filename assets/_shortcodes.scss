@@ -71,7 +71,7 @@
 
     > div {
       margin: $padding-16 0;
-      min-width: $body-min-width / 2;
+      min-width: $body-min-width * 0.66;
       padding: 0 $padding-16;
     }
   }
@@ -83,6 +83,7 @@
     color: var(--color-link);
     line-height: $padding-16 * 2;
     padding: 0 $padding-16;
+    margin: 0 $padding-4;
     border: $padding-1 solid var(--color-link);
     border-radius: $border-radius;
     cursor: pointer;

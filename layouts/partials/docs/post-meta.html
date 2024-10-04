@@ -1,23 +1,16 @@
 {{ with .Date }}
-  <h5>{{ partial "docs/date" (dict "Date" . "Format" $.Site.Params.BookDateFormat) }}</h5>
+  <div class="flex align-center text-small book-post-date">
+    <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon " alt="" />
+    <span>{{ partial "docs/date" (dict "Date" . "Format" $.Site.Params.BookDateFormat) }}</span>
+  </div>
 {{ end }}
 
 {{ range $taxonomy, $_ := .Site.Taxonomies }}
   {{ with $terms := $.GetTerms $taxonomy }}
-  <div>
+  <div class="text-small">
     {{ range $n, $term := $terms }}{{ if $n }}, {{ end }}
       <a href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
     {{- end }}
   </div>
   {{ end }}
-{{ end }}
-
-{{ if .Params.image }}
-<p>
-  {{ with .Resources.GetMatch .Params.image }}
-    <img src={{ .RelPermalink }} />
-  {{ else }}
-    <img src={{ .Params.image | relURL }} />
-  {{ end }}
-</p>
 {{ end }}

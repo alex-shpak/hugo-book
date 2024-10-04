@@ -1,6 +1,5 @@
 {{ if .Inner }}{{ end }}
-{{ $id := .Get 0 }}
-{{ $group := printf "tabs-%s" $id }}
+{{ $group := printf "tabs-%d" .Ordinal }}
 
 <div class="book-tabs">
 {{- range $index, $tab := .Scratch.Get $group -}}
@@ -9,7 +8,7 @@
     {{- $tab.Name -}}
   </label>
   <div class="book-tabs-content markdown-inner">
-    {{- .Content | $.Page.RenderString -}}
+    {{- .Content | safeHTML -}}
   </div>
 {{- end -}}
 </div>

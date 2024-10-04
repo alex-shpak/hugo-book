@@ -1,18 +1,14 @@
 <nav>
 {{ partial "docs/brand" . }}
 {{ partial "docs/search" . }}
-{{ if .Site.IsMultiLingual }}
+{{ if hugo.IsMultilingual }}
   {{ partial "docs/languages" . }}
 {{ end }}
 
 {{ partial "docs/inject/menu-before" . }}
 {{ partial "docs/menu-hugo" .Site.Menus.before }}
 
-{{ if .Site.Params.BookMenuBundle }}
-  {{ partial "docs/menu-bundle" . }}
-{{ else }}
-  {{ partial "docs/menu-filetree" . }}
-{{ end }}
+{{ partial "docs/menu-filetree" . }}
 
 {{ partial "docs/menu-hugo" .Site.Menus.after }}
 {{ partial "docs/inject/menu-after" . }}

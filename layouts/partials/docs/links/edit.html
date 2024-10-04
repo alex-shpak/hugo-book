@@ -1,0 +1,2 @@
+{{- $bookFilePath := (strings.TrimPrefix hugo.WorkingDir .Page.File.Filename | path.Join) -}}
+{{- .Site.Params.BookRepo }}/{{ .Site.Params.BookEditPath }}{{ ($bookFilePath) -}}

@@ -1,5 +1,5 @@
 {{- if not (.Page.Scratch.Get "katex") -}}
-<!-- Include katext only first time -->
+<!-- Include katex only first time -->
 <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
 <script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
 <script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body);"></script>
@@ -7,7 +7,7 @@
 {{- end -}}
 
 <span {{- with .Get "class" }} class="{{ . }}"{{ end }}>
-  {{ cond (in .Params "display") "\\[" "\\(" -}}
-  {{- trim .Inner "\n" -}}
-  {{- cond (in .Params "display") "\\]" "\\)" }}
+  {{ with .Get "display" }}\[{{else}}\({{end}}
+  {{- .InnerDeindent -}}
+  {{ with .Get "display" }}\]{{else}}\){{end}}
 </span>
