@@ -26,14 +26,15 @@ enableGitInfo = true
   contentDir = 'content.en'
   weight = 1
 
-[languages.ru]
-  languageName = 'Russian'
-  contentDir = 'content.ru'
-  weight = 2
-
 [languages.zh]
   languageName = 'Chinese'
   contentDir = 'content.zh'
+  weight = 2
+
+[languages.he]
+  languageName = 'Hebrew'
+  contentDir = 'content.he'
+  languageDirection = 'rtl'
   weight = 3
 
 [menu]

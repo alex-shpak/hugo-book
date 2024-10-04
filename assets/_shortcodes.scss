@@ -71,7 +71,7 @@
 
     > div {
       margin: $padding-16 0;
-      min-width: $body-min-width / 2;
+      min-width: $body-min-width * 0.66;
       padding: 0 $padding-16;
     }
   }

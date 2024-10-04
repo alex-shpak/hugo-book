@@ -9,16 +9,16 @@ KaTeX shortcode let you render math typesetting in markdown document. See [KaTeX
 {{% columns %}}
 
 ```latex
-{{</* katex display=true class="optional" >}}
+{{</* katex display=true [class="..."] >}}
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
 {{< /katex */>}}
 ```
 
 <--->
 
-{{< katex display=true class="optional" >}}
+{{<katex display=true>}}
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-{{< /katex >}}
+{{</katex>}}
 
 {{% /columns %}}
 

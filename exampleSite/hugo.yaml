@@ -25,13 +25,14 @@ languages:
     languageName: English
     contentDir: content.en
     weight: 1
-  ru:
-    languageName: Russian
-    contentDir: content.ru
-    weight: 2
   zh:
     languageName: Chinese
     contentDir: content.zh
+    weight: 2
+  he:
+    languageName: Hebrew
+    contentDir: content.he
+    languageDirection: rtl
     weight: 3
 
 menu:
