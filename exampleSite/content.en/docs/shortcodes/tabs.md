@@ -13,6 +13,7 @@ Tabs let you organize content by context, for example installation instructions 
 ## Example
 
 {{% tabs %}}
+
 {{% tab "MacOS" %}}
 # MacOS
 
@@ -25,7 +26,6 @@ Miseratus fonte Ditis conubia.
 {{% /tab %}}
 
 {{% tab "Linux" %}}
-
 # Linux
 
 This is tab **Linux** content.
@@ -37,7 +37,6 @@ Miseratus fonte Ditis conubia.
 {{% /tab %}}
 
 {{% tab "Windows" %}}
-
 # Windows
 
 This is tab **Windows** content.
@@ -47,4 +46,5 @@ stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
 {{% /tab %}}
+
 {{% /tabs %}}
