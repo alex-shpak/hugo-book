@@ -8,7 +8,7 @@
     {{- $tab.Name -}}
   </label>
   <div class="book-tabs-content markdown-inner">
-    {{- .Content | $.Page.RenderString -}}
+    {{- .Content | safeHTML -}}
   </div>
 {{- end -}}
 </div>

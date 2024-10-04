@@ -8,6 +8,6 @@
 
 <span {{- with .Get "class" }} class="{{ . }}"{{ end }}>
   {{ with .Get "display" }}\[{{else}}\({{end}}
-  {{- trim .Inner "\n" -}}
+  {{- .InnerDeindent -}}
   {{ with .Get "display" }}\]{{else}}\){{end}}
 </span>

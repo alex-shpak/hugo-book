@@ -1,3 +1,3 @@
 <blockquote class="book-hint {{ .Get 0 }}">
-  {{ .InnerDeindent | .Page.RenderString }}
+  {{ .InnerDeindent | safeHTML }}
 </blockquote>

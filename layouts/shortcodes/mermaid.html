@@ -8,5 +8,5 @@
 {{ end }}
 
 <pre class="mermaid{{ with .Get "class" }} {{ . }}{{ end }}">
-  {{- .Inner | safeHTML -}}
+  {{- .Inner -}}
 </pre>
