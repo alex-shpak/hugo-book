@@ -12,10 +12,10 @@
 {{- template "_internal/opengraph.html" . -}}
 
 <title>{{ partial "docs/html-head-title" . }}</title>
+{{ partial "docs/html-head-favicon" . }}
 
 {{- $manifest := resources.Get "manifest.json" | resources.ExecuteAsTemplate "manifest.json" . }}
 <link rel="manifest" href="{{ $manifest.RelPermalink }}">
-<link rel="icon" href="{{ .Site.Params.BookFavicon | default "favicon.png" | relURL }}" >
 <link rel="canonical" href="{{ .Permalink }}">
 
 {{- range .Translations }}
