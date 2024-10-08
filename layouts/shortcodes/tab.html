@@ -1,12 +1,9 @@
-{{ if .Parent }}
-  {{ $name := .Get 0 }}
-  {{ $group := printf "tabs-%d" .Parent.Ordinal }}
-
-  {{ if not (.Parent.Scratch.Get $group) }}
-    {{ .Parent.Scratch.Set $group slice }}
-  {{ end }}
-
-  {{ .Parent.Scratch.Add $group (dict "Name" $name "Content" .Inner) }}
-{{ else }}
-  {{ errorf "%q: 'tab' shortcode must be inside 'tabs' shortcode" .Page.Path }}
-{{ end}}
+{{- $group := printf "tabs-%d" .Parent.Ordinal -}}
+{{- $tab := printf "%s-%d" $group .Ordinal }}
+<input type="radio" class="toggle" name="{{ $group }}" id="{{ $tab }}" {{ if not .Ordinal }}checked="checked"{{ end }} />
+<label for="{{ $tab }}">
+  {{- .Get 0 -}}
+</label>
+<div class="book-tabs-content markdown-inner">
+  {{- .Inner -}}
+</div>
