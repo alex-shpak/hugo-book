@@ -3,7 +3,7 @@
     <img src="{{ "svg/menu.svg" | relURL }}" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>{{ partial "docs/title" . }}</strong>
+  <h3>{{ partial "docs/title" . }}</h3>
 
   <label for="toc-control">
     {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}

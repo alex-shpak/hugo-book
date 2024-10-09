@@ -195,6 +195,12 @@ body[dir="rtl"] .book-menu {
     line-height: 0;
   }
 
+  h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0 $padding-16;
+  }
+
   img.book-icon {
     height: 1.5em;
     width: 1.5em;

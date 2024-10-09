@@ -16,7 +16,6 @@ $body-font-weight: normal !default;
 $body-min-width: 20rem !default;
 $container-max-width: 80rem !default;
 
-$header-height: 3.5rem !default;
 $menu-width: 16rem !default;
 $toc-width: 16rem !default;
 
@@ -48,9 +47,9 @@ $hint-colors: (
 }
 
 @mixin theme-dark {
-  --gray-100: rgba(255, 255, 255, 0.1);
-  --gray-200: rgba(255, 255, 255, 0.2);
-  --gray-500: rgba(255, 255, 255, 0.5);
+  --gray-100: #494e54;
+  --gray-200: #5c6165;
+  --gray-500: #999d9f;
 
   --color-link: #84b2ff;
   --color-visited-link: #b88dff;
