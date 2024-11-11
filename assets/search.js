@@ -113,15 +113,24 @@
       if (hits.length) return hits
       return window.lunrIdx.search(searchValue(true)).slice(0, LIMIT_RESULTS);
     }
+    const currentPathname = window.location.pathname
     const searchHits = getSearchHits()
+
+    const filterSDK6 = isSdk6(currentPathname) ? searchHits : searchHits.filter($ => {
+      const document = documents.get(Number($.ref))
+      if (!document || isSdk6(document.href)) return false
+      return true
+    })
+
     showSearchBox()
-    if (!searchHits.length) {
+
+    if (!filterSDK6.length) {
       resultCard(`Not Found`, `Sorry, we couldn't find any matches. Try searching for a different keyword`)
       return
     }
-    const currentPathname = window.location.pathname
 
-    searchHits.forEach((hit) => {
+
+    filterSDK6.forEach((hit) => {
       const document = documents.get(Number(hit.ref))
       if (!document) return
       if ((isSdk6(currentPathname) && isSdk7(document.href))
