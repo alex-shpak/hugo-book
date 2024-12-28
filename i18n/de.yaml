@@ -12,3 +12,9 @@
 
 - id: bookSearchConfig
   translation: '{ cache: true }'
+
+- id: home
+  translation: Startseite
+
+- id: about
+  translation: Über
