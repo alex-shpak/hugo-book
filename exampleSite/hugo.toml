@@ -37,8 +37,17 @@ enableGitInfo = true
   languageDirection = 'rtl'
   weight = 3
 
-[menu]
 # [[menu.before]]
+[[menu.main]]
+  name = "Home"
+  url = "/"
+  weight = 4
+
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 5
+
 [[menu.after]]
   name = "Github"
   url = "https://github.com/alex-shpak/hugo-book"

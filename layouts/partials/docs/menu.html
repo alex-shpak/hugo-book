@@ -14,6 +14,7 @@
 {{ partial "docs/inject/menu-after" . }}
 </nav>
 
+<a href="{{ "about" | relLangURL }}">About</a>
 <!-- Restore menu position as soon as possible to avoid flickering -->
 {{ $script := resources.Get "menu-reset.js" | resources.Minify }}
 {{ with $script.Content }}
