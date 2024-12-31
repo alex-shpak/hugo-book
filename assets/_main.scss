@@ -298,9 +298,16 @@ body[dir="rtl"] .book-menu {
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
+  h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: 3rem;
+  }
+
   #menu-control,
   #toc-control {
     display: inline;
+    // prevents scrolling to top when inputs focused
+    position: fixed;
+    top: 0;
   }
 
   .book-menu {
@@ -314,7 +321,16 @@ body[dir="rtl"] .book-menu {
   }
 
   .book-header {
+    background: var(--body-background);
+    border-bottom: 2px solid var(--color-visited-link);
     display: block;
+    max-height: 100vh;
+    overflow: auto;
+    padding: .35rem 0;
+    position: sticky;
+    top: -1px;
+    // prevent background from being transparent
+    z-index: 1;
   }
 
   #menu-control:focus ~ main label[for="menu-control"] {
