@@ -21,6 +21,13 @@
 
       {{ partial "docs/inject/content-before" . }}
       {{ template "main" . }} <!-- Page Content -->
+
+      <!-- Improve .book-header usability on mobile devices -->
+      {{ $script := resources.Get "book-header.js" | resources.Minify }}
+      {{ with $script.Content }}
+        <script>{{ . | safeJS }}</script>
+      {{ end }}
+
       {{ partial "docs/inject/content-after" . }}
 
       <footer class="book-footer">
