@@ -117,3 +117,10 @@ enableGitInfo = true
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
   BookTranslatedOnly = false
+
+  # (Optional) Specifies a License that applies to the content of the page
+  # BookContentLicenseText = 'CC-BY-SA-4.0'
+
+  # (Optional) Specifies a Link for the License that applies to the content of the page
+  # Requires 'BookContentLicenseText' param.
+  # BookContentLicenseLink = 'https://creativecommons.org/licenses/by-sa/4.0/'
