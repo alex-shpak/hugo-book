@@ -18,3 +18,9 @@
         return str.replace(/[\x00-\x7F]/g, '').split('');
       }
     }
+
+- id: home
+  translation: 家
+
+- id: about
+  translation: 關於
