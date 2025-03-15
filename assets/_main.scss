@@ -48,12 +48,13 @@ aside nav ul {
   list-style: none;
 
   li {
-    margin: 1em 0;
+    margin: 0;
     position: relative;
   }
 
   a {
     display: block;
+    line-height: 2;
   }
 
   a:hover {
@@ -262,10 +263,6 @@ body[dir="rtl"] .book-menu {
   img {
     height: 1em;
     width: 1em;
-  }
-
-  nav > ul > li:first-child {
-    margin-top: 0;
   }
 }
 
