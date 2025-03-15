@@ -122,6 +122,10 @@ a .book-icon {
     word-wrap: break-word;
   }
 
+  label {
+    align-items: center;
+  }
+
   a.active {
     color: var(--color-link);
   }
