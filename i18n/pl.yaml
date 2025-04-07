@@ -1,0 +1,14 @@
+- id: Search
+  translation: Szukaj
+
+- id: Edit this page
+  translation: Edytuj stronę
+
+- id: Last modified by
+  translation: Ostatnia modyfikacja
+
+- id: Expand
+  translation: Rozwiń
+
+- id: bookSearchConfig
+  translation: '{ cache: true }'
