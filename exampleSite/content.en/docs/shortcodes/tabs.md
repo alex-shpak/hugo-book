@@ -3,16 +3,16 @@
 Tabs let you organize content by context, for example installation instructions for each supported platform.
 
 ```tpl
-{{%/* tabs "id" */%}}
+{{</* tabs "id" */>}}
 {{%/* tab "MacOS" */%}} # MacOS Content {{%/* /tab */%}}
 {{%/* tab "Linux" */%}} # Linux Content {{%/* /tab */%}}
 {{%/* tab "Windows" */%}} # Windows Content {{%/* /tab */%}}
-{{%/* /tabs */%}}
+{{</* /tabs */>}}
 ```
 
 ## Example
 
-{{% tabs %}}
+{{< tabs >}}
 
 {{% tab "MacOS" %}}
 # MacOS
@@ -47,4 +47,4 @@ protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
 Miseratus fonte Ditis conubia.
 {{% /tab %}}
 
-{{% /tabs %}}
+{{< /tabs >}}
