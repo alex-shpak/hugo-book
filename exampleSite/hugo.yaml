@@ -37,7 +37,11 @@ languages:
 
 menu:
   # before: []
+
   after:
+    - name: "About"
+      url: "/about"
+      weight: 5
     - name: "Github"
       url: "https://github.com/alex-shpak/hugo-book"
       weight: 10
