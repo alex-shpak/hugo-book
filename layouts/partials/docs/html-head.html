@@ -57,6 +57,6 @@ https://github.com/alex-shpak/hugo-book
 {{- end -}}
 
 <!--Katex Partial Injection-->
-{{ if .Param "BookKatexMathPassthrough" }}
+{{ if .Site.Param "BookKatexMathPassthrough" }}
     {{ partialCached "docs/math.html" . }}
 {{ end }}

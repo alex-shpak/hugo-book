@@ -104,6 +104,13 @@ enableGitInfo = true
   # Can be overwritten by same param in page frontmatter
   BookComments = true
 
+  # (Optional, default false) Enables a Katex math engine that works with the Goldmark markdown 
+  # pass through. This removes the need for shortcodes for math. Also requires 
+  # defining the pass through delimiters. 
+  # See below. 
+  BookKatexMathPassthrough = false 
+
+
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode

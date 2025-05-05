@@ -15,6 +15,7 @@
 - [Blog](#blog)
 - [Configuration](#configuration)
 - [Shortcodes](#shortcodes)
+- [Math](#math)
 - [Versioning](#versioning)
 - [Contributing](#contributing)
 
@@ -177,11 +178,11 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # Can be overwritten by same param in page frontmatter
   BookComments = true
 
-  # (Optional) Enables a Katex math engine that works with the Goldmark markdown 
+  # (Optional, default false) Enables a Katex math engine that works with the Goldmark markdown 
   # pass through. This removes the need for shortcodes for math. Also requires 
   # defining the pass through delimiters. 
   # See below. 
-  BookKatexMathPassthrough = true
+  BookKatexMathPassthrough = false 
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
