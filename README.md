@@ -177,6 +177,12 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # Can be overwritten by same param in page frontmatter
   BookComments = true
 
+  # (Optional) Enables a Katex math engine that works with the Goldmark markdown 
+  # pass through. This removes the need for shortcodes for math. Also requires 
+  # defining the pass through delimiters. 
+  # See below. 
+  BookKatexMathPassthrough = true
+
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
@@ -186,6 +192,7 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
   BookServiceWorker = true
+
 ```
 
 ### Multi-Language Support
@@ -295,6 +302,40 @@ By default, Goldmark trims unsafe outputs which might prevent some shortcodes fr
 ```
 
 If you are using `config.yaml` or `config.json`, consult the [configuration markup](https://gohugo.io/getting-started/configuration-markup/)
+
+## Math
+
+Rendering math equations is enabled by the Katex engine. There are two methods for implementing math support with different benefits. 
+
+### Shortcodes
+
+As described in the Shortcodes section, the Katex shortcode will provide inline and block display (see: [Katex Shortcode](https://hugo-book-demo.netlify.app/docs/shortcodes/katex/)). This method is probably the best if rendering math is only required occasionally. 
+
+### Goldmark Passthrough
+
+Alternatively, the Goldmark markdown rendering engine can be configured to pass blocks defined by delimiters to the Katex engine (see [Hugo docs](https://gohugo.io/content-management/mathematics/#overview)). Thus, short codes are not required. This method is likely the best if rending math is required frequently. 
+
+To enable this feature, add the following to your site configuration. 
+
+```toml
+# Define the delimiters
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
+
+# Enable the pass through rendering
+[params]
+  # ...
+  BookKatexMathPassthrough = true
+  # ...
+```
+
+Note: the delimiters above delimiters are examples only. You can chose your own delimiters. 
 
 ## Versioning
 
