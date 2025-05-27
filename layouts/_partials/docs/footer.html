@@ -12,7 +12,7 @@
 
 {{ if and .File .Site.Params.BookEditLink }}
 <div>
-  <a class="flex align-center" href="{{ partial "docs/links/edit" . }}" target="_blank" rel="noopener">
+  <a class="flex align-center" href="{{ partial "docs/links/edit" . }}" target="_blank" rel="noopener edit">
     <img src="{{ "svg/edit.svg" | relURL }}" class="book-icon" alt="" />
     <span>{{ i18n "Edit this page" }}</span>
   </a>
