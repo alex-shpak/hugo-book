@@ -298,7 +298,7 @@ If you are using `config.yaml` or `config.json`, consult the [configuration mark
 
 ## Versioning
 
-This theme follows a simple incremental versioning. e.g. `v1`, `v2` and so on. There might be breaking changes between versions.
+This theme follows a simple incremental versioning. e.g. `v1.0.0`, `v2.0.0` and so on. Releases will happen on breaking changes.
 
 If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `master` branch and update your website when needed.
 
