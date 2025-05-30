@@ -1,6 +1,6 @@
 # Hugo Book Theme
 
-[![Hugo](https://img.shields.io/badge/hugo-0.134-blue.svg)](https://gohugo.io)
+[![Hugo](https://img.shields.io/badge/hugo-0.146-blue.svg)](https://gohugo.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Build with Hugo](https://github.com/alex-shpak/hugo-book/workflows/Build%20with%20Hugo/badge.svg)
 
@@ -33,7 +33,7 @@
 
 ## Requirements
 
-- Hugo 0.134 or higher
+- Hugo 0.146 or higher
 - Hugo extended version, [Installation Instructions](https://gohugo.io/installation/)
 
 ## Installation
