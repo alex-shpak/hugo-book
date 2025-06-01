@@ -141,6 +141,10 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # /static/logo.png then the path would be 'logo.png'
   BookLogo = 'logo.png'
 
+  # (Optional, default 'favicon.png') Set the path to a favicon for the site.
+  # If the favicon is in /static/custom.svg, then the path would be 'custom.svg'.
+  BookFavicon = 'favicon.png'
+
   # (Optional, default docs) Specify section of content to render as menu
   # You can also set value to "*" to render all sections to menu
   BookSection = 'docs'
