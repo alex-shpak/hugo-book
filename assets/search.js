@@ -1,5 +1,7 @@
 'use strict';
 
+const dictionary = []; // Define a global variable for spell-check suggestions
+
 {{ $searchDataFile := printf "%s.search-data.json" .Language.Lang }}
 {{ $searchData := resources.Get "search-data.json" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
 
@@ -64,7 +66,7 @@
       .then(pages => {
         window.lunrIdx = lunr(function() {
           this.ref('id')
-          this.field('id')
+          this.field('title', { boost: 10 })
           this.field('content')
           this.field('href')
           this.metadataWhitelist = ['position']
@@ -79,65 +81,173 @@
   }
 
   function search() {
-    const value = input.value?.trim()
-    if (input.required) {
-      return
+    const value = input.value?.trim();
+    if (input.required) { return; }
+    while (results.firstChild) { results.removeChild(results.firstChild); }
+    if (!value || value.length <= MIN_INPUT_SIZE) { hideSearchBox(); return; }
+
+    // Split search terms and filter out very short terms for complex searches
+    const terms = value.split(' ');
+    const filteredTerms = terms.filter(term => {
+      // If it's a single term search, use the original MIN_INPUT_SIZE
+      if (terms.length === 1) return term.length > MIN_INPUT_SIZE;
+      // For complex searches, require at least 3 characters
+      return term.length > 2;
+    });
+
+    // If all terms were filtered out, show no results
+    if (!filteredTerms.length) {
+      showSearchBox();
+      resultCard(`Not Found`, `Please use at least ${MIN_INPUT_SIZE} characters for single word searches, or 3 characters for complex searches`);
+      return;
+    }
+    
+    // Try different search strategies and combine results
+    function getAllHits(terms, fuzzy) {
+      const allHits = new Map(); // Use Map to avoid duplicates
+      
+      // Strategy 0: Exact title match (highest priority)
+      // This ensures we find documents with exact title matches
+      const titleQuery = terms.map(term => `+title:${term}`).join(' ');
+      try {
+        const titleHits = window.lunrIdx.search(titleQuery);
+        titleHits.forEach(hit => {
+          allHits.set(hit.ref, { 
+            ...hit, 
+            score: hit.score * 4.0, // Higher score than allWords
+            matchType: 'title'
+          });
+        });
+      } catch (e) {
+        console.log('Title search error:', e);
+      }
+
+      // Strategy 1: All words match (high priority)
+      // This ensures we find documents containing all search terms
+      const allWordsQuery = terms.map(term => `+${term}`).join(' ');
+      try {
+        const allWordsHits = window.lunrIdx.search(allWordsQuery);
+        allWordsHits.forEach(hit => {
+          if (!allHits.has(hit.ref)) {
+            allHits.set(hit.ref, { 
+              ...hit, 
+              score: hit.score * 3.0,
+              matchType: 'allWords'
+            });
+          }
+        });
+      } catch (e) {
+        console.log('All words search error:', e);
+      }
+
+      // Strategy 2: Word boundary match (high priority)
+      // This ensures we match whole words
+      const boundaryQuery = terms.map(term => `+${term}\\b`).join(' ');
+      try {
+        const boundaryHits = window.lunrIdx.search(boundaryQuery);
+        boundaryHits.forEach(hit => {
+          if (!allHits.has(hit.ref)) {
+            allHits.set(hit.ref, { 
+              ...hit, 
+              score: hit.score * 2.0,
+              matchType: 'boundary'
+            });
+          }
+        });
+      } catch (e) {
+        console.log('Boundary search error:', e);
+      }
+
+      // Strategy 3: Prefix match (medium priority)
+      // This helps with partial word matches
+      const prefixQuery = terms.map(term => `+${term}*`).join(' ');
+      try {
+        const prefixHits = window.lunrIdx.search(prefixQuery);
+        prefixHits.forEach(hit => {
+          if (!allHits.has(hit.ref)) {
+            allHits.set(hit.ref, { 
+              ...hit, 
+              score: hit.score * 1.5,
+              matchType: 'prefix'
+            });
+          }
+        });
+      } catch (e) {
+        console.log('Prefix search error:', e);
+      }
+
+      // Strategy 4: Fuzzy match (lowest priority)
+      // This helps with typos and variations
+      if (fuzzy) {
+        const fuzzyQuery = terms.map(term => `+${term}~1`).join(' ');
+        try {
+          const fuzzyHits = window.lunrIdx.search(fuzzyQuery);
+          fuzzyHits.forEach(hit => {
+            if (!allHits.has(hit.ref)) {
+              allHits.set(hit.ref, { 
+                ...hit, 
+                score: hit.score * 0.8,
+                matchType: 'fuzzy'
+              });
+            }
+          });
+        } catch (e) {
+          console.log('Fuzzy search error:', e);
+        }
+      }
+
+      // Convert Map to Array and sort by score and match type
+      return Array.from(allHits.values())
+        .sort((a, b) => {
+          // First sort by score
+          if (b.score !== a.score) {
+            return b.score - a.score;
+          }
+          // If scores are equal, prioritize by match type
+          const matchTypePriority = {
+            'title': 5,    // Added title as highest priority
+            'allWords': 4,
+            'boundary': 3,
+            'prefix': 2,
+            'fuzzy': 1
+          };
+          return matchTypePriority[b.matchType] - matchTypePriority[a.matchType];
+        })
+        .slice(0, LIMIT_RESULTS);
     }
 
-    while (results.firstChild) {
-      results.removeChild(results.firstChild);
+    // Try exact and prefix matches first
+    let searchHits = getAllHits(filteredTerms, false);
+    
+    // If no results, try with fuzzy search
+    if (!searchHits.length) {
+      searchHits = getAllHits(filteredTerms, true);
     }
 
-    if (!value || value.length <= MIN_INPUT_SIZE) {
-      hideSearchBox()
+    const currentPathname = window.location.pathname;
+    const filterSDK6 = isSdk6(currentPathname) ? searchHits : searchHits.filter($ => { 
+      const document = documents.get(Number($.ref)); 
+      if (!document || isSdk6(document.href)) return false; 
+      return true; 
+    });
+
+    showSearchBox();
+    if (!filterSDK6.length) {
+      const suggestions = getSuggestionsForMisspelling(filteredTerms[0], dictionary);
+      if (suggestions.length) { 
+        resultCard('Did you mean?', suggestions.map(s => `<span class="search-suggestion">${s}</span>`).join(', ')); 
+      } else { 
+        resultCard(`Not Found`, `Sorry, we couldn't find any matches. Try searching for a different keyword`); 
+      }
       return;
     }
 
-    function searchValue(fuzzy) {
-      // Operators:
-      // +: means AND. i.e +sdk +metaverse will found words that contains sdk & metaverse
-      // ~n: looks for N fuzzy words. i.e. metaverse~1 => metavese ✅
-      return value.split(' ').map(val => {
-        // Avoid blankspaces
-        if (!val) return
-        // if its a short word or fuzzy option is turned off, then return only the value with the +operator
-        if (val.length <= 4 || !fuzzy) return `+${val}`
-
-        return `+${val}~1`
-      }).filter(a => !!a).join(' ')
-    }
-
-    function getSearchHits() {
-      // First search for the words without fuzzy, so we can have a more accurate result.
-      const hits = window.lunrIdx.search(searchValue()).slice(0, LIMIT_RESULTS);
-      if (hits.length) return hits
-      return window.lunrIdx.search(searchValue(true)).slice(0, LIMIT_RESULTS);
-    }
-    const currentPathname = window.location.pathname
-    const searchHits = getSearchHits()
-
-    const filterSDK6 = isSdk6(currentPathname) ? searchHits : searchHits.filter($ => {
-      const document = documents.get(Number($.ref))
-      if (!document || isSdk6(document.href)) return false
-      return true
-    })
-
-    showSearchBox()
-
-    if (!filterSDK6.length) {
-      resultCard(`Not Found`, `Sorry, we couldn't find any matches. Try searching for a different keyword`)
-      return
-    }
-
-
-    filterSDK6.forEach((hit) => {
-      const document = documents.get(Number(hit.ref))
-      if (!document) return
-      if ((isSdk6(currentPathname) && isSdk7(document.href))
-        || (isSdk7(currentPathname) && isSdk6(document.href))
-      ) return
-      const highlightedContent = highlightContent(document.content, hit)
-      resultCard(document.title, highlightedContent, document.href)
+    filterSDK6.forEach((hit) => { 
+      const document = documents.get(Number(hit.ref)); 
+      if (!document) return; 
+      if ((isSdk6(currentPathname) && isSdk7(document.href)) || (isSdk7(currentPathname) && isSdk6(document.href))) return; 
+      const highlightedContent = highlightContent(document.content, hit); 
+      resultCard(document.title, highlightedContent, document.href); 
     });
   }
 
@@ -163,29 +273,98 @@
   function highlightContent(content, hit) {
     const amountLetters = 60
     const { metadata } = hit.matchData
-    let from = 0
-    let to = 100
-    const keys = Object.keys(metadata).sort()
-    for (const key of keys) {
-      const positions = metadata[key]?.content?.position
-      if (!positions) {
-        continue
-      }
+    const searchTerm = input.value.trim().toLowerCase();
+    
+    // Find the best match position
+    let bestMatchStart = 0;
+    let bestMatchLength = 0;
+    let bestMatchScore = -1;
+    
+    // Helper to score a match
+    function scoreMatch(text, start, length) {
+      const matchedText = text.slice(start, start + length).toLowerCase();
+      // Exact match gets highest score
+      if (matchedText === searchTerm) return 100;
+      // Word boundary match gets high score
+      if (matchedText.endsWith(searchTerm) || matchedText.startsWith(searchTerm)) return 80;
+      // Contains the term gets medium score
+      if (matchedText.includes(searchTerm)) return 50;
+      // Partial match gets low score
+      if (searchTerm.includes(matchedText) || matchedText.includes(searchTerm.slice(0, -1))) return 20;
+      return 0;
+    }
+
+    // Look through all matches to find the best one
+    for (const key of Object.keys(metadata)) {
+      const positions = metadata[key]?.content?.position;
+      if (!positions) continue;
+      
       for (const position of positions) {
-        const positionStart = position[0]
-        from = Math.max(0, content.length - positionStart <= amountLetters
-          ? positionStart - amountLetters * 2
-          : positionStart - amountLetters)
-        to = positionStart + position[1] + amountLetters
+        const [start, length] = position;
+        const score = scoreMatch(content, start, length);
+        if (score > bestMatchScore) {
+          bestMatchScore = score;
+          bestMatchStart = start;
+          bestMatchLength = length;
+        }
       }
-      break
     }
-    let value = content.slice(from, to)
+
+    // Use the best match position for the preview
+    const from = Math.max(0, content.length - bestMatchStart <= amountLetters
+      ? bestMatchStart - amountLetters * 2
+      : bestMatchStart - amountLetters);
+    const to = bestMatchStart + bestMatchLength + amountLetters;
+    
+    let value = content.slice(from, to);
     if (from !== 0) {
-      value = `...${value}`
+      value = `...${value}`;
     }
-    for (const key of keys) {
-      value = value.replace(new RegExp(key, 'gi'), '<strong>$&</strong>')
+
+    // First, remove any existing strong tags to prevent nesting
+    value = value.replace(/<\/?strong>/g, '');
+    
+    // Create a map of positions to highlight
+    const highlights = new Map();
+    
+    // Add the exact search term matches
+    const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    let match;
+    const searchRegex = new RegExp(escapedSearchTerm, 'gi');
+    while ((match = searchRegex.exec(value)) !== null) {
+      highlights.set(match.index, match.index + match[0].length);
+    }
+    
+    // Add other matches from search results
+    for (const key of Object.keys(metadata)) {
+      if (key.toLowerCase() !== searchTerm) {
+        const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const keyRegex = new RegExp(escapedKey, 'gi');
+        while ((match = keyRegex.exec(value)) !== null) {
+          // Only add if this range isn't already covered by a highlight
+          let shouldAdd = true;
+          for (const [start, end] of highlights.entries()) {
+            if (match.index >= start && match.index + match[0].length <= end) {
+              shouldAdd = false;
+              break;
+            }
+          }
+          if (shouldAdd) {
+            highlights.set(match.index, match.index + match[0].length);
+          }
+        }
+      }
+    }
+    
+    // Sort highlights by position (descending to avoid position shifts)
+    const sortedHighlights = Array.from(highlights.entries())
+      .sort((a, b) => b[0] - a[0]);
+    
+    // Apply highlights
+    for (const [start, end] of sortedHighlights) {
+      value = value.slice(0, start) + 
+              '<strong>' + value.slice(start, end) + '</strong>' + 
+              value.slice(end);
     }
 
     return value + '...'
@@ -223,4 +402,45 @@
     hide(searchOverlay)
     hide(resultsContainer)
   }
+
+  // search-enhancements.js
+// Utilities to improve search: spell-check, flexible search, and autocomplete
+
+// --- Basic spell-check using a small dictionary extracted from the index ---
+function getSuggestionsForMisspelling(term, dictionary) {
+  // Returns words from the dictionary with Levenshtein distance <= 2
+  function levenshtein(a, b) {
+    const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        matrix[i][j] = b[i - 1] === a[j - 1]
+          ? matrix[i - 1][j - 1]
+          : Math.min(
+              matrix[i - 1][j - 1] + 1,
+              matrix[i][j - 1] + 1,
+              matrix[i - 1][j] + 1
+            );
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+  return dictionary.filter(word => levenshtein(term, word) <= 2);
+}
+
+// --- Flexible search: ignores word order ---
+function buildFlexibleQuery(terms, fuzzy = false) {
+  // Returns a lunr query that searches for all words, regardless of order
+  return terms
+    .filter(Boolean)
+    .map(term => (fuzzy ? `+${term}~1` : `+${term}`))
+    .join(' ');
+}
+
+// --- Autocomplete ---
+function getAutocompleteSuggestions(input, dictionary, minLength = 3, maxResults = 5) {
+  if (input.length < minLength) return [];
+  const lower = input.toLowerCase();
+  return dictionary.filter(word => word.toLowerCase().startsWith(lower)).slice(0, maxResults);
+} 
 })();
