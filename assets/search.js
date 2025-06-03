@@ -1,6 +1,6 @@
 'use strict';
 
-var dictionary = []; // Define a global variable for spell-check suggestions
+const dictionary = []; // Define a global variable for spell-check suggestions
 
 {{ $searchDataFile := printf "%s.search-data.json" .Language.Lang }}
 {{ $searchData := resources.Get "search-data.json" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
