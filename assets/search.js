@@ -2,6 +2,13 @@
 
 const dictionary = []; // Define a global variable for spell-check suggestions
 
+// Define high-priority terms for Decentraland
+const HIGH_PRIORITY_TERMS = new Set([
+  'wearables', 'emotes', 'scene', 'crypto', 'mana', 'build', '3d',
+  'explore', 'name', 'land', 'world', 'wallet', 'address', 'event',
+  'places', 'notifications'
+]);
+
 {{ $searchDataFile := printf "%s.search-data.json" .Language.Lang }}
 {{ $searchData := resources.Get "search-data.json" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
 
@@ -17,6 +24,23 @@ const dictionary = []; // Define a global variable for spell-check suggestions
 
   if (!input) {
     return
+  }
+
+  // Helper function to clean search input
+  function cleanSearchInput(text) {
+    // First split by spaces to handle each word separately
+    return text.split(' ')
+      .map(word => {
+        // Check if the word matches a coordinate pattern
+        if (/^-?\d+,-?\d+$/.test(word)) {
+          return word; // Keep coordinates as is
+        }
+        // For non-coordinate words, remove punctuation
+        return word.replace(/[?!.;:'"()\[\]{}]/g, '');
+      })
+      .join(' ')
+      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .trim();
   }
 
   // Listeners
@@ -81,7 +105,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
   }
 
   function search() {
-    const value = input.value?.trim();
+    const value = cleanSearchInput(input.value);
     if (input.required) { return; }
     while (results.firstChild) { results.removeChild(results.firstChild); }
     if (!value || value.length <= MIN_INPUT_SIZE) { hideSearchBox(); return; }
@@ -227,15 +251,36 @@ const dictionary = []; // Define a global variable for spell-check suggestions
           const termHits = window.lunrIdx.search(term);
           termHits.forEach(hit => {
             if (!allHits.has(hit.ref)) {
+              // Boost score for high-priority terms
+              const baseScore = hit.score * 2.0;
+              const isHighPriority = HIGH_PRIORITY_TERMS.has(term.toLowerCase());
+              const finalScore = isHighPriority ? baseScore * 1.5 : baseScore;
+              
               allHits.set(hit.ref, { 
                 ...hit, 
-                score: hit.score * 2.0, // Give it a decent score but lower than exact matches
+                score: finalScore,
                 matchType: 'significantTerm'
               });
             }
           });
         } catch (e) {
           // Ignore errors for individual term searches
+        }
+      }
+
+      // Also boost scores for high-priority terms in other strategies
+      for (const [ref, hit] of allHits.entries()) {
+        const document = documents.get(Number(hit.ref));
+        if (!document) continue;
+
+        // Check if any high-priority term appears in the document
+        const content = (document.title + ' ' + document.content).toLowerCase();
+        for (const term of HIGH_PRIORITY_TERMS) {
+          if (content.includes(term)) {
+            // Boost the score if a high-priority term is found
+            hit.score *= 1.2;
+            break; // Only boost once per document
+          }
         }
       }
 
@@ -329,6 +374,8 @@ const dictionary = []; // Define a global variable for spell-check suggestions
       const matchedText = text.slice(start, start + length).toLowerCase();
       // Exact match gets highest score
       if (matchedText === searchTerm) return 100;
+      // High priority term match gets high score
+      if (HIGH_PRIORITY_TERMS.has(matchedText)) return 90;
       // Word boundary match gets high score
       if (matchedText.endsWith(searchTerm) || matchedText.startsWith(searchTerm)) return 80;
       // Contains the term gets medium score
