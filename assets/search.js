@@ -88,7 +88,10 @@ const dictionary = []; // Define a global variable for spell-check suggestions
 
     // Split search terms and filter out very short terms for complex searches
     const terms = value.split(' ');
+    const commonShortWords = new Set(['a', 'an', 'the', 'is', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by']);
     const filteredTerms = terms.filter(term => {
+      // Keep common short words
+      if (commonShortWords.has(term.toLowerCase())) return true;
       // If it's a single term search, use the original MIN_INPUT_SIZE
       if (terms.length === 1) return term.length > MIN_INPUT_SIZE;
       // For complex searches, require at least 3 characters
@@ -114,7 +117,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         titleHits.forEach(hit => {
           allHits.set(hit.ref, { 
             ...hit, 
-            score: hit.score * 4.0, // Higher score than allWords
+            score: hit.score * 4.0,
             matchType: 'title'
           });
         });
@@ -122,8 +125,8 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         console.log('Title search error:', e);
       }
 
-      // Strategy 1: All words match (high priority)
-      // This ensures we find documents containing all search terms
+      // Strategy 1: All words match (high priority) - Modified to be more flexible
+      // First try with all words required
       const allWordsQuery = terms.map(term => `+${term}`).join(' ');
       try {
         const allWordsHits = window.lunrIdx.search(allWordsQuery);
@@ -138,6 +141,26 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         });
       } catch (e) {
         console.log('All words search error:', e);
+      }
+
+      // Then try with at least one significant word (more than 3 chars) required
+      const significantTerms = terms.filter(term => term.length > 3);
+      if (significantTerms.length > 0) {
+        const significantQuery = significantTerms.map(term => `+${term}`).join(' ');
+        try {
+          const significantHits = window.lunrIdx.search(significantQuery);
+          significantHits.forEach(hit => {
+            if (!allHits.has(hit.ref)) {
+              allHits.set(hit.ref, { 
+                ...hit, 
+                score: hit.score * 2.5, // Slightly lower score than all words
+                matchType: 'significantWords'
+              });
+            }
+          });
+        } catch (e) {
+          console.log('Significant words search error:', e);
+        }
       }
 
       // Strategy 2: Word boundary match (high priority)
@@ -196,6 +219,26 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         }
       }
 
+      // Strategy 5: Independent significant term search
+      // This helps find documents that contain important terms like "wearable" even if they don't match other terms
+      const longTerms = terms.filter(term => term.length > 3);
+      for (const term of longTerms) {
+        try {
+          const termHits = window.lunrIdx.search(term);
+          termHits.forEach(hit => {
+            if (!allHits.has(hit.ref)) {
+              allHits.set(hit.ref, { 
+                ...hit, 
+                score: hit.score * 2.0, // Give it a decent score but lower than exact matches
+                matchType: 'significantTerm'
+              });
+            }
+          });
+        } catch (e) {
+          // Ignore errors for individual term searches
+        }
+      }
+
       // Convert Map to Array and sort by score and match type
       return Array.from(allHits.values())
         .sort((a, b) => {
@@ -207,6 +250,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
           const matchTypePriority = {
             'title': 5,    // Added title as highest priority
             'allWords': 4,
+            'significantTerm': 3.5, // Added new match type
             'boundary': 3,
             'prefix': 2,
             'fuzzy': 1
