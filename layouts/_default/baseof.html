@@ -81,3 +81,9 @@
 {{ define "toc" }}
   {{ partial "docs/toc" . }}
 {{ end }}
+{{ if .Store.Get "hasMermaid" }}
+  <script type="module">
+    import mermaid from 'mermaid.min.js';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+{{ end }}
