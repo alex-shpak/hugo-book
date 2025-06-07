@@ -7,9 +7,6 @@
     {{ partial "docs/post-meta" . }}
     <div class="book-post-content">
       {{- .Summary -}}
-      {{ if .Truncated }}
-        <a href="{{ .RelPermalink }}">...</a>
-      {{ end }}
     </div>
   </article>
   {{ end }}
