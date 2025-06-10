@@ -341,10 +341,15 @@ const HIGH_PRIORITY_TERMS = new Set([
         const document = documents.get(Number(hit.ref));
         if (!document) continue;
 
+        // Boost scores for FAQ results
+        if (document.href && document.href.toLowerCase().indexOf('faq') != -1) {
+          hit.score *= 7.5; 
+          hit.matchType = 'exactPhrase';// 50% boost for FAQ results
+        }
+
         // Check if the document contains the exact phrase
         const content = (document.title + ' ' + document.content).toLowerCase();
         if (content.includes(exactPhrase.toLowerCase())) {
-          // Boost the score if the exact phrase is found
           hit.score *= 1.5;
           hit.matchType = 'exactPhrase';
         }
