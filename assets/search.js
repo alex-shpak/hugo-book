@@ -2,6 +2,13 @@
 
 const dictionary = []; // Define a global variable for spell-check suggestions
 
+// Define high-priority terms for Decentraland
+const HIGH_PRIORITY_TERMS = new Set([
+  'wearables', 'emotes', 'scene', 'crypto', 'mana', 'build', '3d',
+  'explore', 'name', 'land', 'world', 'wallet', 'address', 'event',
+  'places', 'notifications'
+]);
+
 {{ $searchDataFile := printf "%s.search-data.json" .Language.Lang }}
 {{ $searchData := resources.Get "search-data.json" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
 
@@ -17,6 +24,23 @@ const dictionary = []; // Define a global variable for spell-check suggestions
 
   if (!input) {
     return
+  }
+
+  // Helper function to clean search input
+  function cleanSearchInput(text) {
+    // First split by spaces to handle each word separately
+    return text.split(' ')
+      .map(word => {
+        // Check if the word matches a coordinate pattern
+        if (/^-?\d+,-?\d+$/.test(word)) {
+          return word; // Keep coordinates as is
+        }
+        // For non-coordinate words, remove punctuation
+        return word.replace(/[?!.;:'"()\[\]{}]/g, '');
+      })
+      .join(' ')
+      .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+      .trim();
   }
 
   // Listeners
@@ -81,7 +105,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
   }
 
   function search() {
-    const value = input.value?.trim();
+    const value = cleanSearchInput(input.value);
     if (input.required) { return; }
     while (results.firstChild) { results.removeChild(results.firstChild); }
     if (!value || value.length <= MIN_INPUT_SIZE) { hideSearchBox(); return; }
@@ -108,8 +132,56 @@ const dictionary = []; // Define a global variable for spell-check suggestions
     // Try different search strategies and combine results
     function getAllHits(terms, fuzzy) {
       const allHits = new Map(); // Use Map to avoid duplicates
+      const exactPhrase = input.value.trim();
       
-      // Strategy 0: Exact title match (highest priority)
+      // Strategy 0: Exact phrase match (highest priority)
+      if (exactPhrase.length > 3) {
+        try {
+          // Try exact phrase match in content field first
+          const exactPhraseQuery = `+content:"${exactPhrase}"`;
+          const exactPhraseHits = window.lunrIdx.search(exactPhraseQuery);
+          
+          exactPhraseHits.forEach(hit => {
+            allHits.set(hit.ref, { 
+              ...hit, 
+              score: hit.score * 5.0,
+              matchType: 'exactPhrase'
+            });
+          });
+
+          // If no exact matches found, try a more flexible approach
+          if (exactPhraseHits.length === 0) {
+            const significantWords = exactPhrase.split(' ')
+              .filter(word => word.length > 3)
+              .map(word => `+content:${word}`);
+                        
+            if (significantWords.length > 0) {
+              const flexiblePhraseQuery = significantWords.join(' ');
+              const flexibleHits = window.lunrIdx.search(flexiblePhraseQuery);
+              
+              flexibleHits.forEach(hit => {
+                if (!allHits.has(hit.ref)) {
+                  const doc = documents.get(Number(hit.ref));
+                  if (doc) {
+                    const hasExactPhrase = doc.content.toLowerCase().includes(exactPhrase.toLowerCase());
+                    if (hasExactPhrase) {
+                      allHits.set(hit.ref, {
+                        ...hit,
+                        score: hit.score * 4.5,
+                        matchType: 'exactPhrase'
+                      });
+                    }
+                  }
+                }
+              });
+            }
+          }
+        } catch (e) {
+          console.log('Exact phrase search error:', e);
+        }
+      }
+
+      // Strategy 1: Exact title match (high priority)
       // This ensures we find documents with exact title matches
       const titleQuery = terms.map(term => `+title:${term}`).join(' ');
       try {
@@ -125,7 +197,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         console.log('Title search error:', e);
       }
 
-      // Strategy 1: All words match (high priority) - Modified to be more flexible
+      // Strategy 2: All words match (high priority)
       // First try with all words required
       const allWordsQuery = terms.map(term => `+${term}`).join(' ');
       try {
@@ -144,6 +216,10 @@ const dictionary = []; // Define a global variable for spell-check suggestions
       }
 
       // Then try with at least one significant word (more than 3 chars) required
+      // This is different from all words because it:
+      // 1. Only requires one significant word to match
+      // 2. Helps find relevant content even if other words don't match exactly
+      // 3. Useful for complex queries where some words might be less important
       const significantTerms = terms.filter(term => term.length > 3);
       if (significantTerms.length > 0) {
         const significantQuery = significantTerms.map(term => `+${term}`).join(' ');
@@ -163,7 +239,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         }
       }
 
-      // Strategy 2: Word boundary match (high priority)
+      // Strategy 3: Word boundary match (high priority)
       // This ensures we match whole words
       const boundaryQuery = terms.map(term => `+${term}\\b`).join(' ');
       try {
@@ -181,7 +257,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         console.log('Boundary search error:', e);
       }
 
-      // Strategy 3: Prefix match (medium priority)
+      // Strategy 4: Prefix match (medium priority)
       // This helps with partial word matches
       const prefixQuery = terms.map(term => `+${term}*`).join(' ');
       try {
@@ -199,7 +275,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         console.log('Prefix search error:', e);
       }
 
-      // Strategy 4: Fuzzy match (lowest priority)
+      // Strategy 5: Fuzzy match (lowest priority)
       // This helps with typos and variations
       if (fuzzy) {
         const fuzzyQuery = terms.map(term => `+${term}~1`).join(' ');
@@ -219,7 +295,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         }
       }
 
-      // Strategy 5: Independent significant term search
+      // Strategy 6: Independent significant term search
       // This helps find documents that contain important terms like "wearable" even if they don't match other terms
       const longTerms = terms.filter(term => term.length > 3);
       for (const term of longTerms) {
@@ -227,9 +303,14 @@ const dictionary = []; // Define a global variable for spell-check suggestions
           const termHits = window.lunrIdx.search(term);
           termHits.forEach(hit => {
             if (!allHits.has(hit.ref)) {
+              // Boost score for high-priority terms
+              const baseScore = hit.score * 2.0;
+              const isHighPriority = HIGH_PRIORITY_TERMS.has(term.toLowerCase());
+              const finalScore = isHighPriority ? baseScore * 1.5 : baseScore;
+              
               allHits.set(hit.ref, { 
                 ...hit, 
-                score: hit.score * 2.0, // Give it a decent score but lower than exact matches
+                score: finalScore,
                 matchType: 'significantTerm'
               });
             }
@@ -239,18 +320,80 @@ const dictionary = []; // Define a global variable for spell-check suggestions
         }
       }
 
+      // Also boost scores for high-priority terms in other strategies
+      for (const [ref, hit] of allHits.entries()) {
+        const document = documents.get(Number(hit.ref));
+        if (!document) continue;
+
+        // Check if any high-priority term appears in the document
+        const content = (document.title + ' ' + document.content).toLowerCase();
+        for (const term of HIGH_PRIORITY_TERMS) {
+          if (content.includes(term)) {
+            // Boost the score if a high-priority term is found
+            hit.score *= 1.2;
+            break; // Only boost once per document
+          }
+        }
+      }
+
+      // Also boost scores for documents that contain the exact phrase
+      for (const [ref, hit] of allHits.entries()) {
+        const document = documents.get(Number(hit.ref));
+        if (!document) continue;
+
+        // Boost scores for FAQ results
+        if (document.href && document.href.toLowerCase().indexOf('decentraland-101') != -1) {
+          hit.score *= 10; 
+          hit.matchType = 'exactPhrase';// 50% boost for FAQ results
+        }
+
+         // Boost scores for FAQ results
+         if (document.href && document.href.toLowerCase().indexOf('faq') != -1) {
+          hit.score *= 9; 
+          hit.matchType = 'exactPhrase';// 50% boost for FAQ results
+        }
+
+        // Check if the document contains the exact phrase
+        const content = (document.title + ' ' + document.content).toLowerCase();
+        if (content.includes(exactPhrase.toLowerCase())) {
+          hit.score *= 1.5;
+          hit.matchType = 'exactPhrase';
+        }
+      }
+
       // Convert Map to Array and sort by score and match type
       return Array.from(allHits.values())
         .sort((a, b) => {
-          // First sort by score
+          // First check if either is an exact match in title
+          const aDoc = documents.get(Number(a.ref));
+          const bDoc = documents.get(Number(b.ref));
+          const exactPhraseLower = exactPhrase.toLowerCase();
+          
+          const aIsExactTitle = aDoc && aDoc.title.toLowerCase().includes(exactPhraseLower);
+          const bIsExactTitle = bDoc && bDoc.title.toLowerCase().includes(exactPhraseLower);
+          
+          if (aIsExactTitle && !bIsExactTitle) return -1;
+          if (!aIsExactTitle && bIsExactTitle) return 1;
+          
+          // Then check if either is an exact match in content
+          const aIsExactContent = aDoc && aDoc.content.toLowerCase().includes(exactPhraseLower);
+          const bIsExactContent = bDoc && bDoc.content.toLowerCase().includes(exactPhraseLower);
+          
+          if (aIsExactContent && !bIsExactContent) return -1;
+          if (!aIsExactContent && bIsExactContent) return 1;
+          
+          // If both are exact matches (or neither), use score
           if (b.score !== a.score) {
             return b.score - a.score;
           }
-          // If scores are equal, prioritize by match type
+          
+          // If scores are equal, use match type priority
           const matchTypePriority = {
-            'title': 5,    // Added title as highest priority
-            'allWords': 4,
-            'significantTerm': 3.5, // Added new match type
+            'exactPhrase': 7,
+            'title': 6,
+            'allWords': 5,
+            'significantWords': 4.5,
+            'significantTerm': 4,
             'boundary': 3,
             'prefix': 2,
             'fuzzy': 1
@@ -318,6 +461,7 @@ const dictionary = []; // Define a global variable for spell-check suggestions
     const amountLetters = 60
     const { metadata } = hit.matchData
     const searchTerm = input.value.trim().toLowerCase();
+    const exactPhrase = input.value.trim();
     
     // Find the best match position
     let bestMatchStart = 0;
@@ -327,10 +471,14 @@ const dictionary = []; // Define a global variable for spell-check suggestions
     // Helper to score a match
     function scoreMatch(text, start, length) {
       const matchedText = text.slice(start, start + length).toLowerCase();
-      // Exact match gets highest score
-      if (matchedText === searchTerm) return 100;
+      // Exact phrase match gets highest score
+      if (matchedText === exactPhrase.toLowerCase()) return 100;
+      // Exact search term match gets high score
+      if (matchedText === searchTerm) return 90;
+      // High priority term match gets high score
+      if (HIGH_PRIORITY_TERMS.has(matchedText)) return 80;
       // Word boundary match gets high score
-      if (matchedText.endsWith(searchTerm) || matchedText.startsWith(searchTerm)) return 80;
+      if (matchedText.endsWith(searchTerm) || matchedText.startsWith(searchTerm)) return 70;
       // Contains the term gets medium score
       if (matchedText.includes(searchTerm)) return 50;
       // Partial match gets low score
@@ -371,30 +519,41 @@ const dictionary = []; // Define a global variable for spell-check suggestions
     // Create a map of positions to highlight
     const highlights = new Map();
     
-    // Add the exact search term matches
-    const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Try to highlight the exact phrase first
+    const escapedExactPhrase = exactPhrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     let match;
-    const searchRegex = new RegExp(escapedSearchTerm, 'gi');
-    while ((match = searchRegex.exec(value)) !== null) {
+    const exactPhraseRegex = new RegExp(escapedExactPhrase, 'gi');
+    while ((match = exactPhraseRegex.exec(value)) !== null) {
       highlights.set(match.index, match.index + match[0].length);
     }
     
-    // Add other matches from search results
-    for (const key of Object.keys(metadata)) {
-      if (key.toLowerCase() !== searchTerm) {
-        const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const keyRegex = new RegExp(escapedKey, 'gi');
-        while ((match = keyRegex.exec(value)) !== null) {
-          // Only add if this range isn't already covered by a highlight
-          let shouldAdd = true;
-          for (const [start, end] of highlights.entries()) {
-            if (match.index >= start && match.index + match[0].length <= end) {
-              shouldAdd = false;
-              break;
+    // If no exact phrase match, add the search term matches
+    if (highlights.size === 0) {
+      const escapedSearchTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const searchRegex = new RegExp(escapedSearchTerm, 'gi');
+      while ((match = searchRegex.exec(value)) !== null) {
+        highlights.set(match.index, match.index + match[0].length);
+      }
+    }
+    
+    // Add other matches from search results if no exact matches found
+    if (highlights.size === 0) {
+      for (const key of Object.keys(metadata)) {
+        if (key.toLowerCase() !== searchTerm) {
+          const escapedKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          const keyRegex = new RegExp(escapedKey, 'gi');
+          while ((match = keyRegex.exec(value)) !== null) {
+            // Only add if this range isn't already covered by a highlight
+            let shouldAdd = true;
+            for (const [start, end] of highlights.entries()) {
+              if (match.index >= start && match.index + match[0].length <= end) {
+                shouldAdd = false;
+                break;
+              }
             }
-          }
-          if (shouldAdd) {
-            highlights.set(match.index, match.index + match[0].length);
+            if (shouldAdd) {
+              highlights.set(match.index, match.index + match[0].length);
+            }
           }
         }
       }
@@ -447,44 +606,25 @@ const dictionary = []; // Define a global variable for spell-check suggestions
     hide(resultsContainer)
   }
 
-  // search-enhancements.js
-// Utilities to improve search: spell-check, flexible search, and autocomplete
-
-// --- Basic spell-check using a small dictionary extracted from the index ---
-function getSuggestionsForMisspelling(term, dictionary) {
-  // Returns words from the dictionary with Levenshtein distance <= 2
-  function levenshtein(a, b) {
-    const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
-    for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
-    for (let i = 1; i <= b.length; i++) {
-      for (let j = 1; j <= a.length; j++) {
-        matrix[i][j] = b[i - 1] === a[j - 1]
-          ? matrix[i - 1][j - 1]
-          : Math.min(
-              matrix[i - 1][j - 1] + 1,
-              matrix[i][j - 1] + 1,
-              matrix[i - 1][j] + 1
-            );
+  // --- Basic spell-check using a small dictionary extracted from the index ---
+  function getSuggestionsForMisspelling(term, dictionary) {
+    // Returns words from the dictionary with Levenshtein distance <= 2
+    function levenshtein(a, b) {
+      const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+      for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+      for (let i = 1; i <= b.length; i++) {
+        for (let j = 1; j <= a.length; j++) {
+          matrix[i][j] = b[i - 1] === a[j - 1]
+            ? matrix[i - 1][j - 1]
+            : Math.min(
+                matrix[i - 1][j - 1] + 1,
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j] + 1
+              );
+        }
       }
+      return matrix[b.length][a.length];
     }
-    return matrix[b.length][a.length];
+    return dictionary.filter(word => levenshtein(term, word) <= 2);
   }
-  return dictionary.filter(word => levenshtein(term, word) <= 2);
-}
-
-// --- Flexible search: ignores word order ---
-function buildFlexibleQuery(terms, fuzzy = false) {
-  // Returns a lunr query that searches for all words, regardless of order
-  return terms
-    .filter(Boolean)
-    .map(term => (fuzzy ? `+${term}~1` : `+${term}`))
-    .join(' ');
-}
-
-// --- Autocomplete ---
-function getAutocompleteSuggestions(input, dictionary, minLength = 3, maxResults = 5) {
-  if (input.length < minLength) return [];
-  const lower = input.toLowerCase();
-  return dictionary.filter(word => word.toLowerCase().startsWith(lower)).slice(0, maxResults);
-} 
 })();
