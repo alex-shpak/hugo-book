@@ -342,8 +342,14 @@ const HIGH_PRIORITY_TERMS = new Set([
         if (!document) continue;
 
         // Boost scores for FAQ results
-        if (document.href && document.href.toLowerCase().indexOf('faq') != -1) {
-          hit.score *= 7.5; 
+        if (document.href && document.href.toLowerCase().indexOf('decentraland-101') != -1) {
+          hit.score *= 10; 
+          hit.matchType = 'exactPhrase';// 50% boost for FAQ results
+        }
+
+         // Boost scores for FAQ results
+         if (document.href && document.href.toLowerCase().indexOf('faq') != -1) {
+          hit.score *= 9; 
           hit.matchType = 'exactPhrase';// 50% boost for FAQ results
         }
 
