@@ -134,3 +134,5 @@ enableGitInfo = true
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
   BookTranslatedOnly = false
+  # count number of thumbnails that should be shown on posts, default 0
+  thumbnailsPerPost = 0
