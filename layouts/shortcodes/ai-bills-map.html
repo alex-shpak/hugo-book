@@ -1,0 +1,515 @@
+{{/*
+Usage: {{< ai-bills-map sheet-url="YOUR_GOOGLE_SHEET_CSV_URL" >}}
+*/}}
+
+{{ $sheetUrl := .Get "sheet-url" }}
+
+<div id="ai-bills-container" style="height: 600px; position: relative; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;">
+  <!-- Map Container -->
+  <div id="ai-bills-map" style="height: 100%; width: 70%; float: left;"></div>
+  
+  <!-- Sidebar Container -->
+  <div id="ai-bills-sidebar" style="height: 100%; width: 30%; float: right; background: #f8f9fa; border-left: 1px solid #ddd; overflow-y: auto; padding: 15px; box-sizing: border-box;">
+    <div id="ai-bills-content">
+      <h3 style="margin-top: 0; color: #333; font-size: 1.2em;">AI Legislation Bills</h3>
+      <p style="color: #666; margin-bottom: 20px;">Click on a state to view AI-related bills.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+<!-- Papa Parse for CSV processing -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+<style>
+#ai-bills-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.state-hover {
+  fill-opacity: 0.7 !important;
+  stroke: #2c3e50 !important;
+  stroke-width: 2 !important;
+}
+
+.state-selected {
+  fill: #3498db !important;
+  fill-opacity: 0.8 !important;
+  stroke: #2c3e50 !important;
+  stroke-width: 3 !important;
+}
+
+#ai-bills-sidebar h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 8px;
+}
+
+.bill-item {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.2s ease;
+}
+
+.bill-item:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.bill-number {
+  font-weight: bold;
+  color: #3498db;
+  font-size: 1.1em;
+  margin-bottom: 6px;
+}
+
+.bill-date {
+  color: #7f8c8d;
+  font-size: 0.85em;
+  font-weight: 500;
+  background: #f8f9fa;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.bill-action {
+  color: #2c3e50;
+  margin: 5px 0;
+  font-size: 0.95em;
+}
+
+.bill-description {
+  color: #555;
+  font-size: 0.9em;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.bill-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bill-link:hover {
+  text-decoration: underline;
+}
+
+.state-info {
+  background: #ecf0f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.loading {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  #ai-bills-container {
+    height: auto !important;
+  }
+  
+  #ai-bills-map, #ai-bills-sidebar {
+    width: 100% !important;
+    float: none !important;
+  }
+  
+  #ai-bills-map {
+    height: 400px;
+  }
+  
+  #ai-bills-sidebar {
+    border-left: none !important;
+    border-top: 1px solid #ddd;
+  }
+}
+</style>
+
+<script>
+(function() {
+  const SHEET_URL = "{{ $sheetUrl }}";
+  let map, billsData = {}, geojsonLayer;
+  
+  // State name to abbreviation mapping
+  const stateAbbreviations = {
+    'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA',
+    'Colorado': 'CO', 'Connecticut': 'CT', 'Delaware': 'DE', 'Florida': 'FL', 'Georgia': 'GA',
+    'Hawaii': 'HI', 'Idaho': 'ID', 'Illinois': 'IL', 'Indiana': 'IN', 'Iowa': 'IA',
+    'Kansas': 'KS', 'Kentucky': 'KY', 'Louisiana': 'LA', 'Maine': 'ME', 'Maryland': 'MD',
+    'Massachusetts': 'MA', 'Michigan': 'MI', 'Minnesota': 'MN', 'Mississippi': 'MS', 'Missouri': 'MO',
+    'Montana': 'MT', 'Nebraska': 'NE', 'Nevada': 'NV', 'New Hampshire': 'NH', 'New Jersey': 'NJ',
+    'New Mexico': 'NM', 'New York': 'NY', 'North Carolina': 'NC', 'North Dakota': 'ND', 'Ohio': 'OH',
+    'Oklahoma': 'OK', 'Oregon': 'OR', 'Pennsylvania': 'PA', 'Rhode Island': 'RI', 'South Carolina': 'SC',
+    'South Dakota': 'SD', 'Tennessee': 'TN', 'Texas': 'TX', 'Utah': 'UT', 'Vermont': 'VT',
+    'Virginia': 'VA', 'Washington': 'WA', 'West Virginia': 'WV', 'Wisconsin': 'WI', 'Wyoming': 'WY'
+  };
+
+  // Initialize the map
+  function initMap() {
+    map = L.map('ai-bills-map', {
+      center: [39.8283, -98.5795], // Center of US
+      zoom: 4,
+      zoomControl: true,
+      scrollWheelZoom: true,
+      // Restrict map bounds to show US including Alaska and Hawaii
+      maxBounds: [
+        [15, -180], // Southwest coordinates (includes Hawaii)
+        [72, -60]   // Northeast coordinates (includes Alaska)
+      ],
+      maxBoundsViscosity: 1.0
+    });
+
+    // Add tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+      minZoom: 3
+    }).addTo(map);
+
+    loadUSStates();
+    loadBillsData();
+  }
+
+  // Load US states GeoJSON
+  function loadUSStates() {
+    console.log('Loading US states GeoJSON...');
+    
+    // Use a reliable US states GeoJSON source
+    fetch('https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json')
+      .then(response => {
+        console.log('GeoJSON response status:', response.status);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('US states GeoJSON loaded successfully');
+        console.log('Number of states in GeoJSON:', data.features.length);
+        console.log('Sample state names:', data.features.slice(0, 3).map(f => f.properties.NAME));
+        addStatesToMap(data);
+      })
+      .catch(error => {
+        console.error('Error loading US states from primary source:', error);
+        // Fallback: try alternative GeoJSON source
+        loadUSStatesAlternative();
+      });
+  }
+
+  // Alternative GeoJSON source for US states
+  function loadUSStatesAlternative() {
+    console.log('Trying alternative GeoJSON source...');
+    
+    fetch('https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson')
+      .then(response => response.json())
+      .then(data => {
+        console.log('Alternative GeoJSON loaded, filtering for US states...');
+        // Filter for US states only
+        const usStates = {
+          type: 'FeatureCollection',
+          features: data.features.filter(feature => 
+            feature.properties.ISO_A2 === 'US' && 
+            stateAbbreviations[feature.properties.NAME_EN]
+          )
+        };
+        console.log('Filtered US states count:', usStates.features.length);
+        addStatesToMap(usStates);
+      })
+      .catch(error => {
+        console.error('Error loading alternative US states data:', error);
+        // Last resort: create a simple fallback message
+        document.getElementById('ai-bills-content').innerHTML += 
+          '<div style="color: red; margin-top: 10px;">Error loading map data. State selection may not work.</div>';
+      });
+  }
+
+  // Add states to map with interaction
+  function addStatesToMap(geojsonData) {
+    console.log('Adding states to map...');
+    
+    geojsonLayer = L.geoJSON(geojsonData, {
+      style: function(feature) {
+        // Handle different property names in different GeoJSON sources
+        const stateName = feature.properties.NAME || feature.properties.NAME_EN || feature.properties.name;
+        const stateAbbr = stateAbbreviations[stateName];
+        const billCount = billsData[stateAbbr] ? billsData[stateAbbr].length : 0;
+        
+        console.log(`State: ${stateName} (${stateAbbr}) - Bills: ${billCount}`);
+        
+        return {
+          fillColor: getBillsColor(billCount),
+          weight: 1,
+          opacity: 1,
+          color: '#666',
+          fillOpacity: 0.5
+        };
+      },
+      onEachFeature: function(feature, layer) {
+        // Handle different property names in different GeoJSON sources
+        const stateName = feature.properties.NAME || feature.properties.NAME_EN || feature.properties.name;
+        const stateAbbr = stateAbbreviations[stateName];
+        
+        console.log(`Setting up interactions for: ${stateName} (${stateAbbr})`);
+        
+        // Store state info for later popup updates
+        layer.stateName = stateName;
+        layer.stateAbbr = stateAbbr;
+        
+        layer.on({
+          mouseover: function(e) {
+            const layer = e.target;
+            layer.setStyle({
+              weight: 3,
+              color: '#2c3e50',
+              fillOpacity: 0.7
+            });
+            
+            if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+              layer.bringToFront();
+            }
+          },
+          mouseout: function(e) {
+            geojsonLayer.resetStyle(e.target);
+          },
+          click: function(e) {
+            console.log(`Clicked on state: ${stateName} (${stateAbbr})`);
+            showStateBills(stateAbbr, stateName);
+            highlightState(e.target);
+          }
+        });
+        
+        // Initial popup setup - will be updated when data loads
+        updateStatePopup(layer);
+      }
+    }).addTo(map);
+    
+    // Fit map bounds to show all US states including Alaska and Hawaii
+    const bounds = geojsonLayer.getBounds();
+    map.fitBounds(bounds, {
+      padding: [10, 10],
+      maxZoom: 5
+    });
+    
+    console.log('States added to map successfully');
+  }
+  
+  // Update popup for a state layer
+  function updateStatePopup(layer) {
+    const billCount = billsData[layer.stateAbbr] ? billsData[layer.stateAbbr].length : 0;
+    layer.bindPopup(`<strong>${layer.stateName}</strong><br>${billCount} AI-related bills`);
+  }
+
+  // Get color based on number of bills
+  function getBillsColor(count) {
+    return count > 40 ? '#800026' :
+           count > 30 ? '#BD0026' :
+           count > 20 ? '#E31A1C' :
+           count > 15 ? '#FC4E2A' :
+           count > 10 ? '#FD8D3C' :
+           count > 5  ? '#FEB24C' :
+           count > 0  ? '#FED976' :
+                        '#FFEDA0';
+  }
+
+  // Highlight selected state
+  function highlightState(layer) {
+    // Reset all states
+    geojsonLayer.eachLayer(function(l) {
+      geojsonLayer.resetStyle(l);
+    });
+    
+    // Highlight selected state
+    layer.setStyle({
+      weight: 3,
+      color: '#2c3e50',
+      fillColor: '#3498db',
+      fillOpacity: 0.8
+    });
+  }
+
+  // Load bills data from Google Sheets
+  function loadBillsData() {
+    if (!SHEET_URL) {
+      document.getElementById('ai-bills-content').innerHTML = 
+        '<div class="loading">Please provide a sheet-url parameter</div>';
+      return;
+    }
+
+    console.log('Loading data from:', SHEET_URL);
+    document.getElementById('ai-bills-content').innerHTML = 
+      '<div class="loading">Loading bills data...</div>';
+
+    Papa.parse(SHEET_URL, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      dynamicTyping: true,
+      complete: function(results) {
+        console.log('CSV loaded successfully');
+        console.log('Total rows:', results.data.length);
+        console.log('Headers:', results.meta.fields);
+        console.log('First few rows:', results.data.slice(0, 3));
+        
+        if (results.errors && results.errors.length > 0) {
+          console.warn('CSV parsing errors:', results.errors);
+        }
+        
+        processBillsData(results.data);
+      },
+      error: function(error) {
+        console.error('Error loading CSV:', error);
+        document.getElementById('ai-bills-content').innerHTML = 
+          '<div class="loading">Error loading bills data: ' + error.message + '</div>';
+      }
+    });
+  }
+
+  // Process and group bills data by state
+  function processBillsData(data) {
+    console.log('Processing bills data...');
+    billsData = {};
+    
+    data.forEach(function(row, index) {
+      // Clean whitespace from keys
+      const cleanRow = {};
+      Object.keys(row).forEach(key => {
+        cleanRow[key.trim()] = row[key];
+      });
+      
+      const state = cleanRow.state ? cleanRow.state.trim() : '';
+      console.log(`Row ${index}: state = "${state}"`);
+      
+      if (state) {
+        if (!billsData[state]) {
+          billsData[state] = [];
+        }
+        billsData[state].push({
+          bill_number: cleanRow.bill_number || '',
+          url: cleanRow.url || '',
+          last_action_date: cleanRow.last_action_date || '',
+          last_action: cleanRow.last_action || '',
+          description: cleanRow.description || ''
+        });
+      }
+    });
+
+    console.log('Processed bills data:', billsData);
+    console.log('States found:', Object.keys(billsData));
+    
+    // Update sidebar with summary
+    const totalBills = Object.values(billsData).reduce((sum, bills) => sum + bills.length, 0);
+    const stateCount = Object.keys(billsData).length;
+    
+    document.getElementById('ai-bills-content').innerHTML = `
+      <h3>AI Legislation Bills</h3>
+      <div class="state-info">
+        <p><strong>${totalBills}</strong> bills across <strong>${stateCount}</strong> states</p>
+        <p>Click on a state to view AI-related bills.</p>
+      </div>
+    `;
+
+    // Update map colors and popups if states are already loaded
+    if (geojsonLayer) {
+      console.log('Updating map colors and popups...');
+      geojsonLayer.eachLayer(function(layer) {
+        const feature = layer.feature;
+        const stateName = feature.properties.NAME || feature.properties.NAME_EN || feature.properties.name;
+        const stateAbbr = stateAbbreviations[stateName];
+        const billCount = billsData[stateAbbr] ? billsData[stateAbbr].length : 0;
+        
+        // Update layer style
+        layer.setStyle({
+          fillColor: getBillsColor(billCount)
+        });
+        
+        // Update popup with correct bill count
+        layer.bindPopup(`<strong>${stateName}</strong><br>${billCount} AI-related bills`);
+      });
+    }
+  }
+
+  // Show bills for selected state
+  function showStateBills(stateAbbr, stateName) {
+    const bills = billsData[stateAbbr] || [];
+    const sidebar = document.getElementById('ai-bills-content');
+    
+    if (bills.length === 0) {
+      sidebar.innerHTML = `
+        <h3>${stateName} AI Bills</h3>
+        <div class="state-info">
+          <p>No AI-related bills found for ${stateName}.</p>
+        </div>
+      `;
+      return;
+    }
+
+    // Sort bills by last action date (most recent first)
+    const sortedBills = bills.slice().sort(function(a, b) {
+      const dateA = a.last_action_date ? new Date(a.last_action_date) : new Date('1900-01-01');
+      const dateB = b.last_action_date ? new Date(b.last_action_date) : new Date('1900-01-01');
+      return dateB - dateA; // Descending order (newest first)
+    });
+
+    let html = `
+      <h3>${stateName} AI Bills</h3>
+      <div class="state-info">
+        <strong>${bills.length}</strong> AI-related bills found
+        <div style="font-size: 0.85em; color: #666; margin-top: 5px;">Sorted by latest action date</div>
+      </div>
+    `;
+
+    sortedBills.forEach(function(bill) {
+      // Format the date nicely
+      let formattedDate = '';
+      if (bill.last_action_date) {
+        try {
+          const date = new Date(bill.last_action_date);
+          formattedDate = date.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+          });
+        } catch (e) {
+          formattedDate = bill.last_action_date;
+        }
+      }
+
+      html += `
+        <div class="bill-item">
+          <div class="bill-number">${bill.bill_number}</div>
+          ${formattedDate ? `<div class="bill-date">Last Action: ${formattedDate}</div>` : ''}
+          ${bill.url ? `<div class="bill-link-container"><a href="${bill.url}" target="_blank" class="bill-link">View Bill</a></div>` : ''}
+          ${bill.last_action ? `<div class="bill-action">${bill.last_action}</div>` : ''}
+          ${bill.description ? `<div class="bill-description">${bill.description}</div>` : ''}
+        </div>
+      `;
+    });
+
+    sidebar.innerHTML = html;
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMap);
+  } else {
+    initMap();
+  }
+})();
+</script>
