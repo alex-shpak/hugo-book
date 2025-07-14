@@ -10,10 +10,7 @@
   {{- $isFragment := strings.HasPrefix .Destination "#" }}
   {{- if and (not $isRemote) (not $isFragment) }}
     {{- $url := urls.Parse .Destination }}
-    {{- $path := strings.TrimSuffix "/_index.md" $url.Path }}
-    {{- $path = strings.TrimSuffix "/_index" $path }}
-    {{- $path = strings.TrimSuffix ".md" $path }}
-    {{- $page := .Page.GetPage $path }}
+    {{- $page := .Page.GetPage $url.Path }}
     {{- if $page }}
       {{- $destination = $page.RelPermalink }}
       {{- if $url.Fragment }}
