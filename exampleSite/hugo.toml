@@ -36,6 +36,23 @@ enableGitInfo = true
   contentDir = 'content.he'
   languageDirection = 'rtl'
   weight = 3
+  
+  
+
+[[languages.en.menu.before]]
+  name = "Sitemap (EN)"
+  url = "/sitemap/"
+  weight = 10
+
+[[languages.zh.menu.before]]
+  name = "Sitemap (ZH)"
+  url = "/zh/sitemap/"
+  weight = 10
+  
+[[languages.he.menu.before]]
+  name = "Sitemap (HE)"
+  url = "/he/sitemap/"
+  weight = 10
 
 [menu]
 # [[menu.before]]
@@ -117,3 +134,5 @@ enableGitInfo = true
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
   BookTranslatedOnly = false
+  # count number of thumbnails that should be shown on posts, default 0
+  thumbnailsPerPost = 0
