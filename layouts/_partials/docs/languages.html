@@ -16,7 +16,7 @@
     <label for="languages" class="flex">
       <a role="button" class="flex flex-auto">
         <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
-        {{ $.Site.Language.LanguageName }}
+        <span>{{ $.Site.Language.LanguageName }}</span>
       </a>
     </label>
 
@@ -24,7 +24,7 @@
       {{ range .Site.Languages }}{{ with index $translations .Lang }}
       <li>
         <a href="{{ cond hugo.IsMultihost .Permalink .RelPermalink }}">
-          {{ .Language.LanguageName }}
+          <span>{{ .Language.LanguageName }}</span>
         </a>
       </li>
       {{ end }}{{ end }}
