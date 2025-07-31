@@ -89,7 +89,13 @@ ul.pagination {
 a .book-icon {
   height: 1em;
   width: 1em;
-  margin-inline-end: .5em;
+
+  &:first-child {
+    margin-inline-end: $padding-8;
+  }
+  &:last-child {
+    margin-inline-start: $padding-8;
+  }
 }
 
 .book-brand {
@@ -283,18 +289,6 @@ body[dir="rtl"] .book-menu {
   a {
     margin: $padding-8 0;
   }
-
-  img {
-    height: 1em;
-    width: 1em;
-    
-    &:first-child {
-      margin-inline-end: $padding-8;
-    }
-    &:last-child {
-      margin-inline-start: $padding-8;
-    }
-  }
 }
 
 .book-comments {
@@ -303,6 +297,10 @@ body[dir="rtl"] .book-menu {
 
 .book-languages {
   margin-bottom: $padding-16;
+
+  span {
+    padding: 0;
+  }
 
   ul {
     padding-inline-start: 1.5em;

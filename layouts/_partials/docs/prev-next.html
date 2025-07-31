@@ -13,7 +13,7 @@
     <span>
     {{ with $prev }}
       <a href="{{ .RelPermalink }}" class="flex align-center book-icon">
-        <img src="{{ "svg/backward.svg" | relURL }}" alt="Previous" title="{{ partial "docs/title" . }}" />
+        <img src="{{ "svg/backward.svg" | relURL }}" class="book-icon" alt="Previous" title="{{ partial "docs/title" . }}" />
         <span>{{ partial "docs/title" . }}</span>
       </a>
     {{ end }}
@@ -22,7 +22,7 @@
     {{ with $next }}
       <a href="{{ .RelPermalink }}" class="flex align-center book-icon">
         <span>{{ partial "docs/title" . }}</span>
-        <img src="{{ "svg/forward.svg" | relURL }}" alt="Next" title="{{ partial "docs/title" . }}" />
+        <img src="{{ "svg/forward.svg" | relURL }}" class="book-icon" alt="Next" title="{{ partial "docs/title" . }}" />
       </a>
     {{ end }}
     </span>
