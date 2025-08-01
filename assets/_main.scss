@@ -143,11 +143,11 @@ a .book-icon {
   input.toggle + label::after {
     content: "▸";
     align-self: center;
+    transition: transform 0.1s ease-in-out;
   }
 
   input.toggle:checked + label::after {
-    content: "▾";
-    align-self: center;
+    transform: rotate(90deg);
   }
 }
 
@@ -158,7 +158,7 @@ body[dir="rtl"] .book-menu {
   }
 
   input.toggle:checked + label::after {
-    content: "▾";
+    transform: rotate(-90deg);
   }
 }
 
