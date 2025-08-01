@@ -3,17 +3,11 @@
 <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
 <script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
 {{ with resources.Get "katex.json" }}
-  <script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {{ .Content | safeJS }});"></script>
+<script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {{ .Content | safeJS }});"></script>
 {{ end }}
 {{- .Page.Store.Set "katex" true -}}
 {{- end -}}
 
-{{ if .Inner }}
-<span>
-  {{- if .Get "display" }}
-  \[ {{ .Inner }} \]
-  {{ else }}
-  \( {{ .Inner }} \)
-  {{ end -}}
-</span>
-{{ end }}
+{{- with .Inner }}
+<span>\[ {{ . }} \]</span>
+{{ end -}}

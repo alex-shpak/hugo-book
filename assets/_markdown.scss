@@ -158,7 +158,6 @@
     direction: ltr;
     unicode-bidi: embed;
     border-radius: $border-radius;
-    overflow: hidden;
 
     table tr {
       td pre code > span {
@@ -214,7 +213,7 @@
 }
 
 .markdown-inner {
-  // Util class to remove extra margin in nested markdown content
+  // Utility class to remove extra margin in nested markdown content
   > :first-child {
     margin-top: 0;
   }
