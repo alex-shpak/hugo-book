@@ -33,7 +33,7 @@ jobs:
           extended: true
       - name: Run Hugo
         working-directory: exampleSite
-        run: hugo --minify
+        run: hugo --minify --themesDir ../..
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
