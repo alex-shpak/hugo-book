@@ -1,4 +1,5 @@
 .markdown {
+
   // {{< expand "Label" "icon" >}}
   .book-expand {
     margin-top: $padding-16;
@@ -20,7 +21,7 @@
       padding: $padding-16;
     }
 
-    input[type="checkbox"]:checked + .book-expand-content {
+    input[type="checkbox"]:checked+.book-expand-content {
       display: block;
     }
   }
@@ -53,13 +54,15 @@
       display: none;
     }
 
-    input[type="radio"]:checked + label {
+    input[type="radio"]:checked+label {
       border-bottom: $padding-1 solid var(--color-link);
     }
-    input[type="radio"]:checked + label + .book-tabs-content {
+
+    input[type="radio"]:checked+label+.book-tabs-content {
       display: block;
     }
-    input[type="radio"]:focus + label {
+
+    input[type="radio"]:focus+label {
       @include outline;
     }
   }
@@ -69,7 +72,7 @@
     margin-left: -$padding-16;
     margin-right: -$padding-16;
 
-    > div {
+    >div {
       margin: $padding-16 0;
       min-width: $body-min-width * 0.66;
       padding: 0 $padding-16;
@@ -98,6 +101,37 @@
       &.#{$name} {
         border-color: $color;
         background-color: rgba($color, 0.1);
+      }
+    }
+  }
+
+  // {{< badge >}}
+  .book-badge {
+    display: inline-block;
+    font-size: $font-size-14;
+    vertical-align: middle;
+    border-radius: $border-radius;
+    overflow: hidden;
+    text-wrap: nowrap;
+    color: var(--color-text);
+
+    span {
+      display: inline-block;
+      padding: 0 $padding-8;
+    }
+
+    span.book-badge-title {
+      background-color: var(--body-background);
+      opacity: 0.9;
+    }
+
+    span.book-badge-value {
+      color: var(--body-background);
+    }
+
+    @each $name, $color in $hint-colors {
+      &.#{$name} {
+        background-color: $color;
       }
     }
   }

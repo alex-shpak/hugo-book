@@ -22,9 +22,11 @@ $toc-width: 16rem !default;
 $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
 
 $hint-colors: (
-  info: #6bf,
-  warning: #fd6,
-  danger: #f66,
+  default: #64748b,
+  info: #4486dd,
+  success: #3bad3b,
+  warning: #f59e42,
+  danger: #d84747,
 ) !default;
 
 // Themes
@@ -40,10 +42,6 @@ $hint-colors: (
   --body-font-color: black;
 
   --icon-filter: none;
-
-  --hint-color-info: #6bf;
-  --hint-color-warning: #fd6;
-  --hint-color-danger: #f66;
 }
 
 @mixin theme-dark {
@@ -58,8 +56,4 @@ $hint-colors: (
   --body-font-color: #e9ecef;
 
   --icon-filter: brightness(0) invert(1);
-
-  --hint-color-info: #6bf;
-  --hint-color-warning: #fd6;
-  --hint-color-danger: #f66;
 }

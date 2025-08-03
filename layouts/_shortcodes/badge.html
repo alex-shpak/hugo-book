@@ -1,0 +1,12 @@
+{{- $style := default "default" (.Get "style") -}}
+{{- if .Get "href" }}
+<a href="{{ .Get "href" }}" target="_blank" class="book-badge {{ $style }}">
+  {{- with .Get "title" }}<span class="book-badge-title">{{ . | plainify }}</span>{{ end -}}
+  {{- with .Get "value" }}<span class="book-badge-value">{{ . | plainify }}</span>{{ end -}}
+</a>
+{{ else }}
+<span class="book-badge {{ $style }}">
+  {{- with .Get "title" }}<span class="book-badge-title">{{ . | plainify }}</span>{{ end -}}
+  {{- with .Get "value" }}<span class="book-badge-value">{{ . | plainify }}</span>{{ end -}}
+</span>
+{{ end -}}

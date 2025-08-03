@@ -1,10 +1,9 @@
 # Hints
 
-Hint shortcode can be used as hint/alerts/notification block.  
-There are 3 colors to choose: `info`, `warning` and `danger`.
+Hint shortcode can be used as a hint/alert/notification block.
 
 ```tpl
-{{%/* hint [info|warning|danger] */%}}
+{{%/* hint [info|success|warning|danger] */%}}
 **Markdown content**  
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
@@ -13,7 +12,19 @@ stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 
 ## Example
 
+{{% hint %}}
+**Markdown content**  
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+{{% /hint %}}
+
 {{% hint info %}}
+**Markdown content**  
+Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+{{% /hint %}}
+
+{{% hint success %}}
 **Markdown content**  
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
