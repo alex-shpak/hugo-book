@@ -1,2 +1,5 @@
-{{- $bookFilePath := (strings.TrimPrefix hugo.WorkingDir .Page.File.Filename | path.Join) -}}
-{{- .Site.Params.BookRepo }}/{{ .Site.Params.BookEditPath }}{{ ($bookFilePath) -}}
+{{- return partial "docs/text/template" (dict "Template" .Site.Params.BookEditLink "Context" (dict
+  "Site" .Site
+  "Page" .Page
+  "Path" (strings.TrimPrefix hugo.WorkingDir .Page.File.Filename)
+)) -}}

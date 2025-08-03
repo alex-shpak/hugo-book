@@ -149,26 +149,21 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # You can also set value to "*" to render all sections to menu
   BookSection = 'docs'
 
-  # Set source repository location.
-  # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo = 'https://github.com/alex-shpak/hugo-book'
+  # (Optional, default none) Set template for commit link for the page. Requires enableGitInfo.
+  # When set enabled 'Last Modified' and a link to the commit in the footer of the page.
+  # Param is executed as template using .Site, .Page and .GitInfo as context.
+  BookLastChangeLink = 'https://github.com/alex-shpak/hugo-book/commit/{{ .GitInfo.Hash }}'
 
-  # Specifies commit portion of the link to the page's last modified commit hash for 'doc' page
-  # type.
-  # Required if 'BookRepo' param is set.
-  # Value used to construct a URL consisting of BookRepo/BookCommitPath/<commit-hash>
-  # Github uses 'commit', Bitbucket uses 'commits'
-  BookCommitPath = 'commit'
+  # (Optional, default none) Set template for edit page link.
+  # When set enabled 'Edit this page' link in the footer of the page.
+  # Param is executed as template using .Site, .Page and .Path as context.
+  BookEditLink = 'https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/{{ .Path }}'
 
-  # Enable 'Edit this page' links for 'doc' page type.
-  # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
-  # Path must point to the site directory.
-  BookEditPath = 'edit/master/exampleSite'
-
-  # (Optional, default January 2, 2006) Configure the date format used on the pages
+  # (Optional, default 'January 2, 2006') Configure the date format used on the pages
   # - In git information
   # - In blog posts
-  BookDateFormat = 'Jan 2, 2006'
+  # https://gohugo.io/functions/time/format/
+  BookDateFormat = 'January 2, 2006'
 
   # (Optional, default true) Enables search function with flexsearch,
   # Index is built on fly, therefore it might slowdown your website.
@@ -222,8 +217,8 @@ bookToC = true
 # (Optional) If you have enabled BookComments for the site, you can disable it for specific pages.
 bookComments = true
 
-# (Optional) Set to 'false' to exclude page from search index.
-bookSearchExclude = true
+# (Optional) Set to 'true' to exclude page from search index.
+bookSearchExclude = false
 
 # (Optional) Set explicit href attribute for this page in a menu.
 bookHref = ''
@@ -256,6 +251,7 @@ In addition to this, there are several empty partials you can override to easily
 | `assets/_variables.scss` | Override default SCSS variables                                                       |
 | `assets/_fonts.scss`     | Replace default font with custom fonts (e.g. local files or remote like google fonts) |
 | `assets/mermaid.json`    | Replace Mermaid initialization config                                                 |
+| `assets/katex.json`      | Replace KaTeX initialization config                                                   |
 
 ### Plugins
 
@@ -275,7 +271,7 @@ There are a few hugo templates inserted in `<head>`
 - [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
 - [Open Graph](https://gohugo.io/templates/internal/#open-graph)
 
-To disable Open Graph inclusion you can create your own empty file `\layouts\_internal\opengraph.html`.
+To disable Open Graph inclusion you can create your own empty file `/layouts/_internal/opengraph.html`.
 In fact almost empty not quite empty because an empty file looks like absent for HUGO. For example:
 ```
 <!-- -->
@@ -287,9 +283,9 @@ In fact almost empty not quite empty because an empty file looks like absent for
 - [Columns](https://hugo-book-demo.netlify.app/docs/shortcodes/columns/)
 - [Details](https://hugo-book-demo.netlify.app/docs/shortcodes/details/)
 - [Hints](https://hugo-book-demo.netlify.app/docs/shortcodes/hints/)
-- [KaTeX](https://hugo-book-demo.netlify.app/docs/shortcodes/katex/)
 - [Mermaid](https://hugo-book-demo.netlify.app/docs/shortcodes/mermaid/)
 - [Tabs](https://hugo-book-demo.netlify.app/docs/shortcodes/tabs/)
+- [KaTeX](https://hugo-book-demo.netlify.app/docs/shortcodes/katex/)
 
 By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
 

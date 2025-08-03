@@ -1,2 +1,5 @@
-{{- $commitPath := default "commit" .Site.Params.BookCommitPath -}}
-{{- .Site.Params.BookRepo }}/{{ $commitPath }}/{{ .GitInfo.Hash -}}
+{{- return partial "docs/text/template" (dict "Template" .Site.Params.BookLastChangeLink "Context" (dict
+  "Site" .Site
+  "Page" .Page
+  "GitInfo" .GitInfo
+)) -}}
