@@ -72,15 +72,18 @@ enableGitInfo = true
   # For backward compatibility you can set '*' to render all sections to menu. Acts same as '/'
   BookSection = 'docs'
 
+  # Here for backwar compatibility, not required.
+  BookRepo = 'https://github.com/alex-shpak/hugo-book/'
+
   # (Optional, default none) Set template for commit link for the page. Requires enableGitInfo.
   # When set enabled 'Last Modified' and a link to the commit in the footer of the page.
   # Param is executed as template using .Site, .Page and .GitInfo as context.
-  BookLastChangeLink = 'https://github.com/alex-shpak/hugo-book/commit/{{ .GitInfo.Hash }}'
+  BookLastChangeLink = '{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}'
 
   # (Optional, default none) Set template for edit page link.
   # When set enabled 'Edit this page' link in the footer of the page.
   # Param is executed as template using .Site, .Page and .Path as context.
-  BookEditLink = 'https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/{{ .Path }}'
+  BookEditLink = '{{ .Site.Params.BookRepo }}/edit/main/exampleSite/{{ .Path }}'
 
   # (Optional, default 'January 2, 2006') Configure the date format used on the pages
   # - In git information
