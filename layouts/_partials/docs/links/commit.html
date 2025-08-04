@@ -1,5 +1,5 @@
-{{- return partial "docs/text/template" (dict "Template" .Site.Params.BookLastChangeLink "Context" (dict
+{{- return (partial "docs/text/template" (dict "Template" .Site.Params.BookLastChangeLink "Context" (dict
   "Site" .Site
   "Page" .Page
   "GitInfo" .GitInfo
-)) -}}
+)) | path.Clean) -}}

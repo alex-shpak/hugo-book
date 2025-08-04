@@ -1,5 +1,5 @@
-{{- return partial "docs/text/template" (dict "Template" .Site.Params.BookEditLink "Context" (dict
+{{- return (partial "docs/text/template" (dict "Template" .Site.Params.BookEditLink "Context" (dict
   "Site" .Site
   "Page" .Page
   "Path" (strings.TrimPrefix hugo.WorkingDir .Page.File.Filename)
-)) -}}
+)) | path.Clean) -}}
