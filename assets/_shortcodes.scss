@@ -77,6 +77,22 @@
       min-width: $body-min-width * 0.66;
       padding: 0 $padding-16;
     }
+
+    >ul {
+      list-style: none;
+      display: flex;
+      padding: 0;
+      flex-wrap: wrap;
+
+      >li {
+        @extend .markdown-inner;
+
+        flex: 1 1;
+        margin: $padding-16 0;
+        padding: 0 $padding-16;
+        min-width: $body-min-width * 0.66;
+      }
+    }
   }
 
   // {{< button >}}
