@@ -8,6 +8,12 @@ Hint shortcode can be used as a hint/alert/notification block.
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 {{%/* /hint */%}}
+
+> [!NOTE|TIP|IMPORTANT|WARNING|CAUTION]
+> **Markdown content**  
+> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+
 ```
 
 ## Example
@@ -41,3 +47,30 @@ stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 {{% /hint %}}
+
+## Support for markdown alerts
+
+> [!NOTE]
+> **Markdown content**  
+> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+
+> [!TIP]
+> **Markdown content**  
+> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+
+> [!IMPORTANT]
+> **Markdown content**  
+> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+
+> [!WARNING]
+> **Markdown content**  
+> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+
+> [!CAUTION]
+> **Markdown content**  
+> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
+> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa

@@ -1,0 +1,9 @@
+{{- $attributes := .Attributes }}
+{{- $class := printf "book-hint %s" ($.AlertType | lower) }}
+{{- if isset $attributes "class" }}
+  {{ $class = printf "%s %s" $class (index $attributes "class") }}
+{{ end -}}
+{{- $attributes = merge $attributes (dict "class" $class) }}
+<blockquote {{ range $key, $value := $attributes }}{{printf "%s='%s'" $key $value | safeHTMLAttr}}{{ end }}>
+  {{ .Text }}
+</blockquote>
