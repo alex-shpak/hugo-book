@@ -10,12 +10,13 @@
 {{ end }}
 </div>
 {{ else }}
+{{- if .Get "ratio" }}<style>{{ range $index, $grow := $ratio }}
+  .book-columns-{{ $.Ordinal }}>ul>li:nth-child({{ $index | add 1 }}){
+    flex-grow: {{ default 1 $grow }};
+  }
+{{ end }}</style>{{ end -}}
 <div class="book-columns book-columns-{{ .Ordinal }} {{ with .Get "class" }}{{ . }}{{ end }}">
-  <style>{{- range $index, $grow := $ratio -}}
-    .book-columns-{{ $.Ordinal }}>ul>li:nth-child({{ $index | add 1 }}){
-      flex-grow: {{ $grow }};
-    }
-  {{ end -}}</style>
+  
   {{ .Inner | safeHTML }}
 </div>
 {{ end -}}

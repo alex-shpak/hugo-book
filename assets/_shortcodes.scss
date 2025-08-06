@@ -69,13 +69,11 @@
 
   // {{< columns >}}
   .book-columns {
-    margin-left: -$padding-16;
-    margin-right: -$padding-16;
+    gap: $padding-16;
 
     >div {
       margin: $padding-16 0;
       min-width: $body-min-width * 0.66;
-      padding: 0 $padding-16;
     }
 
     >ul {
@@ -83,20 +81,17 @@
       display: flex;
       padding: 0;
       flex-wrap: wrap;
+      gap: $padding-16;
 
       >li {
-        @extend .markdown-inner;
-
         flex: 1 1;
-        margin: $padding-16 0;
-        padding: 0 $padding-16;
         min-width: $body-min-width * 0.66;
       }
     }
   }
 
   // {{< button >}}
-  a.book-btn {
+  a.book-btn[href] {
     display: inline-block;
     font-size: $font-size-14;
     color: var(--color-link);
@@ -148,6 +143,52 @@
     @each $name, $color in $hint-colors {
       &.#{$name} {
         background-color: $color;
+      }
+    }
+  }
+  
+  // {{< steps >}}
+  .book-steps {
+    >ol {
+      counter-reset: steps;
+      list-style: none;
+      padding-inline-start: $padding-16 + $padding-4;
+      margin-top: $padding-16 * 2;
+
+      >li::before {
+        content: counter(steps);
+        counter-increment: steps;
+
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        left: $padding-8;
+
+        height: $padding-16;
+        width: $padding-16;
+        padding: $padding-4;
+        border-radius: $padding-8;
+
+        vertical-align: middle;
+        text-align: center !important ;
+        white-space: nowrap;
+        line-height: $padding-16;
+
+        color: var(--body-background);
+        background: var(--gray-500);
+        outline: $padding-4 solid var(--body-background);
+      }
+
+      >li {
+        @extend .markdown-inner;
+        border-inline-start: $padding-1 solid var(--gray-500);
+        padding-inline-start: $padding-16 * 3;
+        
+        padding-bottom: $padding-16 * 2;
+      }
+
+      >li:last-child {
+        border: 0;
       }
     }
   }
