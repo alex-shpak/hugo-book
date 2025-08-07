@@ -32,7 +32,10 @@ h5 {
 
 a {
   text-decoration: none;
-  color: var(--color-link);
+
+  &[href] {
+    color: var(--color-link);
+  }
 }
 
 img {

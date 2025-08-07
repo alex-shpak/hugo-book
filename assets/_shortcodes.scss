@@ -124,7 +124,7 @@
     border-radius: $border-radius;
     overflow: hidden;
     text-wrap: nowrap;
-    color: var(--color-text);
+    color: var(--body-font-color);
 
     span {
       display: inline-block;
@@ -146,7 +146,7 @@
       }
     }
   }
-  
+
   // {{< steps >}}
   .book-steps {
     >ol {

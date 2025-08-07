@@ -16,7 +16,6 @@
   }
 {{ end }}</style>{{ end -}}
 <div class="book-columns book-columns-{{ .Ordinal }} {{ with .Get "class" }}{{ . }}{{ end }}">
-  
-  {{ .Inner | safeHTML }}
+{{ .InnerDeindent | safeHTML }}
 </div>
 {{ end -}}
