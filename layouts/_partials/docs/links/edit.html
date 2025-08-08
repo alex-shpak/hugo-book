@@ -2,4 +2,4 @@
   "Site" .Site
   "Page" .Page
   "Path" (strings.TrimPrefix hugo.WorkingDir .Page.File.Filename)
-)) | path.Clean) -}}
+)) | urls.JoinPath) -}}
