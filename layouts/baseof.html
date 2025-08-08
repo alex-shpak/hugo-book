@@ -4,15 +4,11 @@
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
 </head>
-<body dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
+<body dir="{{ default "ltr" .Site.Language.LanguageDirection }}" class="book-kind-{{ .Kind }} book-type-{{ .Type }}">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
   <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
-        {{ template "menu" . }} <!-- Left menu Content -->
-      </div>
-    </aside>
+    {{ template "menu-container" . }} <!-- Left menu -->
 
     <div class="book-page">
       <header class="book-header">
@@ -29,22 +25,23 @@
       </footer>
 
       {{ template "comments" . }} <!-- Comments block -->
-
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
-    {{ if partial "docs/toc-show" . }}
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        {{ template "toc" . }} <!-- Table of Contents -->
-      </div>
-    </aside>
-    {{ end }}
+    {{ template "toc-container" . }} <!-- Table of Contents -->
   </main>
 
   {{ partial "docs/inject/body" . }}
 </body>
 </html>
+
+{{ define "menu-container" }}
+<aside class="book-menu">
+  <div class="book-menu-content">
+    {{ template "menu" . }}
+  </div>
+</aside>
+{{ end }}
 
 {{ define "menu" }}
   {{ partial "docs/menu" . }}
@@ -76,6 +73,16 @@
   <article class="markdown book-article">
     {{- .Content -}}
   </article>
+{{ end }}
+
+{{ define "toc-container" }}
+{{ if partial "docs/toc-show" . }}
+<aside class="book-toc">
+  <div class="book-toc-content">
+    {{ template "toc" . }}
+  </div>
+</aside>
+{{ end }}
 {{ end }}
 
 {{ define "toc" }}

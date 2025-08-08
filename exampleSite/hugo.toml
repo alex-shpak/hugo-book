@@ -38,10 +38,25 @@ enableGitInfo = true
   weight = 3
 
 [menu]
+[[menu.home]]
+  name = "Documentation"
+  url = "/docs/example/"
+  weight = 1
+
+[[menu.home]]
+  name = "Showcases"
+  url = "/showcases/"
+  weight = 2
+
+[[menu.home]]
+  name = "Github"
+  url = "https://github.com/alex-shpak/hugo-book/"
+  weight = 3
+
 # [[menu.before]]
 [[menu.after]]
   name = "Github"
-  url = "https://github.com/alex-shpak/hugo-book"
+  url = "https://github.com/alex-shpak/hugo-book/"
   weight = 10
 
 [[menu.after]]

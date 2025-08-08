@@ -13,7 +13,6 @@ stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 > **Markdown content**  
 > Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 > stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-
 ```
 
 ## Example
@@ -51,26 +50,26 @@ stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 ## Support for markdown alerts
 
 > [!NOTE]
-> **Markdown content**  
+> **Note**  
 > Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 > stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 
 > [!TIP]
-> **Markdown content**  
+> **Tip**  
 > Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 > stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 
 > [!IMPORTANT]
-> **Markdown content**  
+> **Important**  
 > Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 > stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 
 > [!WARNING]
-> **Markdown content**  
+> **Warning**  
 > Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 > stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
 
 > [!CAUTION]
-> **Markdown content**  
+> **Caution**  
 > Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
 > stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa

@@ -1,0 +1,20 @@
+{{- /* remove whitespace */ -}}
+{{- if .Get "href" -}}
+<a class="book-card{{ with .Get "class" }} {{ . }}{{ end }}"{{ with .Get "href" }} href="{{ . | relURL }}"{{ end }}>
+{{- template "book-card-content" . -}}
+</a>
+{{- else -}}
+<div class="book-card{{ with .Get "class" }} {{ . }}{{ end }}">
+{{- template "book-card-content" . -}}
+</div>
+{{- end -}}
+
+{{- define "book-card-content" -}}
+{{- with .Get "image" -}}
+  <img src="{{ . | urls.RelLangURL }}" />
+{{- end }}
+  <div class="markdown-inner">
+  {{ with .InnerDeindent }}{{ . }}{{ end }}
+  </div>
+{{- end -}}
+{{- /* remove whitespace */ -}}

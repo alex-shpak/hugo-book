@@ -36,6 +36,17 @@ languages:
     weight: 3
 
 menu:
+  home:
+    - name: "Documentation"
+      url: "/docs/example/"
+      weight: 1
+    - name: "Showcases"
+      url: "/showcases/"
+      weight: 2
+    - name: "Github"
+      url: "https://github.com/alex-shpak/hugo-book/"
+      weight: 3
+
   # before: []
   after:
     - name: "Github"

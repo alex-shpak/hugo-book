@@ -1,4 +1,6 @@
-<h{{ .Level }} id="{{ .Anchor | safeURL }}">
-  {{ .Text | safeHTML }}
-  <a class="anchor" href="#{{ .Anchor | safeURL }}">#</a>
+<h{{ .Level }} id="{{ .Anchor }}" {{- with .Attributes.class }} class="{{ . }}" {{- end }}>
+  {{ .Text }}
+  {{ if default true .Page.Params.bookHeadingAnchor }}
+  <a class="anchor" href="#{{ .Anchor }}">#</a>
+  {{ end }}
 </h{{ .Level }}>

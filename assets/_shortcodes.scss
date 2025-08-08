@@ -132,17 +132,17 @@
     }
 
     span.book-badge-title {
-      background-color: var(--body-background);
-      opacity: 0.9;
+      --background-opacity: 0.1;
     }
 
     span.book-badge-value {
+      --background-opacity: 1;
       color: var(--body-background);
     }
 
     @each $name, $color in $hint-colors {
-      &.#{$name} {
-        background-color: $color;
+      &.#{$name} span {
+        background-color: rgba($color, var(--background-opacity));
       }
     }
   }
@@ -190,6 +190,43 @@
       >li:last-child {
         border: 0;
       }
+    }
+  }
+
+  // {{< card >}}
+  .book-card {
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    border-radius: $border-radius;
+    border: $padding-1 solid var(--gray-200);
+    
+    &[href]:hover {
+      text-decoration: none;
+      background: var(--gray-100);
+    }
+    &[href]:visited {
+      color: var(--body-font-color);
+    }
+
+    img {
+      display: block;
+      object-fit: contain;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .markdown-inner {
+      padding: $padding-16;
+    }
+  }
+
+  .book-hero {
+    min-height: $padding-16 * 24;
+    align-content: center;
+
+    h1 {
+      font-size: 3em;
     }
   }
 }

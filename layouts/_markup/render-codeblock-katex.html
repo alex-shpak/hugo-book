@@ -9,5 +9,5 @@
 {{- end -}}
 
 {{- with .Inner }}
-<span>\[ {{ . }} \]</span>
+<span>\[ {{ .| htmlEscape | safeHTML  }} \]</span>
 {{ end -}}

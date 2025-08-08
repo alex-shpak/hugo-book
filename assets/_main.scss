@@ -217,6 +217,22 @@ body[dir="rtl"] .book-menu {
     height: 1.5em;
     width: 1.5em;
   }
+
+  > ul {
+    margin: 0;
+    padding: 0 $padding-16;
+    display: flex;
+    gap: $padding-16;
+    justify-content: end;
+
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.book-kind-home .book-header {
+  display: block;
 }
 
 .book-search {
@@ -338,7 +354,7 @@ body[dir="rtl"] .book-menu {
   }
 
   .book-header {
-    display: block;
+    display: block !important;
   }
 
   #menu-control:focus ~ main label[for="menu-control"] {
