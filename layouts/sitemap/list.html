@@ -1,0 +1,17 @@
+{{ define "main" }}
+<h1 class="text-3xl font-bold mb-4">Sitemap</h1>
+<ul class="space-y-2">
+  {{ range sort .Site.RegularPages.ByDate.Reverse }}
+    {{ if eq .Lang $.Site.Language.Lang }}
+      <li>
+        <a href="{{ .RelPermalink }}" class="text-blue-600 hover:underline">
+          {{ .Title }}
+        </a>
+        <span class="text-gray-500 text-sm ml-2">
+          ({{ .Date.Format "2006-01-02" }})
+        </span>
+      </li>
+    {{ end }}
+  {{ end }}
+</ul>
+{{ end }}
