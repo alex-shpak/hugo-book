@@ -115,6 +115,7 @@
     tr td {
       padding: $padding-8 $padding-16;
       border: $padding-1 solid var(--gray-200);
+      text-align: start;
     }
 
     tr:nth-child(2n) {
