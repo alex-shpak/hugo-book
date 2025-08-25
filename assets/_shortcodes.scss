@@ -164,13 +164,11 @@
         justify-content: center;
         left: $padding-8;
 
-        height: $padding-16;
-        width: $padding-16;
+        height: $padding-16 * 1.5;
+        width: $padding-16 * 1.5;
         padding: $padding-4;
         border-radius: $padding-8;
 
-        vertical-align: middle;
-        text-align: center !important ;
         white-space: nowrap;
         line-height: $padding-16;
 

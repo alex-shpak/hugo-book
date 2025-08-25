@@ -25,10 +25,8 @@ $endLevel: 6;
   li {
     counter-increment: item;
 
-    &:before {
+    > a:before {
       content: counters(item, ".") ". ";
-      float: left;
-      margin-inline-end: $padding-4;
     }
   }
 }

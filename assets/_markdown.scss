@@ -14,7 +14,7 @@
   h4,
   h5,
   h6 {
-    font-weight: normal;
+    font-weight: $body-font-weight;
     line-height: 1;
     margin-top: 1.5em;
     margin-bottom: $padding-16;
@@ -32,19 +32,12 @@
     }
   }
 
-  h4,
-  h5,
-  h6 {
-    font-weight: bolder;
-  }
-
-  h5 {
-    font-size: 0.875em;
-  }
-
-  h6 {
-    font-size: 0.75em;
-  }
+  h1 { font-size: $font-size-16 * 2; }
+  h2 { font-size: $font-size-16 * 1.5; }
+  h3 { font-size: $font-size-16 * 1.25; }
+  h4 { font-size: $font-size-16 * 1.125; }
+  h5 { font-size: $font-size-16 * 1; }
+  h6 { font-size: $font-size-16 * 0.875; }
 
   b,
   optgroup,
