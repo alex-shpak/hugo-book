@@ -40,6 +40,14 @@ menu:
     - name: "Documentation"
       url: "/docs/example/"
       weight: 1
+    - name: "Introduction"
+      url: "/docs/example/"
+      weight: 10
+      parent: "Documentation"
+    - name: "Shortcodes"
+      url: "/docs/shortcodes/badges/"
+      weight: 20
+      parent: "Documentation"
     - name: "Showcases"
       url: "/showcases/"
       weight: 2

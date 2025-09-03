@@ -44,6 +44,18 @@ enableGitInfo = true
   weight = 1
 
 [[menu.home]]
+  name = "Introduction"
+  url = "/docs/example/"
+  weight = 10
+  parent = "Documentation"
+
+[[menu.home]]
+  name = "Shortcodes"
+  url = "/docs/shortcodes/badges/"
+  weight = 20
+  parent = "Documentation"
+
+[[menu.home]]
   name = "Showcases"
   url = "/showcases/"
   weight = 2

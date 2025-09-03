@@ -41,7 +41,7 @@ img {
   @include outline;
 }
 
-aside nav ul {
+nav ul {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -212,22 +212,33 @@ body[dir="rtl"] .book-menu {
     height: 1.5em;
     width: 1.5em;
   }
-
-  > ul {
-    margin: 0;
-    padding: 0 $padding-16;
-    display: flex;
-    gap: $padding-16;
-    justify-content: end;
-
-    li {
-      display: inline-block;
-    }
-  }
 }
 
 .book-layout-landing .book-header {
   display: block;
+  position: relative;
+  z-index: 1;
+
+  nav > ul {
+    display: flex;
+    gap: $padding-16;
+    justify-content: end;
+
+    > li {
+      display: block;
+      white-space: nowrap;
+
+      > ul {
+        display: none;
+        position: absolute;
+        padding: 0;
+      }
+
+      &:hover > ul {
+        display: block;
+      }
+    }
+  }
 }
 
 .book-search {
