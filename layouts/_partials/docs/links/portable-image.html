@@ -1,0 +1,26 @@
+{{- $destination := .Destination -}}
+{{- $url := urls.Parse .Destination -}}
+
+{{- $isRemote := gt (len $url.Host) 0 -}}
+{{- $isFragment := strings.HasPrefix .Destination "#" -}}
+
+{{- if and (not $isRemote) (not $isFragment) -}}
+  {{- $path := strings.TrimPrefix "./" $url.Path -}}
+  {{- $path = strings.TrimPrefix "/assets/" $path -}}
+  
+  {{- with (.Page.Resources.Get $path) -}}
+    {{- $destination = .RelPermalink -}}
+  {{- else with (resources.Get $path) -}}
+    {{- $destination = .RelPermalink -}}
+  {{- else -}}
+    {{- warnf "Image reference '%s' not found in '%s'" .Destination .Page.Permalink -}}
+  {{- end -}}
+
+  {{- with $url.RawQuery -}}
+    {{- $destination = print $destination "?" . -}}
+  {{- end -}}
+  {{- with $url.Fragment -}}
+    {{- $destination = print $destination "#" . -}}
+  {{- end -}}
+{{- end -}}
+{{- return $destination -}}

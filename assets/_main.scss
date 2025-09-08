@@ -334,10 +334,7 @@ body[dir="rtl"] .book-menu {
 
 // Responsive styles
 .book-menu-content,
-.book-toc-content,
-.book-page,
-.book-header aside,
-.markdown {
+.book-toc-content {
   transition: 0.2s ease-in-out;
   transition-property: transform, margin, opacity, visibility;
   will-change: transform, margin, opacity;

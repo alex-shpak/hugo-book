@@ -10,8 +10,8 @@
 <ul>
   {{ range . }}
   <li>
-    {{ $local := or (.Page) (strings.HasPrefix .URL "/") }}
-    <a href="{{ .URL }}" {{ with .Params.class }}class="{{ . }}"{{ end }} {{ if not $local }}target="_blank" rel="noopener"{{ end }}>
+    {{ $isRemote := not (or (.Page) (strings.HasPrefix .URL "/")) }}
+    <a href="{{ .URL }}" {{ with .Params.class }}class="{{ . }}"{{ end }} {{ if $isRemote }}target="_blank" rel="noopener"{{ end }}>
       {{- .Pre -}}
       {{ with .Page }}
         {{ partial "docs/title" .Page }}
