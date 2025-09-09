@@ -1,6 +1,7 @@
 ---
 title: Introduction
-bookHeadingAnchor: false
+params:
+  bookHeadingAnchor: false
 layout: landing
 ---
 
