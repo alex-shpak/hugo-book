@@ -196,7 +196,7 @@
 
   // {{< card >}}, {{< figure >}}
   .book-card, figure {
-    display: inline-block;
+    display: block;
     overflow: hidden;
     height: 100%;
     border-radius: $border-radius;
