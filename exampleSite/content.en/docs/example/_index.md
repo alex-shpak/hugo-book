@@ -1,6 +1,7 @@
 ---
 weight: 1
-bookFlatSection: true
+params:
+  bookFlatSection: true
 title: "Example Site"
 ---
 
