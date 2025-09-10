@@ -14,6 +14,14 @@
   {{ template "_internal/pagination.html" . }}
 {{ end }}
 
+{{ define "toc-container" }}
+<aside class="book-toc">
+  <div class="book-toc-content">
+    {{ template "toc" . }}
+  </div>
+</aside>
+{{ end }}
+
 {{ define "toc" }}
   {{ partial "docs/taxonomy" . }}
 {{ end }}
