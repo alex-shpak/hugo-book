@@ -260,4 +260,23 @@
       font-size: 3em;
     }
   }
+
+  .book-codeblock-filename {
+    background: var(--gray-200);
+    font-size: $font-size-14;
+    margin-top: $padding-16;
+    padding: $padding-4 $padding-16;
+    border-start-start-radius: $border-radius;
+    border-start-end-radius: $border-radius;
+
+    a {
+      color: var(--body-font-color);
+    }
+
+    + .highlight pre {
+      margin-top: 0;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
+    }
+  }
 }
