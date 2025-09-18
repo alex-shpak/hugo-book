@@ -1,5 +1,9 @@
 .flex {
   display: flex;
+
+  &.gap {
+    gap: $padding-16;
+  }
 }
 
 .flex-auto {

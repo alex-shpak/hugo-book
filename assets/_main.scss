@@ -87,13 +87,6 @@ ul.pagination {
 a .book-icon {
   height: 1em;
   width: 1em;
-
-  &:first-child {
-    margin-inline-end: $padding-8;
-  }
-  &:last-child {
-    margin-inline-start: $padding-8;
-  }
 }
 
 .book-brand {
@@ -189,8 +182,18 @@ body[dir="rtl"] .book-menu {
     margin-inline-end: .5em;
   }
 
-  .book-post-content > :first-child {
+  .book-post-content {
     margin-top: $padding-16;
+  }
+
+  .book-post-thumbnail {
+    flex: 0 0 34%;
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
   }
 }
 
@@ -314,6 +317,10 @@ body[dir="rtl"] .book-menu {
   a {
     margin: $padding-8 0;
   }
+
+  a.flex {
+    gap: $padding-8;
+  }
 }
 
 .book-comments {
@@ -341,11 +348,6 @@ body[dir="rtl"] .book-menu {
 }
 
 @media screen and (max-width: $mobile-breakpoint) {
-  #menu-control,
-  #toc-control {
-    display: inline;
-  }
-
   .book-menu {
     visibility: hidden;
     margin-inline-start: -$menu-width;
@@ -358,6 +360,15 @@ body[dir="rtl"] .book-menu {
 
   .book-header {
     display: block;
+  }
+
+  .book-post-container {
+    flex-direction: column-reverse;
+  }
+
+  #menu-control,
+  #toc-control {
+    display: inline;
   }
 
   #menu-control:focus ~ main label[for="menu-control"] {
