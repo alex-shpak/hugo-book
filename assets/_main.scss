@@ -337,6 +337,10 @@ body[dir="rtl"] .book-menu {
   ul {
     padding-inline-start: 1.5em;
   }
+
+  a.flex {
+    gap: 0.5em;
+  }
 }
 
 // Responsive styles
