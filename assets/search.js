@@ -5,7 +5,7 @@
 {{ $searchConfig := i18n "bookSearchConfig" | default "{}" }}
 
 (function () {
-  const searchDataURL = '{{ $searchData.RelPermalink }}';
+  const searchDataURL = '{{ partial "docs/links/resource-precache" $searchData }}';
   const indexConfig = Object.assign({{ $searchConfig }}, {
     includeScore: true,
     useExtendedSearch: true,
