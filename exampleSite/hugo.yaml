@@ -40,18 +40,17 @@ languages:
 menu:
   home:
     - name: "Documentation"
-      url: "/docs/example/"
+      pageRef: "/docs/example/"
       weight: 1
-    - name: "Introduction"
-      url: "/docs/example/"
+    - pageRef: "/docs/example/"
       weight: 10
       parent: "Documentation"
     - name: "Shortcodes"
-      url: "/docs/shortcodes/badges/"
+      pageRef: "/docs/shortcodes/badges/"
       weight: 20
       parent: "Documentation"
     - name: "Showcases"
-      url: "/showcases/"
+      pageRef: "/showcases/"
       weight: 2
     - name: "Github"
       url: "https://github.com/alex-shpak/hugo-book/"

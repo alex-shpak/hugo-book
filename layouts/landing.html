@@ -10,6 +10,6 @@
 
 {{ define "header" }}
 <nav>
-  {{ partial "docs/menu-hugo" .Site.Menus.home }}
+  {{ partial "docs/menu-hugo" (dict "Page" .Page "Menu" .Site.Menus.home) }}
 </nav>
 {{ end }}

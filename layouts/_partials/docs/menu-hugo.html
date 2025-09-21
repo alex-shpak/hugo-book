@@ -1,29 +1,43 @@
 <!--
-  This is template for hugo menus, accepts MenuEntity as context
+  This is template for hugo menus, accepts Page and Menu as context
   https://gohugo.io/variables/menus/
 -->
-{{ if . }}
-  {{ template "book-menu-hugo" . }}
-{{ end }}
+{{- if .Menu -}}
+  {{- template "book-menu-hugo" . -}}
+{{- end -}}
 
 {{ define "book-menu-hugo" }}
 <ul>
-  {{ range . }}
+{{- range .Menu -}}
+  {{- $class := slice -}}
+  {{- with .Params.class -}}
+    {{- $class = $class | append . -}}
+  {{- end -}}
+  {{- if $.Page.IsMenuCurrent .Menu . -}}
+    {{- $class = $class | append "active" -}}
+  {{- end -}}
   <li>
-    {{ $isRemote := not (or (.Page) (strings.HasPrefix .URL "/")) }}
-    <a href="{{ .URL }}" {{ with .Params.class }}class="{{ . }}"{{ end }} {{ if $isRemote }}target="_blank" rel="noopener"{{ end }}>
+    {{- $isRemote := not (or (.Page) (strings.HasPrefix .URL "/")) -}}
+    <a href="{{ .URL }}"
+      {{- with $class }}class="{{ delimit . " " }}"{{ end -}}
+      {{- with .Title }}title="{{ . }}"{{ end -}}
+      {{- if $isRemote }}target="_blank" rel="noopener"{{ end -}}>
       {{- .Pre -}}
-      {{ with .Page }}
-        {{ partial "docs/title" .Page }}
-      {{ else }}
-        {{ .Name }}
-      {{ end }}
+      {{ template "book-menu-title" . }}
       {{- .Post -}}
     </a>
     {{- with .Children }}
-      {{ template "book-menu-hugo" . }}
+      {{ template "book-menu-hugo" (dict "Page" $.Page "Menu" .) }}
     {{- end }}
   </li>
-  {{ end }}
+{{- end -}}
 </ul>
+{{ end }}
+
+{{ define "book-menu-title" }}
+{{ if .Name }}
+  {{ .Name }}
+{{ else if .Page }}
+  {{ partial "docs/title" .Page }}
+{{ end }}
 {{ end }}

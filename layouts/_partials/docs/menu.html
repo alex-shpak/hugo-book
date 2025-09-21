@@ -6,11 +6,11 @@
 {{ end }}
 
 {{ partial "docs/inject/menu-before" . }}
-{{ partial "docs/menu-hugo" .Site.Menus.before }}
+{{ partial "docs/menu-hugo" (dict "Page" .Page "Menu" .Site.Menus.before) }}
 
 {{ partial "docs/menu-filetree" . }}
 
-{{ partial "docs/menu-hugo" .Site.Menus.after }}
+{{ partial "docs/menu-hugo" (dict "Page" .Page "Menu" .Site.Menus.after) }}
 {{ partial "docs/inject/menu-after" . }}
 </nav>
 

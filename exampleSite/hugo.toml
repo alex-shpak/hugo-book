@@ -42,24 +42,23 @@ enableGitInfo = true
 [menu]
 [[menu.home]]
   name = "Documentation"
-  url = "/docs/example/"
+  pageRef = "/docs/example/"
   weight = 1
 
 [[menu.home]]
-  name = "Introduction"
-  url = "/docs/example/"
+  pageRef = "/docs/example/"
   weight = 10
   parent = "Documentation"
 
 [[menu.home]]
   name = "Shortcodes"
-  url = "/docs/shortcodes/badges/"
+  pageRef = "/docs/shortcodes/badges/"
   weight = 20
   parent = "Documentation"
 
 [[menu.home]]
   name = "Showcases"
-  url = "/showcases/"
+  pageRef = "/showcases/"
   weight = 2
 
 [[menu.home]]
