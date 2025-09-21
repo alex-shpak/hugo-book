@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ default .Site.Language.Lang .Site.LanguageCode  }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
+<html lang="{{ default .Site.Language.Lang .Site.LanguageCode }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
@@ -21,10 +21,11 @@
 
       <footer class="book-footer">
         {{ template "footer" . }} <!-- Footer under page content -->
+        {{ template "comments" . }} <!-- Comments block -->
         {{ partial "docs/inject/footer" . }}
+        {{ template "copyright" . }} <!-- Copyright block -->
       </footer>
 
-      {{ template "comments" . }} <!-- Comments block -->
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
@@ -59,6 +60,14 @@
 
 {{ define "footer" }}
   {{ partial "docs/footer" . }}
+{{ end }}
+
+{{ define "copyright" }}
+{{ if .Site.Copyright }}
+<div class="book-copyright flex justify-center">
+  {{ partial "docs/copyright" . }}
+</div>
+{{ end }}
 {{ end }}
 
 {{ define "comments" }}

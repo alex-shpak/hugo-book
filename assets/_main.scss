@@ -37,6 +37,10 @@ img {
   vertical-align: baseline;
 }
 
+small {
+  @extend .text-small;
+}
+
 :focus {
   @include outline;
 }
@@ -315,15 +319,21 @@ body[dir="rtl"] .book-menu {
   font-size: $font-size-14;
 
   a {
-    margin: $padding-8 0;
+    margin: $padding-4 0;
+    padding: $padding-4 0;
   }
 
   a.flex {
+    display: inline-flex;
     gap: $padding-8;
   }
 }
 
 .book-comments {
+  margin-top: $padding-16;
+}
+
+.book-copyright {
   margin-top: $padding-16;
 }
 

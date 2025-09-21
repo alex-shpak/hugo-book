@@ -4,6 +4,8 @@ baseURL = 'http://0.0.0.0:1313/hugo-book/'
 title = 'Hugo Book'
 theme = 'hugo-book'
 
+copyright = '[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)'
+
 # Book configuration
 disablePathToLower = true
 enableGitInfo = true
