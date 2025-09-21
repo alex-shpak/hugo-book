@@ -17,7 +17,7 @@
     {{- $class = $class | append "active" -}}
   {{- end -}}
   <li>
-    {{- $isRemote := not (or (.Page) (strings.HasPrefix .URL "/")) -}}
+    {{- $isRemote := (urls.Parse .URL).IsAbs -}}
     <a href="{{ .URL }}"
       {{- with $class }}class="{{ delimit . " " }}"{{ end -}}
       {{- with .Title }}title="{{ . }}"{{ end -}}

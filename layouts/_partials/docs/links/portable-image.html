@@ -1,7 +1,7 @@
 {{- $destination := .Destination -}}
 {{- $url := urls.Parse .Destination -}}
 
-{{- $isRemote := gt (len $url.Host) 0 -}}
+{{- $isRemote := $url.IsAbs -}}
 {{- $isFragment := strings.HasPrefix .Destination "#" -}}
 
 {{- if and (not $isRemote) (not $isFragment) -}}

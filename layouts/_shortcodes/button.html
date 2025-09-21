@@ -1,5 +1,5 @@
-{{ $href := partial "docs/links/portable-link" (dict "Page" .Page "Destination" (.Get "href")) -}}
-{{ $isRemote := (urls.Parse $href).Scheme}}
+{{- $href := partial "docs/links/portable-link" (dict "Page" .Page "Destination" (.Get "href")) -}}
+{{- $isRemote := (urls.Parse $href).IsAbs -}}
 <a {{ with $href }}href="{{ $href }}"{{ end }} {{ with $isRemote }}target="_blank" rel="noopener"{{ end }} class="book-btn{{ with .Get "class" }} {{ . }}{{ end }}">
   {{- .InnerDeindent -}}
 </a>
