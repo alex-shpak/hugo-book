@@ -194,8 +194,8 @@
     }
   }
 
-  // {{< card >}}, {{< figure >}}
-  .book-card, figure {
+  // {{< card >}}
+  .book-card {
     display: block;
     overflow: hidden;
     height: 100%;
@@ -218,11 +218,6 @@
     }
 
     .markdown-inner {
-      padding: $padding-16;
-    }
-
-    figcaption {
-      @extend .markdown-inner;
       padding: $padding-16;
     }
   }

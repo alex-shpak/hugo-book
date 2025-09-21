@@ -198,6 +198,11 @@
 
   figure {
     margin: $padding-16 0;
+
+    figcaption {
+      @extend .markdown-inner;
+      margin-top: $padding-16;
+    }
   }
 }
 
