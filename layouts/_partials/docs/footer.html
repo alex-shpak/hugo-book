@@ -4,7 +4,7 @@
 {{ if and .GitInfo .Site.Params.BookLastChangeLink }}
   {{- $date := partial "docs/date" (dict "Date" .Lastmod "Format" .Site.Params.BookDateFormat) -}}
   <a class="flex align-center" href="{{ partial "docs/links/commit" . }}" title='{{ i18n "Last modified by" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
-    <img src="{{ "svg/calendar.svg" | relURL }}" class="book-icon" alt="" />
+    <img src="{{ partial "docs/icon" "calendar" }}" class="book-icon" alt="" />
     <span>{{ $date }}</span>
   </a>
 {{ end }}
@@ -13,7 +13,7 @@
 <div>
 {{ if and .File .Site.Params.BookEditLink }}
   <a class="flex align-center" href="{{ partial "docs/links/edit" . }}" target="_blank" rel="noopener edit">
-    <img src="{{ "svg/edit.svg" | relURL }}" class="book-icon" alt="" />
+    <img src="{{ partial "docs/icon" "edit" }}" class="book-icon" alt="" />
     <span>{{ i18n "Edit this page" }}</span>
   </a>
 {{ end }}

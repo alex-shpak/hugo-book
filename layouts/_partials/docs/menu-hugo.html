@@ -35,9 +35,12 @@
 {{ end }}
 
 {{ define "book-menu-title" }}
-{{ if .Name }}
-  {{ .Name }}
-{{ else if .Page }}
-  {{ partial "docs/title" .Page }}
-{{ end }}
+{{- with .Params.BookIcon -}}
+  <img src="{{ partial "docs/icon" . }}" class="book-icon" />
+{{- end -}}
+{{- if .Name -}}
+  {{- .Name -}}
+{{- else if .Page -}}
+  {{- partial "docs/title" .Page -}}
+{{- end -}}
 {{ end }}

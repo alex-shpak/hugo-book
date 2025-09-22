@@ -180,7 +180,7 @@
       list-style: none;
 
       &::before {
-        content: "▸"; 
+        content: "›";
         display: inline-block;
         margin-inline-end: $padding-8;
         transition: transform 0.1s ease-in-out;
