@@ -1,12 +1,11 @@
 ---
 title: Introduction
-bookHeadingAnchor: false
 layout: landing
 ---
 
 <div class="book-hero">
 
-# HUGO BOOK
+# HUGO BOOK {anchor=false}
 [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
 {{< badge style="info" title="Badge" value="Value" >}} {{< badge style="default" title="Badge" value="Value" >}}
