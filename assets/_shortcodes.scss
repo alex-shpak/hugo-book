@@ -194,8 +194,8 @@
     }
   }
 
-  // {{< card >}}, {{< figure >}}
-  .book-card, figure {
+  // {{< card >}}
+  .book-card {
     display: block;
     overflow: hidden;
     height: 100%;
@@ -210,7 +210,7 @@
       background: var(--gray-100);
     }
 
-    img {
+    > img {
       width: 100%;
       display: block;
       aspect-ratio: 4 / 3;
@@ -218,11 +218,6 @@
     }
 
     .markdown-inner {
-      padding: $padding-16;
-    }
-
-    figcaption {
-      @extend .markdown-inner;
       padding: $padding-16;
     }
   }
@@ -258,6 +253,25 @@
 
     h1 {
       font-size: 3em;
+    }
+  }
+
+  .book-codeblock-filename {
+    background: var(--gray-200);
+    font-size: $font-size-14;
+    margin-top: $padding-16;
+    padding: $padding-4 $padding-16;
+    border-start-start-radius: $border-radius;
+    border-start-end-radius: $border-radius;
+
+    a {
+      color: var(--body-font-color);
+    }
+
+    + .highlight pre {
+      margin-top: 0;
+      border-start-start-radius: 0;
+      border-start-end-radius: 0;
     }
   }
 }

@@ -222,6 +222,10 @@ bookSearchExclude = false
 
 # (Optional) Set explicit href attribute for this page in a menu.
 bookHref = ''
+
+# /!\ This is an experimental feature, might be removed or changed at any time
+# (Optional) Set an icon for the menu entity of the page, icons are discovered from `assets/icons` folder.
+bookIcon = 'calendar'
 ```
 
 ### Partials

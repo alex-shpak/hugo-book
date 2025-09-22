@@ -1,0 +1,28 @@
+{{- if .Paginator -}}
+<div class="flex flex-wrap justify-between">
+  <span>
+  {{- with .Paginator.Prev }}
+    <a href="{{ .URL }}" class="flex align-center">
+      <img src="{{ partial "docs/icon" "backward" }}" class="book-icon" alt="Previous" />
+    </a>
+  {{ end }}
+  </span>
+  {{ if gt (len .Paginator.Pagers) 1 }}
+  <span class="flex gap">
+    {{- $currentPageNumber := .Paginator.PageNumber -}}
+    {{- range $pageIndex := (slice -2 -1 0 1 2) -}}
+    {{- with index $.Paginator.Pagers (add $currentPageNumber $pageIndex -1) -}}
+      <a {{if ne $currentPageNumber .PageNumber }}href="{{ .URL }}"{{end}}>{{ .PageNumber }}</a>
+    {{- end -}}
+    {{- end -}}
+  </span>
+  {{ end }}
+  <span>
+  {{- with .Paginator.Next }}
+    <a href="{{ .URL }}" class="flex align-center">
+      <img src="{{ partial "docs/icon" "forward" }}" class="book-icon" alt="Next" />
+    </a>
+  {{ end }}
+  </span>
+</div>
+{{- end -}}

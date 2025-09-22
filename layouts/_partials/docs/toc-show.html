@@ -1,4 +1,4 @@
-{{ return and
-    (default .Site.Params.BookToC .Params.BookToC | default true)
-    (not (eq .TableOfContents "<nav id=\"TableOfContents\"></nav>"))
+{{ return default
+  (not (eq .TableOfContents "<nav id=\"TableOfContents\"></nav>"))
+  (default .Site.Params.BookToC .Params.BookToC)
 }}

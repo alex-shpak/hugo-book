@@ -12,17 +12,17 @@
   <div class="flex flex-wrap justify-between">
     <span>
     {{ with $prev }}
-      <a href="{{ .RelPermalink }}" class="flex align-center book-icon">
-        <img src="{{ "svg/backward.svg" | relURL }}" class="book-icon" alt="Previous" title="{{ partial "docs/title" . }}" />
+      <a href="{{ .RelPermalink }}" class="flex align-center">
+        <img src="{{ partial "docs/icon" "backward" }}" class="book-icon" alt="Previous" title="{{ partial "docs/title" . }}" />
         <span>{{ partial "docs/title" . }}</span>
       </a>
     {{ end }}
     </span>
     <span>
     {{ with $next }}
-      <a href="{{ .RelPermalink }}" class="flex align-center book-icon">
+      <a href="{{ .RelPermalink }}" class="flex align-center">
         <span>{{ partial "docs/title" . }}</span>
-        <img src="{{ "svg/forward.svg" | relURL }}" class="book-icon" alt="Next" title="{{ partial "docs/title" . }}" />
+        <img src="{{ partial "docs/icon" "forward" }}" class="book-icon" alt="Next" title="{{ partial "docs/title" . }}" />
       </a>
     {{ end }}
     </span>

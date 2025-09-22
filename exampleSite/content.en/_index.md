@@ -12,7 +12,7 @@ layout: landing
 
 {{< badge style="info" title="Badge" value="Value" >}} {{< badge style="default" title="Badge" value="Value" >}}
 
-{{<button relref="/docs/example">}}Button{{</button>}}
+{{<button href="/docs/example">}}Button{{</button>}}
 
 </div>
 

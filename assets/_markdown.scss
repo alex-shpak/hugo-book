@@ -71,8 +71,6 @@
   }
 
   pre {
-    direction: ltr;
-    unicode-bidi: embed;
     padding: $padding-16;
     background: var(--gray-100);
     border-radius: $border-radius;
@@ -182,7 +180,7 @@
       list-style: none;
 
       &::before {
-        content: "▸"; 
+        content: "›";
         display: inline-block;
         margin-inline-end: $padding-8;
         transition: transform 0.1s ease-in-out;
@@ -200,6 +198,11 @@
 
   figure {
     margin: $padding-16 0;
+
+    figcaption {
+      @extend .markdown-inner;
+      margin-top: $padding-16;
+    }
   }
 }
 

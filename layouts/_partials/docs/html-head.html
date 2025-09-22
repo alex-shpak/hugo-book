@@ -1,3 +1,8 @@
+{{ "<!--" | safeHTML }}
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+{{ "-->" | safeHTML }}
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{{ default .Summary .Description }}">
@@ -24,14 +29,17 @@
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
 {{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | css.Sass | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $styles.RelPermalink }}" {{ template "integrity" $styles }}>
+<link rel="stylesheet" href="{{ partial "docs/links/resource-precache" $styles }}" {{ template "integrity" $styles }}>
+
+<!-- Search -->
 {{- if default true .Site.Params.BookSearch -}}
   {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
   {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
   <script defer src="{{ "fuse.min.js" | relURL }}"></script>
-  <script defer src="{{ $searchJS.RelPermalink }}" {{ template "integrity" $searchJS }}></script>
+  <script defer src="{{ partial "docs/links/resource-precache" $searchJS }}" {{ template "integrity" $searchJS }}></script>
 {{ end -}}
 
+<!-- Service Worker -->
 {{- if .Site.Params.BookServiceWorker -}}
   {{- $swJS := resources.Get "sw-register.js" | resources.ExecuteAsTemplate "sw.js" . | resources.Minify | resources.Fingerprint }}
   <script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
@@ -43,11 +51,6 @@
 {{- with .OutputFormats.Get "rss" -}}
   {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
 {{ end -}}
-
-{{ "<!--" | safeHTML }}
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
-{{ "-->" | safeHTML }}
 
 {{- define "integrity" -}}
   {{- if (urls.Parse .Permalink).Host -}}

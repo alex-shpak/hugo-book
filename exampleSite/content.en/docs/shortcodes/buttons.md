@@ -9,5 +9,5 @@ Buttons are styled links that can lead to local page or external link.
 {{</* button href="https://github.com/alex-shpak/hugo-book" */>}}Contribute{{</* /button */>}}
 ```
 
-{{<button relref="/">}}Get Home{{</button>}}
+{{<button href="/">}}Get Home{{</button>}}
 {{<button href="https://github.com/alex-shpak/hugo-book">}}Contribute{{</button>}}

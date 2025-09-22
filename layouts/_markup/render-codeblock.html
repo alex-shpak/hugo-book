@@ -1,0 +1,10 @@
+{{- with (index .Attributes "filename") -}}
+  {{- $href := index $.Attributes "href" -}}
+  {{- if $href -}}
+    {{- $href = partial "docs/links/portable-link" (dict "Page" $.PageInner "Destination" $href) -}}
+  {{- end -}}
+<div class="book-codeblock-filename">
+  <a {{ with $href }}href="{{ . }}"{{ end }}>{{ . }}</a>
+</div>
+{{- end -}}
+{{- (transform.HighlightCodeBlock . .Options).Wrapped -}}

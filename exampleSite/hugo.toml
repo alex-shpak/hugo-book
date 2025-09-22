@@ -4,6 +4,8 @@ baseURL = 'http://0.0.0.0:1313/hugo-book/'
 title = 'Hugo Book'
 theme = 'hugo-book'
 
+copyright = '[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)'
+
 # Book configuration
 disablePathToLower = true
 enableGitInfo = true
@@ -40,24 +42,23 @@ enableGitInfo = true
 [menu]
 [[menu.home]]
   name = "Documentation"
-  url = "/docs/example/"
+  pageRef = "/docs/example/"
   weight = 1
 
 [[menu.home]]
-  name = "Introduction"
-  url = "/docs/example/"
+  pageRef = "/docs/example/"
   weight = 10
   parent = "Documentation"
 
 [[menu.home]]
   name = "Shortcodes"
-  url = "/docs/shortcodes/badges/"
+  pageRef = "/docs/shortcodes/badges/"
   weight = 20
   parent = "Documentation"
 
 [[menu.home]]
   name = "Showcases"
-  url = "/showcases/"
+  pageRef = "/showcases/"
   weight = 2
 
 [[menu.home]]
@@ -81,10 +82,10 @@ enableGitInfo = true
   # Theme 'auto' switches between dark and light modes based on browser/os preferences
   BookTheme = 'light'
 
-  # (Optional, default true) Controls table of contents visibility on right side of pages.
+  # (Optional, default none) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
-  BookToC = true
+  # BookToC = true
 
   # (Optional, default favicon.png) Set the path to a favicon file.
   # If the favicon is /static/favicon.png then the path would be favicon.png
@@ -137,7 +138,7 @@ enableGitInfo = true
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
-  BookServiceWorker = true
+  BookServiceWorker = "precache"
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.

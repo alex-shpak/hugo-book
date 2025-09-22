@@ -14,17 +14,18 @@
   <li>
     <input type="checkbox" id="languages" class="toggle" />
     <label for="languages" class="flex">
-      <a role="button" class="flex flex-auto">
-        <img src="{{ "svg/translate.svg" | relURL }}" class="book-icon" alt="Languages" />
-        <span>{{ $.Site.Language.LanguageName }}</span>
+      <a role="button">
+        <img src="{{ partial "docs/icon" "translate" }}" class="book-icon" alt="Languages" />
+        {{ $.Site.Language.LanguageName }}
       </a>
+      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" />
     </label>
 
     <ul>
       {{ range .Site.Languages }}{{ with index $translations .Lang }}
       <li>
-        <a href="{{ cond hugo.IsMultihost .Permalink .RelPermalink }}">
-          <span>{{ .Language.LanguageName }}</span>
+        <a href="{{ cond hugo.IsMultihost .Permalink .RelPermalink }}" class="flex flex-auto">
+          {{ .Language.LanguageName }}
         </a>
       </li>
       {{ end }}{{ end }}

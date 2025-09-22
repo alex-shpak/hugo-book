@@ -1,19 +1,39 @@
 {{ define "main" }}
   {{ range sort .Paginator.Pages }}
-  <article class="markdown book-post">
+  <article class="book-post markdown">
     <h2>
-      <a href="{{ .RelPermalink }}">{{ partial "docs/title.html" . }}</a>
+      <a href="{{ .RelPermalink }}">{{ partial "docs/title" . }}</a>
     </h2>
-    {{ partial "docs/post-meta" . }}
-    <div class="book-post-content">
-      {{- .Summary -}}
+    <div class="book-post-container flex gap">
+      <div>
+        {{ partial "docs/post-meta" . }}
+        <div class="book-post-content markdown-inner">
+          {{- .Summary | truncate 256 -}}
+        </div>
+      </div>
+      {{- $thumbnail := default "thumbnail.*" .Params.BookPostThumbnail -}}
+      {{- with or (.Resources.GetMatch $thumbnail) (resources.GetMatch $thumbnail) -}}
+      <div class="book-post-thumbnail">
+        <img src="{{ .RelPermalink }}" />
+      </div>
+      {{- end -}}
     </div>
   </article>
   {{ end }}
+{{ end }}
 
-  {{ template "_internal/pagination.html" . }}
+{{ define "toc-container" }}
+<aside class="book-toc">
+  <div class="book-toc-content">
+    {{ template "toc" . }}
+  </div>
+</aside>
 {{ end }}
 
 {{ define "toc" }}
   {{ partial "docs/taxonomy" . }}
+{{ end }}
+
+{{ define "footer" }}
+  {{ partial "docs/pagination.html" . }}
 {{ end }}

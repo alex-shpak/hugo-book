@@ -4,6 +4,9 @@ const pages = [
   {{ range .Site.AllPages -}}
   "{{ .RelPermalink }}",
   {{ end -}}
+  {{ range $permalink, $ok := site.Store.Get "book-sw-precache" -}}
+  "{{ $permalink }}",
+  {{ end -}}
 {{ end }}
 ];
 
