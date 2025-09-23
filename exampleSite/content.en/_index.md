@@ -8,9 +8,9 @@ layout: landing
 # HUGO BOOK {anchor=false}
 [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
-{{< badge style="info" title="Badge" value="Value" >}} {{< badge style="default" title="Badge" value="Value" >}}
+{{< badge style="info" title="Hugo" value="0.146" >}} {{< badge style="default" title="License" value="MIT" >}}
 
-{{<button href="/docs/example">}}Button{{</button>}}
+{{<button href="/docs/example">}}Explore{{</button>}}
 
 </div>
 

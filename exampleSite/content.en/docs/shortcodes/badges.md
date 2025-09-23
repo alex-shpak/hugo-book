@@ -1,12 +1,15 @@
 # Badges
 
+> [!WARNING]
+> Experimental, might not stay in theme.
+
+Badges can be used to annotate your pages with additional information or mark specific places in markdown content.
+
 {{< badge title="Title" value="Value" >}}
 {{< badge style="info" title="Hugo" value="0.147.6" >}}
 {{< badge style="success" title="Build" value="Passing" >}}
 {{< badge style="warning" title="Coverage" value="25%" >}}
 {{< badge style="danger" title="Issues" value="120" >}}
-
-Badges can be used to annotate your pages with additional information or mark specific places in markdown content.
 
 ## Examples
 
