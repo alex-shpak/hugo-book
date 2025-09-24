@@ -16,7 +16,7 @@
   <img src="{{ $destination | safeURL }}" />
 {{- end }}
   <div class="markdown-inner">
-  {{ with .InnerDeindent }}{{ . }}{{ end }}
+  {{ with .Inner }}{{ . }}{{ end }}
   </div>
 {{- end -}}
 {{- /* remove whitespace */ -}}
