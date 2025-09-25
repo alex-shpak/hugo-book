@@ -1,7 +1,7 @@
 # Badges
 
 > [!WARNING]
-> Experimental, might not stay in theme.
+> Experimental, could change in the future or be removed
 
 Badges can be used to annotate your pages with additional information or mark specific places in markdown content.
 

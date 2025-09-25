@@ -1,5 +1,8 @@
 # Cards
 
+> [!WARNING]
+> Experimental, could change in the future or be removed
+
 ## Example
 
 {{% columns %}}
