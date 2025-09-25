@@ -1,1 +1,1 @@
-{{ partial "docs/title" . }} | {{ .Site.Title -}}
+{{ with partial "docs/title" . }}{{ . }} | {{ end }}{{ .Site.Title -}}
