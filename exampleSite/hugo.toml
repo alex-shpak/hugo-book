@@ -52,7 +52,7 @@ enableGitInfo = true
 
 [[menu.home]]
   name = 'Shortcodes'
-  pageRef = '/docs/shortcodes/badges/'
+  pageRef = '/docs/shortcodes/buttons/'
   weight = 20
   parent = 'Documentation'
 

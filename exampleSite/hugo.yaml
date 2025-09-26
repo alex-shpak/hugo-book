@@ -46,7 +46,7 @@ menu:
       weight: 10
       parent: "Documentation"
     - name: "Shortcodes"
-      pageRef: "/docs/shortcodes/badges/"
+      pageRef: "/docs/shortcodes/buttons/"
       weight: 20
       parent: "Documentation"
     - name: "Showcases"
