@@ -1,5 +1,8 @@
 # Images
 
+> [!WARNING]
+> Experimental, could change in the future or be removed
+
 Image shortcode produces an image that can be clicked to expand.
 
 ## Example
