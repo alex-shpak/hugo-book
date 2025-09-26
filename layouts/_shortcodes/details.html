@@ -1,7 +1,9 @@
+{{- /* remove whitespaces */ -}}
 <details {{ if or (.Get "open") (in .Params "open") }}open{{ end }}>
-  {{- $summary := cond .IsNamedParams (.Get "title") (.Get 0) -}}
-  <summary>{{ $summary | .Page.RenderString }}</summary>
-  <div class="markdown-inner">
-    {{ .InnerDeindent | safeHTML }}
-  </div>
-</details>
+{{- $summary := cond .IsNamedParams (.Get "title") (.Get 0) -}}
+<summary>{{ $summary | .Page.RenderString }}</summary>
+{{- /* remove whitespaces */ -}}
+<div class="markdown-inner">
+{{ .Inner | safeHTML -}}
+</div></details>
+{{- /* remove whitespaces */ -}}

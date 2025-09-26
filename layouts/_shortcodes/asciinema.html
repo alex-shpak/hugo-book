@@ -1,15 +1,17 @@
 {{- if not (.Page.Store.Get "asciinema") -}}
-<!-- Include asciinema player only first time -->
-<link rel="stylesheet" href="{{ "asciinema/asciinema-player.css" | relURL }}" />
-<script defer src="{{ "asciinema/asciinema-player.min.js" | relURL }}"></script>
-<script defer src="{{ "asciinema/asciinema-auto.js" | relURL }}"></script>
-{{- .Page.Store.Set "asciinema" true -}}
+  <!-- Include asciinema player only first time -->
+  {{- /* remove whitespaces */ -}}
+  <link rel="stylesheet" href="{{ "asciinema/asciinema-player.css" | relURL }}" />
+  {{- /* remove whitespaces */ -}}
+  <script defer src="{{ "asciinema/asciinema-player.min.js" | relURL }}"></script>
+  {{- /* remove whitespaces */ -}}
+  <script defer src="{{ "asciinema/asciinema-auto.js" | relURL }}"></script>
+  {{- .Page.Store.Set "asciinema" true -}}
 {{- end -}}
 
 {{- with (partial "docs/links/portable-image" (dict "Page" .Page "Destination" (index .Params "cast"))) -}}
-
-{{- $opts := newScratch -}}
-{{- $opts.Set "asciinema" $.Params -}}
-{{- $opts.DeleteInMap "asciinema" "cast" -}}
-<div class="asciinema" id="asciinema-{{ $.Ordinal }}" x-data-cast="{{ . | safeHTMLAttr }}" x-data-opts="{{ $opts.Get "asciinema" | jsonify | safeHTMLAttr }}"></div>
+  {{- $opts := newScratch -}}
+  {{- $opts.Set "asciinema" $.Params -}}
+  {{- $opts.DeleteInMap "asciinema" "cast" -}}
+  <div class="asciinema" id="asciinema-{{ $.Ordinal }}" x-data-cast="{{ . | safeHTMLAttr }}" x-data-opts="{{ $opts.Get "asciinema" | jsonify | safeHTMLAttr }}"></div>
 {{- end -}}

@@ -1,3 +1,5 @@
+{{- /* remove whitespaces */ -}}
 <div class="book-steps {{ with .Get "class" }}{{ . }}{{ end }}">
-  {{ .Inner }}
+{{ .Inner -}}
 </div>
+{{- /* remove whitespaces */ -}}

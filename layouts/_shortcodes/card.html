@@ -1,9 +1,7 @@
-{{- /* remove whitespace */ -}}
 {{- with .Get "href" -}}
-{{- $destination := partial "docs/links/portable-link" (dict "Page" $.Page "Destination" .) -}}
-<a class="book-card{{ with $.Get "class" }} {{ . }}{{ end }}" href="{{ $destination | safeURL }}">
+<div><a class="book-card{{ with $.Get "class" }} {{ . }}{{ end }}" href="{{ . | safeURL }}">
 {{- template "book-card-content" $ -}}
-</a>
+</a></div>
 {{- else -}}
 <div class="book-card{{ with .Get "class" }} {{ . }}{{ end }}">
 {{- template "book-card-content" $ -}}
@@ -14,9 +12,8 @@
 {{- with .Get "image" -}}
   {{- $destination := partial "docs/links/portable-image" (dict "Page" $.Page "Destination" .) -}}
   <img src="{{ $destination | safeURL }}" />
-{{- end }}
+  {{- end -}}
   <div class="markdown-inner">
-  {{ with .Inner }}{{ . }}{{ end }}
+{{ with .Inner }}{{ . }}{{ end -}}
   </div>
 {{- end -}}
-{{- /* remove whitespace */ -}}

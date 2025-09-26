@@ -1,9 +1,12 @@
 {{- $group := printf "tabs-%v" (default .Parent.Ordinal (.Parent.Get 0)) -}}
-{{- $tab := printf "%s-%d" $group .Ordinal }}
+{{- $tab := printf "%s-%d" $group .Ordinal -}}
 <input type="radio" class="toggle" name="{{ $group }}" id="{{ $tab }}" {{ if not .Ordinal }}checked="checked"{{ end }} />
+{{- /* remove whitespaces */ -}}
 <label for="{{ $tab }}">
   {{- .Get 0 -}}
 </label>
+{{- /* remove whitespaces */ -}}
 <div class="book-tabs-content markdown-inner">
-  {{- .Inner -}}
+{{ .Inner -}}
 </div>
+{{- /* remove whitespaces */ -}}

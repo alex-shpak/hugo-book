@@ -1,4 +1,3 @@
-{{- /* remove whitespaces */ -}}
 {{- $destination := partial "docs/links/portable-image" (dict "Page" .Page "Destination" (.Get "src")) -}}
 <label class="book-image" for="book-image-toggle-{{ .Ordinal }}">
   <input class="hidden toggle" type="checkbox" id="book-image-toggle-{{ .Ordinal }}" />

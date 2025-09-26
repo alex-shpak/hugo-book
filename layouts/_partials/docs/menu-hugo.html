@@ -19,16 +19,16 @@
   <li>
     {{- $isRemote := (urls.Parse .URL).IsAbs -}}
     <a href="{{ .URL }}"
-      {{- with $class }}class="{{ delimit . " " }}"{{ end -}}
-      {{- with .Title }}title="{{ . }}"{{ end -}}
-      {{- if $isRemote }}target="_blank" rel="noopener"{{ end -}}>
+      {{- with $class }} class="{{ delimit . " " }}"{{- end -}}
+      {{- with .Title }} title="{{ . }}"{{- end -}}
+      {{- if $isRemote }} target="_blank" rel="noopener"{{- end -}}>
       {{- .Pre -}}
-      {{ template "book-menu-title" . }}
+      {{- template "book-menu-title" . -}}
       {{- .Post -}}
     </a>
-    {{- with .Children }}
-      {{ template "book-menu-hugo" (dict "Page" $.Page "Menu" .) }}
-    {{- end }}
+    {{- with .Children -}}
+      {{- template "book-menu-hugo" (dict "Page" $.Page "Menu" .) -}}
+    {{- end -}}
   </li>
 {{- end -}}
 </ul>

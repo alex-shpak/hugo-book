@@ -32,5 +32,4 @@ Steps shortcode styles numbered list as series of points for better content orga
 
 4. ## Curabitur sed lacinia velit.
    Curabitur sed lacinia velit. Nullam sed ante non quam lobortis hendrerit. Phasellus elementum, erat sit amet imperdiet pulvinar, odio massa lobortis ipsum, in tincidunt metus dolor vel ligula.
-
 {{% /steps %}}

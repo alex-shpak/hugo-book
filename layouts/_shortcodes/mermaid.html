@@ -1,12 +1,14 @@
-{{ if not (.Page.Store.Get "mermaid") }}
-<!-- Include mermaid only first time -->
-<script src="{{ "mermaid.min.js" | relURL }}"></script>
-{{ with resources.Get "mermaid.json" }}
-  <script>mermaid.initialize({{ .Content | safeJS }})</script>
-{{ end }}
-{{ .Page.Store.Set "mermaid" true }}
-{{ end }}
+{{- if not (.Page.Store.Get "mermaid") -}}
+  <!-- Include mermaid only first time -->
+  {{- /* remove whitespaces */ -}}
+  <script src="{{ "mermaid.min.js" | relURL }}"></script>
+  {{- with resources.Get "mermaid.json" -}}
+    <script>mermaid.initialize({{ .Content | safeJS }})</script>
+  {{- end -}}
+  {{- .Page.Store.Set "mermaid" true -}}
+{{- end -}}
 
 <pre class="mermaid{{ with .Get "class" }} {{ . }}{{ end }}">
-  {{- .Inner | htmlEscape | safeHTML  -}}
+{{- .Inner | htmlEscape | safeHTML  -}}
 </pre>
+{{- /* remove whitespaces */ -}}

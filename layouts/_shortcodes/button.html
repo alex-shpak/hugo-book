@@ -3,3 +3,4 @@
 <a {{ with $href }}href="{{ $href }}"{{ end }} {{ with $isRemote }}target="_blank" rel="noopener"{{ end }} class="book-btn{{ with .Get "class" }} {{ . }}{{ end }}">
   {{- .InnerDeindent -}}
 </a>
+{{- /* remove whitespaces */ -}}

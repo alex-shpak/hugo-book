@@ -1,21 +1,21 @@
 {{- $ratio := (split (.Get "ratio") ":") -}}
 {{- if strings.Contains .InnerDeindent "<--->" -}}
-{{ warnf "Columns shortcode seprator '<--->' is deprecated, use markdown list instead." -}}
+{{- warnf "Columns shortcode seprator '<--->' is deprecated, use markdown list instead." -}}
 <div class="book-columns flex flex-wrap{{ with .Get "class" }} {{ . }}{{ end }}">
-{{ range $index, $content := split .InnerDeindent "<--->" }}
+{{- range $index, $content := split .InnerDeindent "<--->" -}}
   {{- $grow := default 1 (index $ratio $index) -}}
   <div class="flex-even markdown-inner" style="flex-grow: {{ $grow }};">
-    {{ $content | safeHTML }}
+    {{- $content | safeHTML -}}
   </div>
-{{ end }}
+{{- end -}}
 </div>
-{{ else }}
-{{- if .Get "ratio" }}<style>{{ range $index, $grow := $ratio }}
+{{- else -}}
+{{- if .Get "ratio" -}}<style>{{- range $index, $grow := $ratio -}}
   .book-columns-{{ $.Ordinal }}>ul>li:nth-child({{ $index | add 1 }}){
     flex-grow: {{ default 1 $grow }};
   }
-{{ end }}</style>{{ end -}}
-<div class="book-columns book-columns-{{ .Ordinal }} {{ with .Get "class" }}{{ . }}{{ end }}">
-{{ .InnerDeindent | safeHTML }}
+{{- end -}}</style>{{- end -}}
+<div class="book-columns book-columns-{{ .Ordinal }}{{ with .Get "class" }} {{ . }}{{ end }}">
+{{ .Inner | safeHTML -}}
 </div>
-{{ end -}}
+{{- end -}}

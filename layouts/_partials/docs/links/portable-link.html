@@ -16,7 +16,7 @@
   {{- else with (resources.Get $path) -}}
     {{- $destination = .RelPermalink -}}
   {{- else -}}
-    {{- warnf "Reference '%s' not found in '%s'" .Destination .Page.Permalink -}}
+    {{- warnf "Reference '%s' not found in '%s'" .Destination .Page.RelPermalink -}}
   {{- end -}}
 
   {{- with $url.RawQuery -}}
