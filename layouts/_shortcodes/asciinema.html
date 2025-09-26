@@ -1,6 +1,5 @@
 {{- if not (.Page.Store.Get "asciinema") -}}
-  <!-- Include asciinema player only first time -->
-  {{- /* remove whitespaces */ -}}
+  {{- /* Include asciinema player only first time */ -}}
   <link rel="stylesheet" href="{{ "asciinema/asciinema-player.css" | relURL }}" />
   {{- /* remove whitespaces */ -}}
   <script defer src="{{ "asciinema/asciinema-player.min.js" | relURL }}"></script>

@@ -1,13 +1,13 @@
-{{- if not (.Page.Store.Get "katex") -}}
-<!-- Include katex only first time -->
-<link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
-<script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
-{{ with resources.Get "katex.json" }}
-<script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {{ .Content | safeJS }});"></script>
-{{ end }}
-{{- .Page.Store.Set "katex" true -}}
-{{- end -}}
-
-{{- with .Inner }}
+{{- with .Inner -}}
 <span>\[ {{ .| htmlEscape | safeHTML  }} \]</span>
-{{ end -}}
+{{- end -}}
+{{- if not (.Page.Store.Get "katex") -}}
+  {{- /* Include katex only first time */ -}}
+  <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
+  {{- /* remove whitespaces */ -}}
+  <script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
+  {{- with resources.Get "katex.json" | minify -}}
+  <script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {{ .Content | safeJS }});"></script>
+  {{- end -}}
+  {{- .Page.Store.Set "katex" true -}}
+{{- end -}}
