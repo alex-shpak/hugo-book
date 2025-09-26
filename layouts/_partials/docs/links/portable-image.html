@@ -13,7 +13,13 @@
   {{- else with (resources.Get $path) -}}
     {{- $destination = .RelPermalink -}}
   {{- else -}}
-    {{- warnf "Image reference '%s' not found in '%s'" .Destination .Page.Permalink -}}
+    {{- $mode := .Page.Site.Params.BookPortableLinks -}}
+    {{- $message := printf "Image reference '%s' not found in '%s'" .Destination .Page.RelPermalink -}}
+    {{- if eq $mode "warning" -}}
+    {{- warnf $message -}}
+    {{- else if eq $mode "error" -}}
+    {{- errorf $message -}}
+    {{- end -}}
   {{- end -}}
 
   {{- with $url.RawQuery -}}
