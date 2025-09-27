@@ -56,7 +56,7 @@ layout: landing
 
 - {{< card >}}
   ### Even more
-  Do people actually read these? I though it was just a visual filler. But there is full-text search and multi-language support.
+  Do people actually read these? I thought it was just a visual filler. But there is full-text search and multi-language support.
   {{< /card >}}
 
 - {{< card >}}
