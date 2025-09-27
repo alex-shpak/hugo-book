@@ -202,15 +202,20 @@
     border-radius: $border-radius;
     border: $padding-1 solid var(--gray-200);
     
-    &[href], &[href]:visited {
-      color: var(--body-font-color);
-    }
-    &[href]:hover {
-      text-decoration: none;
-      background: var(--gray-100);
-    }
+    > a {
+      display: block;
+      height: 100%;
 
-    > img {
+      &[href], &[href]:visited {
+        color: var(--body-font-color);
+      }
+      &[href]:hover {
+        text-decoration: none;
+        background: var(--gray-100);
+      }
+    }
+    
+    > a > img, > img {
       width: 100%;
       display: block;
       aspect-ratio: 4 / 3;
@@ -222,6 +227,7 @@
     }
   }
 
+  // {{< image >}}
   .book-image {
     input + img {
       cursor: zoom-in;

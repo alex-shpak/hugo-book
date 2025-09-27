@@ -1,5 +1,6 @@
 {{- with .Get "href" -}}
-<div><a class="book-card{{ with $.Get "class" }} {{ . }}{{ end }}" href="{{ . | safeURL }}">
+{{- $destination := partial "docs/links/portable-link" (dict "Page" $.Page "Destination" .) -}}
+<div class="book-card{{ with $.Get "class" }} {{ . }}{{ end }}"><a href="{{ $destination | safeURL }}">
 {{- template "book-card-content" $ -}}
 </a></div>
 {{- else -}}

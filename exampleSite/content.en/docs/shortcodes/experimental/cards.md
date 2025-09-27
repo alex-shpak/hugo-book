@@ -17,7 +17,7 @@
 {{% /columns %}}
 
 {{% columns %}}
-- {{< card href="/docs/shortcodes/cards" >}}
+- {{< card href="/docs/shortcodes/experimental/cards" >}}
   **Markdown**  
   Suspendisse sed congue orci, eu congue metus. Nullam feugiat urna massa.
   {{< /card >}}
