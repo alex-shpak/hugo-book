@@ -58,7 +58,7 @@ nav ul {
 
   a {
     padding: .5em 0;
-    display: flex;
+    display: block;
   }
 
   a[href]:hover, a[role=button]:hover {
@@ -119,6 +119,7 @@ a .book-icon {
   a, label {
     color: inherit;
     word-wrap: break-word;
+    display: flex;
   }
 
   a.active {
