@@ -22,14 +22,13 @@
     a.anchor {
       opacity: 0;
       font-size: 0.75em;
-      vertical-align: middle;
-      text-decoration: none;
       margin-inline-start: .25em;
     }
 
     &:hover a.anchor,
     a.anchor:focus {
       opacity: initial;
+      text-decoration: none;
     }
   }
 

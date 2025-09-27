@@ -8,55 +8,59 @@ layout: landing
 # HUGO BOOK {anchor=false}
 [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
-{{< badge style="info" title="Hugo" value="0.146" >}} {{< badge style="default" title="License" value="MIT" >}}
+[{{< badge style="info" title="Hugo" value="0.146" >}}](https://github.com/gohugoio/hugo/releases/tag/v0.146.7)
+[{{< badge style="default" title="License" value="MIT" >}}](https://github.com/alex-shpak/hugo-book/blob/main/LICENSE)
 
 {{<button href="/docs/example">}}Explore{{</button>}}
 
 </div>
 
 {{% columns %}}
-- ## Astris ipse furtiva
-  Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-  olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-  modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
+- ## What Hugo-Book Theme Is
+  Hugo book theme is primarily designed to create technical documentation sites that are easy to read, write, navigate and maintain. It is an attempt to create a sustainable web project.
 
-- ## Suis quot vota
-  Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
-  miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
-  nunc! Fragosis suae dextra geruntur functus vulgata.
+- ## What Hugo-Book Theme Is Not
+  Book theme is not trying to implement all features but to create a starting point. It is mostly feature complete and gets updated and improved to stay relevant with Hugo and modern web.
 {{% /columns %}}
 
 
 {{% columns %}}
-- {{< card title="Card" image="" >}}
-  # Heading
-  Nullam feugiat urna massa, et fringilla metus consectetur molestie. Suspendisse sed congue orci, eu congue metus.
+- {{< card >}}
+  ## Probably fast
+  Build on Hugo static site generator. "The world’s fastest framework for building websites".
   {{< /card >}}
 
-- {{< card title="Card" image="" >}}
-  # Heading
-  Suspendisse sed congue orci, eu congue metus. Nullam feugiat urna massa, et fringilla metus consectetur molestie.
+- {{< card >}}
+  ## 50% JS free
+  All important features are working even with JavaScript disabled in browser, including interactive shortcodes.
   {{< /card >}}
 
-- {{< card title="Card" image="" >}}
-  # Heading
-  Suspendisse sed congue orci, eu congue metus. Nullam feugiat urna massa, et fringilla metus consectetur molestie.
+- {{< card >}}
+  ## Minimalistic
+  For real, it is very minimalistic, black on white. No extra tools are needed to build the site, only Hugo. No heavy JS or CSS frameworks included.
   {{< /card >}}
 {{% /columns %}}
 
 {{% columns %}}
-- {{< card title="Card" >}}
-  ### Heading
-  Nullam feugiat urna massa, et fringilla metus consectetur molestie. Suspendisse sed congue orci, eu congue metus.
+- {{< card >}}
+  ### Shortcodes
+  Pretty good shortcodes are included to enhance markup files:
+  [Columns](/docs/shortcodes/columns/),
+  [Cards](/docs/shortcodes/experimental/cards/),
+  [Tabs](/docs/shortcodes/tabs/),
+  [Images](/docs/shortcodes/experimental/images/),
+  [Asciinema](/docs/shortcodes/experimental/asciinema/),
+  [KaTex](/docs/shortcodes/katex/),
+  [Mermaid](/docs/shortcodes/mermaid/) and others.
   {{< /card >}}
 
-- {{< card title="Card" >}}
-  ### Heading
-  Suspendisse sed congue orci, eu congue metus. Nullam feugiat urna massa, et fringilla metus consectetur molestie.
+- {{< card >}}
+  ### Even more
+  Do people actually read these? I though it was just a visual filler. But there is full-text search and multi-language support.
   {{< /card >}}
 
-- {{< card title="Card" >}}
-  ### Heading
-  Nullam feugiat urna massa, et fringilla metus consectetur molestie. Suspendisse sed congue orci, eu congue metus.
+- {{< card >}}
+  ### Made to be extendable
+  There are multiple points to inject own styles and templates to make your documentation your own.
   {{< /card >}}
 {{% /columns %}}
