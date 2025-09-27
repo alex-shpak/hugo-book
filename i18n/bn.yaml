@@ -7,8 +7,5 @@
 - id: Last modified by
   translation: সর্বশেষ সম্পাদনা করেছেন
 
-- id: Expand
-  translation: বিস্তৃত করা
-
 - id: bookSearchConfig
   translation: '{ cache: true }'

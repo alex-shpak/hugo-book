@@ -7,8 +7,5 @@
 - id: Last modified by
   translation: נערך לאחרונה על ידי
 
-- id: Expand
-  translation: הרחב
-
 - id: bookSearchConfig
   translation: '{ cache: true }'

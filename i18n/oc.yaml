@@ -7,8 +7,5 @@
 - id: Last modified by
   translation: Darrièra modificacion per
 
-- id: Expand
-  translation: Desplegar
-
 - id: bookSearchConfig
   translation: '{ cache: true }'

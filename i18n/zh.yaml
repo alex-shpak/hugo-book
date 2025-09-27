@@ -7,9 +7,6 @@
 - id: Last modified by
   translation: 最后修改者
 
-- id: Expand
-  translation: 展开
-
 - id: bookSearchConfig
   translation: |
     {

@@ -7,8 +7,5 @@
 - id: Last modified by
   translation: Última modificación por
 
-- id: Expand
-  translation: Expandir
-
 - id: bookSearchConfig
   translation: '{ cache: true }'

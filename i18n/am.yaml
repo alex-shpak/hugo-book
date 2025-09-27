@@ -7,8 +7,5 @@
 - id: Last modified by
   translation: መጨረሻ የከለሰው ሰው
 
-- id: Expand
-  translation: አስፋ
-
 - id: bookSearchConfig
   translation: '{ cache: true }'

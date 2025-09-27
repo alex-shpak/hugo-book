@@ -7,8 +7,5 @@
 - id: Last modified by
   translation: Ilibadilishwa mwisho na
 
-- id: Expand
-  translation: Panua
-
 - id: bookSearchConfig
   translation: '{ cache: true }'
