@@ -58,7 +58,7 @@ nav ul {
 
   a {
     padding: .5em 0;
-    display: block;
+    display: flex;
   }
 
   a[href]:hover, a[role=button]:hover {
@@ -302,6 +302,10 @@ body[dir="rtl"] .book-menu {
     padding: $padding-16;
 
     @include fixed;
+  }
+
+  a {
+    display: block;
   }
 
   img {
