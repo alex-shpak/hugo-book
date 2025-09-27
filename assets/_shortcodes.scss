@@ -1,31 +1,5 @@
 .markdown {
 
-  // {{< expand "Label" "icon" >}}
-  .book-expand {
-    margin-top: $padding-16;
-    margin-bottom: $padding-16;
-
-    border: $padding-1 solid var(--gray-200);
-    border-radius: $border-radius;
-
-    overflow: hidden;
-
-    .book-expand-head {
-      background: var(--gray-100);
-      padding: $padding-8 $padding-16;
-      cursor: pointer;
-    }
-
-    .book-expand-content {
-      display: none;
-      padding: $padding-16;
-    }
-
-    input[type="checkbox"]:checked+.book-expand-content {
-      display: block;
-    }
-  }
-
   // {{< tabs >}}
   .book-tabs {
     margin-top: $padding-16;
