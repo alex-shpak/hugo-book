@@ -12,5 +12,5 @@
   {{- $opts := newScratch -}}
   {{- $opts.Set "asciinema" $.Params -}}
   {{- $opts.DeleteInMap "asciinema" "cast" -}}
-  <div class="asciinema" id="asciinema-{{ $.Ordinal }}" x-data-cast="{{ . | safeHTMLAttr }}" x-data-opts="{{ $opts.Get "asciinema" | jsonify | safeHTMLAttr }}"></div>
+  <div class="asciinema book-asciinema" id="asciinema-{{ $.Ordinal }}" x-data-cast="{{ . | safeHTMLAttr }}" x-data-opts="{{ $opts.Get "asciinema" | jsonify | safeHTMLAttr }}"></div>
 {{- end -}}
