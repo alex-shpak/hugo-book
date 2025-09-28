@@ -1,34 +1,65 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
 
-  <head>
-    {{ partial "docs/html-head" . }}
-    {{ partial "docs/inject/head" . }}
+  <style>
+    .not-found {
+      height: 100vh;
+      width: 100vw;
+    }
 
-    <style>
-      .not-found {
-        text-align: center;
-      }
-      .not-found h1 {
-        margin: .25em 0 0 0;
-        opacity: .25;
-        font-size: 40vmin;
-      }
-    </style>
-  </head>
+    .not-found h1 {
+      font-size: 10vmin;
+      font-weight: lighter;
+      cursor: default;
+    }
 
-  <body>
-    <main class="flex justify-center not-found">
-      <div>
-        <h1>404</h1>
-        <h2>Page Not Found</h2>
-        <h3>
-          <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
-        </h3>
-      </div>
-    </main>
+    .not-found h1 span {
+      display: inline-block;
+      transition: transform .2s ease-out, opacity .2s ease-out;
+    }
 
-    {{ partial "docs/inject/body" . }}
-  </body>
+    .not-found h1:hover span {
+      transition-duration: 1s;
+      transform: translate(var(--drift-x), var(--drift-y)) rotate(var(--rotate-end));
+      opacity: 0;
+    }
 
-  </html>
+    .not-found h1:hover span:nth-child(1) {
+      --drift-x: -1em;
+      --drift-y: 1em;
+      --rotate-end: -90deg;
+    }
+
+    .not-found h1:hover span:nth-child(2) {
+      --drift-x: -1em;
+      --drift-y: -2em;
+      --rotate-end: 45deg;
+    }
+
+    .not-found h1:hover span:nth-child(3) {
+      --drift-x: 3em;
+      --drift-y: 1em;
+      --rotate-end: 120deg;
+    }
+  </style>
+</head>
+
+<body class="not-found flex justify-center align-center">
+  <main class="text-center">
+    <h1>
+      <span>Page</span>
+      <span>Not</span>
+      <span>Found</span>
+    </h1>
+    <h3>
+      <a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a>
+    </h3>
+  </main>
+
+  {{ partial "docs/inject/body" . }}
+</body>
+
+</html>
