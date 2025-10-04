@@ -86,7 +86,7 @@ enableGitInfo = true
   BookTheme = 'light'
 
   # (Optional, default none) Controls table of contents visibility on right side of pages.
-  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # Start and end levels can be controlled globally with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
   # BookToC = true
 
@@ -128,7 +128,7 @@ enableGitInfo = true
   BookSearch = true
 
   # (Optional, default true) Enables comments template on pages
-  # By default partals/docs/comments.html includes Disqus template
+  # By default partials/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
   BookComments = true
