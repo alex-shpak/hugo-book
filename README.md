@@ -272,10 +272,10 @@ To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in y
 
 There are a few hugo templates inserted in `<head>`
 
-- [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
-- [Open Graph](https://gohugo.io/templates/internal/#open-graph)
+- [Google Analytics](https://gohugo.io/templates/embedded/#google-analytics)
+- [Open Graph](https://gohugo.io/templates/embedded/#open-graph)
 
-To disable Open Graph inclusion you can create your own empty file `/layouts/_internal/opengraph.html`.
+To disable Open Graph inclusion you can create your own empty file `/layouts/partials/opengraph.html`.
 In fact almost empty not quite empty because an empty file looks like absent for HUGO. For example:
 ```
 <!-- -->
