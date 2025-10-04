@@ -14,7 +14,7 @@ https://github.com/alex-shpak/hugo-book
   <meta http-equiv="Refresh" content="0; url='{{ . }}'" />
 {{- end -}}
 
-{{- template "_internal/opengraph.html" . -}}
+{{ partial "opengraph.html" . }}
 
 <title>{{ partial "docs/html-head-title" . }}</title>
 {{ partial "docs/html-head-favicon" . }}
@@ -45,7 +45,7 @@ https://github.com/alex-shpak/hugo-book
   <script defer src="{{ $swJS.RelPermalink }}" {{ template "integrity" $swJS }}></script>
 {{ end -}}
 
-{{- template "_internal/google_analytics.html" . -}}
+{{ partial "google_analytics.html" . }}
 
 <!-- RSS -->
 {{- with .OutputFormats.Get "rss" -}}

@@ -3,7 +3,7 @@
 
 name = "Book"
 license = "MIT"
-licenselink = "https://github.com/alex-shpak/hugo-book/blob/master/LICENSE"
+licenselink = "https://github.com/alex-shpak/hugo-book/blob/main/LICENSE"
 description = "Hugo documentation theme as simple as plain book"
 homepage = "https://github.com/alex-shpak/hugo-book"
 demosite = "https://hugo-book-demo.netlify.app"
