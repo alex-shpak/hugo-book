@@ -6,7 +6,7 @@
 
 ### [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
-![Screenshot](https://raw.githubusercontent.com/alex-shpak/hugo-book/master/images/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/alex-shpak/hugo-book/main/images/screenshot.png)
 
 - [Features](#features)
 - [Requirements](#requirements)
@@ -105,7 +105,7 @@ A blog is not the primary usecase of this theme, so it has only minimal features
 ### Site Configuration
 
 There are a few configuration options that you can add to your `hugo.toml` file.  
-You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/master/exampleSite/hugo.yaml).
+You can also see the `yaml` example [here](https://github.com/alex-shpak/hugo-book/blob/main/exampleSite/hugo.yaml).
 
 ```toml
 # (Optional) Set Google Analytics if you use it to track your website.
@@ -272,10 +272,10 @@ To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in y
 
 There are a few hugo templates inserted in `<head>`
 
-- [Google Analytics](https://gohugo.io/templates/internal/#google-analytics)
-- [Open Graph](https://gohugo.io/templates/internal/#open-graph)
+- [Google Analytics](https://gohugo.io/templates/embedded/#google-analytics)
+- [Open Graph](https://gohugo.io/templates/embedded/#open-graph)
 
-To disable Open Graph inclusion you can create your own empty file `/layouts/_internal/opengraph.html`.
+To disable Open Graph inclusion you can create your own empty file `/layouts/partials/opengraph.html`.
 In fact almost empty not quite empty because an empty file looks like absent for HUGO. For example:
 ```
 <!-- -->
@@ -304,7 +304,7 @@ If you are using `config.yaml` or `config.json`, consult the [configuration mark
 
 This theme follows a simple incremental versioning. e.g. `v1.0.0`, `v2.0.0` and so on. Releases will happen on breaking changes.
 
-If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `master` branch and update your website when needed.
+If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `main` branch and update your website when needed, this also the default branch.
 
 ## Contributing
 

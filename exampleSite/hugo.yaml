@@ -1,5 +1,9 @@
 # hugo server --minify --themesDir ../..
 
+# for maximum cleanups and rebuilds, run where you checked out the repository
+# hugo server --printPathWarnings --disableFastRender --cleanDestinationDir=true --logLevel=debug \
+# --gc -M -s exampleSite --themesDir ../.. -b http://127.0.0.1/
+
 baseURL: http://0.0.0.0:1313/hugo-book/
 title: Hugo Book
 theme: hugo-book
@@ -73,7 +77,7 @@ params:
   BookTheme: "light"
 
   # (Optional, default none) Controls table of contents visibility on right side of pages.
-  # Start and end levels can be controlled with markup.tableOfContents setting.
+  # Start and end levels can be controlled globally with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
   # BookToC: true
 
@@ -112,7 +116,7 @@ params:
   BookSearch: true
 
   # (Optional, default true) Enables comments template on pages
-  # By default partals/docs/comments.html includes Disqus template
+  # By default partials/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
   BookComments: true
@@ -120,13 +124,14 @@ params:
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
-  # Theme will print warning or error if page referenced in markdown does not exists.
+  # Hugo Book will print warning or error if page referenced in markdown does not exists.
   # Possible values are false | 'warning' | 'error'
   BookPortableLinks: 'warning'
 
   # /!\ This is an experimental feature, might be removed or changed at any time
-  # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
-  # can be false, true or 'precache', precache will try to download all content pages on install.
+  # (Optional, experimental, default false)
+  # When set to 'preache' it enables a service worker that caches visited pages and resources for offline use.
+  # Possible values are false | true | 'precache'
   BookServiceWorker: "precache"
 
   # /!\ This is an experimental feature, might be removed or changed at any time
