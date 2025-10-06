@@ -1,5 +1,5 @@
 html {
-  font-size: $font-size-base;
+  font-size: var(--font-size);
   scroll-behavior: smooth;
   touch-action: manipulation;
   scrollbar-gutter: stable;
@@ -8,9 +8,9 @@ html {
 body {
   min-width: $body-min-width;
   color: var(--body-font-color);
-  background: var(--body-background);
+  background: var(--body-background) var(--body-background-tint);
 
-  font-weight: $body-font-weight;
+  font-weight: var(--body-font-weight);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: $body-font-weight;
+  font-weight: inherit;
 }
 
 a {
@@ -59,6 +59,7 @@ nav ul {
   a {
     padding: .5em 0;
     display: flex;
+    transition: opacity 0.1s ease-in-out;
   }
 
   a[href]:hover, a[role=button]:hover {
@@ -107,7 +108,7 @@ a .book-icon {
 
 .book-menu {
   flex: 0 0 $menu-width;
-  font-size: $font-size-14;
+  font-size: var(--font-size-smaller);
 
   .book-menu-content {
     width: $menu-width;
@@ -140,7 +141,7 @@ a .book-icon {
     display: none;
   }
 
-  input.toggle:checked + label{
+  input.toggle:checked + label {
     > img:last-child {
       transform: rotate(90deg);
     }
@@ -257,7 +258,7 @@ body[dir="rtl"] .book-menu {
     padding: $padding-8;
 
     border: 0;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
 
     background: var(--gray-100);
     color: var(--body-font-color);
@@ -294,7 +295,7 @@ body[dir="rtl"] .book-menu {
 
 .book-toc {
   flex: 0 0 $toc-width;
-  font-size: $font-size-12;
+  font-size: var(--font-size-smallest);
 
   .book-toc-content {
     width: $toc-width;
@@ -319,7 +320,7 @@ body[dir="rtl"] .book-menu {
 
 .book-footer {
   padding-top: $padding-16;
-  font-size: $font-size-14;
+  font-size: var(--font-size-smaller);
 
   a {
     margin: $padding-4 0;

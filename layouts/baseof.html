@@ -52,7 +52,7 @@
   {{ partial "docs/header" . }}
 
   {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
-  <aside class="hidden clearfix">
+  <aside class="hidden">
     {{ template "toc" . }}
   </aside>
   {{ end }}

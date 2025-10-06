@@ -6,7 +6,7 @@
     margin-bottom: $padding-16;
 
     border: $padding-1 solid var(--gray-200);
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
 
     overflow: hidden;
 
@@ -67,12 +67,12 @@
   // {{< button >}}
   a.book-btn[href] {
     display: inline-block;
-    font-size: $font-size-14;
+    font-size: var(--font-size-smaller);
     color: var(--color-link);
     line-height: $padding-16 * 2;
     padding: 0 $padding-16;
     border: $padding-1 solid var(--color-link);
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     cursor: pointer;
 
     &:hover {
@@ -80,23 +80,29 @@
     }
   }
 
-  // {{< hint >}}
   .book-hint {
-    @each $name, $color in $hint-colors {
+    @each $name in (note, tip, important, warning, caution, default, info, success, danger) {
       &.#{$name} {
-        border-color: $color;
-        background-color: rgba($color, 0.1);
+        border-color: var(--color-accent-#{$name});
+        background-color: var(--color-accent-#{$name}-tint);
       }
     }
   }
 
   // {{< badge >}}
   .book-badge {
+    @each $name in (note, tip, important, warning, caution, default, info, success, danger) {
+      &.#{$name} {
+        --accent-color: var(--color-accent-#{$name});
+      }
+    }
+
     display: inline-block;
-    font-size: $font-size-14;
-    font-weight: $body-font-weight;
+    font-size: var(--font-size-smaller);
+    font-weight: var(body-font-weight);
     vertical-align: middle;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
+    border: $padding-1 solid var(--accent-color);
     overflow: hidden;
     text-wrap: nowrap;
     color: var(--body-font-color);
@@ -106,19 +112,9 @@
       padding: 0 $padding-8;
     }
 
-    span.book-badge-title {
-      --background-opacity: 0.1;
-    }
-
     span.book-badge-value {
-      --background-opacity: 1;
       color: var(--body-background);
-    }
-
-    @each $name, $color in $hint-colors {
-      &.#{$name} span {
-        background-color: rgba($color, var(--background-opacity));
-      }
+      background-color: var(--accent-color);
     }
   }
 
@@ -158,7 +154,6 @@
         @extend .markdown-inner;
         border-inline-start: $padding-1 solid var(--gray-500);
         padding-inline-start: $padding-16 * 3;
-        
         padding-bottom: $padding-16 * 2;
       }
 
@@ -173,9 +168,9 @@
     display: block;
     overflow: hidden;
     height: 100%;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     border: $padding-1 solid var(--gray-200);
-    
+
     > a {
       display: block;
       height: 100%;
@@ -183,12 +178,13 @@
       &[href], &[href]:visited {
         color: var(--body-font-color);
       }
+
       &[href]:hover {
         text-decoration: none;
         background: var(--gray-100);
       }
     }
-    
+
     > a > img, > img {
       width: 100%;
       display: block;
@@ -215,12 +211,12 @@
       left: 0;
       right: 0;
       bottom: 0;
-      
+
       background: var(--body-background);
       object-fit: contain;
       width: 100%;
       height: 100%;
-      
+
       z-index: 1;
       cursor: zoom-out;
       padding: $padding-16;
@@ -243,11 +239,11 @@
 
   .book-codeblock-filename {
     background: var(--gray-200);
-    font-size: $font-size-14;
+    font-size: var(--font-size-smaller);
     margin-top: $padding-16;
     padding: $padding-4 $padding-16;
-    border-start-start-radius: $border-radius;
-    border-start-end-radius: $border-radius;
+    border-start-start-radius: var(--border-radius);
+    border-start-end-radius: var(--border-radius);
 
     a {
       color: var(--body-font-color);
