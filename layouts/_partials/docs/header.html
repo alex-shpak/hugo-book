@@ -1,13 +1,13 @@
 <div class="flex align-center justify-between">
   <label for="menu-control">
-    <img src="{{ partial "docs/icon" "menu" }}" class="book-icon" alt="Menu" />
+    <img src="{{ partial "docs/icon" "menu" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Menu" }}" />
   </label>
 
   <h3>{{ partial "docs/title" . }}</h3>
 
   <label for="toc-control">
     {{ if partial "docs/toc-show" . }}
-    <img src="{{ partial "docs/icon" "toc" }}" class="book-icon" alt="Table of Contents" />
+    <img src="{{ partial "docs/icon" "toc" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Table of Contents" }}" />
     {{ end }}
   </label>
 </div>

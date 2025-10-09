@@ -14,10 +14,10 @@
     <input type="checkbox" id="languages" class="toggle" />
     <label for="languages" class="flex">
       <a role="button">
-        <img src="{{ partial "docs/icon" "translate" }}" class="book-icon" alt="Languages" />
+        <img src="{{ partial "docs/icon" "translate" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Languages" }}" />
         {{ $.Site.Language.LanguageName }}
       </a>
-      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" />
+      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Expand" }}" />
     </label>
 
     <ul>

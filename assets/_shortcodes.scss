@@ -8,8 +8,6 @@
     border: $padding-1 solid var(--gray-200);
     border-radius: var(--border-radius);
 
-    overflow: hidden;
-
     display: flex;
     flex-wrap: wrap;
 
@@ -34,10 +32,6 @@
 
     input[type="radio"]:checked+label+.book-tabs-content {
       display: block;
-    }
-
-    input[type="radio"]:focus+label {
-      @include outline;
     }
   }
 
@@ -99,7 +93,7 @@
 
     display: inline-block;
     font-size: var(--font-size-smaller);
-    font-weight: var(body-font-weight);
+    font-weight: var(--body-font-weight);
     vertical-align: middle;
     border-radius: var(--border-radius);
     border: $padding-1 solid var(--accent-color);
@@ -238,10 +232,12 @@
   }
 
   .book-codeblock-filename {
-    background: var(--gray-200);
+    background: var(--gray-100);
+    border: $padding-1 solid var(--gray-200);
+    border-bottom: 0;
     font-size: var(--font-size-smaller);
     margin-top: $padding-16;
-    padding: $padding-4 $padding-16;
+    padding: $padding-4 $padding-8;
     border-start-start-radius: var(--border-radius);
     border-start-end-radius: var(--border-radius);
 

@@ -25,8 +25,7 @@
       margin-inline-start: .25em;
     }
 
-    &:hover a.anchor,
-    a.anchor:focus {
+    &:hover a.anchor, a.anchor:focus-visible {
       opacity: initial;
       text-decoration: none;
     }
@@ -64,8 +63,9 @@
   code {
     direction: ltr;
     unicode-bidi: embed;
-    padding: 0 $padding-4;
-    background: var(--gray-200);
+    padding: .125em .25em;
+    background: var(--gray-100);
+    border: $padding-1 solid var(--gray-200);
     border-radius: var(--border-radius);
     font-size: 0.875em;
   }
@@ -73,11 +73,17 @@
   pre {
     padding: $padding-16;
     background: var(--gray-100);
+    border: $padding-1 solid var(--gray-200);
     border-radius: var(--border-radius);
     overflow-x: auto;
 
+    &:focus {
+      @include outline;
+    }
+
     code {
       padding: 0;
+      border: 0;
       background: none;
     }
   }
@@ -151,7 +157,15 @@
     unicode-bidi: embed;
     border-radius: var(--border-radius);
 
+    table tbody {
+      border: $padding-1 solid var(--gray-200);
+    }
+
     table tr {
+      pre {
+        border: 0;
+      }
+
       td pre code > span {
         display: flex;
       }
@@ -160,6 +174,7 @@
         margin: 0;
         padding-inline-end: 0;
       }
+
       td:nth-child(2) pre {
         margin: 0;
         padding-inline-start: 0;

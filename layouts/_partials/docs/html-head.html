@@ -5,7 +5,7 @@ https://github.com/alex-shpak/hugo-book
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ default .Summary .Description }}">
+<meta name="description" content="{{ or .Description .Summary | plainify | htmlUnescape }}">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark">
@@ -15,6 +15,7 @@ https://github.com/alex-shpak/hugo-book
 {{- end -}}
 
 {{ partial "opengraph.html" . }}
+{{ partial "schema.html" . }}
 
 <title>{{ partial "docs/html-head-title" . }}</title>
 {{ partial "docs/html-head-favicon" . }}

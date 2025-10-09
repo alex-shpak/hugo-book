@@ -3,7 +3,7 @@
   <span>
   {{- with .Paginator.Prev }}
     <a href="{{ .URL }}" class="flex align-center">
-      <img src="{{ partial "docs/icon" "backward" }}" class="book-icon" alt="Previous" />
+      <img src="{{ partial "docs/icon" "backward" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Backward" }}" />
     </a>
   {{ end }}
   </span>
@@ -20,7 +20,7 @@
   <span>
   {{- with .Paginator.Next }}
     <a href="{{ .URL }}" class="flex align-center">
-      <img src="{{ partial "docs/icon" "forward" }}" class="book-icon" alt="Next" />
+      <img src="{{ partial "docs/icon" "forward" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Forward" }}" />
     </a>
   {{ end }}
   </span>

@@ -1,2 +1,1 @@
-{{- $content := .Get 0 -}}
-{{- default $content (i18n $content) -}}
+{{- partial "docs/text/i18n" (.Get 0) -}}

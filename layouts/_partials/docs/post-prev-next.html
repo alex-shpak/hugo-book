@@ -2,7 +2,7 @@
   <div>
   {{ with .NextInSection }}
     <a href="{{ .RelPermalink }}" class="flex align-center">
-      <img src="{{ partial "docs/icon" "backward" }}" class="book-icon" alt="Previous" title="{{ partial "docs/title" . }}" />
+      <img src="{{ partial "docs/icon" "backward" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Backward" }}" />
       <span>{{ partial "docs/title" . }}</span>
     </a>
   {{ end }}
@@ -11,7 +11,7 @@
   {{ with .PrevInSection }}
     <a href="{{ .RelPermalink }}" class="flex align-center">
       <span>{{ partial "docs/title" . }}</span>
-      <img src="{{ partial "docs/icon" "forward" }}" class="book-icon" alt="Next" title="{{ partial "docs/title" . }}" />
+      <img src="{{ partial "docs/icon" "forward" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Forward" }}" />
     </a>
   {{ end }}
   </div>

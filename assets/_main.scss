@@ -43,7 +43,7 @@ small {
   @extend .text-small;
 }
 
-:focus {
+:focus-visible, input.toggle:focus-visible + label {
   @include outline;
 }
 
@@ -57,7 +57,7 @@ nav ul {
   }
 
   a {
-    padding: .5em 0;
+    padding: 0.5em 0;
     display: flex;
     transition: opacity 0.1s ease-in-out;
   }
@@ -154,12 +154,12 @@ a .book-icon {
 
 // for RTL support
 body[dir="rtl"] .book-menu {
-  input.toggle + label::after {
-    content: "◂";
+  input.toggle + label > img:last-child {
+    transform: rotate(180deg);
   }
 
-  input.toggle:checked + label::after {
-    transform: rotate(-90deg);
+  input.toggle:checked + label > img:last-child {
+    transform: rotate(90deg);
   }
 }
 
@@ -241,7 +241,7 @@ body[dir="rtl"] .book-menu {
         padding: 0;
       }
 
-      &:hover > ul {
+      &:hover > ul, &:focus-within > ul {
         display: block;
       }
     }
@@ -251,13 +251,12 @@ body[dir="rtl"] .book-menu {
 .book-search {
   position: relative;
   margin: $padding-8 0;
-  border-bottom: 1px solid transparent;
 
   input {
     width: 100%;
     padding: $padding-8;
 
-    border: 0;
+    border: $padding-1 solid var(--gray-200);
     border-radius: var(--border-radius);
 
     background: var(--gray-100);
@@ -384,10 +383,6 @@ body[dir="rtl"] .book-menu {
     display: inline;
   }
 
-  #menu-control:focus ~ main label[for="menu-control"] {
-    @include outline;
-  }
-
   #menu-control:checked ~ main {
     .book-menu {
       visibility: initial;
@@ -410,10 +405,6 @@ body[dir="rtl"] .book-menu {
       left: 0;
       right: 0;
     }
-  }
-
-  #toc-control:focus ~ main label[for="toc-control"] {
-    @include outline;
   }
 
   #toc-control:checked ~ main {

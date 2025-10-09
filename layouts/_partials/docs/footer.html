@@ -3,8 +3,8 @@
 <div>
 {{ if and .GitInfo .Site.Params.BookLastChangeLink }}
   {{- $date := partial "docs/date" (dict "Date" .Lastmod "Format" .Site.Params.BookDateFormat) -}}
-  <a class="flex align-center" href="{{ partial "docs/links/commit" . }}" title='{{ i18n "Last modified by" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
-    <img src="{{ partial "docs/icon" "calendar" }}" class="book-icon" alt="" />
+  <a class="flex align-center" href="{{ partial "docs/links/commit" . }}" title='{{ partial "docs/text/i18n" "Last modified by" }} {{ .GitInfo.AuthorName }} | {{ $date }}' target="_blank" rel="noopener">
+    <img src="{{ partial "docs/icon" "calendar" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Calendar" }}" />
     <span>{{ $date }}</span>
   </a>
 {{ end }}
@@ -13,8 +13,8 @@
 <div>
 {{ if and .File .Site.Params.BookEditLink }}
   <a class="flex align-center" href="{{ partial "docs/links/edit" . }}" target="_blank" rel="noopener edit">
-    <img src="{{ partial "docs/icon" "edit" }}" class="book-icon" alt="" />
-    <span>{{ i18n "Edit this page" }}</span>
+    <img src="{{ partial "docs/icon" "edit" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Edit" }}" />
+    <span>{{ partial "docs/text/i18n" "Edit this page" }}</span>
   </a>
 {{ end }}
 </div>
@@ -22,8 +22,3 @@
 </div>
 
 {{ partial "docs/prev-next" . }}
-
-{{ $script := resources.Get "clipboard.js" | resources.Minify }}
-{{ with $script.Content }}
-  <script>{{ . | safeJS }}</script>
-{{ end }}

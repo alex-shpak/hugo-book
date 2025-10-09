@@ -3,7 +3,7 @@
   {{ range $term, $_ := .Site.Taxonomies }}
     {{ with $.Site.GetPage (printf "/%s" $term | urlize) }}
     <li class="book-section-flat">
-      <a>{{ T .Title | default .Title }}</a>
+      <a>{{ partial "docs/text/i18n" .Title }}</a>
       <ul>
       {{ range .Pages }}
         <li class="flex align-center">

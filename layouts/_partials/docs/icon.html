@@ -1,3 +1,2 @@
-{{- with resources.Get (printf "icons/%s.svg" .) -}}
-{{- .RelPermalink -}}
-{{- end -}}
+{{- $icon := resources.Get (printf "icons/%s.svg" .) -}}
+{{- return $icon.RelPermalink -}}

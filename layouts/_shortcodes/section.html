@@ -6,7 +6,7 @@
   </dt>
   {{ if (in $.Params "summary") -}}
   <dd class="markdown-inner">
-    {{ default .Summary .Description }}
+    {{- or .Description .Summary site.Params.description | plainify | htmlUnescape }}
   </dd>
   {{ end -}}
 {{ end }}

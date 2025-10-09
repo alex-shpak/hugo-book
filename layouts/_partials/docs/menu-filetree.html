@@ -1,4 +1,4 @@
-{{ $bookSection := default "docs" .Site.Params.BookSection  }}
+{{ $bookSection := default "docs" .Site.Params.BookSection }}
 {{ if eq $bookSection "*" }}
   {{ $bookSection = "/" }}{{/* Backward compatibility */}}
 {{ end }}
@@ -34,7 +34,7 @@
       <a {{ if .Page.Content }}href="{{ .Page.RelPermalink }}"{{ else }}role="button"{{ end }} class="{{ if $current }}active{{ end }}">
         {{ template "book-icon-title" .Page -}}
       </a>
-      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" />
+      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Expand" }}" />
     </label>
   {{ else if .Page.Params.BookHref }}
     <a href="{{ .Page.Params.BookHref }}" class="{{ if $current }}active{{ end }}" target="_blank" rel="noopener">
@@ -53,7 +53,7 @@
 
 {{ define "book-icon-title" }}
 {{- with .Page.Params.BookIcon -}}
-  <img src="{{ partial "docs/icon" . }}" class="book-icon" />
+  <img src="{{ partial "docs/icon" . }}" class="book-icon" alt="{{ partial "docs/text/i18n" . }}" />
 {{- end -}}
 {{- partial "docs/title" .Page -}}
 {{ end }}

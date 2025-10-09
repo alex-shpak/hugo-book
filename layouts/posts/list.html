@@ -14,7 +14,7 @@
       {{- $thumbnail := default "thumbnail.*" .Params.BookPostThumbnail -}}
       {{- with or (.Resources.GetMatch $thumbnail) (resources.GetMatch $thumbnail) -}}
       <div class="book-post-thumbnail">
-        <img src="{{ .RelPermalink }}" />
+        <img src="{{ .RelPermalink }}" alt="{{ partial "docs/text/i18n" "Thumbnail" }}" />
       </div>
       {{- end -}}
     </div>

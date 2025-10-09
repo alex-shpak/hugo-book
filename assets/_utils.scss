@@ -89,6 +89,5 @@ input.toggle {
 
 @mixin outline {
   outline-style: auto;
-  outline-color: currentColor;
-  outline-color: -webkit-focus-ring-color;
+  outline-color: var(--color-link);
 }

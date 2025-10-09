@@ -12,7 +12,7 @@
 {{- define "book-card-content" -}}
 {{- with .Get "image" -}}
   {{- $destination := partial "docs/links/portable-image" (dict "Page" $.Page "Destination" .) -}}
-  <img src="{{ $destination | safeURL }}" />
+  <img src="{{ $destination | safeURL }}" alt="{{ partial "docs/text/i18n" ($.Get "alt" ) }}" />
   {{- end -}}
   <div class="markdown-inner">
 {{ with .Inner }}{{ . }}{{ end -}}

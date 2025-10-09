@@ -24,6 +24,7 @@
         {{ template "comments" . }} <!-- Comments block -->
         {{ partial "docs/inject/footer" . }}
         {{ template "copyright" . }} <!-- Copyright block -->
+        {{ template "clipboard" . }}
       </footer>
 
       <label for="menu-control" class="hidden book-menu-overlay"></label>
@@ -62,12 +63,19 @@
   {{ partial "docs/footer" . }}
 {{ end }}
 
-{{ define "copyright" }}
-{{ if .Site.Copyright }}
-<div class="book-copyright flex justify-center">
-  {{ partial "docs/copyright" . }}
-</div>
+{{ define "clipboard" }}
+  <!-- Clipboard -->
+  {{ with resources.Get "clipboard.js" | resources.Minify }}
+    <script>{{ .Content | safeJS }}</script>
+  {{ end }}
 {{ end }}
+
+{{ define "copyright" }}
+  {{ if .Site.Copyright }}
+  <div class="book-copyright flex justify-center">
+    {{ partial "docs/copyright" . }}
+  </div>
+  {{ end }}
 {{ end }}
 
 {{ define "comments" }}
@@ -85,13 +93,13 @@
 {{ end }}
 
 {{ define "toc-container" }}
-{{ if partial "docs/toc-show" . }}
-<aside class="book-toc">
-  <div class="book-toc-content">
-    {{ template "toc" . }}
-  </div>
-</aside>
-{{ end }}
+  {{ if partial "docs/toc-show" . }}
+  <aside class="book-toc">
+    <div class="book-toc-content">
+      {{ template "toc" . }}
+    </div>
+  </aside>
+  {{ end }}
 {{ end }}
 
 {{ define "toc" }}
