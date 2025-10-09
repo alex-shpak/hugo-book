@@ -1,4 +1,5 @@
-{{ return default
+{{- return or
+  (and (eq .Type "posts") (eq .Kind "section"))
   (not (eq .TableOfContents "<nav id=\"TableOfContents\"></nav>"))
   (default .Site.Params.BookToC .Params.BookToC)
-}}
+-}}
