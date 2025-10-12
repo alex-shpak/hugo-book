@@ -1,0 +1,1 @@
+{{- range $key, $value := . -}} {{- $key | htmlEscape -}}="{{- $value | safeHTMLAttr -}}" {{- end -}}

@@ -1,5 +1,11 @@
-{{- /* remove whitespaces */ -}}
-<blockquote class="book-hint {{ default "default" (.Get 0) }}">
+{{- warnf "Hint shortcode is deprecated, use markdown alerts format: '> [!NOTE] ...'" -}}
+{{- $attributes := partial "docs/text/mapper" (dict
+  "attributes" (cond .IsNamedParams .Params dict)
+  "merge" (dict
+    "class" (slice "book-hint" (or (.Get 0) "default"))
+  )
+) -}}
+<blockquote {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
 {{ .Inner | safeHTML -}}
 </blockquote>
 {{- /* remove whitespaces */ -}}

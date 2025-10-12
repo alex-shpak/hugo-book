@@ -1,6 +1,12 @@
-{{- $style := default "default" (.Get "style") -}}
-<span class="book-badge {{ $style }}">
-  {{- with .Get "title" -}}<span class="book-badge-title">{{ . | plainify }}</span>{{- end -}}
-  {{- with .Get "value" -}}<span class="book-badge-value">{{ . | plainify }}</span>{{- end -}}
+{{- $style := or (.Get "style") (.Get 0) "default" -}}
+{{- $attributes := partial "docs/text/mapper" (dict
+  "attributes" (cond .IsNamedParams .Params dict)
+  "merge" (dict
+    "class" (slice "book-badge" $style)
+  )
+) -}}
+<span {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
+  {{- with or (.Get "title") (.Get 1) -}}<span class="book-badge-title">{{ . | plainify }}</span>{{- end -}}
+  {{- with or (.Get "value") (.Get 2) -}}<span class="book-badge-value">{{ . | plainify }}</span>{{- end -}}
 </span>
 {{- /* remove whitespaces */ -}}

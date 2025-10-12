@@ -1,4 +1,4 @@
-{{- $group := printf "tabs-%v" (default .Parent.Ordinal (.Parent.Get 0)) -}}
+{{- $group := printf "tabs-%v" .Parent.Ordinal -}}
 {{- $tab := printf "%s-%d" $group .Ordinal -}}
 <input type="radio" class="toggle" name="{{ $group }}" id="{{ $tab }}" {{ if not .Ordinal }}checked="checked"{{ end }} />
 {{- /* remove whitespaces */ -}}

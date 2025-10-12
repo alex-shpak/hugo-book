@@ -1,8 +1,14 @@
+{{- $attributes := partial "docs/text/mapper" (dict
+  "attributes" (cond .IsNamedParams .Params dict)
+  "merge" (dict
+    "class" "book-katex"
+  )
+) -}}
 {{- if .Inner -}}
   {{- if .Get "display" -}}
-  <div>{{ printf "\\[ %s \\]" .Inner }}</div>
+  <div {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>{{ printf "\\[ %s \\]" .Inner }}</div>
   {{- else -}}
-  <span>{{ printf "\\( %s \\)" .Inner }}</span>
+  <span {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>{{ printf "\\( %s \\)" .Inner }}</span>
   {{- end -}}
 {{- end -}}
 {{- if not (.Page.Store.Get "katex") -}}

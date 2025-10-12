@@ -7,10 +7,18 @@
   <script defer src="{{ "asciinema/asciinema-auto.js" | relURL }}"></script>
   {{- .Page.Store.Set "asciinema" true -}}
 {{- end -}}
-
-{{- with (partial "docs/links/portable-image" (dict "Page" .Page "Destination" (index .Params "cast"))) -}}
-  {{- $opts := newScratch -}}
-  {{- $opts.Set "asciinema" $.Params -}}
-  {{- $opts.DeleteInMap "asciinema" "cast" -}}
-  <div class="asciinema book-asciinema" id="asciinema-{{ $.Ordinal }}" x-data-cast="{{ . | safeHTMLAttr }}" x-data-opts="{{ $opts.Get "asciinema" | jsonify | safeHTMLAttr }}"></div>
-{{- end -}}
+{{- $href := (partial "docs/links/portable-image" (dict "Page" .Page "Destination" (.Get "cast"))) -}}
+{{- .Store.Set "asciinema" .Params -}}
+{{- .Store.DeleteInMap "asciinema" "cast" -}}
+{{- $attributes := partial "docs/text/mapper" (dict
+  "attributes" (dict)
+  "set" (dict
+    "id" (printf "asciinema-%d" .Ordinal)
+    "x-data-cast" $href
+    "x-data-opts" (.Store.Get "asciinema" | jsonify)
+  )
+  "merge" (dict
+    "class" (slice "asciinema" "book-asciinema")
+  )
+) -}}
+<div {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}></div>

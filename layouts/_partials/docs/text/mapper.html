@@ -1,0 +1,36 @@
+{{- /*
+  This is generic function the helps modifying and merging dictionaries, usually used for html attributes
+  Logic is executed in order defined below.
+  partial "docs/text/mapper" (dict
+    "attributes" (cond .IsNamedParams .Params dict)
+    "keep" (slice "id" "class" "tabindex" "alt" "title" "loading")
+    "set" (dict "href" "https://")
+    "merge" (dict "class" "a-class")
+    "delimiter" " " // Used when merging values
+    "delete" (slice "src")
+  )
+*/ -}}
+
+{{- $store := newScratch -}}
+{{- $allowlist := or (.keep) (slice "id" "class" "tabindex" "dir")}}
+{{- range $key, $value := .attributes -}}
+  {{- if in $allowlist $key -}}
+    {{- $store.Set $key $value -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range $key, $value := .set -}}
+  {{- $store.Set $key (print $value) -}}
+{{- end -}}
+
+{{- range $key, $value := .merge -}}
+  {{- $merged := (slice) | append $value | append (or (index $.attributes $key) (slice)) -}}
+  {{- $delimiter := or ($.delimiter) (" ") }}
+  {{- $store.Set $key (delimit $merged $delimiter) -}}
+{{- end -}}
+
+{{- range $key := .delete -}}
+  {{- $store.Delete $key -}}
+{{- end -}}
+
+{{- return $store.Values -}}

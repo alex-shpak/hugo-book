@@ -1,7 +1,13 @@
 {{- $ratio := (split (.Get "ratio") ":") -}}
 {{- if strings.Contains .InnerDeindent "<--->" -}}
 {{- warnf "Columns shortcode seprator '<--->' is deprecated, use markdown list instead." -}}
-<div class="book-columns flex flex-wrap{{ with .Get "class" }} {{ . }}{{ end }}">
+{{- $attributes := partial "docs/text/mapper" (dict
+  "attributes" (cond .IsNamedParams .Params dict)
+  "merge" (dict
+    "class" (slice "book-columns" "flex" "flex-wrap")
+  )
+) -}}
+<div {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
 {{- range $index, $content := split .InnerDeindent "<--->" -}}
   {{- $grow := default 1 (index $ratio $index) -}}
   <div class="flex-even markdown-inner" style="flex-grow: {{ $grow }};">
@@ -15,7 +21,13 @@
     flex-grow: {{ default 1 $grow }};
   }
 {{- end -}}</style>{{- end -}}
-<div class="book-columns book-columns-{{ .Ordinal }}{{ with .Get "class" }} {{ . }}{{ end }}">
+{{- $attributes := partial "docs/text/mapper" (dict
+  "attributes" (cond .IsNamedParams .Params dict)
+  "merge" (dict
+    "class" (slice "book-columns")
+  )
+) -}}
+<div {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
 {{ .Inner | safeHTML -}}
 </div>
 {{- end -}}
