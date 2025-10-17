@@ -1,5 +1,5 @@
-{{- return or
-  (and (eq .Type "posts") (eq .Kind "section"))
+{{- return and
+  (not (eq .Params.bookToC false))
+  (not (eq .Site.Params.BookToC false))
   (not (eq .TableOfContents "<nav id=\"TableOfContents\"></nav>"))
-  (default .Site.Params.BookToC .Params.BookToC)
 -}}
