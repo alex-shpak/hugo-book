@@ -1,8 +1,8 @@
+{{- $open := cond .IsNamedParams (in (slice "true" true) (.Get "open")) (in .Params "open") -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (cond .IsNamedParams .Params dict)
-  "merge" (dict
-    "open" (cond .IsNamedParams (.Get "open") (in .Params "open"))
-  )
+  "merge" (dict "open" $open)
+  "delete" (cond $open (slice) (slice "open"))
 ) -}}
 <details {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
 {{- $summary := cond .IsNamedParams (.Get "title") (.Get 0) -}}
