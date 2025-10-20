@@ -5,9 +5,9 @@
 
 [outputFormats]
 [outputFormats.print]
-baseName = print
+baseName = "print"
 isHTML = true
-mediaType = text/html
+mediaType = "text/html"
 path = ""
 permalinkable = false
 
