@@ -1,4 +1,4 @@
-<div class="flex flex-wrap justify-between">
+<div class="flex flex-wrap flex-gap justify-between">
 
 <div>
 {{ if and .GitInfo .Site.Params.BookLastChangeLink }}
@@ -18,6 +18,22 @@
   </a>
 {{ end }}
 </div>
+
+{{ if and .File .Site.Params.BookContentLicenseText }}
+  <div>
+    {{ if and .File .Site.Params.BookContentLicenseLink }}
+    <a class="flex align-center" href="{{ .Site.Params.BookContentLicenseLink }}" title='License' target="_blank" rel="noopener">
+      <img src="{{ "svg/license.svg" | relURL }}" class="book-icon" alt="" />
+      <span>{{ .Site.Params.BookContentLicenseText }}</span>
+    </a>
+    {{ else }}
+    <span>
+      <img src="{{ "svg/license.svg" | relURL }}" class="book-icon" alt="" />
+      {{ .Site.Params.BookContentLicenseText }}
+    </span>
+    {{ end }}
+  </div>
+{{ end }}
 
 </div>
 
