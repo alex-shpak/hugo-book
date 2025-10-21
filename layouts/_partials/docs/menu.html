@@ -4,6 +4,7 @@
 {{ if hugo.IsMultilingual }}
   {{ partial "docs/languages" . }}
 {{ end }}
+{{ partial "docs/print" . }}
 
 {{ partial "docs/inject/menu-before" . }}
 {{ partial "docs/menu-hugo" (dict "Page" .Page "Menu" .Site.Menus.before) }}
