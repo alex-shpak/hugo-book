@@ -8,11 +8,11 @@
   baseName = "print"
   mediaType = "text/html"
   isPlainText = false
-  isHTML = true 
   noUgly = true 
   rel = "alternative"
   permalinkable = true 
 
 [outputs]
-  page = ["HTML", "print"]
+  home    = ["HTML", "print"]
+  page    = ["HTML", "print"]
   section = ["HTML", "print"]
