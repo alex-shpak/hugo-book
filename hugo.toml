@@ -5,11 +5,14 @@
 
 [outputFormats]
 [outputFormats.print]
-baseName = "print"
-isHTML = true
-mediaType = "text/html"
-path = ""
-permalinkable = false
+  baseName = "print"
+  mediaType = "text/html"
+  isPlainText = false
+  isHTML = true 
+  noUgly = true 
+  rel = "alternative"
+  permalinkable = true 
 
 [outputs]
-section = ["HTML", "print"]
+  page = ["HTML", "print"]
+  section = ["HTML", "print"]
