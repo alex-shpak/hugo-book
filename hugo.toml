@@ -3,16 +3,3 @@
   extended = true
   min = "0.146.0"
 
-[outputFormats]
-[outputFormats.print]
-  baseName = "print"
-  mediaType = "text/html"
-  isPlainText = false
-  noUgly = true 
-  rel = "alternative"
-  permalinkable = true 
-
-[outputs]
-  home    = ["HTML", "print"]
-  page    = ["HTML", "print"]
-  section = ["HTML", "print"]
