@@ -290,7 +290,7 @@ tags = ["tags", "categories"]
 ## the bit that says "YOUR_NAME_HERE"
 ```
 
-Note that the the skeleton's template files are empty. Don't worry, we'll be changing that shortly.
+Note that the skeleton's template files are empty. Don't worry, we'll be changing that shortly.
 
 ```
 $ find themes/zafta -name '*.html' | xargs ls -l
