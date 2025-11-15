@@ -6,11 +6,11 @@ title: KaTeX
 
 KaTeX shortcode let you render math typesetting in markdown document. See [KaTeX](https://katex.org/)
 
-{{% hint info %}}
-**Override KaTeX initialization config**  
-To override the [initialization config](https://katex.org/docs/options.html) for KaTeX,
-create a `katex.json` file in your `assets` folder!
-{{% /hint %}}
+> [!INFO]
+> **Override KaTeX initialization config**  
+> To override the [initialization config](https://katex.org/docs/options.html) 
+> for KaTeX, create a `katex.json` file in your `assets` folder!
+
 
 # Example
 {{< katex />}}
