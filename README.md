@@ -287,9 +287,10 @@ In fact almost empty not quite empty because an empty file looks like absent for
 - [Columns](https://hugo-book-demo.netlify.app/docs/shortcodes/columns/)
 - [Details](https://hugo-book-demo.netlify.app/docs/shortcodes/details/)
 - [Hints](https://hugo-book-demo.netlify.app/docs/shortcodes/hints/)
-- [Mermaid](https://hugo-book-demo.netlify.app/docs/shortcodes/mermaid/)
-- [Tabs](https://hugo-book-demo.netlify.app/docs/shortcodes/tabs/)
 - [KaTeX](https://hugo-book-demo.netlify.app/docs/shortcodes/katex/)
+- [Mermaid](https://hugo-book-demo.netlify.app/docs/shortcodes/mermaid/)
+- [Steps](https://hugo-book-demo.netlify.app/docs/shortcodes/steps/)
+- [Tabs](https://hugo-book-demo.netlify.app/docs/shortcodes/tabs/)
 
 By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
 

@@ -1,6 +1,6 @@
 {{- $ratio := (split (.Get "ratio") ":") -}}
 {{- if strings.Contains .InnerDeindent "<--->" -}}
-{{- warnf "Columns shortcode seprator '<--->' is deprecated, use markdown list instead." -}}
+{{- warnf "Columns shortcode separator '<--->' is deprecated, use markdown list instead." -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (cond .IsNamedParams .Params dict)
   "merge" (dict
