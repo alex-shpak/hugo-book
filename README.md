@@ -185,6 +185,13 @@ disableKinds = ['taxonomy', 'taxonomyTerm']
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables service worker that caches visited pages and resources for offline use.
   BookServiceWorker = true
+
+  # (Optional) Specifies a License that applies to the content of the page
+  # BookContentLicenseText = 'CC-BY-SA-4.0'
+
+  # (Optional) Specifies a Link for the License that applies to the content of the page
+  # Requires 'BookContentLicenseText' param.
+  # BookContentLicenseLink = 'https://creativecommons.org/licenses/by-sa/4.0/'
 ```
 
 ### Multi-Language Support
