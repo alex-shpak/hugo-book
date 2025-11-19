@@ -100,6 +100,8 @@ You can set `title` and `weight` in the front matter of pages to adjust the orde
 A simple blog is supported in the section `posts`.  
 A blog is not the primary usecase of this theme, so it has only minimal features.
 
+You can exclude items from the RSS feed by adding `unlisted = true` to the frontmatter.
+
 ## Configuration
 
 ### Site Configuration
