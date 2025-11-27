@@ -17,7 +17,7 @@
     {{- $class = $class | append "active" -}}
   {{- end -}}
   <li>
-    {{- $isRemote := (urls.Parse .URL).IsAbs -}}
+    {{- $isRemote := default (urls.Parse .URL).IsAbs .Params.remote -}}
     <a href="{{ .URL }}"
       {{- with $class }} class="{{ delimit . " " }}"{{- end -}}
       {{- with .Title }} title="{{ . }}"{{- end -}}
