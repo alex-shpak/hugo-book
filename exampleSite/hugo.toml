@@ -14,6 +14,21 @@ copyright = '[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcod
 disablePathToLower = true
 enableGitInfo = true
 
+[outputFormats]
+[outputFormats.print]
+  isHTML = true
+  isPlainText = false
+  mediaType = 'text/html'
+  notAlternative = false
+  noUgly = false
+  path = 'print'
+
+[outputs]
+  home    = ["html", "print"]
+  page    = ["html", "print"]
+  section = ["html", "print"]
+
+
 # Needed for mermaid/katex shortcodes
 [markup]
 [markup.goldmark.renderer]
