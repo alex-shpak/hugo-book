@@ -61,6 +61,14 @@ aside nav ul {
     opacity: 0.5;
   }
 
+  a:not([href]) {
+    color: var(--gray-500);
+  }
+
+  a.active {
+    font-weight: bold;
+  }
+
   ul {
     padding-inline-start: $padding-16;
   }
