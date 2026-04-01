@@ -1,1 +1,1 @@
-<small>{{ .Site.Title }} - {{ .Site.Copyright | .RenderString }}</small>
+<small>{{ .Site.Title }} - {{ default .Site.Copyright .Params.Copyright | .RenderString }}</small>

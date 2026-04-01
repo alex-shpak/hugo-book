@@ -127,6 +127,9 @@ enableGitInfo = true
 # You can remove related files with config below
 disableKinds = ['taxonomy', 'taxonomyTerm']
 
+# (Optional) Copyright information of the hugo book content
+copyright = '[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)'
+
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
   # Theme 'auto' switches between dark and light modes based on browser/os preferences. With plugins/themes added there are more themes.
@@ -201,6 +204,10 @@ type = 'docs'
 
 # Set page weight to re-arrange items in file-tree menu.
 weight = 10
+
+# (Optional) Copyright information of the hugo page content
+# Can be used to override the site-wide copyright notice
+copyright = '[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)'
 
 # (Optional) Set to 'true' to mark page as flat section in file-tree menu.
 bookFlatSection = false

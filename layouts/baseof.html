@@ -71,7 +71,7 @@
 {{ end }}
 
 {{ define "copyright" }}
-  {{ if .Site.Copyright }}
+  {{ if or .Site.Copyright .Params.Copyright }}
   <div class="book-copyright flex justify-center">
     {{ partial "docs/copyright" . }}
   </div>
