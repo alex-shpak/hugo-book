@@ -6,11 +6,11 @@ title: KaTeX
 
 KaTeX shortcode let you render math typesetting in markdown document. See [KaTeX](https://katex.org/)
 
-{{% hint info %}}
-**Override KaTeX initialization config**  
-To override the [initialization config](https://katex.org/docs/options.html) for KaTeX,
-create a `katex.json` file in your `assets` folder!
-{{% /hint %}}
+> [!INFO]
+> **Override KaTeX initialization config**  
+> To override the [initialization config](https://katex.org/docs/options.html) 
+> for KaTeX, create a `katex.json` file in your `assets` folder!
+
 
 # Example
 {{< katex />}}
@@ -23,41 +23,39 @@ KaTeX is activated on the page by first use of the shortcode or render block. yo
 
 {{% columns %}}
 
-```latex
-{{</* katex display=true >}}
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-{{< /katex */>}}
-```
+- ```latex
+  {{</* katex display=true >}}
+  f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  {{< /katex */>}}
+  ```
 
-````latex
-```katex
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-```
-````
+  ````latex
+  ```katex
+  f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  ```
+  ````
 
-````latex
-$$
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-$$
-````
+  ````latex
+  $$
+  f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  $$
+  ````
 
-<--->
+- {{< katex display=true >}}
+  f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  {{< /katex >}}
 
-{{< katex display=true >}}
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-{{< /katex >}}
+  ---
 
----
+  ```katex
+  f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  ```
 
-```katex
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-```
+  ---
 
----
-
-$$
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-$$
+  $$
+  f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  $$
 
 {{% /columns %}}
 
