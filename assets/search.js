@@ -1,6 +1,6 @@
-'use strict';
+import Fuse from '{{ "fuse.min.mjs" | relURL }}'
 
-{{ $searchDataFile := printf "%s.search-data.json" .Language.Lang }}
+{{ $searchDataFile := printf "%s.search-data.json" .Language.Name }}
 {{ $searchData := resources.Get "search-data.json" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
 {{ $searchConfig := i18n "bookSearchConfig" | default "{}" }}
 

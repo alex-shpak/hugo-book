@@ -8,7 +8,7 @@ layout: landing
 # HUGO BOOK {anchor=false}
 [Hugo](https://gohugo.io) documentation theme as simple as plain book
 
-[{{< badge style="info" title="Hugo" value="0.146" >}}](https://github.com/gohugoio/hugo/releases/tag/v0.146.7)
+[{{< badge style="info" title="Hugo" value="0.158" >}}](https://github.com/gohugoio/hugo/releases/tag/v0.158.0)
 [{{< badge style="default" title="License" value="MIT" >}}](https://github.com/alex-shpak/hugo-book/blob/main/LICENSE)
 
 {{<button href="/docs/example">}}Explore{{</button>}}
@@ -49,7 +49,7 @@ layout: landing
   [Cards](/docs/shortcodes/experimental/cards/),
   [Tabs](/docs/shortcodes/tabs/),
   [Images](/docs/shortcodes/experimental/images/),
-  [Asciinema](/docs/shortcodes/experimental/asciinema/),
+  [Asciinema](/docs/shortcodes/asciinema/),
   [KaTex](/docs/shortcodes/katex/),
   [Mermaid](/docs/shortcodes/mermaid/) and others.
   {{< /card >}}

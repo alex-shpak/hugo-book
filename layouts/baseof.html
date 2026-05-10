@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ default .Site.Language.Lang .Site.LanguageCode }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
+<html lang="{{ default .Site.Language.Name .Site.Language.Locale }}" dir="{{ default "ltr" .Site.Language.Direction }}">
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
 </head>
-<body dir="{{ default "ltr" .Site.Language.LanguageDirection }}" class="book-kind-{{ .Kind }} book-type-{{ .Type }}{{ with .Layout }} book-layout-{{ . }}{{ end }}">
+<body dir="{{ default "ltr" .Site.Language.Direction }}" class="book-kind-{{ .Kind }} book-type-{{ .Type }}{{ with .Layout }} book-layout-{{ . }}{{ end }}">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
   <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
@@ -71,7 +71,7 @@
 {{ end }}
 
 {{ define "copyright" }}
-  {{ if .Site.Copyright }}
+  {{ if or .Site.Copyright .Params.Copyright }}
   <div class="book-copyright flex justify-center">
     {{ partial "docs/copyright" . }}
   </div>

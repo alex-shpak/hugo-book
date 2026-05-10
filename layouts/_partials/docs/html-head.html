@@ -25,7 +25,7 @@ https://github.com/alex-shpak/hugo-book
 <link rel="canonical" href="{{ .Permalink }}">
 
 {{- range .Translations }}
-  <link rel="alternate" hreflang="{{ default .Site.LanguageCode .Language.Lang }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">
+  <link rel="alternate" hreflang="{{ default .Site.Language.Locale .Language.Name }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">
 {{- end -}}
 
 <!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
@@ -34,10 +34,9 @@ https://github.com/alex-shpak/hugo-book
 
 <!-- Search -->
 {{- if default true .Site.Params.BookSearch -}}
-  {{- $searchJSFile := printf "%s.search.js" .Language.Lang }}
+  {{- $searchJSFile := printf "%s.search.js" .Language.Name }}
   {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
-  <script defer src="{{ "fuse.min.js" | relURL }}"></script>
-  <script defer src="{{ partial "docs/links/resource-precache" $searchJS }}" {{ template "integrity" $searchJS }}></script>
+  <script defer type="module" src="{{ partial "docs/links/resource-precache" $searchJS }}" {{ template "integrity" $searchJS }}></script>
 {{ end -}}
 
 <!-- Service Worker -->

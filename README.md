@@ -1,6 +1,6 @@
 # Hugo Book Theme
 
-[![Hugo](https://img.shields.io/badge/hugo-0.146-blue.svg)](https://gohugo.io)
+[![Hugo](https://img.shields.io/badge/hugo-0.158-blue.svg)](https://gohugo.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Build with Hugo](https://github.com/alex-shpak/hugo-book/workflows/Build%20with%20Hugo/badge.svg)
 
@@ -33,7 +33,7 @@
 
 ## Requirements
 
-- Hugo 0.146 or higher
+- Hugo 0.158 or higher
 - Hugo extended version, [Installation Instructions](https://gohugo.io/installation/)
 
 ## Installation
@@ -127,6 +127,9 @@ enableGitInfo = true
 # You can remove related files with config below
 disableKinds = ['taxonomy', 'taxonomyTerm']
 
+# (Optional) Copyright information of the hugo book content
+copyright = '[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)'
+
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.
   # Theme 'auto' switches between dark and light modes based on browser/os preferences. With plugins/themes added there are more themes.
@@ -201,6 +204,10 @@ type = 'docs'
 
 # Set page weight to re-arrange items in file-tree menu.
 weight = 10
+
+# (Optional) Copyright information of the hugo page content
+# Can be used to override the site-wide copyright notice
+copyright = '[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)'
 
 # (Optional) Set to 'true' to mark page as flat section in file-tree menu.
 bookFlatSection = false

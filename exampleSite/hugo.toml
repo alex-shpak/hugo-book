@@ -31,19 +31,19 @@ enableGitInfo = true
 # And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
 [languages]
 [languages.en]
-  languageName = 'English'
+  label = 'English'
   contentDir = 'content.en'
   weight = 1
 
 [languages.zh]
-  languageName = 'Chinese'
+  label = 'Chinese'
   contentDir = 'content.zh'
   weight = 2
 
 [languages.he]
-  languageName = 'Hebrew'
+  label = 'Hebrew'
   contentDir = 'content.he'
-  languageDirection = 'rtl'
+  direction = 'rtl'
   weight = 3
 
 [menu]

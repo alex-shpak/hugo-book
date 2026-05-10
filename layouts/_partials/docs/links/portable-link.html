@@ -17,7 +17,7 @@
     {{- $destination = .RelPermalink -}}
   {{- else -}}
     {{- $mode := .Page.Site.Params.BookPortableLinks -}}
-    {{- $message := printf "Image reference '%s' not found in '%s'" .Destination .Page.RelPermalink -}}
+    {{- $message := printf "Reference '%s' not found in '%s'" .Destination .Page.RelPermalink -}}
     {{- if eq $mode "warning" -}}
     {{- warnf $message -}}
     {{- else if eq $mode "error" -}}

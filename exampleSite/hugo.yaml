@@ -30,17 +30,17 @@ markup:
 # And https://gohugo.io/content-management/multilingual/#translation-by-content-directory
 languages:
   en:
-    languageName: English
+    label: English
     contentDir: content.en
     weight: 1
   zh:
-    languageName: Chinese
+    label: Chinese
     contentDir: content.zh
     weight: 2
   he:
-    languageName: Hebrew
+    label: Hebrew
     contentDir: content.he
-    languageDirection: rtl
+    direction: rtl
     weight: 3
 
 menu:
