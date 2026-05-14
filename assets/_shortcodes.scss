@@ -222,15 +222,6 @@
     margin: $padding-16 0;
   }
 
-  .book-hero {
-    min-height: $padding-16 * 24;
-    align-content: center;
-
-    h1 {
-      font-size: 3em;
-    }
-  }
-
   .book-codeblock-filename {
     background: var(--gray-100);
     border: $padding-1 solid var(--gray-200);

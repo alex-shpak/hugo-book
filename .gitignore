@@ -3,4 +3,6 @@ exampleSite/public/
 .DS_Store
 .hugo_build.lock
 .obsidian
+.vscode
+.zed
 resources/

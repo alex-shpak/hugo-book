@@ -1,0 +1,16 @@
+{{/* Recursively creates a slice of pages under given page */}}
+
+{{ define "book-menu-recurse" }}
+  {{ if not .Page.Params.BookHidden }}
+    {{ if .Page.Content }}
+      {{ .Scratch.Add "BookPages" (slice .Page) }}
+    {{ end }}
+    {{ range .Page.Pages }}
+      {{ template "book-menu-recurse" (dict "Scratch" $.Scratch "Page" .) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $scratch := newScratch }}
+{{ template "book-menu-recurse" (dict "Scratch" $scratch "Page" .) }}
+{{ return $scratch.Get "BookPages" }}

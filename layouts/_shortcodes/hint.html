@@ -1,4 +1,4 @@
-{{- warnf "Hint shortcode is deprecated, use markdown alerts format: '> [!NOTE] ...'" -}}
+{{- warnf "{{<hint>}} shortcode is deprecated, use markdown alerts format: '> [!NOTE] ...'" -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (cond .IsNamedParams .Params dict)
   "merge" (dict

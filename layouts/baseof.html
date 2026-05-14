@@ -64,7 +64,6 @@
 {{ end }}
 
 {{ define "clipboard" }}
-  <!-- Clipboard -->
   {{ with resources.Get "clipboard.js" | resources.Minify }}
     <script>{{ .Content | safeJS }}</script>
   {{ end }}

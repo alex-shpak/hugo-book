@@ -235,7 +235,7 @@ bookHref = ''
 bookIcon = 'calendar'
 ```
 
-### Partials
+## Partials
 
 There are layout partials available for you to easily override components of the theme in `layouts/partials/`.
 
@@ -253,7 +253,7 @@ In addition to this, there are several empty partials you can override to easily
 | `layouts/partials/docs/inject/toc-before.html`     | At the beginning of table of contents block |
 | `layouts/partials/docs/inject/toc-after.html`      | At the end of table of contents block       |
 
-### Extra Customisation
+## Extra Customisation
 
 | File                     | Description                                                                           |
 | ------------------------ | ------------------------------------------------------------------------------------- |
@@ -264,7 +264,7 @@ In addition to this, there are several empty partials you can override to easily
 | `assets/mermaid.json`    | Replace Mermaid initialization config                                                 |
 | `assets/katex.json`      | Replace KaTeX initialization config                                                   |
 
-### Plugins
+## Plugins
 
 There are a few features implemented as pluggable `scss` styles. Usually these are features that don't make it to the core but can still be useful.
 
@@ -276,7 +276,7 @@ There are a few features implemented as pluggable `scss` styles. Usually these a
 
 To enable plugins, add `@import "plugins/{name}";` to `assets/_custom.scss` in your website root.
 
-### Hugo Internal Templates
+## Hugo Internal Templates
 
 There are a few hugo templates inserted in `<head>`
 
@@ -288,6 +288,15 @@ In fact almost empty not quite empty because an empty file looks like absent for
 ```
 <!-- -->
 ```
+
+## Special layouts
+
+There are extra page layouts apart from documentation pages, to apply set `layout: {name}` in page frontmatter
+
+| Layout                            | Description  |
+| --------------------------------- | ------------ |
+| `landing`                         | Renders a langing/home page, hides side menus and adds home menu at the top |
+| `book`                            | Renders a single-page with all pages in configured BookSection section |
 
 ## Shortcodes
 

@@ -1,14 +1,9 @@
-{{ $bookSection := default "docs" .Site.Params.BookSection  }}
-{{ if eq $bookSection "*" }}
-  {{ $bookSection = "/" }}{{/* Backward compatibility */}}
-{{ end }}
+{{- with (partialCached "docs/menu-section" .Site) -}}
+  {{- $pages := partialCached "docs/menu-section-pages" . -}}
+  {{- $prev := $pages.Next $ -}}
+  {{- $next := $pages.Prev $ -}}
 
-{{ with .Site.GetPage $bookSection }}
-  {{ $pages := partialCached "docs/prev-next-cache" .Pages }}
-  {{ $prev := $pages.Next $ }}
-  {{ $next := $pages.Prev $ }}
-
-  {{- if or $prev $next }}
+  {{- if or $prev $next -}}
   <div class="flex flex-wrap justify-between">
     <span>
     {{ with $prev }}
@@ -27,5 +22,5 @@
     {{ end }}
     </span>
   </div>
-  {{ end -}}
-{{ end }}
+  {{- end -}}
+{{- end -}}

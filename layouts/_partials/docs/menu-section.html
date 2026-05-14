@@ -1,0 +1,8 @@
+{{/* returns the section to be rendered as menu */}}
+{{ $bookSection := default "docs" .Params.BookSection }}
+{{ $section := .GetPage (cond (eq $bookSection "*") "/" $bookSection) }}
+{{ if $section }}
+	{{ return $section }}
+{{ else }}
+	{{ errorf "%s: Section '%s' not found, check BookSection theme parameter" $ $bookSection }}
+{{ end }}

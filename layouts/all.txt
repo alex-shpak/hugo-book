@@ -1,0 +1,7 @@
+{{ .Site.Title }}
+{{ $section := partialCached "docs/menu-section" .Site -}}
+{{- range (partialCached "docs/menu-section-pages" $section) }}
+- {{ partial "docs/title" . }}: {{ default .Permalink .Params.BookHref }}
+{{- end }}
+
+{{ .RawContent }}

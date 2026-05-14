@@ -1,0 +1,30 @@
+{{ define "menu-container" }}
+<!-- -->
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/brand" . }}
+  <nav id="TableOfContents">
+    <ul>
+    	{{- $section := partialCached "docs/menu-section" .Site -}}
+      {{- range (partialCached "docs/menu-section-pages" $section) }}
+      <li>
+        <a href="#{{ partial "docs/title" . | anchorize }}">{{ partial "docs/title" . }}</a>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}
+
+{{ define "footer" }}
+<!-- -->
+{{ end }}
+
+{{ define "main" }}
+  <article class="markdown">
+  {{- $section := partialCached "docs/menu-section" .Site -}}
+  {{- range partialCached "docs/menu-section-pages" $section }}
+    <section id="{{ partial "docs/title" . | anchorize }}">{{ .Content }}</section>
+  {{ end }}
+  </article>
+{{ end }}

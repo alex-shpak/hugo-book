@@ -1,9 +1,4 @@
-{{ $bookSection := default "docs" .Site.Params.BookSection }}
-{{ if eq $bookSection "*" }}
-  {{ $bookSection = "/" }}{{/* Backward compatibility */}}
-{{ end }}
-
-{{ with .Site.GetPage $bookSection }}
+{{ with (partialCached "docs/menu-section" .Site) }}
   {{ template "book-section-children" (dict "Section" . "CurrentPage" $) }}
 {{ end }}
 

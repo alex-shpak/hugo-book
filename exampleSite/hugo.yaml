@@ -14,6 +14,16 @@ copyright: "[© CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode
 disablePathToLower: true
 enableGitInfo: true
 
+outputFormats:
+  txt:
+    mediaType: "text/plain"
+    baseName: "source"
+    isPlainText: true
+outputs:
+  home: ["html", "txt", "rss"]
+  page: ["html", "txt"]
+  section: ["html", "txt"]
+
 # Needed for mermaid/katex shortcodes
 markup:
   goldmark:
@@ -97,12 +107,12 @@ params:
   # (Optional, default none) Set template for commit link for the page. Requires enableGitInfo.
   # When set enabled 'Last Modified' and a link to the commit in the footer of the page.
   # Param is executed as template using .Site, .Page and .GitInfo as context.
-  BookLastChangeLink: 'https://github.com/alex-shpak/hugo-book/commit/{{ .GitInfo.Hash }}'
+  BookLastChangeLink: "https://github.com/alex-shpak/hugo-book/commit/{{ .GitInfo.Hash }}"
 
   # (Optional, default none) Set template for edit page link.
   # When set enabled 'Edit this page' link in the footer of the page.
   # Param is executed as template using .Site, .Page and .Path as context.
-  BookEditLink: 'https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/{{ .Path }}'
+  BookEditLink: "https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/{{ .Path }}"
 
   # (Optional, default 'January 2, 2006') Configure the date format used on the pages
   # - In git information
@@ -126,7 +136,7 @@ params:
   # Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
   # Hugo Book will print warning or error if page referenced in markdown does not exists.
   # Possible values are false | 'warning' | 'error'
-  BookPortableLinks: 'warning'
+  BookPortableLinks: "warning"
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false)
