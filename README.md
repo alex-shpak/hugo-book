@@ -300,14 +300,14 @@ There are extra page layouts apart from documentation pages, to apply set `layou
 
 ## Shortcodes
 
-- [Buttons](https://hugo-book-demo.netlify.app/docs/shortcodes/buttons/)
-- [Columns](https://hugo-book-demo.netlify.app/docs/shortcodes/columns/)
-- [Details](https://hugo-book-demo.netlify.app/docs/shortcodes/details/)
-- [Hints](https://hugo-book-demo.netlify.app/docs/shortcodes/hints/)
-- [KaTeX](https://hugo-book-demo.netlify.app/docs/shortcodes/katex/)
-- [Mermaid](https://hugo-book-demo.netlify.app/docs/shortcodes/mermaid/)
-- [Steps](https://hugo-book-demo.netlify.app/docs/shortcodes/steps/)
-- [Tabs](https://hugo-book-demo.netlify.app/docs/shortcodes/tabs/)
+- [Buttons](https://book.alxs.dev/docs/shortcodes/buttons/)
+- [Columns](https://book.alxs.dev/docs/shortcodes/columns/)
+- [Details](https://book.alxs.dev/docs/shortcodes/details/)
+- [Hints](https://book.alxs.dev/docs/shortcodes/hints/)
+- [KaTeX](https://book.alxs.dev/docs/shortcodes/katex/)
+- [Mermaid](https://book.alxs.dev/docs/shortcodes/mermaid/)
+- [Steps](https://book.alxs.dev/docs/shortcodes/steps/)
+- [Tabs](https://book.alxs.dev/docs/shortcodes/tabs/)
 
 By default, Goldmark trims unsafe outputs which might prevent some shortcodes from rendering. It is recommended to set `markup.goldmark.renderer.unsafe=true` if you encounter problems.
 
