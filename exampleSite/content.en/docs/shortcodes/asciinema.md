@@ -1,16 +1,20 @@
 # Asciinema
 
-Asciinema shortcode integrates asciinema player into the markdown page.
+Embed terminal recordings with the [Asciinema](https://asciinema.org/) player.
+
+## Syntax
 
 ```tpl
 {{</* asciinema
-  cast="asciinema-627097.cast"
-  or
-  cast="https://asciinema.org/a/vJNKUQFjuh7qKI2j3OoaKs8Jk.cast"
+  cast="recording.cast"
   loop=true
   autoplay=true
   speed=2 */>}}
 ```
+
+The `cast` parameter accepts page resources, site resources, or remote URLs.
+
+## Example
 
 {{< asciinema
   cast="asciinema-627097.cast"
@@ -20,6 +24,9 @@ Asciinema shortcode integrates asciinema player into the markdown page.
 
 ## Parameters
 
-All parameters added to the shortcode will be transformed to options for Asciinema player, expect `cast` parameter that is used to locate cast file. Cast file follows same rules as portable image, it could be site resource, page resource or remote file URL.
+`cast`
+: Path to the `.cast` file. Can be a local resource or a remote URL.
 
-[List of Asciinema options](https://docs.asciinema.org/manual/player/options/)
+All other parameters are passed directly to the Asciinema player. See the [Asciinema player options](https://docs.asciinema.org/manual/player/options/) for the full list.
+
+Common options: `autoplay`, `loop`, `speed`, `theme`, `cols`, `rows`, `idleTimeLimit`, `preload`.

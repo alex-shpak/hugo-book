@@ -1,32 +1,43 @@
 # Badges
 
-> [!WARNING]
-> Experimental, could change in the future or be removed
+Inline labels for annotating content with status, versions, or metadata.
 
-Badges can be used to annotate your pages with additional information or mark specific places in markdown content.
+## Syntax
 
-{{< badge title="Title" value="Value" >}}
-{{< badge style="info" title="Hugo" value="0.147.6" >}}
-{{< badge style="success" title="Build" value="Passing" >}}
-{{< badge style="warning" title="Coverage" value="25%" >}}
-{{< badge style="danger" title="Issues" value="120" >}}
+```tpl
+{{</* badge style="info" title="Hugo" value="0.158" */>}}
+```
 
-## Examples
+## Styles
 
 | Shortcode | Output |
-| --        | --     |
-| `{{</* badge style="info" title="hugo" value="0.147.6" */>}}`     | {{< badge style="info" title="Hugo" value="0.147.6" >}}     |
+| -- | -- |
+| `{{</* badge style="info" title="Hugo" value="0.158" */>}}` | {{< badge style="info" title="Hugo" value="0.158" >}} |
 | `{{</* badge style="success" title="Build" value="Passing" */>}}` | {{< badge style="success" title="Build" value="Passing" >}} |
-| `{{</* badge style="warning" title="Coverage" value="25%" */>}}`  | {{< badge style="warning" title="Coverage" value="25%" >}}  |
-| `{{</* badge style="danger" title="Issues" value="120" */>}}`     | {{< badge style="danger" title="Issues" value="120" >}}     |
+| `{{</* badge style="warning" title="Coverage" value="25%" */>}}` | {{< badge style="warning" title="Coverage" value="25%" >}} |
+| `{{</* badge style="danger" title="Issues" value="120" */>}}` | {{< badge style="danger" title="Issues" value="120" >}} |
 | | |
-| `{{</* badge style="info" title="Title" */>}}`                    | {{< badge style="info" title="Title" >}}                    |
-| `{{</* badge style="info" value="Value" */>}}`                    | {{< badge style="info" value="Value" >}}                    |
-| `{{</* badge title="Default" */>}}`                               | {{< badge value="Default" >}}                               |
+| `{{</* badge style="info" title="Title" */>}}` | {{< badge style="info" title="Title" >}} |
+| `{{</* badge style="info" value="Value" */>}}` | {{< badge style="info" value="Value" >}} |
+| `{{</* badge value="Default" */>}}` | {{< badge value="Default" >}} |
 
-## Use in links 
+## Use in Links
 
-A badge can be wrapped in markdown link producing following result: [{{< badge title="Hugo" value="0.147.6" >}}](https://github.com/gohugoio/hugo/releases/tag/v0.147.6)
+Wrap a badge in a markdown link
+
 ```tpl
-[{{</* badge title="Hugo" value="0.147.6" */>}}](https://github.com/gohugoio/hugo/releases/tag/v0.147.6)
+[{{</* badge title="Hugo" value="0.158" */>}}](https://github.com/gohugoio/hugo/releases/tag/v0.158.0)
 ```
+
+[{{< badge title="Hugo" value="0.158" >}}](https://github.com/gohugoio/hugo/releases/tag/v0.158.0)
+
+## Parameters
+
+`style`
+: Visual style. One of: `default`, `info`, `success`, `warning`, `danger`, `note`, `tip`, `important`, `caution`.
+
+`title`
+: Label text (left side).
+
+`value`
+: Value text (right side).

@@ -1,75 +1,64 @@
 # Hints
 
-Hint shortcode can be used as a hint/alert/notification block.
+Callout blocks for notes, warnings, and other contextual messages. Also supports standard GitHub markdown alerts.
+
+## Syntax
 
 ```tpl
 {{%/* hint [info|success|warning|danger] */%}}
-**Markdown content**  
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+Markdown content
 {{%/* /hint */%}}
+```
 
+Or using markdown alerts
+
+```markdown
 > [!NOTE|TIP|IMPORTANT|WARNING|CAUTION]
-> **Markdown content**  
-> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+> Markdown content
 ```
 
 ## Example
 
 {{% hint %}}
-**Markdown content**  
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+**Default hint**  
+Without a specified type.
 {{% /hint %}}
 
 {{% hint info %}}
-**Markdown content**  
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+**Info**  
+Use for supplementary information that helps the reader.
 {{% /hint %}}
 
 {{% hint success %}}
-**Markdown content**  
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+**Success**  
+Use to highlight a recommended approach or positive outcome.
 {{% /hint %}}
 
 {{% hint warning %}}
-**Markdown content**  
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+**Warning**  
+Use for important caveats or potential issues.
 {{% /hint %}}
 
 {{% hint danger %}}
-**Markdown content**  
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+**Danger**  
+Use for critical warnings about breaking changes or data loss.
 {{% /hint %}}
 
-## Support for markdown alerts
+## Markdown Alerts
+
+Standard GitHub markdown alert syntax is also supported:
 
 > [!NOTE]
-> **Note**  
-> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+> The theme requires Hugo **extended** edition for SCSS processing.
 
 > [!TIP]
-> **Tip**  
-> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+> Set `disablePathToLower = true` in your config to preserve URL casing.
 
 > [!IMPORTANT]
-> **Important**  
-> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+> The `unsafe = true` goldmark setting is required for Mermaid and KaTeX shortcodes.
 
 > [!WARNING]
-> **Warning**  
-> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+> Service worker support is experimental and may change in future releases.
 
 > [!CAUTION]
-> **Caution**  
-> Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-> stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
+> Enabling `BookPortableLinks = 'error'` will fail the build if any markdown link targets are missing.

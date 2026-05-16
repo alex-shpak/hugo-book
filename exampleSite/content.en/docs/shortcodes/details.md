@@ -1,30 +1,37 @@
 # Details
 
-Details shortcode is a helper for `details` html5 element. To collapse the details either omit the `open`
-keyword when using positional arguments or set `open=false` when using parameters.
+Collapsible content using the HTML5 `<details>` element.
 
-## Example with positional arguments
+## Syntax
+
+Positional arguments:
 ```tpl
 {{%/* details "Title" [open] */%}}
-## Markdown content
-Lorem markdownum insigne...
+Markdown content
 {{%/* /details */%}}
 ```
 
-{{% details "Title" open %}}
-## Markdown content
-Lorem markdownum insigne...
-{{% /details %}}
-
-## Example with parameters
+Named parameters:
 ```tpl
 {{%/* details title="Title" open=true */%}}
-## Markdown content
-Lorem markdownum insigne...
+Markdown content
 {{%/* /details */%}}
 ```
 
-{{% details title="Title" open=true %}}
-## Markdown content
-Lorem markdownum insigne...
+## Example
+
+{{% details "What Hugo version is required?" %}}
+Hugo Book requires Hugo {x} or later, extended edition. The extended edition is needed for SCSS processing.
 {{% /details %}}
+
+{{% details "How do I override the theme?" open %}}
+Create matching files in your project's `layouts/` or `assets/` directory. Hugo's lookup order will use your files over the theme's.
+{{% /details %}}
+
+## Parameters
+
+`title` (or first positional argument)
+: The summary text shown when collapsed.
+
+`open` (or second positional argument)
+: Start expanded. Default: collapsed.

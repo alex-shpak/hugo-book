@@ -4,73 +4,62 @@ title: KaTeX
 
 # KaTeX
 
-KaTeX shortcode let you render math typesetting in markdown document. See [KaTeX](https://katex.org/)
+Render math typesetting with [KaTeX](https://katex.org/). The library is loaded automatically on first use.
 
-{{% hint info %}}
-**Override KaTeX initialization config**  
-To override the [initialization config](https://katex.org/docs/options.html) for KaTeX,
-create a `katex.json` file in your `assets` folder!
-{{% /hint %}}
-
-# Example
 {{< katex />}}
 
-
 ## Activation
-KaTeX is activated on the page by first use of the shortcode or render block. you can force activation with empty `{{</* katex /*/>}}` and use delimiters defined in configuration in `assets/katex.json`.
 
-## Rendering as block
+KaTeX is activated on the page by the first use of the shortcode or a `katex` code block. You can force activation with `{{</* katex /*/>}}`, then use delimiters anywhere on the page.
+
+## Block Rendering
+
+Three equivalent ways to render display math:
 
 {{% columns %}}
 
-```latex
-{{</* katex display=true >}}
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-{{< /katex */>}}
-```
+- **Shortcode**
+  ```tpl
+  {{</* katex display=true >}}
+  f(x) = \int_{-\infty}^\infty
+  \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  {{< /katex */>}}
+  ```
 
-````latex
-```katex
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-```
-````
+- **Code block**
+  ````
+  ```katex
+  f(x) = \int_{-\infty}^\infty
+  \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  ```
+  ````
 
-````latex
-$$
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-$$
-````
-
-<--->
-
-{{< katex display=true >}}
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-{{< /katex >}}
-
----
-
-```katex
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-```
-
----
-
-$$
-f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-$$
+- **Dollar delimiters**
+  ```
+  $$
+  f(x) = \int_{-\infty}^\infty
+  \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+  $$
+  ```
 
 {{% /columns %}}
 
-## Rendering inline 
-When KaTeX is active on the page it is possible to write inline expressions.  
+Result:
 
-| Code | Output |
-| --   | --     |
+$$
+f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+$$
+
+## Inline Rendering
+
+| Syntax | Output |
+| -- | -- |
 | `{{</* katex >}}\pi(x){{< /katex */>}}` | {{< katex >}}\pi(x){{< /katex >}} |
 | `\\( \pi(x) \\)` | \\( \pi(x) \\) |
 
 ## Configuration
-KaTeX configuration could be adjusted by editing `assets/katex.json` file. For example to enabled inline delimiters `$..$` put content below into the file.
+
+Override KaTeX options by creating `assets/katex.json`. For example, to enable `$...$` inline delimiters
 
 ```json
 {
@@ -83,3 +72,4 @@ KaTeX configuration could be adjusted by editing `assets/katex.json` file. For e
 }
 ```
 
+See [KaTeX options](https://katex.org/docs/options.html) for all available settings.

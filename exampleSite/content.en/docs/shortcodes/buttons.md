@@ -1,13 +1,26 @@
 # Buttons
 
-Buttons are styled links that can lead to local page or external link.
+Styled links that can point to local pages or external URLs. External links automatically open in a new tab.
 
-## Example
+## Syntax
 
 ```tpl
 {{</* button relref="/" [class="..."] */>}}Get Home{{</* /button */>}}
-{{</* button href="https://github.com/alex-shpak/hugo-book" */>}}Contribute{{</* /button */>}}
+{{</* button href="https://github.com/alex-shpak/hugo-book" */>}}Github{{</* /button */>}}
 ```
 
-{{<button href="/">}}Get Home{{</button>}}
-{{<button href="https://github.com/alex-shpak/hugo-book">}}Contribute{{</button>}}
+## Example
+
+{{<button href="/">}}Home{{</button>}}
+{{<button href="https://github.com/alex-shpak/hugo-book">}}Github{{</button>}}
+
+## Parameters
+
+`href`
+: URL for external links.
+
+`relref`
+: Hugo page reference for internal links.
+
+`class`
+: Additional CSS classes.

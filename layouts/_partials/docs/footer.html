@@ -11,15 +11,6 @@
 </div>
 
 <div>
-{{ with .OutputFormats.Get "txt" }}
-	<a class="flex align-center" href="{{ .RelPermalink }}">
-		<img src="{{ partial "docs/icon" "markdown" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Markdown" }}" />
-		<span>{{ partial "docs/text/i18n" "Source" }}</span>
-	</a>
-{{ end }}
-</div>
-
-<div>
 {{ if and .File .Site.Params.BookEditLink }}
   <a class="flex align-center" href="{{ partial "docs/links/edit" . }}" target="_blank" rel="noopener edit">
     <img src="{{ partial "docs/icon" "edit" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Edit" }}" />

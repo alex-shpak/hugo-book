@@ -55,27 +55,23 @@ languages:
 
 menu:
   home:
-    - name: "Documentation"
-      pageRef: "/docs/example/"
+    - name: "About"
+      pageRef: "/docs/introduction/"
       weight: 1
-    - pageRef: "/docs/example/"
-      weight: 10
-      parent: "Documentation"
-    - name: "Shortcodes"
-      pageRef: "/docs/shortcodes/buttons/"
-      weight: 20
-      parent: "Documentation"
+    - name: "Documentation"
+      pageRef: "/docs/getting-started/"
+      weight: 2
     - name: "Showcases"
       pageRef: "/showcases/"
-      weight: 2
+      weight: 3
     - name: "Github"
       url: "https://github.com/alex-shpak/hugo-book/"
-      weight: 3
+      weight: 4
 
   # before: []
   after:
     - name: "Github"
-      url: "https://github.com/alex-shpak/hugo-book"
+      url: "https://github.com/alex-shpak/hugo-book/"
       weight: 10
     - name: "Hugo Themes"
       url: "https://themes.gohugo.io/themes/hugo-book/"
@@ -104,15 +100,19 @@ params:
   # For backward compatibility you can set '*' to render all sections to menu. Acts same as '/'
   BookSection: docs
 
+  # Here for backward compatibility, not required.
+  # It's here as an example how to use it with BookLastChangeLink or BookEditLink
+  BookRepo: "https://github.com/alex-shpak/hugo-book/"
+
   # (Optional, default none) Set template for commit link for the page. Requires enableGitInfo.
   # When set enabled 'Last Modified' and a link to the commit in the footer of the page.
   # Param is executed as template using .Site, .Page and .GitInfo as context.
-  BookLastChangeLink: "https://github.com/alex-shpak/hugo-book/commit/{{ .GitInfo.Hash }}"
+  BookLastChangeLink: "{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}"
 
   # (Optional, default none) Set template for edit page link.
   # When set enabled 'Edit this page' link in the footer of the page.
   # Param is executed as template using .Site, .Page and .Path as context.
-  BookEditLink: "https://github.com/alex-shpak/hugo-book/edit/main/exampleSite/{{ .Path }}"
+  BookEditLink: "{{ .Site.Params.BookRepo }}/edit/main/exampleSite/{{ .Path }}"
 
   # (Optional, default 'January 2, 2006') Configure the date format used on the pages
   # - In git information
@@ -120,7 +120,7 @@ params:
   # https://gohugo.io/functions/time/format/
   BookDateFormat: "January 2, 2006"
 
-  # (Optional, default true) Enables search function with flexsearch,
+  # (Optional, default true) Enables search function with fuse.js.,
   # Index is built on fly, therefore it might slowdown your website.
   # Configuration for indexing can be adjusted in i18n folder per language.
   BookSearch: true

@@ -59,41 +59,30 @@ enableGitInfo = true
 
 [menu]
 [[menu.home]]
-  name = 'Documentation'
-  pageRef = '/docs/example/'
+  name = 'About'
+  pageRef = '/docs/introduction/'
   weight = 1
 
 [[menu.home]]
-  pageRef = '/docs/example/'
-  weight = 10
-  parent = 'Documentation'
-
-[[menu.home]]
-  name = 'Shortcodes'
-  pageRef = '/docs/shortcodes/buttons/'
-  weight = 20
-  parent = 'Documentation'
+  name = 'Documentation'
+  pageRef = '/docs/getting-started/'
+  weight = 2
 
 [[menu.home]]
   name = 'Showcases'
   pageRef = '/showcases/'
-  weight = 2
+  weight = 3
 
 [[menu.home]]
   name = 'Github'
   url = 'https://github.com/alex-shpak/hugo-book/'
-  weight = 3
+  weight = 4
 
 # [[menu.before]]
 [[menu.after]]
   name = 'Github'
   url = 'https://github.com/alex-shpak/hugo-book/'
   weight = 10
-
-[[menu.after]]
-  name = 'Hugo Themes'
-  url = 'https://themes.gohugo.io/themes/hugo-book/'
-  weight = 20
 
 [params]
   # (Optional, default light) Sets color theme: light, dark or auto.

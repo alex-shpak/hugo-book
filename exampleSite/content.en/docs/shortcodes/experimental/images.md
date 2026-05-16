@@ -1,33 +1,30 @@
 # Images
 
-> [!WARNING]
-> Experimental, could change in the future or be removed
+Enhanced image display with click-to-expand behavior.
 
-Image shortcode produces an image that can be clicked to expand.
+## Syntax
+
+```tpl
+{{</* image src="photo.jpg" alt="Description" title="Caption" loading="lazy" */>}}
+```
 
 ## Example
 
-```go-html-template
-{{</* image src="placeholder.svg" alt="A placeholder" title="A placeholder" loading="lazy" */>}}
-```
-{{< image src="placeholder.svg" alt="A placeholder" title="A placeholder" loading="lazy" >}}
+{{< image src="placeholder.svg" alt="Placeholder image" title="Click to expand" loading="lazy" >}}
 
 ## Parameters
 
-`src` {{< badge style="warning" title="Required" >}}
-: The link to the image
+`src`
+: Path to the image. Supports page resources, site resources, and URLs.
 
-`class` {{< badge style="info" title="Optional" >}}  
-: An optional CSS class name that will be applied to the `img` element
+`alt`
+: Alternate text for accessibility.
 
-`alt` {{< badge style="info" title="Optional" >}}  
-: An optional alternate text for the image
+`title`
+: Caption displayed below the image.
 
-`title` {{< badge style="info" title="Optional" >}}  
-: An optional title for the image
+`loading`
+: Loading strategy: `lazy`, `eager`, or `auto`.
 
-`loading` {{< badge style="info" title="Optional" >}}  
-: Sets `loading` control for the image: `lazy`, `eager` or `auto`
-
-
-
+`class`
+: Additional CSS classes on the `<img>` element.

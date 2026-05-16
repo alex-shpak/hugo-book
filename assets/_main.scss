@@ -71,6 +71,10 @@ nav ul {
   }
 }
 
+nav > ul {
+  margin-bottom: $padding-16;
+}
+
 ul.pagination {
   display: flex;
   justify-content: center;
@@ -336,8 +340,6 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-languages {
-  margin-bottom: $padding-16;
-
   span {
     padding: 0;
   }

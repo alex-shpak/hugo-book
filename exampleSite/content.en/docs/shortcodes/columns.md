@@ -1,65 +1,47 @@
 # Columns
 
-Columns help organize shorter pieces of content horizontally for readability. `columns` shortcode styles markdown list as up to 3 columns.
+Organize content horizontally. Renders a markdown list as up to 3 side-by-side columns.
 
-## Example
+## Syntax
 
 ```tpl
 {{%/* columns [ratio="1:1"] [class="..."] */%}}
-- ### Left Content
-  Lorem markdownum insigne...
+- ### Left
+  Content...
 
-- ### Mid Content
-  Lorem markdownum insigne...
-
-- ### Right Content
-  Lorem markdownum insigne...
+- ### Right
+  Content...
 {{%/* /columns */%}}
 ```
 
+## Example
+
 {{% columns %}}
-- ### Left Content
-  Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-  stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-  protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
-  Miseratus fonte Ditis conubia.
+- ### File-Tree Menu
+  The sidebar menu is automatically generated from your content directory structure. Pages are ordered by `weight` frontmatter.
 
-- ### Mid Content
-  Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-  stringit, frustra Saturnius uteroque inter!
+- ### Hugo Menus
+  Additional menu entries can be added above or below the file-tree using Hugo's standard menu system in your site config.
 
-- ### Right Content
-  Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-  stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-  protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
-  Miseratus fonte Ditis conubia.
+- ### Landing Menu
+  Pages with `layout: landing` use a separate menu defined under `menu.home` for header navigation.
 {{% /columns %}}
 
-## Settings size ratio for columns
+## Custom Ratio
+
+Set relative column widths with the `ratio` parameter
 
 ```tpl
 {{%/* columns ratio="1:2" */%}}
-- ## x1 Column
-  Lorem markdownum insigne...
-
-- ## x2 Column
-  Lorem markdownum insigne...
+- ### Sidebar
+- ### Content Area
 {{%/* /columns */%}}
 ```
 
 {{% columns ratio="1:2" %}}
-- ### x1 Column
-  Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-  stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-  protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
-  Miseratus fonte Ditis conubia.
+- ### File-Tree Menu
+  The sidebar menu is automatically generated from your content directory structure. Pages are ordered by `weight` frontmatter.
 
-- ### x2 Column
-  Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-  stringit, frustra Saturnius uteroque inter!
-  
-  Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat
-  stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa
-  protulit, sed sed aere valvis inhaesuro Pallas animam: qui _quid_, ignes.
-  Miseratus fonte Ditis conubia.
+- ### Hugo Menus
+  Additional menu entries can be added above or below the file-tree using Hugo's standard menu system in your site config.
 {{% /columns %}}
