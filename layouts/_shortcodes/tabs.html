@@ -1,3 +1,4 @@
+{{- .Store.Set "id" (partial "docs/text/shortcode-id" .) -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (cond .IsNamedParams .Params dict)
   "merge" (dict

@@ -3,8 +3,8 @@
   "attributes" (cond .IsNamedParams .Params dict)
   "keep" (slice "id" "class" "tabindex" "alt" "title" "loading")
 ) -}}
-<label class="book-image" for="book-image-toggle-{{ .Ordinal }}">
-  <input class="hidden toggle" type="checkbox" id="book-image-toggle-{{ .Ordinal }}" />
-  <img src="{{ $destination | safeURL }}" {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }} />
-</label>
-{{- /* remove whitespaces */ -}}
+{{- $id := partial "docs/text/shortcode-id" . -}}
+<label class="book-image" for="book-image-toggle-{{ $id }}">{{- /* remove whitespaces */ -}}
+  <input class="hidden toggle" type="checkbox" id="book-image-toggle-{{ $id }}" />{{- /* remove whitespaces */ -}}
+  <img src="{{ $destination | safeURL }}" {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }} />{{- /* remove whitespaces */ -}}
+</label>{{- /* remove whitespaces */ -}}

@@ -7,13 +7,14 @@
   <script defer src="{{ "asciinema/asciinema-auto.js" | relURL }}"></script>
   {{- .Page.Store.Set "asciinema" true -}}
 {{- end -}}
+{{- $id := partial "docs/text/shortcode-id" . -}}
 {{- $href := (partial "docs/links/portable-image" (dict "Page" .Page "Destination" (.Get "cast"))) -}}
 {{- .Store.Set "asciinema" .Params -}}
 {{- .Store.DeleteInMap "asciinema" "cast" -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (dict)
   "set" (dict
-    "id" (printf "asciinema-%d" .Ordinal)
+    "id" (printf "asciinema-%d" ($id))
     "x-data-cast" $href
     "x-data-opts" (.Store.Get "asciinema" | jsonify)
   )
