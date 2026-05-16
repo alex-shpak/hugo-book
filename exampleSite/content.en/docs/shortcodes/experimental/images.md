@@ -10,10 +10,7 @@ Enhanced image display with click-to-expand behavior.
 
 ## Example
 
-{{% columns %}}
-- {{< image src="placeholder.svg" alt="Placeholder image" title="Click to expand" loading="lazy" >}}
-- {{< image src="placeholder.svg" alt="Placeholder image" title="Click to expand" loading="lazy" >}}
-{{% /columns %}}
+{{< image src="placeholder.svg" alt="Placeholder image" title="Click to expand" loading="lazy" >}}
 
 ## Parameters
 
