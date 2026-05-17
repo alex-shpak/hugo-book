@@ -34,13 +34,15 @@ import Fuse from '{{ "fuse.min.mjs" | relURL }}'
   input.addEventListener('focus', init);
   input.addEventListener('keyup', search);
 
-  document.addEventListener('keypress', focusSearchFieldOnKeyPress);
+  document.addEventListener('keydown', focusOnKeyDown);
 
   /**
-   * @param {Event} event
+   * @param {KeyboardEvent} event
    */
-  function focusSearchFieldOnKeyPress(event) {
-    if (event.target.value !== undefined) {
+  function focusOnKeyDown(event) {
+    if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault();
+      input.focus();
       return;
     }
 
@@ -48,22 +50,14 @@ import Fuse from '{{ "fuse.min.mjs" | relURL }}'
       return;
     }
 
-    const characterPressed = String.fromCharCode(event.charCode);
-    if (!isHotkey(characterPressed)) {
+    if (event.target.value !== undefined) {
       return;
     }
 
-    input.focus();
-    event.preventDefault();
-  }
-
-  /**
-   * @param {String} character
-   * @returns {Boolean} 
-   */
-  function isHotkey(character) {
-    const dataHotkeys = input.getAttribute('data-hotkeys') || '';
-    return dataHotkeys.indexOf(character) >= 0;
+    if (event.key === '/') {
+      event.preventDefault();
+      input.focus();
+    }
   }
 
   function init() {
