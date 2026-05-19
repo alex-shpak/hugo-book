@@ -2,7 +2,7 @@
 weight: 20
 ---
 
-# Getting Started
+# Create a Site
 
 ## Prerequisites
 
@@ -21,7 +21,7 @@ git submodule update --init --remote
 hugo server --minify
 ```
 
-By default, the theme renders pages under `docs/` section as the sidebar menu. See [Content Organization](/docs/content/) for details.
+By default, the theme renders pages under `docs/` section as the sidebar menu. See [Content Organisation](/docs/content/organisation/) for details.
 
 ## Installation Methods
 
@@ -98,4 +98,4 @@ theme = 'hugo-book'
   unsafe = true
 ```
 
-See [Configuration](/docs/configuration/) for the full list of parameters.
+See [Configuration](/docs/getting-started/configuration/) for the full list of parameters.

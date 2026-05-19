@@ -16,7 +16,7 @@ Theme as an extendable base.
 Long-term maintainability.
 : Few dependencies means fewer things to break. The theme avoids heavy JavaScript libraries, CSS frameworks, and complex build pipelines.
 
-[Get Started](/docs/getting-started/)
+[Get Started](/docs/getting-started/create-a-site/)
 
 ## Links
 - [Source code](https://github.com/alex-shpak/hugo-book)

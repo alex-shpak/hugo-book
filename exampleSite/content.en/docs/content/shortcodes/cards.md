@@ -1,6 +1,6 @@
 # Cards
 
-Content blocks with optional images and links. Often used with [Columns](/docs/shortcodes/columns) for grid layouts.
+Content blocks with optional images and links. Often used with [Columns](/docs/content/shortcodes/columns) for grid layouts.
 
 ## Syntax
 
@@ -18,7 +18,7 @@ Markdown content
   Cards can display an image above the content.
   {{< /card >}}
 
-- {{< card href="/docs/shortcodes/experimental/cards" >}}
+- {{< card href="/docs/content/shortcodes/cards" >}}
   ### With Link {anchor=false}
   When `href` is set, the entire card becomes clickable.
   {{< /card >}}

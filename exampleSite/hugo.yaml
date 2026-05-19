@@ -55,11 +55,8 @@ languages:
 
 menu:
   home:
-    - name: "About"
-      pageRef: "/docs/introduction/"
-      weight: 1
     - name: "Documentation"
-      pageRef: "/docs/getting-started/"
+      pageRef: "/docs/getting-started/introduction"
       weight: 2
     - name: "Showcases"
       pageRef: "/showcases/"

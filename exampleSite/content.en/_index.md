@@ -11,7 +11,7 @@ layout: landing
   Hugo-Book theme is designed to be easy to read, write, navigate and maintain.
   It is an attempt to create a sustainable web project.
 
-  {{<button href="/docs/introduction">}}Explore{{</button>}}
+  {{<button href="/docs/getting-started/introduction">}}Explore{{</button>}}
 
 - ```shell
   # TL;DR
@@ -45,13 +45,13 @@ layout: landing
 - {{< card >}}
   ### Shortcodes {anchor=false}
   Pretty good shortcodes are included to enhance content:
-  [Columns](/docs/shortcodes/columns/),
-  [Cards](/docs/shortcodes/experimental/cards/),
-  [Tabs](/docs/shortcodes/tabs/),
-  [Images](/docs/shortcodes/experimental/images/),
-  [Asciinema](/docs/shortcodes/asciinema/),
-  [KaTex](/docs/shortcodes/katex/),
-  [Mermaid](/docs/shortcodes/mermaid/) and others.
+  [Columns](/docs/content/shortcodes/columns/),
+  [Cards](/docs/content/shortcodes/cards/),
+  [Tabs](/docs/content/shortcodes/tabs/),
+  [Images](/docs/content/shortcodes/images/),
+  [Asciinema](/docs/content/shortcodes/asciinema/),
+  [KaTex](/docs/content/shortcodes/katex/),
+  [Mermaid](/docs/content/shortcodes/mermaid/) and others.
   {{< /card >}}
 
 - {{< card >}}

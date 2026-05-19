@@ -1,4 +1,5 @@
 ---
+title: Configuration
 weight: 30
 ---
 
@@ -50,12 +51,19 @@ All theme parameters are set under `[params]` in your site config. Every paramet
   # By default uses Disqus; override partials/docs/comments.html for others
   BookComments = true
 
-  # Enable portable markdown links (resolve relative .md links)
-  # Values: false, 'warning', 'error'
+  # /!\ Experimental, may change or be removed.
+  # Enable portable markdown links to resolve relative .md links to Hugo URLs.
+  # Lets you write [text](./other.md) instead of Hugo's relref shortcode.
+  #   false     - disabled, relative .md links not resolved
+  #   'warning' - enabled, prints a build warning if linked page doesn't exist
+  #   'error'   - enabled, fails the build if linked page doesn't exist
   BookPortableLinks = false
 
-  # Enable service worker for offline caching
-  # Values: false, true, 'precache'
+  # /!\ Experimental, may change or be removed.
+  # Register a service worker for offline access to visited pages.
+  #   false      - disabled (default)
+  #   true       - caches pages as you visit them
+  #   'precache' - pre-populates cache with all site pages on first load
   BookServiceWorker = false
 
   # Only show languages that have translations for current page
@@ -126,52 +134,3 @@ The theme supports plain text output alongside HTML, useful for accessibility an
   section = ['html', 'txt']
 ```
 
-## Portable Links
-
-> [!WARNING]
-> Experimental feature. May change or be removed.
-
-Portable links resolve relative markdown links (`[text](./other-page.md)` or `[text](/docs/other-page.md)`) to the correct Hugo URLs. This lets you write standard markdown that works in both text editors and the rendered site.
-
-```toml {filename=hugo.toml}
-[params]
-  BookPortableLinks = 'warning'
-```
-
-`false`
-: Disabled. Relative `.md` links are not resolved.
-
-`'warning'`
-: Enabled. Hugo prints a warning during build if a linked page doesn't exist.
-
-`'error'`
-: Enabled. Hugo fails the build if a linked page doesn't exist.
-
-With portable links enabled, you can write
-
-```markdown
-See [Configuration](./configuration.md) for details.
-```
-
-Instead of Hugo's `relref` shortcode. Both image links and page links are resolved.
-
-## Service Worker
-
-> [!WARNING]
-> Experimental feature. May change or be removed.
-
-Hugo Book can register a service worker for offline access to visited pages.
-
-```toml {filename=hugo.toml}
-[params]
-  BookServiceWorker = 'precache'
-```
-
-`false`
-: Disabled (default).
-
-`true`
-: Enables a service worker that caches pages as you visit them for offline reading.
-
-`'precache'`
-: Enables a service worker that pre-populates the cache with all site pages on first load. Visited resources are also cached.

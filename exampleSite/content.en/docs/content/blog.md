@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 40
 ---
 
 # Blog
@@ -51,4 +51,4 @@ bookPostThumbnail: "cover.*"
 
 ## Date Format
 
-The date display format is configured site-wide via `BookDateFormat`. See [Configuration](/docs/configuration/) for details.
+The date display format is configured site-wide via `BookDateFormat`. See [Configuration](/docs/getting-started/configuration/) for details.
