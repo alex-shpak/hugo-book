@@ -21,6 +21,9 @@
 - Primary features work without JavaScript
 - Dark Mode
 
+## Requirements
+- [Hugo](https://gohugo.io/installation/) extended edition, v0.158 or higher
+
 ## Quick Start
 Use the [starter repository](https://github.com/alex-shpak/hugo-book-starter):
 
@@ -31,14 +34,11 @@ git submodule update --init --remote
 hugo server --minify
 ```
 
-## Requirements
-- [Hugo](https://gohugo.io/installation/) extended edition, v0.158 or higher
-
 ## Documentation
 Example site is self-documenting at [book.alxs.dev](https://book.alxs.dev)
 
 ## Versioning
-This theme follows a simple incremental versioning. e.g. `v1.0.0`, `v2.0.0` and so on. Releases will happen on breaking changes.
+This theme follows a simple incremental versioning by updating minor SemVer version `v0.13.0`, `v0.14.0` and so on. Breaking changes are expected between releases. Note that previously theme used simple `v1`-`v11` versioning, but switch was made for better hugo modules support.
 
 If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `main` branch and update your website when needed, this also the default branch.
 
@@ -51,5 +51,3 @@ Primary goals are:
 - Keep minimal (or zero) default configuration.
 - Avoid interference with user-defined layouts.
 - Avoid using JS if it can be solved by CSS.
-
-Feel free to open issues if you find missing configuration or customisation options.
