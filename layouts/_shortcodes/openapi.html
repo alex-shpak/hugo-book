@@ -1,0 +1,385 @@
+{{- $source := or (.Get "src") (.Get 0) -}}
+{{- with resources.Get $source -}}
+{{- $raw := . -}}
+{{- if or (strings.HasSuffix $source ".yaml") (strings.HasSuffix $source ".yml") -}}
+  {{- $raw = resources.FromString (printf "%s.json" $source) (. | transform.Unmarshal | jsonify) -}}
+{{- end -}}
+{{- $spec := openapi3.Unmarshal $raw -}}
+
+{{ with $spec.Info }}{{ template "openapi-info" (dict "info" . "externalDocs" $spec.ExternalDocs) }}{{ end }}
+{{ with $spec.Servers }}{{ template "openapi-servers" (dict "servers" .) }}{{ end }}
+{{ with $spec.Components }}{{ with .SecuritySchemes }}{{ template "openapi-security" (dict "schemes" .) }}{{ end }}{{ end }}
+{{ template "openapi-operations" (dict "spec" $spec) }}
+{{ with $spec.Components }}{{ with .Schemas }}{{ template "openapi-models" (dict "schemas" .) }}{{ end }}{{ end }}
+
+{{- else -}}
+{{- errorf "openapi shortcode: resource %q not found" $source -}}
+{{- end -}}
+
+
+{{- /* ========== Info ========== */ -}}
+{{- define "openapi-info" -}}
+{{- $info := .info -}}
+{{- $externalDocs := .externalDocs }}
+{{ with $info.Description }}{{ . }}{{ end }}
+
+{{ $meta := slice -}}
+{{- with $info.Version }}{{ $meta = $meta | append (printf "`v%s`" .) }}{{ end -}}
+{{- with $info.License }}{{ if .URL }}{{ $meta = $meta | append (printf "[%s](%s)" .Name .URL) }}{{ else }}{{ $meta = $meta | append .Name }}{{ end }}{{ end -}}
+{{- with $info.Contact }}{{ with .Email }}{{ $meta = $meta | append (printf "[%s](mailto:%s)" . .) }}{{ end }}{{ end -}}
+{{- with $info.TermsOfService }}{{ $meta = $meta | append (printf "[Terms of service](%s)" .) }}{{ end -}}
+{{- with $externalDocs }}{{ $meta = $meta | append (printf "[%s](%s)" (or .Description .URL) .URL) }}{{ end }}
+
+{{ delimit $meta "  \n" | safeHTML }}
+{{- end -}}
+
+
+{{- /* ========== Servers ========== */ -}}
+{{- define "openapi-servers" }}
+
+## Servers
+
+{{ range .servers }}
+{{ with .Description }}{{ . | chomp | replaceRE "\n" " " }}{{ else }}Server{{ end }}
+: [`{{ .URL }}`]({{ .URL }})
+{{- range $name, $var := .Variables }}
+: `{{ $name }}`: default `{{ $var.Default }}`{{ with $var.Enum }}, enum: {{ delimit . ", " }}{{ end }}{{ with $var.Description }}, {{ . | chomp | replaceRE "\n" " " }}{{ end }}
+{{- end }}
+{{ end -}}
+{{- end -}}
+
+
+{{- /* ========== Security ========== */ -}}
+{{- define "openapi-security" -}}
+{{- $schemes := .schemes }}
+
+## Security
+
+{{ range $name, $schemeRef := $schemes }}
+  {{- with $schemeRef.Value }}
+{{ with .Description }}{{ . | chomp | replaceRE "\n" " " }}
+: `{{ $name }}`
+{{ else }}`{{ $name }}`
+{{ end -}}
+: `{{ .Type }}`{{ with .Scheme }} `{{ . }}`{{ end }}{{ with .In }} in `{{ . }}`{{ end }}{{ with .Name }} (`{{ . }}`){{ end }}{{ with .BearerFormat }} `{{ . }}`{{ end }}{{ with .OpenIdConnectUrl }}, discovery: [{{ . }}]({{ . }}){{ end }}
+  {{- end }}
+{{ end -}}
+{{- end -}}
+
+
+{{- /* ========== Operations (grouped by tag) ========== */ -}}
+{{- define "openapi-operations" -}}
+{{- $spec := .spec -}}
+{{- $methods := slice "GET" "POST" "PUT" "PATCH" "DELETE" "HEAD" "OPTIONS" "TRACE" -}}
+{{- $locations := slice
+  (dict "in" "path" "label" "Path parameters")
+  (dict "in" "query" "label" "Query parameters")
+  (dict "in" "header" "label" "Header parameters")
+  (dict "in" "cookie" "label" "Cookie parameters") -}}
+
+{{- /* Bucket each operation under every tag it declares */ -}}
+{{- $byTag := dict -}}
+{{- range $path, $pathItem := $spec.Paths.Map -}}
+  {{- range $method := $methods -}}
+    {{- with index $pathItem.Operations $method -}}
+      {{- $tags := .Tags -}}
+      {{- if not $tags }}{{ $tags = slice "API" }}{{ end -}}
+      {{- $entry := dict "path" $path "method" $method "operation" . "pathItem" $pathItem -}}
+      {{- range $tag := $tags -}}
+        {{- $bucket := index $byTag $tag | default slice -}}
+        {{- $byTag = merge $byTag (dict $tag ($bucket | append $entry)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end }}
+
+{{ range $tag, $entries := $byTag }}
+
+## {{ $tag | title }}
+
+{{ range $entry := $entries }}
+{{ template "openapi-operation" (dict "spec" $spec "path" $entry.path "method" $entry.method "operation" $entry.operation "pathItem" $entry.pathItem "locations" $locations) }}
+{{- end -}}
+{{- end }}
+{{- end -}}
+
+
+{{- /* ========== Operation ========== */ -}}
+{{- define "openapi-operation" -}}
+{{- $spec := .spec -}}
+{{- $path := .path -}}
+{{- $method := .method -}}
+{{- $operation := .operation -}}
+{{- $pathItem := .pathItem -}}
+{{- $locations := .locations }}
+
+{{- $title := or $operation.Summary (printf "`%s %s`" (upper $method) $path) -}}
+{{- if $operation.Deprecated }}{{ $title = printf "~~%s~~" $title }}{{ end }}
+
+### {{ $title }}{{ with $operation.OperationID }} {id="op-{{ anchorize . }}"}{{ end }}
+
+{{ with $operation.Description }}{{ . }}
+
+{{ end -}}
+{{- with $operation.ExternalDocs }}[{{ with .Description }}{{ . | chomp | replaceRE "\n" " " }}{{ else }}{{ .URL }}{{ end }}]({{ .URL }})
+
+{{ end -}}
+
+{{- $security := $operation.Security -}}
+{{- if not $security }}{{ $security = $spec.Security }}{{ end }}
+
+{{ $requirementStrings := slice -}}
+{{- range $requirement := $security -}}
+  {{- $schemeLinks := slice -}}
+  {{- range $schemeName, $_ := $requirement -}}
+    {{- $schemeLinks = $schemeLinks | append (printf "[%s](#security)" $schemeName) -}}
+  {{- end -}}
+  {{- if $schemeLinks }}{{ $requirementStrings = $requirementStrings | append (delimit $schemeLinks " and ") }}{{ end -}}
+{{- end }}
+
+#### Request{{ if $requirementStrings }} (requires {{ delimit $requirementStrings ", " }}){{ end }}
+
+```tpl
+{{ upper $method }} {{ $path }}
+```
+
+
+{{- /* Dedup: operation-level overrides path-level by name+in */ -}}
+{{- $opKeys := dict -}}
+{{- range $operation.Parameters }}{{ with .Value }}{{ $opKeys = merge $opKeys (dict (printf "%s:%s" .In .Name) true) }}{{ end }}{{ end -}}
+{{- $allParams := slice -}}
+{{- range $pp := $pathItem.Parameters }}{{ with $pp.Value }}{{ if not (isset $opKeys (printf "%s:%s" .In .Name)) }}{{ $allParams = $allParams | append $pp }}{{ end }}{{ end }}{{ end -}}
+{{- $allParams = append $allParams $operation.Parameters -}}
+{{ template "openapi-parameters" (dict "allParams" $allParams "locations" $locations) }}
+{{- with $operation.RequestBody }}{{ with .Value -}}
+  {{ template "openapi-request-body" (dict "requestBody" .) }}
+{{- end }}{{ end }}
+{{- with $operation.Responses -}}
+  {{ template "openapi-responses" (dict "responses" .) }}
+{{- end -}}
+{{- end -}}
+
+
+{{- /* ========== Parameters ========== */ -}}
+{{- define "openapi-parameters" -}}
+  {{- $allParams := .allParams -}}
+  {{- range .locations -}}
+    {{- $location := .in -}}
+    {{- $params := slice -}}
+    {{- range $allParams -}}
+      {{- with .Value }}{{ if eq .In $location }}{{ $params = $params | append . }}{{ end }}{{ end -}}
+    {{- end }}
+    {{- if $params }}
+
+#### {{ .label }}
+
+| Parameter name | Value | Description | Additional |
+|----------------|-------|-------------|------------|
+{{- range $params }}
+| `{{ .Name }}` | {{ with .Schema }}{{ template "openapi-type" . }}{{ end }} | {{ with .Description }}{{ . | chomp | replaceRE "\n" " " }}{{ end }} | {{ template "openapi-param-extras" . }} |
+{{- end }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- define "openapi-param-extras" -}}
+  {{- $bits := slice -}}
+  {{- if .Required }}{{ $bits = $bits | append "Required" }}{{ end -}}
+  {{- if .Deprecated }}{{ $bits = $bits | append "Deprecated" }}{{ end -}}
+  {{- $example := .Example -}}
+  {{- $default := "" -}}
+  {{- with .Schema }}{{ with .Value -}}
+    {{- with .Default }}{{ $default = . }}{{ end -}}
+    {{- if not $example }}{{ with .Example }}{{ $example = . }}{{ end }}{{ end -}}
+  {{- end }}{{ end -}}
+  {{- with $default }}{{ $bits = $bits | append (printf "Default: `%v`" .) }}{{ end -}}
+  {{- with $example }}{{ $bits = $bits | append (printf "Example: `%v`" .) }}{{ end -}}
+  {{- delimit $bits ", " -}}
+{{- end -}}
+
+
+{{- /* ========== Request body ========== */ -}}
+{{- define "openapi-request-body" -}}
+  {{- with .requestBody -}}
+    {{- if or .Description .Content }}
+
+#### Request body{{ if .Required }} (required){{ end }}
+
+{{ with .Description }}{{ . }}{{ end }}
+{{ range $mediaType, $obj := .Content }}
+{{ template "openapi-media-examples" (dict "mediaType" $mediaType "examples" $obj.Examples "example" $obj.Example) }}
+{{- end -}}
+{{ template "openapi-schema-summary" (dict "content" .Content) }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+
+{{- /* ========== Responses ========== */ -}}
+{{- define "openapi-responses" -}}
+  {{- $responses := .responses -}}
+  {{- with $responses }}
+
+#### Responses
+
+{{ range $code, $codeRef := .Map -}}
+  {{- with $codeRef.Value }}
+`{{ $code }}`{{ with .Description }}: {{ . | chomp | replaceRE "\n" " " }}{{ end }}
+{{ with .Content }}{{ range $mediaType, $obj := . }}
+{{ template "openapi-media-examples" (dict "mediaType" $mediaType "examples" $obj.Examples "example" $obj.Example) }}
+{{- end -}}
+{{ template "openapi-schema-summary" (dict "content" .) }}
+{{ end -}}
+{{ template "openapi-headers-detail" (dict "code" $code "headers" .Headers) }}
+  {{- end }}
+{{ end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- define "openapi-headers-detail" -}}
+  {{- $code := .code -}}
+  {{- with .headers }}
+
+`{{ $code }}` response headers:
+
+| Name | Type | Description |
+|------|------|-------------|
+    {{- range $name, $hdrRef := . }}
+      {{- with $hdrRef.Value }}
+| `{{ $name }}` | {{ with .Schema }}{{ template "openapi-type" . }}{{ end }} | {{ with .Description }}{{ . | chomp | replaceRE "\n" " " }}{{ end }} |
+      {{- end -}}
+    {{- end }}
+
+  {{- end -}}
+{{- end -}}
+
+
+{{- /* ========== Media examples (author-provided only) ========== */ -}}
+{{- define "openapi-media-examples" -}}
+  {{- $mediaType := .mediaType -}}
+  {{- $examples := .examples -}}
+  {{- $example := .example -}}
+  {{- if $examples -}}
+    {{- range $name, $exRef := $examples }}
+      {{- with $exRef.Value }}
+
+{{ with .Summary }}{{ . }}{{ else }}{{ $name }}{{ end }}{{ with .Description }} - {{ . | chomp | replaceRE "\n" " " }}{{ end }}
+```jsonc {filename="{{ $mediaType }}"}
+{{ jsonify (dict "indent" "  ") .Value | safeHTML }}
+```
+      {{- end -}}
+    {{- end -}}
+  {{- else if $example }}
+```jsonc {filename="{{ $mediaType }}"}
+{{ jsonify (dict "indent" "  ") $example | safeHTML }}
+```
+  {{- end -}}
+{{- end -}}
+
+
+{{- /* ========== Schema summary (type caption + embedded properties table) ========== */ -}}
+{{- define "openapi-schema-summary" -}}
+  {{- $schemaRef := "" -}}
+  {{- range $mt, $obj := .content -}}
+    {{- if not $schemaRef }}{{ with $obj.Schema }}{{ $schemaRef = . }}{{ end }}{{ end -}}
+  {{- end -}}
+  {{- with $schemaRef }}
+Schema: {{ template "openapi-type" . }}
+{{- /* Unwrap arrays so `array of Pet` embeds the Pet table */ -}}
+{{- $value := $schemaRef.Value -}}
+{{- $itemRef := $schemaRef -}}
+{{- if and $value (not $value.Properties) $value.Items -}}
+  {{- $itemRef = $value.Items -}}
+{{- end -}}
+{{- with $itemRef.Value -}}
+  {{- if or .Properties .AllOf }}
+
+{{ template "openapi-properties-table" (dict "schema" $itemRef) }}
+  {{- end -}}
+{{- end -}}
+  {{- end -}}
+{{- end -}}
+
+
+{{- /* ========== Models ========== */ -}}
+{{- define "openapi-models" -}}
+{{- $schemas := .schemas }}
+
+## Models
+
+{{ range $name, $schemaRef := $schemas -}}
+  {{- with $schemaRef.Value }}
+
+### {{ $name }} {id="model-{{ $name | anchorize }}"}
+
+{{ with .Description }}{{ . | chomp }}
+
+{{ end -}}
+{{- $parents := slice -}}
+{{- range .AllOf }}{{ if .Ref }}{{ $parents = $parents | append . }}{{ end }}{{ end -}}
+{{- with $parents }}Inherits from {{ range $i, $p := . }}{{ if $i }}, {{ end }}{{ template "openapi-schema-link" $p }}{{ end }}.
+
+{{ end -}}
+{{- if or .Properties .AllOf -}}
+{{ template "openapi-properties-table" (dict "schema" $schemaRef) }}
+{{- else -}}
+Type: {{ template "openapi-type" $schemaRef }}{{ with .Enum }} (enum: {{ range $i, $v := . }}{{ if $i }}, {{ end }}`{{ $v }}`{{ end }}){{ end }}
+{{- end }}
+  {{- end }}
+{{ end -}}
+{{- end -}}
+
+
+{{- /* ========== Properties table ========== */ -}}
+{{- define "openapi-properties-table" -}}
+  {{- $schemaRef := .schema -}}
+  {{- with $schemaRef.Value -}}
+    {{- $props := dict -}}
+    {{- $required := slice -}}
+    {{- with .Properties }}{{ $props = merge $props . }}{{ end -}}
+    {{- with .Required }}{{ $required = $required | append . }}{{ end -}}
+    {{- range .AllOf -}}
+      {{- if not .Ref -}}
+        {{- with .Value -}}
+          {{- with .Properties }}{{ $props = merge $props . }}{{ end -}}
+          {{- with .Required }}{{ $required = $required | append . }}{{ end -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if $props }}
+
+| Property | Type | Required | Description |
+|----------|------|----------|-------------|
+      {{- range $name, $prop := $props -}}
+        {{- $isRequired := in $required $name }}
+| `{{ $name }}` | {{ template "openapi-type" $prop }} | {{ if $isRequired }}yes{{ else }}no{{ end }} | {{ with $prop.Value.Description }}{{ . | chomp | replaceRE "\n" " " }}{{ end }} |
+      {{- end }}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+
+{{- /* ========== Type cell (handles ref, array, primitive) ========== */ -}}
+{{- define "openapi-type" -}}
+  {{- if .Ref -}}
+    {{- template "openapi-schema-link" . -}}
+  {{- else -}}
+    {{- with .Value -}}
+      {{- $t := "" -}}{{- with .Type }}{{ with .Slice }}{{ $t = index . 0 }}{{ end }}{{ end -}}
+      {{- if eq $t "array" -}}
+        array of {{ template "openapi-type" .Items }}
+      {{- else if $t -}}
+        {{ $t }}{{ with .Format }} ({{ . }}){{ end }}
+      {{- else if .Enum -}}
+        enum
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* ========== Schema link (#model-name) ========== */ -}}
+{{- define "openapi-schema-link" -}}
+  {{- $parts := split .Ref "/" -}}
+  {{- $name := index $parts (sub (len $parts) 1) -}}
+[{{ $name }}](#model-{{ $name | anchorize }})
+{{- end -}}
