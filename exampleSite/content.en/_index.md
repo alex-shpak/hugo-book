@@ -31,7 +31,6 @@ It is an attempt to create a sustainable web project.
 - ### Shortcodes {anchor=false}
   Pretty good shortcodes are included to enhance content:
   [Columns](/docs/content/shortcodes/columns/),
-  [Cards](/docs/content/shortcodes/experimental/cards/),
   [Tabs](/docs/content/shortcodes/tabs/),
   [Images](/docs/content/shortcodes/experimental/images/),
   [Asciinema](/docs/content/shortcodes/asciinema/),
