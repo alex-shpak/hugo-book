@@ -1,4 +1,7 @@
-{{- $group := printf "tabs-%v" (.Parent.Store.Get "id") -}}
+{{- if not .Ordinal -}}{{- /* first tab sets group ID */ -}}
+  {{- .Parent.Store.Set "id" (partial "docs/text/shortcode-id" .Parent) -}}
+{{- end -}}
+{{- $group := printf "tabs-%d" (.Parent.Store.Get "id") -}}
 {{- $tab := printf "%s-%d" $group .Ordinal -}}
 <input type="radio" class="toggle" name="{{ $group }}" id="{{ $tab }}" {{ if not .Ordinal }}checked="checked"{{ end }} />
 {{- /* remove whitespaces */ -}}
