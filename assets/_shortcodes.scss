@@ -223,14 +223,11 @@
   }
 
   .book-codeblock-filename {
-    background: var(--gray-100);
-    border: $padding-1 solid var(--gray-200);
-    border-bottom: 0;
-    font-size: var(--font-size-smaller);
-    margin-top: $padding-16;
+    display: block;
     padding: $padding-4 $padding-8;
-    border-start-start-radius: var(--border-radius);
-    border-start-end-radius: var(--border-radius);
+    border-bottom: 0;
+    font-size: var(--font-size-smallest);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
 
     a {
       color: var(--body-font-color);
