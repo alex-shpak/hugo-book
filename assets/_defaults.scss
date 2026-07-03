@@ -1,17 +1,3 @@
-// Used in layout
-$padding-1: 1px !default;
-$padding-4: 0.25rem !default;
-$padding-8: 0.5rem !default;
-$padding-16: 1rem !default;
-
-$body-min-width: 20rem !default;
-$container-max-width: 90rem !default;
-
-$menu-width: 16rem !default;
-$toc-width: 16rem !default;
-
-$mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
-
 :root {
   --font-size: 16px;
   --font-size-smaller: 0.875rem;
@@ -23,12 +9,18 @@ $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
   --body-font-color: black;
 
   --border-radius: 0.25rem;
-}
 
-// Convenience mixing to declare a color and a transparent tint
-@mixin accent($name, $color, $tint: 0.1) {
-  --color-accent-#{$name}: #{$color};
-  --color-accent-#{$name}-tint: #{rgba($color, $tint)};
+  // Used in layout
+  --space-1: 1px;
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-16: 1rem;
+
+  --body-min-width: 20rem;
+  --container-max-width: 90rem;
+
+  --menu-width: 16rem;
+  --toc-width: 16rem;
 }
 
 // Themes
@@ -46,17 +38,17 @@ $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
   --gray-200: #e9ecef;
   --gray-500: #adb5bd;
 
-  @include accent("default", #64748b);
-  @include accent("note", #4486dd);
-  @include accent("tip", #3bad3b);
-  @include accent("important", #8144dd);
-  @include accent("warning", #f59e42);
-  @include accent("caution", #d84747);
+  --color-accent-default: #64748b;
+  --color-accent-note: #4486dd;
+  --color-accent-tip: #3bad3b;
+  --color-accent-important: #8144dd;
+  --color-accent-warning: #f59e42;
+  --color-accent-caution: #d84747;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #4486dd);
-  @include accent("success", #3bad3b);
-  @include accent("danger", #d84747);
+  --color-accent-info: #4486dd;
+  --color-accent-success: #3bad3b;
+  --color-accent-danger: #d84747;
 }
 
 @mixin theme-dark { // based on https://www.nordtheme.com/
@@ -74,17 +66,17 @@ $mobile-breakpoint: $menu-width + $body-min-width * 1.2 + $toc-width !default;
   --gray-200: #434c5e;
   --gray-500: #d8dee9;
 
-  @include accent("default", #81a1c1);
-  @include accent("note", #5e81ac);
-  @include accent("tip", #a3be8c);
-  @include accent("important", #b48ead);
-  @include accent("warning", #d08770);
-  @include accent("caution", #bf616a);
+  --color-accent-default: #81a1c1;
+  --color-accent-note: #5e81ac;
+  --color-accent-tip: #a3be8c;
+  --color-accent-important: #b48ead;
+  --color-accent-warning: #d08770;
+  --color-accent-caution: #bf616a;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #5e81ac);
-  @include accent("success", #a3be8c);
-  @include accent("danger", #bf616a);
+  --color-accent-info: #5e81ac;
+  --color-accent-success: #a3be8c;
+  --color-accent-danger: #bf616a;
 }
 
 @mixin theme-auto {

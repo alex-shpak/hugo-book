@@ -1,21 +1,38 @@
-$startLevel: 1;
-$endLevel: 6;
-
 .book-page .markdown.book-article {
-  @for $currentLevel from $startLevel through $endLevel {
-    h#{$currentLevel} {
-      counter-increment: h#{$currentLevel};
-      counter-reset: h#{$currentLevel + 1};
+  h1 {
+    counter-increment: h1;
+    counter-reset: h2;
+    &::before { content: counter(h1)"." " "; }
+  }
 
-      $content: "";
-      @for $n from $startLevel through $currentLevel {
-        $content: $content + 'counter(h#{$n})"."';
-      }
+  h2 {
+    counter-increment: h2;
+    counter-reset: h3;
+    &::before { content: counter(h1)"."counter(h2)"." " "; }
+  }
 
-      &::before {
-        content: unquote($content) " ";
-      }
-    }
+  h3 {
+    counter-increment: h3;
+    counter-reset: h4;
+    &::before { content: counter(h1)"."counter(h2)"."counter(h3)"." " "; }
+  }
+
+  h4 {
+    counter-increment: h4;
+    counter-reset: h5;
+    &::before { content: counter(h1)"."counter(h2)"."counter(h3)"."counter(h4)"." " "; }
+  }
+
+  h5 {
+    counter-increment: h5;
+    counter-reset: h6;
+    &::before { content: counter(h1)"."counter(h2)"."counter(h3)"."counter(h4)"."counter(h5)"." " "; }
+  }
+
+  h6 {
+    counter-increment: h6;
+    counter-reset: h7;
+    &::before { content: counter(h1)"."counter(h2)"."counter(h3)"."counter(h4)"."counter(h5)"."counter(h6)"." " "; }
   }
 }
 

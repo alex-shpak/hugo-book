@@ -2,10 +2,10 @@
 
   // {{< tabs >}}
   .book-tabs {
-    margin-top: $padding-16;
-    margin-bottom: $padding-16;
+    margin-top: var(--space-16);
+    margin-bottom: var(--space-16);
 
-    border: $padding-1 solid var(--gray-200);
+    border: var(--space-1) solid var(--gray-200);
     border-radius: var(--border-radius);
 
     display: flex;
@@ -13,21 +13,21 @@
 
     label {
       display: inline-block;
-      padding: $padding-8 $padding-16;
-      border-bottom: $padding-1 transparent;
+      padding: var(--space-8) var(--space-16);
+      border-bottom: var(--space-1) transparent;
       cursor: pointer;
     }
 
     .book-tabs-content {
       order: 999; //Move content blocks to the end
       width: 100%;
-      border-top: $padding-1 solid var(--gray-100);
-      padding: $padding-16;
+      border-top: var(--space-1) solid var(--gray-100);
+      padding: var(--space-16);
       display: none;
     }
 
     input[type="radio"]:checked+label {
-      border-bottom: $padding-1 solid var(--color-link);
+      border-bottom: var(--space-1) solid var(--color-link);
     }
 
     input[type="radio"]:checked+label+.book-tabs-content {
@@ -37,11 +37,11 @@
 
   // {{< columns >}}
   .book-columns {
-    gap: $padding-16;
+    gap: var(--space-16);
 
     >div {
-      margin: $padding-16 0;
-      min-width: $body-min-width * 0.66;
+      margin: var(--space-16) 0;
+      min-width: calc(var(--body-min-width) * 0.66);
     }
 
     >ul {
@@ -49,11 +49,11 @@
       display: flex;
       padding: 0;
       flex-wrap: wrap;
-      gap: $padding-16;
+      gap: var(--space-16);
 
       >li {
         flex: 1 1;
-        min-width: $body-min-width * 0.66;
+        min-width: calc(var(--body-min-width) * 0.66);
       }
     }
   }
@@ -63,9 +63,9 @@
     display: inline-block;
     font-size: var(--font-size-smaller);
     color: var(--color-link);
-    line-height: $padding-16 * 2;
-    padding: 0 $padding-16;
-    border: $padding-1 solid var(--color-link);
+    line-height: calc(var(--space-16) * 2);
+    padding: 0 var(--space-16);
+    border: var(--space-1) solid var(--color-link);
     border-radius: var(--border-radius);
     cursor: pointer;
 
@@ -75,35 +75,45 @@
   }
 
   .book-hint {
-    @each $name in (note, tip, important, warning, caution, default, info, success, danger) {
-      &.#{$name} {
-        border-color: var(--color-accent-#{$name});
-        background-color: var(--color-accent-#{$name}-tint);
-      }
-    }
+    &.note { --accent-color: var(--color-accent-note); }
+    &.tip { --accent-color: var(--color-accent-tip); }
+    &.important { --accent-color: var(--color-accent-important); }
+    &.warning { --accent-color: var(--color-accent-warning); }
+    &.caution { --accent-color: var(--color-accent-caution); }
+    &.default { --accent-color: var(--color-accent-default); }
+    &.info { --accent-color: var(--color-accent-info); }
+    &.success { --accent-color: var(--color-accent-success); }
+    &.danger { --accent-color: var(--color-accent-danger); }
+
+    border-color: var(--accent-color);
+    background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
   }
 
   // {{< badge >}}
   .book-badge {
-    @each $name in (note, tip, important, warning, caution, default, info, success, danger) {
-      &.#{$name} {
-        --accent-color: var(--color-accent-#{$name});
-      }
-    }
+    &.note { --accent-color: var(--color-accent-note); }
+    &.tip { --accent-color: var(--color-accent-tip); }
+    &.important { --accent-color: var(--color-accent-important); }
+    &.warning { --accent-color: var(--color-accent-warning); }
+    &.caution { --accent-color: var(--color-accent-caution); }
+    &.default { --accent-color: var(--color-accent-default); }
+    &.info { --accent-color: var(--color-accent-info); }
+    &.success { --accent-color: var(--color-accent-success); }
+    &.danger { --accent-color: var(--color-accent-danger); }
 
     display: inline-block;
     font-size: var(--font-size-smaller);
     font-weight: var(--body-font-weight);
     vertical-align: middle;
     border-radius: var(--border-radius);
-    border: $padding-1 solid var(--accent-color);
+    border: var(--space-1) solid var(--accent-color);
     overflow: hidden;
     text-wrap: nowrap;
     color: var(--body-font-color);
 
     span {
       display: inline-block;
-      padding: 0 $padding-8;
+      padding: 0 var(--space-8);
     }
 
     span.book-badge-value {
@@ -119,8 +129,8 @@
     >ol {
       counter-reset: steps;
       list-style: none;
-      padding-inline-start: $padding-16 + $padding-4;
-      margin-top: $padding-16 * 2;
+      padding-inline-start: calc(var(--space-16) + var(--space-4));
+      margin-top: calc(var(--space-16) * 2);
 
       >li::before {
         content: counter(steps);
@@ -129,26 +139,25 @@
         position: absolute;
         display: flex;
         justify-content: center;
-        left: $padding-8;
+        left: var(--space-8);
 
-        height: $padding-16 * 1.5;
-        width: $padding-16 * 1.5;
-        padding: $padding-4;
-        border-radius: $padding-8;
+        height: calc(var(--space-16) * 1.5);
+        width: calc(var(--space-16) * 1.5);
+        padding: var(--space-4);
+        border-radius: var(--space-8);
 
         white-space: nowrap;
-        line-height: $padding-16;
+        line-height: var(--space-16);
 
         color: var(--body-background);
         background: var(--gray-500);
-        outline: $padding-4 solid var(--body-background);
+        outline: var(--space-4) solid var(--body-background);
       }
 
       >li {
-        @extend .markdown-inner;
-        border-inline-start: $padding-1 solid var(--gray-500);
-        padding-inline-start: $padding-16 * 3;
-        padding-bottom: $padding-16 * 2;
+        border-inline-start: var(--space-1) solid var(--gray-500);
+        padding-inline-start: calc(var(--space-16) * 3);
+        padding-bottom: calc(var(--space-16) * 2);
       }
 
       >li:last-child {
@@ -163,7 +172,7 @@
     overflow: hidden;
     height: 100%;
     border-radius: var(--border-radius);
-    border: $padding-1 solid var(--gray-200);
+    border: var(--space-1) solid var(--gray-200);
 
     > a {
       display: block;
@@ -187,7 +196,7 @@
     }
 
     .markdown-inner {
-      padding: $padding-16;
+      padding: var(--space-16);
     }
   }
 
@@ -213,18 +222,18 @@
 
       z-index: 1;
       cursor: zoom-out;
-      padding: $padding-16;
+      padding: var(--space-16);
     }
   }
 
   // {{< asciinema >}}
   .book-asciinema {
-    margin: $padding-16 0;
+    margin: var(--space-16) 0;
   }
 
   .book-codeblock-filename {
     display: block;
-    padding: $padding-4 $padding-8;
+    padding: var(--space-4) var(--space-8);
     border-bottom: 0;
     font-size: var(--font-size-smallest);
     border-radius: var(--border-radius) var(--border-radius) 0 0;

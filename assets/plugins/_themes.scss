@@ -13,17 +13,17 @@
   --gray-200: #d0d0d0;
   --gray-500: #707070;
 
-  @include accent("default", #000000);
-  @include accent("note", #0066cc);
-  @include accent("tip", #008000);
-  @include accent("important", #800080);
-  @include accent("warning", #ff8c00);
-  @include accent("caution", #cc0000);
+  --color-accent-default: #000000;
+  --color-accent-note: #0066cc;
+  --color-accent-tip: #008000;
+  --color-accent-important: #800080;
+  --color-accent-warning: #ff8c00;
+  --color-accent-caution: #cc0000;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #0066cc);
-  @include accent("success", #008000);
-  @include accent("danger", #cc0000);
+  --color-accent-info: #0066cc;
+  --color-accent-success: #008000;
+  --color-accent-danger: #cc0000;
 }
 
 @mixin theme-contrast-dark {
@@ -41,17 +41,17 @@
   --gray-200: #333333;
   --gray-500: #a0a0a0;
 
-  @include accent("default", #ffffff);
-  @include accent("note", #00ccff);
-  @include accent("tip", #00ff00);
-  @include accent("important", #ff00ff);
-  @include accent("warning", #ffaa00);
-  @include accent("caution", #ff0000);
+  --color-accent-default: #ffffff;
+  --color-accent-note: #00ccff;
+  --color-accent-tip: #00ff00;
+  --color-accent-important: #ff00ff;
+  --color-accent-warning: #ffaa00;
+  --color-accent-caution: #ff0000;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #00ccff);
-  @include accent("success", #00ff00);
-  @include accent("danger", #ff0000);
+  --color-accent-info: #00ccff;
+  --color-accent-success: #00ff00;
+  --color-accent-danger: #ff0000;
 }
 
 @mixin theme-contrast-auto {
@@ -77,17 +77,17 @@
   --gray-200: #ccd0da;
   --gray-500: #9ca0b0;
 
-  @include accent("default", #7c7f93);
-  @include accent("note", #04a5e5);
-  @include accent("tip", #40a02b);
-  @include accent("important", #7287fd);
-  @include accent("warning", #df8e1d);
-  @include accent("caution", #d20f39);
+  --color-accent-default: #7c7f93;
+  --color-accent-note: #04a5e5;
+  --color-accent-tip: #40a02b;
+  --color-accent-important: #7287fd;
+  --color-accent-warning: #df8e1d;
+  --color-accent-caution: #d20f39;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #04a5e5);
-  @include accent("success", #40a02b);
-  @include accent("danger", #d20f39);
+  --color-accent-info: #04a5e5;
+  --color-accent-success: #40a02b;
+  --color-accent-danger: #d20f39;
 }
 
 @mixin theme-catppuccin-dark { // https://github.com/catppuccin/catppuccin @frappe
@@ -105,17 +105,17 @@
   --gray-200: #51576d;
   --gray-500: #737994;
 
-  @include accent("default", #838ba4);
-  @include accent("note", #8caaee);
-  @include accent("tip", #a6d189);
-  @include accent("important", #ca9ee6);
-  @include accent("warning", #ef9f76);
-  @include accent("caution", #e78284);
+  --color-accent-default: #838ba4;
+  --color-accent-note: #8caaee;
+  --color-accent-tip: #a6d189;
+  --color-accent-important: #ca9ee6;
+  --color-accent-warning: #ef9f76;
+  --color-accent-caution: #e78284;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #8caaee);
-  @include accent("success", #a6d189);
-  @include accent("danger", #e78284);
+  --color-accent-info: #8caaee;
+  --color-accent-success: #a6d189;
+  --color-accent-danger: #e78284;
 }
 
 @mixin theme-catppuccin-auto {
@@ -141,17 +141,17 @@
   --gray-200: #e7e8e9;
   --gray-500: #abb0b6;
 
-  @include accent("default", #8a9199);
-  @include accent("note", #399ee6);
-  @include accent("tip", #86b300);
-  @include accent("important", #a37acc);
-  @include accent("warning", #fa8d3e);
-  @include accent("caution", #f07171);
+  --color-accent-default: #8a9199;
+  --color-accent-note: #399ee6;
+  --color-accent-tip: #86b300;
+  --color-accent-important: #a37acc;
+  --color-accent-warning: #fa8d3e;
+  --color-accent-caution: #f07171;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #399ee6);
-  @include accent("success", #86b300);
-  @include accent("danger", #f07171);
+  --color-accent-info: #399ee6;
+  --color-accent-success: #86b300;
+  --color-accent-danger: #f07171;
 }
 
 @mixin theme-ayu-dark { // https://github.com/ayu-theme/ayu-colors (mirage)
@@ -169,17 +169,17 @@
   --gray-200: #2d3443;
   --gray-500: #5c6773;
 
-  @include accent("default", #5c6773);
-  @include accent("note", #5ccfe6);
-  @include accent("tip", #bae67e);
-  @include accent("important", #d4bfff);
-  @include accent("warning", #ffa759);
-  @include accent("caution", #f28779);
+  --color-accent-default: #5c6773;
+  --color-accent-note: #5ccfe6;
+  --color-accent-tip: #bae67e;
+  --color-accent-important: #d4bfff;
+  --color-accent-warning: #ffa759;
+  --color-accent-caution: #f28779;
 
   // Fallback for {{< hint >}} shortcodes
-  @include accent("info", #5ccfe6);
-  @include accent("success", #bae67e);
-  @include accent("danger", #f28779);
+  --color-accent-info: #5ccfe6;
+  --color-accent-success: #bae67e;
+  --color-accent-danger: #f28779;
 }
 
 @mixin theme-ayu-auto {

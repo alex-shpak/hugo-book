@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  min-width: $body-min-width;
+  min-width: var(--body-min-width);
   color: var(--body-font-color);
   background: var(--body-background) var(--body-background-tint);
 
@@ -40,11 +40,12 @@ a {
 }
 
 small {
-  @extend .text-small;
+  font-size: .875em;
 }
 
 :focus-visible, input.toggle:focus-visible + label {
-  @include outline;
+  outline-style: auto;
+  outline-color: var(--color-link);
 }
 
 nav ul {
@@ -72,7 +73,7 @@ nav ul {
 }
 
 nav > ul {
-  margin-bottom: $padding-16;
+  margin-bottom: var(--space-16);
 }
 
 ul.pagination {
@@ -82,12 +83,12 @@ ul.pagination {
   padding-inline-start: 0px;
 
   .page-item a {
-    padding: $padding-16;
+    padding: var(--space-16);
   }
 }
 
 .container {
-  max-width: $container-max-width;
+  max-width: var(--container-max-width);
   margin: 0 auto;
 }
 
@@ -102,7 +103,7 @@ a .book-icon {
 
 .book-brand {
   margin-top: 0;
-  margin-bottom: $padding-16;
+  margin-bottom: var(--space-16);
 
   img {
     height: 1.5em;
@@ -111,14 +112,12 @@ a .book-icon {
 }
 
 .book-menu {
-  flex: 0 0 $menu-width;
+  flex: 0 0 var(--menu-width);
   font-size: var(--font-size-smaller);
 
   .book-menu-content {
-    width: $menu-width;
-    padding: $padding-16;
-
-    @include fixed;
+    width: var(--menu-width);
+    padding: var(--space-16);
   }
 
   a, label {
@@ -168,7 +167,7 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-section-flat {
-  margin: $padding-16 0;
+  margin: var(--space-16) 0;
 
   > a,
   > span,
@@ -182,13 +181,13 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-page {
-  min-width: $body-min-width;
+  min-width: var(--body-min-width);
   flex-grow: 1;
-  padding: $padding-16;
+  padding: var(--space-16);
 }
 
 .book-post {
-  margin-bottom: $padding-16 * 4;
+  margin-bottom: calc(var(--space-16) * 4);
 
   .book-post-date img {
     height: 1em;
@@ -197,7 +196,7 @@ body[dir="rtl"] .book-menu {
   }
 
   .book-post-content {
-    margin-top: $padding-16;
+    margin-top: var(--space-16);
   }
 
   .book-post-thumbnail {
@@ -212,7 +211,7 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-header {
-  margin-bottom: $padding-16;
+  margin-bottom: var(--space-16);
 
   label {
     line-height: 0;
@@ -221,7 +220,7 @@ body[dir="rtl"] .book-menu {
   h3 {
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0 $padding-16;
+    margin: 0 var(--space-16);
   }
 }
 
@@ -232,7 +231,7 @@ body[dir="rtl"] .book-menu {
 
   nav > ul {
     display: flex;
-    gap: $padding-16;
+    gap: var(--space-16);
     justify-content: end;
 
     > li {
@@ -254,13 +253,13 @@ body[dir="rtl"] .book-menu {
 
 .book-search {
   position: relative;
-  margin: $padding-8 0;
+  margin: var(--space-8) 0;
 
   input {
     width: 100%;
-    padding: $padding-8;
+    padding: var(--space-8);
 
-    border: $padding-1 solid var(--gray-200);
+    border: var(--space-1) solid var(--gray-200);
     border-radius: var(--border-radius);
 
     background: var(--gray-100);
@@ -274,17 +273,17 @@ body[dir="rtl"] .book-menu {
   .book-search-spinner {
     position: absolute;
     top: 0;
-    margin: $padding-8;
-    margin-inline-start: calc(100% - #{$padding-16 + $padding-8});
+    margin: var(--space-8);
+    margin-inline-start: calc(100% - (var(--space-16) + var(--space-8)));
 
-    width: $padding-16;
-    height: $padding-16;
+    width: var(--space-16);
+    height: var(--space-16);
 
-    border: $padding-1 solid transparent;
+    border: var(--space-1) solid transparent;
     border-top-color: var(--body-font-color);
     border-radius: 50%;
 
-    @include spin(1s);
+    animation: spin 1s ease infinite;
   }
 
   ul a {
@@ -297,18 +296,12 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-toc {
-  flex: 0 0 $toc-width;
+  flex: 0 0 var(--toc-width);
   font-size: var(--font-size-smallest);
 
   .book-toc-content {
-    width: $toc-width;
-    padding: $padding-16;
-
-    @include fixed;
-  }
-
-  a {
-    display: block;
+    width: var(--toc-width);
+    padding: var(--space-16);
   }
 
   img {
@@ -321,22 +314,32 @@ body[dir="rtl"] .book-menu {
   }
 }
 
+// Fixed full-height scrollable side panels
+.book-menu .book-menu-content,
+.book-toc .book-toc-content {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .book-footer {
-  padding-top: $padding-16;
+  padding-top: var(--space-16);
   font-size: var(--font-size-smaller);
 
   a {
-    margin: $padding-4 0;
-    padding: $padding-4 0;
+    margin: var(--space-4) 0;
+    padding: var(--space-4) 0;
   }
 }
 
 .book-comments {
-  margin-top: $padding-16;
+  margin-top: var(--space-16);
 }
 
 .book-copyright {
-  margin-top: $padding-16;
+  margin-top: var(--space-16);
 }
 
 .book-languages {
@@ -357,10 +360,11 @@ body[dir="rtl"] .book-menu {
   will-change: transform, margin, opacity;
 }
 
-@media screen and (max-width: $mobile-breakpoint) {
+// --menu-width(16) + --body-min-width(20) * 1.2 + --toc-width(16)
+@media screen and (max-width: 56rem) {
   .book-menu {
     visibility: hidden;
-    margin-inline-start: -$menu-width;
+    margin-inline-start: calc(-1 * var(--menu-width));
     z-index: 1;
 
     .book-menu-content {
@@ -391,8 +395,8 @@ body[dir="rtl"] .book-menu {
     }
 
     .book-menu .book-menu-content {
-      transform: translateX($menu-width);
-      box-shadow: 0 0 $padding-8 rgba(0, 0, 0, 0.1);
+      transform: translateX(var(--menu-width));
+      box-shadow: 0 0 var(--space-8) rgba(0, 0, 0, 0.1);
     }
 
     .book-page {
@@ -418,19 +422,19 @@ body[dir="rtl"] .book-menu {
   // for RTL support
   body[dir="rtl"] #menu-control:checked ~ main {
     .book-menu .book-menu-content {
-      transform: translateX(-$menu-width);
+      transform: translateX(calc(-1 * var(--menu-width)));
     }
   }
 }
 
-// Extra space for big screens
-@media screen and (min-width: $container-max-width) {
+// Extra space for big screens (--container-max-width)
+@media screen and (min-width: 90rem) {
   main {
-    gap: $padding-16;
-    padding: $padding-16;
+    gap: var(--space-16);
+    padding: var(--space-16);
   }
   .book-menu .book-menu-content, // move fixed menus down
   .book-toc .book-toc-content {
-    top: $padding-16;
+    top: var(--space-16);
   }
 }

@@ -17,7 +17,7 @@
     font-weight: inherit;
     line-height: 1;
     margin-top: 1.5em;
-    margin-bottom: $padding-16;
+    margin-bottom: var(--space-16);
 
     a.anchor {
       opacity: 0;
@@ -65,20 +65,21 @@
     unicode-bidi: embed;
     padding: .125em .25em;
     background: var(--gray-100);
-    border: $padding-1 solid var(--gray-200);
+    border: var(--space-1) solid var(--gray-200);
     border-radius: var(--border-radius);
     font-size: 0.875em;
   }
 
   pre {
-    padding: $padding-16;
+    padding: var(--space-16);
     background: var(--gray-100);
-    border: $padding-1 solid var(--gray-200);
+    border: var(--space-1) solid var(--gray-200);
     border-radius: var(--border-radius);
     overflow-x: auto;
 
     &:focus {
-      @include outline;
+      outline-style: auto;
+      outline-color: var(--color-link);
     }
 
     code {
@@ -93,10 +94,10 @@
   }
 
   blockquote {
-    margin: $padding-16 0;
-    padding: $padding-8 $padding-16 $padding-8 ($padding-16 - $padding-4); //to keep total left space 16dp
+    margin: var(--space-16) 0;
+    padding: var(--space-8) var(--space-16) var(--space-8) calc(var(--space-16) - var(--space-4)); //to keep total left space 16dp
 
-    border-inline-start: $padding-4 solid var(--gray-200);
+    border-inline-start: var(--space-4) solid var(--gray-200);
     border-radius: var(--border-radius);
 
     :first-child {
@@ -112,13 +113,13 @@
     display: block;
     border-spacing: 0;
     border-collapse: collapse;
-    margin-top: $padding-16;
-    margin-bottom: $padding-16;
+    margin-top: var(--space-16);
+    margin-bottom: var(--space-16);
 
     tr th,
     tr td {
-      padding: $padding-8 $padding-16;
-      border: $padding-1 solid var(--gray-200);
+      padding: var(--space-8) var(--space-16);
+      border: var(--space-1) solid var(--gray-200);
       text-align: start;
     }
 
@@ -128,26 +129,26 @@
   }
 
   hr {
-    height: $padding-1;
+    height: var(--space-1);
     border: none;
     background: var(--gray-200);
   }
 
   ul,
   ol {
-    padding-inline-start: $padding-16 * 2;
+    padding-inline-start: calc(var(--space-16) * 2);
     word-wrap: break-word;
   }
 
   dl {
     dt {
       font-weight: bolder;
-      margin-top: $padding-16;
+      margin-top: var(--space-16);
     }
 
     dd {
       margin-inline-start: 0;
-      margin-bottom: $padding-16;
+      margin-bottom: var(--space-16);
     }
   }
 
@@ -158,7 +159,7 @@
     border-radius: var(--border-radius);
 
     table tbody {
-      border: $padding-1 solid var(--gray-200);
+      border: var(--space-1) solid var(--gray-200);
     }
 
     table tr {
@@ -183,22 +184,22 @@
   }
 
   details {
-    padding: $padding-16;
-    margin: $padding-16 0;
-    border: $padding-1 solid var(--gray-200);
+    padding: var(--space-16);
+    margin: var(--space-16) 0;
+    border: var(--space-1) solid var(--gray-200);
     border-radius: var(--border-radius);
 
     summary {
       line-height: 1;
-      padding: $padding-16;
-      margin: -$padding-16;
+      padding: var(--space-16);
+      margin: calc(-1 * var(--space-16));
       cursor: pointer;
       list-style: none;
 
       &::before {
         content: "›";
         display: inline-block;
-        margin-inline-end: $padding-8;
+        margin-inline-end: var(--space-8);
         transition: transform 0.1s ease-in-out;
       }
     }
@@ -213,17 +214,18 @@
   }
 
   figure {
-    margin: $padding-16 0;
+    margin: var(--space-16) 0;
 
     figcaption {
-      @extend .markdown-inner;
-      margin-top: $padding-16;
+      margin-top: var(--space-16);
     }
   }
 }
 
-.markdown-inner {
-  // Utility class to remove extra margin in nested markdown content
+// Utility class to remove extra margin in nested markdown content
+.markdown-inner,
+.markdown .book-steps > ol > li,
+.markdown figure figcaption {
   > :first-child {
     margin-top: 0;
   }
