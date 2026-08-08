@@ -22,7 +22,7 @@
 - Dark Mode
 
 ## Requirements
-- [Hugo](https://gohugo.io/installation/) extended edition, v0.158 or higher
+- [Hugo](https://gohugo.io/installation/) v0.158 or higher
 
 ## Quick Start
 Use the [starter repository](https://github.com/alex-shpak/hugo-book-starter):

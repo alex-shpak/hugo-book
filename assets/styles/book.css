@@ -155,7 +155,7 @@ a .book-icon {
   }
 }
 
-// for RTL support
+/* for RTL support */
 body[dir="rtl"] .book-menu {
   input.toggle + label > img:last-child {
     transform: rotate(180deg);
@@ -314,7 +314,7 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-// Fixed full-height scrollable side panels
+/* Fixed full-height scrollable side panels */
 .book-menu .book-menu-content,
 .book-toc .book-toc-content {
   position: fixed;
@@ -352,7 +352,7 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-// Responsive styles
+/* Responsive styles */
 .book-menu-content,
 .book-toc-content {
   transition: 0.2s ease-in-out;
@@ -360,7 +360,7 @@ body[dir="rtl"] .book-menu {
   will-change: transform, margin, opacity;
 }
 
-// --menu-width(16) + --body-min-width(20) * 1.2 + --toc-width(16)
+/* --menu-width(16) + --body-min-width(20) * 1.2 + --toc-width(16) */
 @media screen and (max-width: 56rem) {
   .book-menu {
     visibility: hidden;
@@ -419,7 +419,7 @@ body[dir="rtl"] .book-menu {
     }
   }
 
-  // for RTL support
+  /* for RTL support */
   body[dir="rtl"] #menu-control:checked ~ main {
     .book-menu .book-menu-content {
       transform: translateX(calc(-1 * var(--menu-width)));
@@ -427,13 +427,13 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-// Extra space for big screens (--container-max-width)
+/* Extra space for big screens (--container-max-width) */
 @media screen and (min-width: 90rem) {
   main {
     gap: var(--space-16);
     padding: var(--space-16);
   }
-  .book-menu .book-menu-content, // move fixed menus down
+  .book-menu .book-menu-content, /* move fixed menus down */
   .book-toc .book-toc-content {
     top: var(--space-16);
   }

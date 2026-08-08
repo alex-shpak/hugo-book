@@ -11,7 +11,7 @@
   }
 
   main {
-    // Fix for https://bugzilla.mozilla.org/show_bug.cgi?id=939897
+    /* Fix for https://bugzilla.mozilla.org/show_bug.cgi?id=939897 */
     display: block !important;
   }
 }

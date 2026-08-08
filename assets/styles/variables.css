@@ -1,0 +1,21 @@
+:root {
+  --font-size: 16px;
+  --font-size-smaller: 0.875rem;
+  --font-size-smallest: 0.75rem;
+
+  --body-font-weight: 400;
+
+  --border-radius: 0.25rem;
+
+  /* Used in layout */
+  --space-1: 1px;
+  --space-4: 0.25rem;
+  --space-8: 0.5rem;
+  --space-16: 1rem;
+
+  --body-min-width: 20rem;
+  --container-max-width: 90rem;
+
+  --menu-width: 16rem;
+  --toc-width: 16rem;
+}

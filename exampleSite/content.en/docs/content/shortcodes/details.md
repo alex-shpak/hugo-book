@@ -21,7 +21,7 @@ Markdown content
 ## Example
 
 {{% details "What Hugo version is required?" %}}
-Hugo Book requires Hugo {x} or later, extended edition. The extended edition is needed for SCSS processing.
+Hugo Book requires Hugo {x} or later.
 {{% /details %}}
 
 {{% details "How do I override the theme?" open %}}

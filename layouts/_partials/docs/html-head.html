@@ -28,9 +28,8 @@ https://github.com/alex-shpak/hugo-book
   <link rel="alternate" hreflang="{{ default .Site.Language.Locale .Language.Name }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">
 {{- end -}}
 
-<!-- Theme stylesheet, you can customize scss by creating `assets/custom.scss` in your website -->
-{{- $styles := resources.Get "book.scss" | resources.ExecuteAsTemplate "book.scss" . | css.Sass | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ partial "docs/links/resource-precache" $styles }}" {{ template "integrity" $styles }}>
+<!-- Theme stylesheet, you can customize it by creating `assets/styles/custom.css` in your website -->
+{{ partial "docs/html-head-styles" . }}
 
 <!-- Search -->
 {{- if default true .Site.Params.BookSearch -}}

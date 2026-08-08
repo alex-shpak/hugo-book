@@ -1,0 +1,6 @@
+{{- $styles := slice -}}
+{{- range resources.Get "styles/index.yaml" | transform.Unmarshal -}}
+  {{- $styles = $styles | append (resources.Get (printf "styles/%s" .)) -}}
+{{- end -}}
+{{- $styles := $styles | resources.Concat "book.css" | resources.Minify | resources.Fingerprint -}}
+<link rel="stylesheet" href="{{ partial "docs/links/resource-precache" $styles }}" {{ template "integrity" $styles }}>

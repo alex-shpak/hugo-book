@@ -48,9 +48,6 @@ Use for critical warnings about breaking changes or data loss.
 
 Standard GitHub markdown alert syntax is also supported:
 
-> [!NOTE]
-> The theme requires Hugo **extended** edition for SCSS processing.
-
 > [!TIP]
 > Set `disablePathToLower = true` in your config to preserve URL casing.
 

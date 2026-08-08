@@ -1,9 +1,7 @@
-@import "variables";
-
 .markdown {
   line-height: 1.6;
 
-  // remove padding at the beginning of page
+  /* remove padding at the beginning of page */
   >:first-child, >section:first-child :first-child {
     margin-top: 0;
   }
@@ -95,7 +93,7 @@
 
   blockquote {
     margin: var(--space-16) 0;
-    padding: var(--space-8) var(--space-16) var(--space-8) calc(var(--space-16) - var(--space-4)); //to keep total left space 16dp
+    padding: var(--space-8) var(--space-16) var(--space-8) calc(var(--space-16) - var(--space-4)); /* to keep total left space 16dp */
 
     border-inline-start: var(--space-4) solid var(--gray-200);
     border-radius: var(--border-radius);
@@ -152,7 +150,7 @@
     }
   }
 
-  // Special case for highlighted code with line numbers
+  /* Special case for highlighted code with line numbers */
   .highlight {
     direction: ltr;
     unicode-bidi: embed;
@@ -170,7 +168,7 @@
       td pre code > span {
         display: flex;
       }
-      
+
       td:nth-child(1) pre {
         margin: 0;
         padding-inline-end: 0;
@@ -222,14 +220,16 @@
   }
 }
 
-// Utility class to remove extra margin in nested markdown content
-.markdown-inner,
-.markdown .book-steps > ol > li,
-.markdown figure figcaption {
-  > :first-child {
-    margin-top: 0;
-  }
-  > :last-child {
-    margin-bottom: 0;
-  }
+/*
+  Utility class to remove extra margin in nested markdown content.
+*/
+.markdown-inner > :first-child,
+.markdown .book-steps > ol > li > :first-child,
+.markdown figure figcaption > :first-child {
+  margin-top: 0;
+}
+.markdown-inner > :last-child,
+.markdown .book-steps > ol > li > :last-child,
+.markdown figure figcaption > :last-child {
+  margin-bottom: 0;
 }

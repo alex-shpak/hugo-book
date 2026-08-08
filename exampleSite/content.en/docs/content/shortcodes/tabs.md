@@ -29,7 +29,7 @@ sudo snap install hugo
 
 {{% tab "Windows" %}}
 ```shell
-choco install hugo-extended
+choco install hugo
 ```
 {{% /tab %}}
 

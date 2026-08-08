@@ -6,7 +6,7 @@ weight: 20
 
 ## Prerequisites
 
-- [Hugo](https://gohugo.io/installation/) **extended** edition (required for SCSS processing)
+- [Hugo](https://gohugo.io/installation/)
 - [Git](https://git-scm.com/downloads) (for theme installation using git submodules)
 - [Go](https://go.dev/dl/) (for theme installation using Hugo Modules)
 

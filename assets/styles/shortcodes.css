@@ -1,6 +1,6 @@
 .markdown {
 
-  // {{< tabs >}}
+  /* {{< tabs >}} */
   .book-tabs {
     margin-top: var(--space-16);
     margin-bottom: var(--space-16);
@@ -19,7 +19,7 @@
     }
 
     .book-tabs-content {
-      order: 999; //Move content blocks to the end
+      order: 999; /* Move content blocks to the end */
       width: 100%;
       border-top: var(--space-1) solid var(--gray-100);
       padding: var(--space-16);
@@ -35,7 +35,7 @@
     }
   }
 
-  // {{< columns >}}
+  /* {{< columns >}} */
   .book-columns {
     gap: var(--space-16);
 
@@ -58,7 +58,7 @@
     }
   }
 
-  // {{< button >}}
+  /* {{< button >}} */
   a.book-btn[href] {
     display: inline-block;
     font-size: var(--font-size-smaller);
@@ -89,7 +89,7 @@
     background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
   }
 
-  // {{< badge >}}
+  /* {{< badge >}} */
   .book-badge {
     &.note { --accent-color: var(--color-accent-note); }
     &.tip { --accent-color: var(--color-accent-tip); }
@@ -122,7 +122,7 @@
     }
   }
 
-  // {{< steps >}}
+  /* {{< steps >}} */
   .book-steps {
     position: relative;
 
@@ -166,7 +166,7 @@
     }
   }
 
-  // {{< card >}}
+  /* {{< card >}} */
   .book-card {
     display: block;
     overflow: hidden;
@@ -200,7 +200,7 @@
     }
   }
 
-  // {{< image >}}
+  /* {{< image >}} */
   .book-image {
     input + img {
       cursor: zoom-in;
@@ -226,7 +226,7 @@
     }
   }
 
-  // {{< asciinema >}}
+  /* {{< asciinema >}} */
   .book-asciinema {
     margin: var(--space-16) 0;
   }
