@@ -31,6 +31,11 @@ https://github.com/alex-shpak/hugo-book
 <!-- Theme stylesheet, you can customize it by creating `assets/styles/custom.css` in your website -->
 {{ partial "docs/html-head-styles" . }}
 
+<!-- Font Awesome -->
+{{- if .Site.Params.FontAwesome -}}
+<link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+{{ end -}}
+
 <!-- Search -->
 {{- if default true .Site.Params.BookSearch -}}
   {{- $searchJSFile := printf "%s.search.js" .Language.Name }}

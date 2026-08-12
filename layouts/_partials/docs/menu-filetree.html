@@ -49,6 +49,10 @@
 {{ define "book-icon-title" }}
 {{- with .Page.Params.BookIcon -}}
   <img src="{{ partial "docs/icon" . }}" class="book-icon" alt="{{ partial "docs/text/i18n" . }}" />
+{{- else -}}
+  {{- with .Page.Params.fontAwesomeIcon -}}
+    <i class="book-icon {{ . }}" aria-hidden="true"></i>
+  {{- end -}}
 {{- end -}}
 {{- partial "docs/title" .Page -}}
 {{ end }}
