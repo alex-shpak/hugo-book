@@ -1,23 +1,16 @@
-{{- $attributes := partial "docs/text/mapper" (dict
-  "attributes" (cond .IsNamedParams .Params dict)
-  "merge" (dict
-    "class" "book-katex"
-  )
-) -}}
+{{- $attributes := merge
+  (dict
+    "output" "mathml")
+  (cond .IsNamedParams .Params dict)
+-}}
+{{- if .Get "display" -}}
+  {{- warnf "KaTeX param 'display' is deprecated, use 'displayMode'"}}
+  {{- $attributes = merge $attributes (dict "displayMode" true) -}}
+{{- end -}}
 {{- if .Inner -}}
-  {{- if .Get "display" -}}
-  <div {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>{{ printf "\\[ %s \\]" .Inner }}</div>
-  {{- else -}}
-  <span {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>{{ printf "\\( %s \\)" .Inner }}</span>
-  {{- end -}}
+  {{- transform.ToMath .Inner $attributes -}}
 {{- end -}}
 {{- if not (.Page.Store.Get "katex") -}}
-  {{- /* Include katex only first time */ -}}
   <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
-  {{- /* remove whitespaces */ -}}
-  <script defer src="{{ "katex/katex.min.js" | relURL }}"></script>
-  {{- with resources.Get "katex.json" | minify -}}
-    <script defer src="{{ "katex/auto-render.min.js" | relURL }}" onload="renderMathInElement(document.body, {{ .Content | safeJS }});"></script>
-  {{- end -}}
   {{- .Page.Store.Set "katex" true -}}
 {{- end -}}

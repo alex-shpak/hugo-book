@@ -4,13 +4,11 @@ title: KaTeX
 
 # KaTeX
 
-Render math typesetting with [KaTeX](https://katex.org/). The library is loaded automatically on first use.
-
-{{< katex />}}
+Render math typesetting with [KaTeX](https://katex.org/).
 
 ## Activation
 
-KaTeX is activated on the page by the first use of the shortcode or a `katex` code block. You can force activation with `{{</* katex /*/>}}`, then use delimiters anywhere on the page.
+KaTeX styles are included on the page by the first use of the shortcode or a `katex` code block. In order to use delimiters [passthrough](#passthrough) needs to be configured.
 
 ## Block Rendering
 
@@ -18,24 +16,24 @@ Three equivalent ways to render display math:
 
 {{% columns %}}
 
-- **Shortcode**
+- #### Shortcode
   ```tpl
-  {{</* katex display=true >}}
+  {{</* katex displayMode=true >}}
   f(x) = \int_{-\infty}^\infty
   \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
   {{< /katex */>}}
   ```
 
-- **Code block**
-  ````
+- #### Code block
+  ````tpl
   ```katex
   f(x) = \int_{-\infty}^\infty
   \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
   ```
   ````
 
-- **Dollar delimiters**
-  ```
+- #### Dollar delimiters
+  ```tpl
   $$
   f(x) = \int_{-\infty}^\infty
   \hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
@@ -45,31 +43,41 @@ Three equivalent ways to render display math:
 {{% /columns %}}
 
 Result:
-
-$$
+```katex
 f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-$$
+```
+
 
 ## Inline Rendering
 
 | Syntax | Output |
 | -- | -- |
 | `{{</* katex >}}\pi(x){{< /katex */>}}` | {{< katex >}}\pi(x){{< /katex >}} |
-| `\\( \pi(x) \\)` | \\( \pi(x) \\) |
+| `\\( \pi(x) \\)` | {{< katex >}}\pi(x){{< /katex >}} |
 
-## Configuration
+## Parameters
 
-Override KaTeX options by creating `assets/katex.json`. For example, to enable `$...$` inline delimiters
+Shortcode and block parameters are the same as original from `transform.ToMath`. See Hugo [documentation](https://gohugo.io/functions/transform/tomath/#options)
 
-```json
-{
-  "delimiters": [
-    {"left": "$$", "right": "$$", "display": true},
-    {"left": "$", "right": "$", "display": false},
-    {"left": "\\(", "right": "\\)", "display": false},
-    {"left": "\\[", "right": "\\]", "display": true}
-  ]
-}
+## Passthrough 
+
+Hugo offers a hook to render math as passthrough, without codeblocks or shortcodes. See [configuration](https://gohugo.io/functions/transform/tomath/#example) in Hugo documentation.
+
+```yaml {filename=hugo.yaml}
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+          - ['\[', '\]']
+          - ['$$', '$$']
+          inline:
+          - ['\(', '\)']
 ```
 
-See [KaTeX options](https://katex.org/docs/options.html) for all available settings.
+```go {filename="layouts/_markup/render-passthrough.html"}
+{{/*- $opts := dict "displayMode" (eq .Type "block") -*/}}
+{{/*- (transform.ToMath .Inner $opts) -*/}}
+```

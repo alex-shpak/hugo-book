@@ -133,4 +133,3 @@ The theme supports plain text output alongside HTML, useful for accessibility an
   page = ['html', 'txt']
   section = ['html', 'txt']
 ```
-
