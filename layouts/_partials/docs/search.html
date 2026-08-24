@@ -1,6 +1,6 @@
-{{ if default true .Site.Params.BookSearch }}
+{{- if default true .Site.Params.BookSearch -}}
 <div class="book-search hidden">
-  <input id="book-search-input" type="text" 
+  <input id="book-search-input" type="text"
     placeholder="{{ partial "docs/text/i18n" "Search" }}"
     aria-label="{{ partial "docs/text/i18n" "Search" }}"
     maxlength="64" />
@@ -8,4 +8,4 @@
   <ul id="book-search-results"></ul>
 </div>
 <script>document.querySelector(".book-search").classList.remove("hidden")</script>
-{{ end }}
+{{- end -}}

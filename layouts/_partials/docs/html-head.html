@@ -33,10 +33,11 @@ https://github.com/alex-shpak/hugo-book
 
 <!-- Search -->
 {{- if default true .Site.Params.BookSearch -}}
-  {{- $searchJSFile := printf "%s.search.js" .Language.Name }}
-  {{- $searchJS := resources.Get "search.js" | resources.ExecuteAsTemplate $searchJSFile . | resources.Minify | resources.Fingerprint }}
+  {{- $searchJS := resources.Get "search.js"
+    | resources.ExecuteAsTemplate (printf "%s.search.js" .Language.Name) .
+    | resources.Minify | resources.Fingerprint -}}
   <script type="module" src="{{ partial "docs/links/resource-precache" $searchJS }}" {{ template "integrity" $searchJS }}></script>
-{{ end -}}
+{{- end -}}
 
 <!-- Service Worker -->
 {{- if .Site.Params.BookServiceWorker -}}
