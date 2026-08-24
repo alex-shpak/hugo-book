@@ -1,4 +1,4 @@
-import Fuse from '{{ "fuse.min.mjs" | relURL }}'
+import Fuse from '{{ "fuse.esm.js" | relURL }}'
 
 {{ $searchDataFile := printf "%s.search-data.json" .Language.Name }}
 {{ $searchData := resources.Get "search-data.json" | resources.ExecuteAsTemplate $searchDataFile . | resources.Minify | resources.Fingerprint }}
@@ -10,17 +10,11 @@ import Fuse from '{{ "fuse.min.mjs" | relURL }}'
     includeScore: true,
     useExtendedSearch: true,
     fieldNormWeight: 1.5,
-    threshold: 0.2,
+    threshold: 0.3,
     ignoreLocation: true,
     keys: [
-      {
-        name: 'title',
-        weight: 0.7
-      },
-      {
-        name: 'content',
-        weight: 0.3
-      }
+      { name: 'title', weight: 0.7 },
+      { name: 'content', weight: 0.3 }
     ]
   });
 
@@ -31,8 +25,13 @@ import Fuse from '{{ "fuse.min.mjs" | relURL }}'
     return
   }
 
+  let debounce;
+
   input.addEventListener('focus', init);
-  input.addEventListener('keyup', search);
+  input.addEventListener('input', function () {
+    clearTimeout(debounce);
+    debounce = setTimeout(search, 250);
+  });
 
   document.addEventListener('keydown', focusOnKeyDown);
 

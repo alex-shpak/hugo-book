@@ -1,17 +1,20 @@
 [
 {{- $pages := where .Site.Pages "Kind" "in" (slice "page" "section") -}}
 {{- $pages = where $pages "Params.bookSearchExclude" "!=" true -}}
-{{/* Remove until we know why it does not work, see https://github.com/alex-shpak/hugo-book/issues/528 */}}
-{{/*- $pages = where $pages "Content" "not in" (slice nil "") -*/}}
 {{- $pages = where $pages "Content" "!=" "" -}}
 
-{{ range $index, $page := $pages }}
-{{ if gt $index 0}},{{end}} {
-    "id": {{ $index }},
-    "href": "{{ $page.RelPermalink }}",
-    "title": {{ (partial "docs/title" $page) | jsonify }},
-    "section": {{ (partial "docs/title" $page.Parent) | default $.Site.Title | jsonify }},
-    "content": {{ $page.Plain | htmlUnescape | jsonify }},
-}
+{{- range $index, $page := $pages -}}
+{{- if gt $index 0}},{{end}} {
+  "id": {{ $index | jsonify }},
+  "href": {{ $page.RelPermalink | jsonify }},
+  "title": {{ (partial "docs/title" $page) | jsonify }},
+  "section": {{ (partial "docs/title" $page.Parent) | default $.Site.Title | jsonify }},
+  "content": {{ $page.Plain | htmlUnescape | jsonify }}
+} {{- range $fid, $fragment := $page.Fragments.HeadingsMap -}} , {
+  "id": {{ printf "%s#%s" $index $fid | jsonify }},
+  "href": {{ printf "%s#%s" $page.RelPermalink $fid | jsonify }},
+  "title": {{ $fragment.Title | jsonify }},
+  "section": {{ (partial "docs/title" $page) | jsonify }}
+} {{- end -}}
 {{- end -}}
 ]
