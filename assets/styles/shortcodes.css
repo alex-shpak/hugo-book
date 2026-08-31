@@ -137,25 +137,25 @@
         counter-increment: steps;
 
         position: absolute;
+        left: var(--space-8);
+
         display: flex;
         justify-content: center;
-        left: var(--space-8);
+        align-items: center;
+        white-space: nowrap;
 
         height: calc(var(--space-16) * 1.5);
         width: calc(var(--space-16) * 1.5);
-        padding: var(--space-4);
-        border-radius: var(--space-8);
-
-        white-space: nowrap;
         line-height: var(--space-16);
 
-        color: var(--body-background);
-        background: var(--gray-500);
+        border-radius: var(--border-radius);
+        background: var(--body-background);
+        border: var(--space-1) solid var(--gray-500);
         outline: var(--space-4) solid var(--body-background);
       }
 
       >li {
-        border-inline-start: var(--space-1) solid var(--gray-500);
+        border-inline-start: var(--space-1) dotted var(--gray-500);
         padding-inline-start: calc(var(--space-16) * 3);
         padding-bottom: calc(var(--space-16) * 2);
       }
