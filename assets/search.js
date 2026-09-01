@@ -6,17 +6,16 @@
   const searchDataURL = '{{ partial "docs/links/resource-precache" $searchData }}';
   const searchEngineURL = '{{ "fuse.esm.js" | relURL }}';
 
-  const indexConfig = Object.assign({{ $searchConfig }}, {
-    includeScore: true,
+  const indexConfig = Object.assign({
     useExtendedSearch: true,
-    fieldNormWeight: 1.5,
-    threshold: 0.3,
+    threshold: 0.25,
     ignoreLocation: true,
+    ignoreFieldNorm: true,
     keys: [
       { name: 'title', weight: 0.7 },
       { name: 'content', weight: 0.3 }
     ]
-  });
+  }, {{ $searchConfig }});
 
   const input = document.querySelector('#book-search-input');
   const results = document.querySelector('#book-search-results');
