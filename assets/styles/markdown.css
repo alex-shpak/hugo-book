@@ -13,7 +13,7 @@
   h5,
   h6 {
     font-weight: inherit;
-    line-height: 1;
+    line-height: 1.2;
     margin-top: 1.5em;
     margin-bottom: var(--space-16);
 

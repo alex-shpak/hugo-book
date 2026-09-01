@@ -14,7 +14,7 @@
     label {
       display: inline-block;
       padding: var(--space-8) var(--space-16);
-      border-bottom: var(--space-1) transparent;
+      border-bottom: var(--space-1) solid transparent;
       cursor: pointer;
     }
 
