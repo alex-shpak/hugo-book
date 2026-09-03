@@ -10,6 +10,8 @@
     --color-accent-info:    var(--color-accent-note);
     --color-accent-success: var(--color-accent-tip);
     --color-accent-danger:  var(--color-accent-caution);
+
+    --mermaid-theme: redux-color;
   }
 
   :root[data-theme$="dark"] { color-scheme: dark; }
@@ -35,6 +37,8 @@
     --color-accent-important: #8144dd;
     --color-accent-warning:   #f59e42;
     --color-accent-caution:   #d84747;
+
+    --mermaid-theme: redux-color;
   }
 
   :root[data-theme="dark"] {
@@ -55,6 +59,8 @@
     --color-accent-important: #b48ead;
     --color-accent-warning:   #d08770;
     --color-accent-caution:   #bf616a;
+
+    --mermaid-theme: redux-dark-color;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -76,6 +82,8 @@
       --color-accent-important: #b48ead;
       --color-accent-warning:   #d08770;
       --color-accent-caution:   #bf616a;
+
+      --mermaid-theme: redux-dark-color;
     }
   }
 
@@ -99,6 +107,8 @@
     --color-accent-important: #800080;
     --color-accent-warning:   #ff8c00;
     --color-accent-caution:   #cc0000;
+
+    --mermaid-theme: redux-color;
   }
 
   :root[data-theme="contrast-dark"] {
@@ -119,6 +129,8 @@
     --color-accent-important: #ff00ff;
     --color-accent-warning:   #ffaa00;
     --color-accent-caution:   #ff0000;
+
+    --mermaid-theme: redux-dark-color;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -140,6 +152,8 @@
       --color-accent-important: #ff00ff;
       --color-accent-warning:   #ffaa00;
       --color-accent-caution:   #ff0000;
+
+      --mermaid-theme: redux-dark-color;
     }
   }
 
@@ -163,6 +177,8 @@
     --color-accent-important: #7287fd;
     --color-accent-warning:   #df8e1d;
     --color-accent-caution:   #d20f39;
+
+    --mermaid-theme: redux-color;
   }
 
   :root[data-theme="catppuccin-dark"] {
@@ -183,6 +199,8 @@
     --color-accent-important: #ca9ee6;
     --color-accent-warning:   #ef9f76;
     --color-accent-caution:   #e78284;
+
+    --mermaid-theme: redux-dark-color;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -204,6 +222,8 @@
       --color-accent-important: #ca9ee6;
       --color-accent-warning:   #ef9f76;
       --color-accent-caution:   #e78284;
+
+      --mermaid-theme: redux-dark-color;
     }
   }
 
@@ -227,6 +247,8 @@
     --color-accent-important: #a37acc;
     --color-accent-warning:   #fa8d3e;
     --color-accent-caution:   #f07171;
+
+    --mermaid-theme: redux-color;
   }
 
   :root[data-theme="ayu-dark"] {
@@ -247,6 +269,8 @@
     --color-accent-important: #d4bfff;
     --color-accent-warning:   #ffa759;
     --color-accent-caution:   #f28779;
+
+    --mermaid-theme: redux-dark-color;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -268,6 +292,8 @@
       --color-accent-important: #d4bfff;
       --color-accent-warning:   #ffa759;
       --color-accent-caution:   #f28779;
+
+      --mermaid-theme: redux-dark-color;
     }
   }
 }

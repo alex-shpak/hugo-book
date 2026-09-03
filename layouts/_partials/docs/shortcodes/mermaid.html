@@ -1,0 +1,14 @@
+{{- if not (.Store.Get "mermaid") -}}
+  {{- .Store.Set "mermaid" true -}}
+  {{- $config := resources.Get "mermaid.json" | resources.Minify -}}
+  <script defer src="{{ "mermaid.min.js" | relURL }}"></script>
+  <script type="module">
+    const theme = getComputedStyle(document.documentElement).getPropertyValue('--mermaid-theme');
+    const config = Object.assign({
+      theme: theme,
+      fontFamily: "system-ui"
+    }, {{ $config.Content | safeJS }});
+
+    mermaid.initialize(config);
+  </script>
+{{- end -}}

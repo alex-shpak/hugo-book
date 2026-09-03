@@ -1,0 +1,4 @@
+{{- if not (.Store.Get "katex") -}}
+  {{- .Store.Set "katex" true -}}
+  <link rel="stylesheet" href="{{ "katex/katex.min.css" | relURL }}" />
+{{- end -}}
