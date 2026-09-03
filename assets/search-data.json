@@ -10,11 +10,6 @@
   "title": {{ (partial "docs/title" $page) | jsonify }},
   "section": {{ (partial "docs/title" $page.Parent) | default $.Site.Title | jsonify }},
   "content": {{ $page.Plain | htmlUnescape | jsonify }}
-} {{- range $fid, $fragment := $page.Fragments.HeadingsMap -}} , {
-  "id": {{ printf "%d#%s" $index $fid | jsonify }},
-  "href": {{ printf "%s#%s" $page.RelPermalink $fid | jsonify }},
-  "title": {{ $fragment.Title | jsonify }},
-  "section": {{ (partial "docs/title" $page) | jsonify }}
-} {{- end -}}
+}
 {{- end -}}
 ]

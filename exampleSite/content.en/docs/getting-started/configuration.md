@@ -44,7 +44,7 @@ All theme parameters are set under `[params]` in your site config. Every paramet
   # Date format used in git info and blog posts
   BookDateFormat = 'January 2, 2006'
 
-  # Enable full-text search with fuse.js
+  # Enable full-text search with MiniSearch
   BookSearch = true
 
   # Enable comments template on pages
@@ -72,7 +72,7 @@ All theme parameters are set under `[params]` in your site config. Every paramet
 
 ## Search
 
-Full-text search is enabled by default using [Fuse.js](https://www.fusejs.io/). The search index is built at page load from a generated JSON file.
+Full-text search is enabled by default using [MiniSearch](https://lucaong.github.io/minisearch/). The search index is built at page load from a generated JSON file.
 
 ```toml {filename=hugo.toml}
 [params]

@@ -14,4 +14,4 @@
   translation: Етикети
 
 - id: bookSearchConfig
-  translation: '{ cache: true }'
+  translation: '{}'

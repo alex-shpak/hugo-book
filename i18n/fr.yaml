@@ -8,4 +8,4 @@
   translation: Dernière modification par
 
 - id: bookSearchConfig
-  translation: '{ cache: true }'
+  translation: '{}'

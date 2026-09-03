@@ -8,4 +8,4 @@
   translation: Последнее изменение от
 
 - id: bookSearchConfig
-  translation: '{ split: /[^a-zа-яё0-9\w]/gi }'
+  translation: '{}'

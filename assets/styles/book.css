@@ -288,10 +288,13 @@ body[dir="rtl"] .book-menu {
 
   ul a {
     padding-bottom: 0;
+    padding-top: var(--space-16);
+    font-weight: bolder;
   }
 
-  small {
-    opacity: 0.5;
+  mark {
+    background: none;
+    color: var(--color-link);
   }
 }
 

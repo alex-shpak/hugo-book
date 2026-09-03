@@ -8,4 +8,4 @@
   translation: Autor poslední změny
 
 - id: bookSearchConfig
-  translation: '{ cache: true }'
+  translation: '{}'

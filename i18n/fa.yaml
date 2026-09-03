@@ -14,4 +14,9 @@
   translation: تگ ها
 
 - id: bookSearchConfig
-  translation: '{ cache: true, encode: false, rtl: true, split: /\s+/, tokenize: "forward"}'
+  translation: |
+    {
+      tokenize: function (text) {
+        return text.split(/[\s\p{Z}\p{P}\u200c]+/u);
+      }
+    }

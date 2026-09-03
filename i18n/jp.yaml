@@ -11,8 +11,9 @@
 - id: bookSearchConfig
   translation: |
     {
-      encode: false,
-      tokenize: function(str) {
-        return str.replace(/[\x00-\x7F]/g, '').split('');
+      tokenize: function (text) {
+        const cjk = /[\p{scx=Han}\p{scx=Hiragana}\p{scx=Katakana}]/u;
+        return (text.match(/(?:(?=\p{L})[\p{scx=Han}\p{scx=Hiragana}\p{scx=Katakana}])+|(?:(?![\p{scx=Han}\p{scx=Hiragana}\p{scx=Katakana}])[\p{L}\p{N}])+/gu) || [])
+          .flatMap(run => cjk.test(run) && run.length > 1 ? Array.from(run.slice(1), (_, i) => run.slice(i, i + 2)) : [run]);
       }
     }

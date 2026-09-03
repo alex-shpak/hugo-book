@@ -8,4 +8,4 @@
   translation: Senast modifierad av
 
 - id: bookSearchConfig
-  translation: '{ cache: true }'
+  translation: '{}'

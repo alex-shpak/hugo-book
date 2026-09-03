@@ -21,6 +21,10 @@
       opacity: 0;
       font-size: 0.75em;
       margin-inline-start: .25em;
+
+      &::after {
+        content: '#';
+      }
     }
 
     &:hover a.anchor, a.anchor:focus-visible {

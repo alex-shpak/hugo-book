@@ -8,4 +8,9 @@
   translation: Son düzenleyen
 
 - id: bookSearchConfig
-  translation: '{ cache: true }'
+  translation: |
+    {
+      processTerm: function (term) {
+        return term.toLocaleLowerCase('tr');
+      }
+    }
