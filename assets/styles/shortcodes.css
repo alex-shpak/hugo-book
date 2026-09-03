@@ -166,40 +166,6 @@
     }
   }
 
-  /* {{< card >}} */
-  .book-card {
-    display: block;
-    overflow: hidden;
-    height: 100%;
-    border-radius: var(--border-radius);
-    border: var(--space-1) solid var(--gray-200);
-
-    > a {
-      display: block;
-      height: 100%;
-
-      &[href], &[href]:visited {
-        color: var(--body-font-color);
-      }
-
-      &[href]:hover {
-        text-decoration: none;
-        background: var(--gray-100);
-      }
-    }
-
-    > a > img, > img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .markdown-inner {
-      padding: var(--space-16);
-    }
-  }
-
   /* {{< image >}} */
   .book-image {
     input + img {
