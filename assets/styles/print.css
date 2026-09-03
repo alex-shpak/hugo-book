@@ -5,9 +5,9 @@
     display: none;
   }
 
-  .book-header,
-  .book-header aside {
-    display: block;
+  a::after {
+    content: attr(href);
+    margin: 0 var(--space-4);
   }
 
   main {
