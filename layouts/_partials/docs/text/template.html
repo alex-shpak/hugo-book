@@ -1,6 +1,6 @@
 {{/*
   Returns rendered string from template and context.
-  Usage: partial "docs/string-template" (dict "Template" "param={{ . }}" "Context" "Input")
+  Usage: partial "docs/text/template" (dict "Template" "param={{ . }}" "Context" "Input")
 */}}
 {{- $checksum := . | encoding.Jsonify | crypto.SHA1 | printf "book-%s" -}}
 {{- $template := resources.FromString $checksum .Template -}}
