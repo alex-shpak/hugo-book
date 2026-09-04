@@ -1,13 +1,15 @@
 <div class="flex align-center justify-between">
+  <input type="checkbox" class="toggle" id="menu-control" />
   <label for="menu-control">
     <img src="{{ partial "docs/icon" "menu" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Menu" }}" />
   </label>
 
   <h3>{{ partial "docs/title" . }}</h3>
 
+  {{ if .Param "BookToC" | default true }}
+  <input type="checkbox" class="toggle" id="toc-control" />
   <label for="toc-control">
-    {{ if partial "docs/toc-show" . }}
     <img src="{{ partial "docs/icon" "toc" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Table of Contents" }}" />
-    {{ end }}
   </label>
+  {{ else }}<div></div>{{ end }}
 </div>

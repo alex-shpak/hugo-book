@@ -386,12 +386,7 @@ body[dir="rtl"] .book-menu {
     flex-direction: column-reverse;
   }
 
-  #menu-control,
-  #toc-control {
-    display: inline;
-  }
-
-  #menu-control:checked ~ main {
+  body:has(#menu-control:checked) {
     .book-menu {
       visibility: initial;
     }
@@ -415,7 +410,7 @@ body[dir="rtl"] .book-menu {
     }
   }
 
-  #toc-control:checked ~ main {
+  body:has(#toc-control:checked) {
     .book-header aside {
       display: block;
     }

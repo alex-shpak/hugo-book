@@ -5,8 +5,6 @@
   {{ partial "docs/inject/head" . }}
 </head>
 <body dir="{{ default "ltr" .Site.Language.Direction }}" class="book-kind-{{ .Kind }} book-type-{{ .Type }}{{ with .Layout }} book-layout-{{ . }}{{ end }}">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
   <main class="container flex">
     {{ template "menu-container" . }} <!-- Left menu -->
 
@@ -27,7 +25,7 @@
         {{ template "clipboard" . }}
       </footer>
 
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
+      <label for="menu-control" class="hidden book-menu-overlay" aria-hidden="true"></label>
     </div>
 
     {{ template "toc-container" . }} <!-- Table of Contents -->
@@ -52,7 +50,7 @@
 {{ define "header" }}
   {{ partial "docs/header" . }}
 
-  {{ if partial "docs/toc-show" . }}
+  {{ if .Param "BookToC" | default true}}
   <aside class="hidden">
     {{ template "toc" . }}
   </aside>
@@ -78,7 +76,7 @@
 {{ end }}
 
 {{ define "comments" }}
-  {{ if and .Content (default true (default .Site.Params.BookComments .Params.BookComments)) }}
+  {{ if and .Content (.Param "BookComments") }}
   <div class="book-comments">
     {{- partial "docs/comments" . -}}
   </div>
@@ -92,7 +90,7 @@
 {{ end }}
 
 {{ define "toc-container" }}
-  {{ if partial "docs/toc-show" . }}
+  {{ if .Param "BookToC" | default true }}
   <aside class="book-toc">
     <div class="book-toc-content">
       {{ template "toc" . }}
