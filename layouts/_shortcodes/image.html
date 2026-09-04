@@ -1,7 +1,7 @@
 {{- $destination := partial "docs/links/portable-image" (dict "Page" .Page "Destination" (.Get "src")) -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (cond .IsNamedParams .Params dict)
-  "keep" (slice "id" "class" "tabindex" "alt" "title" "loading")
+  "keep" (slice "id" "class" "tabindex" "alt" "title" "loading" "height" "width")
 ) -}}
 {{- $id := partial "docs/text/shortcode-id" . -}}
 <label class="book-image" for="book-image-toggle-{{ $id }}">{{- /* remove whitespaces */ -}}
