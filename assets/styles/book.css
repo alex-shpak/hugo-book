@@ -170,8 +170,7 @@ body[dir="rtl"] .book-menu {
   margin: var(--space-16) 0;
 
   > a,
-  > span,
-  > label {
+  > label a {
     font-weight: bolder;
   }
 
@@ -438,6 +437,6 @@ body[dir="rtl"] .book-menu {
   }
   .book-menu .book-menu-content, /* move fixed menus down */
   .book-toc .book-toc-content {
-    top: var(--space-16);
+    padding-top: calc(var(--space-16) * 2);
   }
 }
