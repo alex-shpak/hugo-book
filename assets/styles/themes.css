@@ -150,8 +150,8 @@
     --body-background: #eff1f5;
     --body-font-color: #4c4f69;
 
-    --color-link: #1e66f5;
-    --color-visited-link: #8839ef;
+    --color-link: #dd7878;
+    --color-visited-link: #dc8a78;
 
     --gray-100: #e6e9ef;
     --gray-200: #ccd0da;
@@ -170,8 +170,8 @@
     --body-font-color: #c6d0f5;
     --icon-filter: brightness(0) invert(1);
 
-    --color-link: #8caaee;
-    --color-visited-link: #ca9ee6;
+    --color-link: #eebebe;
+    --color-visited-link: #f2d5cf;
 
     --gray-100: #414559;
     --gray-200: #51576d;
@@ -191,8 +191,8 @@
       --body-font-color: #c6d0f5;
       --icon-filter: brightness(0) invert(1);
 
-      --color-link: #8caaee;
-      --color-visited-link: #ca9ee6;
+      --color-link: #eebebe;
+      --color-visited-link: #f2d5cf;
 
       --gray-100: #414559;
       --gray-200: #51576d;
