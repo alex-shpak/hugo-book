@@ -5,6 +5,6 @@
 ) -}}
 {{- $id := partial "docs/text/shortcode-id" . -}}
 <label class="book-image" for="book-image-toggle-{{ $id }}">{{- /* remove whitespaces */ -}}
-  <input class="hidden toggle" type="checkbox" id="book-image-toggle-{{ $id }}" />{{- /* remove whitespaces */ -}}
+  <input class="toggle" type="checkbox" id="book-image-toggle-{{ $id }}" />{{- /* remove whitespaces */ -}}
   <img src="{{ $destination | safeURL }}" {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }} />{{- /* remove whitespaces */ -}}
 </label>{{- /* remove whitespaces */ -}}

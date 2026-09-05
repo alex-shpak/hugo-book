@@ -43,7 +43,7 @@ small {
   font-size: .875em;
 }
 
-:focus-visible, input.toggle:focus-visible + label {
+:focus-visible, input.toggle:focus-visible + label, label:has(input.toggle:focus-visible) {
   outline-style: auto;
   outline-color: var(--color-link);
 }

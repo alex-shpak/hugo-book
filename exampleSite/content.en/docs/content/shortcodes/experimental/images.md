@@ -10,7 +10,7 @@ Enhanced image display with click-to-expand behavior.
 
 ## Example
 
-{{< image src="placeholder.svg" alt="Placeholder image" title="Click to expand" loading="lazy" >}}
+{{< image src="placeholder.svg" alt="Placeholder image" title="Click to expand" loading="lazy" width="50%" >}}
 
 ## Parameters
 
@@ -22,6 +22,9 @@ Enhanced image display with click-to-expand behavior.
 
 `title`
 : Caption displayed below the image.
+
+`width`
+: Set image width, height is calculated automatically
 
 `loading`
 : Loading strategy: `lazy`, `eager`, or `auto`.
