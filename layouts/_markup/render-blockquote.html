@@ -1,5 +1,5 @@
 {{- $attributes := .Attributes -}}
-{{- $class := printf "book-hint %s" ($.AlertType | lower) -}}
+{{- $class := cond ($.AlertType) (printf "book-hint %s" ($.AlertType | lower)) "" -}}
 {{- if isset $attributes "class" -}}
   {{- $class = printf "%s %s" $class (index $attributes "class") -}}
 {{ end -}}
