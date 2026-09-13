@@ -5,17 +5,17 @@
   "scope": "{{ "./" | relURL }}",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#FFFFFF",
+  "theme_color": "#1F44A5",
   "icons": [
     {
       "type": "image/png",
       "src": "{{ "./favicon.png" | relURL }}",
-      "sizes": "96x96"
+      "sizes": "64x64"
     },
     {
-      "type": "image/svg+xml",
-      "src": "{{ "./favicon.svg" | relURL }}",
-      "sizes": "any"
+      "type": "image/png",
+      "src": "{{ "./apple-touch-icon.png" | relURL }}",
+      "sizes": "180x180"
     }
   ]
 }

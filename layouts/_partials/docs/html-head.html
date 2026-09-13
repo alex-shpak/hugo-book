@@ -1,13 +1,13 @@
 {{ "<!--" | safeHTML }}
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
+Made with Grimoire, the CDI @ SJSU book theme
+https://github.com/cdi-sjsu/grimoire
 {{ "-->" | safeHTML }}
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="{{ or .Description .Summary | plainify | htmlUnescape }}">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2e3440">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1730">
 <meta name="color-scheme" content="light dark">
 
 {{- with .Page.Params.BookHref -}}

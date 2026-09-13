@@ -228,6 +228,10 @@ body[dir="rtl"] .book-menu {
   position: relative;
   z-index: 1;
 
+  .book-brand {
+    margin-bottom: 0;
+  }
+
   nav > ul {
     display: flex;
     gap: var(--space-16);

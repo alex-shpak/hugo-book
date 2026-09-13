@@ -9,7 +9,10 @@
 {{ end }}
 
 {{ define "header" }}
-<nav>
-  {{ partial "docs/menu-hugo" (dict "Page" .Page "Menu" .Site.Menus.home) }}
-</nav>
+<div class="flex align-center justify-between">
+  {{ partial "docs/brand" . }}
+  <nav>
+    {{ partial "docs/menu-hugo" (dict "Page" .Page "Menu" .Site.Menus.home) }}
+  </nav>
+</div>
 {{ end }}

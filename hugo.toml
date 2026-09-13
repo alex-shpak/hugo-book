@@ -1,3 +1,66 @@
+baseURL = 'https://cdi-sjsu.github.io/grimoire/'
+title = 'CDI Grimoire'
+copyright = 'Chip Design Initiative @ SJSU · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/legalcode)'
+
+disablePathToLower = true  # keep URLs cased the way you named the file
+enableGitInfo = true       # powers the "last modified" date in the footer
+
 [module]
 [module.hugoVersion]
-  min = "0.158.0"
+  min = '0.158.0'
+
+# --- what shows up in the top nav / bottom of the sidebar -------------------
+[menu]
+[[menu.home]]
+  name = 'Docs'
+  pageRef = '/docs/devenv'
+  weight = 1
+
+[[menu.home]]
+  name = 'Github'
+  url = 'https://github.com/cdi-sjsu/grimoire/'
+  weight = 2
+
+[[menu.after]]
+  name = 'Github'
+  url = 'https://github.com/cdi-sjsu/grimoire/'
+  weight = 10
+
+[[menu.after]]
+  name = 'CDI @ SJSU'
+  url = 'https://cdi-sjsu.github.io/'
+  weight = 20
+
+# --- theme knobs, all optional ---------------------------------------------
+[params]
+  BookTheme = 'auto'          # 'light', 'dark' or 'auto' (follows the OS)
+  BookLogo = 'cdi.png'        # lives in static/
+  BookSection = 'docs'        # which folder becomes the sidebar
+  BookSearch = true
+  BookComments = false
+  BookServiceWorker = false   # offline cache, off so Pages updates show up right away
+  BookPortableLinks = 'warning'  # yells at you when a ./page.md link is dead
+
+  BookRepo = 'https://github.com/cdi-sjsu/grimoire'
+  BookEditLink = '{{ .Site.Params.BookRepo }}/edit/main/{{ .Path }}'
+  BookLastChangeLink = '{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}'
+  BookDateFormat = 'January 2, 2006'
+
+# --- hugo internals you probably never touch -------------------------------
+[markup]
+[markup.goldmark.renderer]
+  unsafe = true              # required by the mermaid and katex shortcodes
+[markup.tableOfContents]
+  startLevel = 1
+[markup.highlight]
+  style = 'base16-snazzy'
+
+[outputFormats.txt]
+  mediaType = 'text/plain'
+  baseName = 'source'
+  isPlainText = true
+
+[outputs]
+  home = ['html', 'txt', 'rss']
+  page = ['html', 'txt']
+  section = ['html', 'txt']

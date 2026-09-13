@@ -192,11 +192,6 @@
     }
   }
 
-  /* {{< asciinema >}} */
-  .book-asciinema {
-    margin: var(--space-16) 0;
-  }
-
   .book-codeblock-filename {
     display: block;
     padding: var(--space-4) var(--space-8);

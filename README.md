@@ -1,53 +1,61 @@
-# Hugo Book Theme
+<p align="center">
+  <img src="static/cdi.png" alt="Chip Design Initiative @ SJSU" width="160">
+</p>
 
-[![Hugo](https://img.shields.io/badge/hugo-0.158-blue.svg)](https://gohugo.io)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![Build with Hugo](https://github.com/alex-shpak/hugo-book/workflows/Build%20with%20Hugo/badge.svg)
+<h1 align="center">CDI Grimoire</h1>
 
-### [Hugo](https://gohugo.io) documentation theme as simple as plain book
+<p align="center">
+  The <a href="https://github.com/cdi-sjsu">Chip Design Initiative @ SJSU</a> docs site.<br>
+  <em>Face The Initiative, Build the Design.</em>
+</p>
 
-![Screenshot](https://raw.githubusercontent.com/alex-shpak/hugo-book/main/images/screenshot.png)
+<p align="center">
+  <a href="https://cdi-sjsu.github.io/grimoire/">cdi-sjsu.github.io/grimoire</a>
+</p>
 
-## Features
-
-- Clean simple design
-- Light and Mobile-Friendly
-- Multi-language support
-- Customisable
-- Zero initial configuration
-- Handy shortcodes
-- Comments support
-- Simple blog and taxonomy
-- Primary features work without JavaScript
-- Dark Mode
-
-## Requirements
-- [Hugo](https://gohugo.io/installation/) v0.158 or higher
-
-## Quick Start
-Use the [starter repository](https://github.com/alex-shpak/hugo-book-starter):
+## Running it
 
 ```sh
-git clone https://github.com/alex-shpak/hugo-book-starter my-docs
-cd my-docs
-git submodule update --init --remote
-hugo server --minify
+direnv allow    # once per clone, then the shell loads itself from .envrc
+hugo server     # http://localhost:1313/grimoire/
 ```
 
-## Documentation
-Example site is self-documenting at [book.alxs.dev](https://book.alxs.dev)
+No direnv yet? `nix develop` does the same thing by hand.
 
-## Versioning
-This theme follows a simple incremental versioning by updating minor SemVer version `v0.13.0`, `v0.14.0` and so on. Breaking changes are expected between releases. Note that previously theme used simple `v1`-`v11` versioning, but switch was made for better hugo modules support.
+No nix on your machine yet? The [Development Environment](https://cdi-sjsu.github.io/grimoire/docs/devenv/) docs cover Linux, macOS and Windows (WSL, systemd and all), and then [how .envrc works](https://cdi-sjsu.github.io/grimoire/docs/devenv/envrc/).
 
-If you want lower maintenance, use one of the released versions. If you want to live on the bleeding edge of changes, you can use the `main` branch and update your website when needed, this also the default branch.
+Without nix, any Hugo 0.158+ works: `hugo server`.
 
-## Contributing
-### [Extra credits to contributors](https://github.com/alex-shpak/hugo-book/graphs/contributors)
-Contributions are welcome and I will review and consider pull requests.  
-Primary goals are:
+## Writing
 
-- Keep it simple.
-- Keep minimal (or zero) default configuration.
-- Avoid interference with user-defined layouts.
-- Avoid using JS if it can be solved by CSS.
+Markdown files under `content/docs/`. Folders are sections and need an `_index.md`, `weight` sorts them, the sidebar builds itself.
+
+```md
+---
+title: Writing an FSM
+weight: 10
+---
+
+# Writing an FSM
+```
+
+More on how the sidebar and front matter work in the [hugo-book docs](https://github.com/alex-shpak/hugo-book).
+
+## Publishing
+
+Push to `main`. Github Actions builds it with the same nix shell and deploys to Pages.
+
+## Layout
+
+```
+content/          the words
+assets/styles/    css, custom.css is the safe one to edit
+static/           logo, favicons, mermaid, katex
+layouts/          templates
+hugo.toml         title, menu, every knob
+flake.nix         the dev shell
+```
+
+## Credits
+
+Built on [hugo-book](https://github.com/alex-shpak/hugo-book) by Alex Shpak, MIT licensed, forked and rebranded for CDI.

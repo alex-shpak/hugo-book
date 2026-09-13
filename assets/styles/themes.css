@@ -15,67 +15,67 @@
   :root[data-theme$="dark"] { color-scheme: dark; }
   :root[data-theme$="auto"] { color-scheme: light dark; }
 
-  /* Default: browser-default light / Nord dark */
+  /* Default: CDI light / CDI dark, https://github.com/cdi-sjsu */
   :root,
   :root[data-theme="light"],
   :root[data-theme="auto"] {
-    --body-background: white;
-    --body-font-color: black;
+    --body-background: #ffffff;
+    --body-font-color: #16203a;
 
-    --color-link: #0055bb;
-    --color-visited-link: #5500bb;
+    --color-link: #1f44a5;
+    --color-visited-link: #16307a;
 
-    --gray-100: #f8f9fa;
-    --gray-200: #e9ecef;
-    --gray-500: #adb5bd;
+    --gray-100: #f3f6fc;
+    --gray-200: #dfe6f5;
+    --gray-500: #8b99bd;
 
-    --color-accent-default:   #64748b;
-    --color-accent-note:      #4486dd;
-    --color-accent-tip:       #3bad3b;
-    --color-accent-important: #8144dd;
-    --color-accent-warning:   #f59e42;
-    --color-accent-caution:   #d84747;
+    --color-accent-default:   #1f44a5;
+    --color-accent-note:      #0d8ed7;
+    --color-accent-tip:       #2e9e5b;
+    --color-accent-important: #6b4fc7;
+    --color-accent-warning:   #c79a0a;
+    --color-accent-caution:   #d33a3a;
   }
 
   :root[data-theme="dark"] {
-    --body-background: #2e3440;
-    --body-font-color: #eceff4;
+    --body-background: #0e1730;
+    --body-font-color: #e6ecfb;
     --icon-filter: brightness(0) invert(1);
 
-    --color-link: #81a1c1;
-    --color-visited-link: #b48ead;
+    --color-link: #00c8fd;
+    --color-visited-link: #f3c921;
 
-    --gray-100: #3b4252;
-    --gray-200: #434c5e;
-    --gray-500: #d8dee9;
+    --gray-100: #17224a;
+    --gray-200: #22326b;
+    --gray-500: #93a3cc;
 
-    --color-accent-default:   #81a1c1;
-    --color-accent-note:      #5e81ac;
-    --color-accent-tip:       #a3be8c;
-    --color-accent-important: #b48ead;
-    --color-accent-warning:   #d08770;
-    --color-accent-caution:   #bf616a;
+    --color-accent-default:   #4d7bd9;
+    --color-accent-note:      #00c8fd;
+    --color-accent-tip:       #4ade80;
+    --color-accent-important: #a78bfa;
+    --color-accent-warning:   #f3c921;
+    --color-accent-caution:   #f87171;
   }
 
   @media (prefers-color-scheme: dark) {
     :root[data-theme="auto"] {
-      --body-background: #2e3440;
-      --body-font-color: #eceff4;
+      --body-background: #0e1730;
+      --body-font-color: #e6ecfb;
       --icon-filter: brightness(0) invert(1);
 
-      --color-link: #81a1c1;
-      --color-visited-link: #b48ead;
+      --color-link: #00c8fd;
+      --color-visited-link: #f3c921;
 
-      --gray-100: #3b4252;
-      --gray-200: #434c5e;
-      --gray-500: #d8dee9;
+      --gray-100: #17224a;
+      --gray-200: #22326b;
+      --gray-500: #93a3cc;
 
-      --color-accent-default:   #81a1c1;
-      --color-accent-note:      #5e81ac;
-      --color-accent-tip:       #a3be8c;
-      --color-accent-important: #b48ead;
-      --color-accent-warning:   #d08770;
-      --color-accent-caution:   #bf616a;
+      --color-accent-default:   #4d7bd9;
+      --color-accent-note:      #00c8fd;
+      --color-accent-tip:       #4ade80;
+      --color-accent-important: #a78bfa;
+      --color-accent-warning:   #f3c921;
+      --color-accent-caution:   #f87171;
     }
   }
 

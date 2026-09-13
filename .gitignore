@@ -1,8 +1,8 @@
 public/
-exampleSite/public/
-.DS_Store
+resources/
 .hugo_build.lock
+.direnv/
+.DS_Store
 .obsidian
 .vscode
 .zed
-resources/
