@@ -127,15 +127,51 @@ First load takes a minute while it pulls hugo, after that it is instant. Open ht
 
 Next is [Using .envrc](./envrc), which is the part you will actually use day to day.
 
-## Editing with VS Code
+## VS Code (optional)
 
-Install the **WSL** extension on the Windows side, then from the Ubuntu shell, inside the project:
+Skip this if you already have an editor you like inside the terminal. If you want VS Code, the trick is that it runs in two halves: the window on Windows, everything else (your files, git, language servers, the tools direnv loaded) inside Ubuntu. Set up that way it behaves like a normal Linux editor.
+
+Install it **on the Windows side**, not inside Ubuntu. Grab the [Windows installer](https://code.visualstudio.com/download), and when it asks about **Select Additional Tasks**, leave **Add to PATH** checked, that is what makes `code` work from the Ubuntu shell.
+
+Then install the [WSL extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl). That is the only one you need on Windows to start.
+
+Ubuntu ships without two things the VS Code server wants, so from **Ubuntu**:
+
+```sh
+sudo apt update
+sudo apt install wget ca-certificates
+```
+
+### Opening a project
+
+From the Ubuntu shell, inside the project:
 
 ```sh
 code .
 ```
 
-Starting it from in there matters. It inherits the environment direnv loaded, so it can see the project's tools. Open the same folder from the Windows side instead and it cannot.
+The first run downloads a small server into your Linux home, after that it is quick. The bottom left corner of the window should read **WSL: Ubuntu**. If it does not, you opened the Windows copy of the folder and none of this applies.
+
+> [!IMPORTANT]
+> **Start it from the shell, in the project folder.** VS Code's server does not run your `.bashrc`, so the direnv hook never fires on its own. Launching with `code .` from a shell direnv has already loaded hands the whole environment over, which is why the editor can find `hugo` and friends. Open the folder from the Windows side and it cannot.
+
+If you would rather not go back to the terminal every time, `Ctrl+Shift+P` and type `WSL` gives you **Reopen Folder in WSL** and the rest of the options.
+
+### Extensions
+
+The extensions tab splits into two lists, **Local** and **WSL: Ubuntu**. Themes and keybindings stay local and you install them once. Anything that touches your code, language servers, formatters, debuggers, has to live on the Ubuntu side. VS Code flags those with a ⚠ and an **Install in WSL: Ubuntu** button, click it.
+
+The built in terminal is already your Ubuntu shell, with direnv working normally, so `hugo server` from in there does the right thing.
+
+### When `code` is not found
+
+Usually **Add to PATH** was unchecked during install. Reinstall VS Code with it checked, or add it yourself in Ubuntu:
+
+```sh
+echo 'export PATH="$PATH:/mnt/c/Program Files/Microsoft VS Code/bin"' >> ~/.bashrc
+```
+
+Then open a new Ubuntu window. Microsoft keeps a longer [troubleshooting list](https://code.visualstudio.com/docs/remote/troubleshooting) for the stranger cases.
 
 ## If systemd refuses to cooperate
 
