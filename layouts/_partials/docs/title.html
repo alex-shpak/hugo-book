@@ -12,6 +12,8 @@
   {{ $title = path.Base .File.Dir | humanize | title }}
 {{ else if and .IsPage .File }}
   {{ $title = .File.BaseFileName | humanize | title }}
+{{ else if .IsHome }}
+  {{ $title = .Site.Title }}
 {{ end }}
 
 {{ return $title }}

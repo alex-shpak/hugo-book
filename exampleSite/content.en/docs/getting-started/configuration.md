@@ -19,6 +19,10 @@ All theme parameters are set under `[params]` in your site config. Every paramet
   # Can also be set per-page via frontmatter
   BookToC = true
 
+  # Show breadcrumbs in the beginning of the document.
+  # Can also be set per-page via frontmatter
+  BookBreadcrumbs = true
+
   # Path to logo image file relative to 'static' directory
   BookLogo = 'logo.png'
 

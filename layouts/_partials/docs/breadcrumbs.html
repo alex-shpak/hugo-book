@@ -1,0 +1,22 @@
+{{- $bookSection := (partialCached "docs/menu-section" .Site) -}}
+{{- $breadcrumbs := slice -}}
+
+{{- $breadcrumbs = $breadcrumbs | append $bookSection -}}
+{{- range .Ancestors.Reverse -}}
+  {{- if not (.IsDescendant $bookSection) -}}{{- continue -}}{{- end -}}
+  {{- $breadcrumbs = $breadcrumbs | append . -}}
+{{- end -}}
+{{- $breadcrumbs = $breadcrumbs | append . -}}
+
+<nav class="book-breadcrumbs" aria-label="breadcrumbs">
+  <ul class="flex flex-wrap">
+    {{- range $index, $page := $breadcrumbs -}}
+    <li class="flex align-center">
+      {{- if $index -}}
+      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" aria-hidden="true"/>
+      {{- end -}}
+      <a {{ if eq . $ }}aria-current="page"{{ else if $page.Content }}href="{{ $page.RelPermalink }}"{{ end }} >{{ partial "docs/title" $page }}</a>
+    </li>
+    {{- end -}}
+  </ul>
+</nav>

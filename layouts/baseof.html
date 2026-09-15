@@ -14,6 +14,7 @@
       </header>
 
       {{ partial "docs/inject/content-before" . }}
+      {{ template "breadcrumbs" . }}
       {{ template "main" . }} <!-- Page Content -->
       {{ partial "docs/inject/content-after" . }}
 
@@ -50,10 +51,16 @@
 {{ define "header" }}
   {{ partial "docs/header" . }}
 
-  {{ if .Param "BookToC" | default true}}
+  {{ if .Param "BookToC" | default true }}
   <aside class="hidden">
     {{ template "toc" . }}
   </aside>
+  {{ end }}
+{{ end }}
+
+{{ define "breadcrumbs" }}
+  {{ if .Param "BookBreadcrumbs" | default true }}
+  {{ partial "docs/breadcrumbs" . }}
   {{ end }}
 {{ end }}
 

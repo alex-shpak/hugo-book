@@ -1,7 +1,4 @@
 ---
-title: Single Page
+title: Documentation
 layout: book
-menu:
-  after:
-    weight: 7
 ---

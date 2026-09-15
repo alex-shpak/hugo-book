@@ -94,9 +94,6 @@ ul.pagination {
 
 .book-icon {
   filter: var(--icon-filter);
-}
-
-a .book-icon {
   height: 1em;
   width: 1em;
 }
@@ -220,6 +217,22 @@ body[dir="rtl"] .book-menu {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 var(--space-16);
+  }
+}
+
+.book-breadcrumbs {
+  font-size: var(--font-size-smaller);
+
+  a {
+    padding: 0;
+  }
+
+  ul {
+    margin-bottom: var(--space-8);
+  }
+
+  ul, li {
+    gap: var(--space-4);
   }
 }
 

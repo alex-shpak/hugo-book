@@ -8,7 +8,7 @@ Every page can use these [frontmatter](https://gohugo.io/content-management/fron
 
 {{< tabs >}}
 {{% tab "YAML" %}}
-```yaml
+```yaml {filename=_index.md}
 ---
 title: My Page
 weight: 10
@@ -19,7 +19,7 @@ bookCollapseSection: true
 {{% /tab %}}
 
 {{% tab "TOML" %}}
-```toml
+```toml {filename=_index.md}
 +++
 title = 'My Page'
 weight = 10
@@ -30,7 +30,7 @@ bookCollapseSection = true
 {{% /tab %}}
 
 {{% tab "JSON" %}}
-```json
+```json {filename=_index.md}
 {
   "title": "My Page",
   "weight": 10,
