@@ -1,6 +1,7 @@
 ---
 title: Customization
 weight: 30
-bookFlatSection: true
-bookIcon: apparel
+params:
+  bookFlatSection: true
+  bookIcon: apparel
 ---

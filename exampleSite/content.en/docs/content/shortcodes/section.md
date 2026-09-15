@@ -1,5 +1,6 @@
 ---
-bookHidden: true
+params:
+  bookHidden: true
 ---
 
 # Section

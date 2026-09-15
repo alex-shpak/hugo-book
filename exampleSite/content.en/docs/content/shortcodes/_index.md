@@ -1,6 +1,7 @@
 ---
 weight: 60
-bookCollapseSection: true
+params:
+  bookCollapseSection: true
 ---
 
 # Shortcodes

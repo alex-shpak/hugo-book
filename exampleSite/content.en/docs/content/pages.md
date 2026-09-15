@@ -12,8 +12,9 @@ Every page can use these [frontmatter](https://gohugo.io/content-management/fron
 ---
 title: My Page
 weight: 10
-bookToC: true
-bookCollapseSection: true
+params:
+  bookToC: true
+  bookCollapseSection: true
 ---
 ```
 {{% /tab %}}

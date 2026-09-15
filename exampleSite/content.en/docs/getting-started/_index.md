@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 weight: 10
-bookFlatSection: true
-bookIcon: rocket
+params:
+  bookFlatSection: true
+  bookIcon: rocket
 ---

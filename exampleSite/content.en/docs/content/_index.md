@@ -1,6 +1,7 @@
 ---
 title: Content & Structure
 weight: 20
-bookFlatSection: true
-bookIcon: edit
+params:
+  bookFlatSection: true
+  bookIcon: edit
 ---

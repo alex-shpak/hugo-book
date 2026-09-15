@@ -1,5 +1,6 @@
 ---
 title: "{{ .Name | humanize | title }}"
 layout: landing
-# bookSearchExclude: false
+params:
+  # bookSearchExclude: false
 ---

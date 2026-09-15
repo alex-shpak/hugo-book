@@ -1,7 +1,8 @@
 ---
 title: "{{ .Name | humanize | title }}"
 date: {{ .Date }}
-# bookComments: false
-# bookSearchExclude: false
-# bookPostThumbnail: thumbnail.*
+params:
+  # bookComments: false
+  # bookSearchExclude: false
+  # bookPostThumbnail: thumbnail.*
 ---
