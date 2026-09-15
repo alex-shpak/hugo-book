@@ -91,11 +91,11 @@ enableGitInfo = true
   # (Optional, default true) Controls table of contents visibility on right side of pages.
   # Start and end levels can be controlled globally with markup.tableOfContents setting.
   # You can also specify this parameter per page in front matter.
-  # BookToC = true
+  BookToC = true
 
   # (Optional, default true) Controlls breadcurms, if true breadcrumbs are displayed at the beginning of the document.
   # You can also specify this parameter per page in front matter.
-  # BookBreadcrumbs = true
+  BookBreadcrumbs = true
 
   # (Optional, default none) Set the path to a logo for the book.
   # If the logo is /static/logo.png then the path would be logo.png
@@ -131,11 +131,11 @@ enableGitInfo = true
   # Configuration for indexing can be adjusted in i18n folder per language.
   BookSearch = true
 
-  # (Optional, default true) Enables comments template on pages
+  # (Optional, default false) Enables comments template on pages
   # By default partials/docs/comments.html includes Disqus template
   # See https://gohugo.io/content-management/comments/#configure-disqus
   # Can be overwritten by same param in page frontmatter
-  BookComments = true
+  BookComments = false
 
   # /!\ This is an experimental feature, might be removed or changed at any time
   # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
