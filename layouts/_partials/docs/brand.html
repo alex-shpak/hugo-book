@@ -1,8 +1,8 @@
-<h2 class="book-brand">
+<div class="book-brand">
   <a class="flex align-center" href="{{ partial "docs/links/home" . }}">
     {{- with .Site.Params.BookLogo -}}
     <img src="{{ . | relURL }}" alt="{{ partial "docs/text/i18n" "Logo" }}" />
     {{- end -}}
     <span>{{ .Site.Title }}</span>
   </a>
-</h2>
+</div>

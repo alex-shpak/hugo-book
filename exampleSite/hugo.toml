@@ -99,7 +99,7 @@ enableGitInfo = true
 
   # (Optional, default none) Set the path to a logo for the book.
   # If the logo is /static/logo.png then the path would be logo.png
-  # BookLogo = 'logo.png'
+  # BookLogo = 'favicon.svg'
 
   # (Optional, default docs) Specify root page to render child pages as menu.
   # Page is resoled by .GetPage function: https://gohugo.io/functions/getpage/

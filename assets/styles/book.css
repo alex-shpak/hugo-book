@@ -99,12 +99,16 @@ ul.pagination {
 }
 
 .book-brand {
-  margin-top: 0;
+  font-size: 1.25rem;
   margin-bottom: var(--space-16);
 
   img {
-    height: 1.5em;
-    width: 1.5em;
+    height: 1em;
+    width: auto;
+  }
+
+  a[href] {
+    color: var(--body-font-color);
   }
 }
 
@@ -213,10 +217,13 @@ body[dir="rtl"] .book-menu {
     line-height: 0;
   }
 
-  h3 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0 var(--space-16);
+  .book-icon {
+    font-size: 1.25rem;
+  }
+
+  .book-brand {
+    margin: 0;
+    font-size: 1rem;
   }
 }
 
