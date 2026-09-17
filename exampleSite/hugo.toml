@@ -93,11 +93,11 @@ enableGitInfo = true
   # You can also specify this parameter per page in front matter.
   BookToC = true
 
-  # (Optional, default true) Controlls breadcurms, if true breadcrumbs are displayed at the beginning of the document.
+  # (Optional, default false) Controlls breadcurms, if true breadcrumbs are displayed at the beginning of the document.
   # You can also specify this parameter per page in front matter.
   BookBreadcrumbs = true
 
-  # (Optional, default true) Enableds incoming and outgoing links display next to table of contents on a page
+  # (Optional, default false) Enableds incoming and outgoing links display next to table of contents on a page
   # You can also specify this parameter per page in front matter.
   BookPageLinks = true
 

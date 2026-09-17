@@ -1,6 +1,6 @@
 {{- $destination := .Destination -}}
 
-{{- if .Page.Param "BookPageLinks" | default true -}}
+{{- if .Page.Param "BookPageLinks" | default false -}}
 {{- with .Page.GetPage $destination -}}
   {{- $.Page.Store.Add "bookLinks" (slice .Page) -}}
   {{-  .Page.Store.Add "bookBacklinks" (slice $.Page) -}}

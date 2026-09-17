@@ -53,7 +53,7 @@
 {{ end }}
 
 {{ define "breadcrumbs" }}
-  {{ if .Param "BookBreadcrumbs" | default true }}
+  {{ if .Param "BookBreadcrumbs" | default false }}
   {{ partial "docs/breadcrumbs" . }}
   {{ end }}
 {{ end }}

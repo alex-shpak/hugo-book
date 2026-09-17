@@ -11,68 +11,79 @@ All theme parameters are set under `[params]` in your site config. Every paramet
 
 ```toml {filename=hugo.toml}
 [params]
-  # Color theme: 'light', 'dark' or 'auto'
-  # Auto switches based on OS/browser preference
-  BookTheme = 'light'
+# (Optional, default light) Sets color theme: light, dark or auto.
+# Theme 'auto' switches between dark and light modes based on browser/os preferences
+BookTheme = 'light'
 
-  # Show table of contents on right side of pages
-  # Can also be set per-page via frontmatter
-  BookToC = true
+# (Optional, default true) Controls table of contents visibility on right side of pages.
+# Start and end levels can be controlled globally with markup.tableOfContents setting.
+# You can also specify this parameter per page in front matter.
+BookToC = true
 
-  # Show breadcrumbs in the beginning of the document.
-  # Can also be set per-page via frontmatter
-  BookBreadcrumbs = true
+# (Optional, default false) Controlls breadcurms, if true breadcrumbs are displayed at the beginning of the document.
+# You can also specify this parameter per page in front matter.
+BookBreadcrumbs = true
 
-  # Show linked pages under the table of contents.
-  # Can also be set per-page via frontmatter
-  BookPageLinks = true
+# (Optional, default false) Enableds incoming and outgoing links display next to table of contents on a page
+# You can also specify this parameter per page in front matter.
+BookPageLinks = true
 
-  # Path to logo image file relative to 'static' directory
-  BookLogo = 'logo.png'
+# (Optional, default none) Set the path to a logo for the book.
+# If the logo is /static/logo.png then the path would be logo.png
+# BookLogo = 'favicon.svg'
 
-  # Root section to render as sidebar menu
-  # Default: 'docs'
-  BookSection = 'docs'
+# (Optional, default docs) Specify root page to render child pages as menu.
+# Page is resoled by .GetPage function: https://gohugo.io/functions/getpage/
+# For backward compatibility you can set '*' to render all sections to menu. Acts same as '/'
+BookSection = 'docs'
 
-  # Repository URL, used for edit and commit links
-  BookRepo = 'https://github.com/user/repo'
+# Here for backward compatibility, not required.
+# It's here as an example how to use it with BookLastChangeLink or BookEditLink
+BookRepo = 'https://github.com/alex-shpak/hugo-book/'
 
-  # Template for "Last Modified" commit link in page footer
-  # Requires enableGitInfo = true in site config
-  # Available context: .Site, .Page, .GitInfo
-  BookLastChangeLink = '{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}'
+# (Optional, default none) Set template for commit link for the page. Requires enableGitInfo.
+# When set enabled 'Last Modified' and a link to the commit in the footer of the page.
+# Param is executed as template using .Site, .Page and .GitInfo as context.
+BookLastChangeLink = '{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}'
 
-  # Template for "Edit this page" link in page footer
-  # Available context: .Site, .Page, .Path
-  BookEditLink = '{{ .Site.Params.BookRepo }}/edit/main/{{ .Path }}'
+# (Optional, default none) Set template for edit page link.
+# When set enabled 'Edit this page' link in the footer of the page.
+# Param is executed as template using .Site, .Page and .Path as context.
+BookEditLink = '{{ .Site.Params.BookRepo }}/edit/main/exampleSite/{{ .Path }}'
 
-  # Date format used in git info and blog posts
-  BookDateFormat = 'January 2, 2006'
+# (Optional, default 'January 2, 2006') Configure the date format used on the pages
+# - In git information
+# - In blog posts
+# https://gohugo.io/functions/time/format/
+BookDateFormat = 'January 2, 2006'
 
-  # Enable full-text search with MiniSearch
-  BookSearch = true
+# (Optional, default true) Enables search function with MiniSearch.
+# Index is built on fly, therefore it might slowdown your website.
+# Configuration for indexing can be adjusted in i18n folder per language.
+BookSearch = true
 
-  # Enable comments template on pages
-  # By default uses Disqus; override partials/docs/comments.html for others
-  BookComments = true
+# (Optional, default false) Enables comments template on pages
+# By default partials/docs/comments.html includes Disqus template
+# See https://gohugo.io/content-management/comments/#configure-disqus
+# Can be overwritten by same param in page frontmatter
+BookComments = false
 
-  # /!\ Experimental, may change or be removed.
-  # Enable portable markdown links to resolve relative .md links to Hugo URLs.
-  # Lets you write [text](./other.md) instead of Hugo's relref shortcode.
-  #   false     - disabled, relative .md links not resolved
-  #   'warning' - enabled, prints a build warning if linked page doesn't exist
-  #   'error'   - enabled, fails the build if linked page doesn't exist
-  BookPortableLinks = false
+# /!\ This is an experimental feature, might be removed or changed at any time
+# (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
+# Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
+# Hugo Book will print warning or error if page referenced in markdown does not exists.
+# Possible values are false | 'warning' | 'error'
+BookPortableLinks = 'warning'
 
-  # /!\ Experimental, may change or be removed.
-  # Register a service worker for offline access to visited pages.
-  #   false      - disabled (default)
-  #   true       - caches pages as you visit them
-  #   'precache' - pre-populates cache with all site pages on first load
-  BookServiceWorker = false
+# /!\ This is an experimental feature, might be removed or changed at any time
+# (Optional, experimental, default false)
+# When set to 'preache' it enables a service worker that caches visited pages and resources for offline use.
+# Possible values are false | true | 'precache'
+BookServiceWorker = 'precache'
 
-  # Only show languages that have translations for current page
-  BookTranslatedOnly = false
+# /!\ This is an experimental feature, might be removed or changed at any time
+# (Optional, experimental, default false) Enables a drop-down menu for translations only if a translation is present.
+BookTranslatedOnly = false
 ```
 
 ## Search
@@ -130,7 +141,7 @@ Control the heading levels included in the table of contents
 ```toml {filename=hugo.toml}
 [markup.tableOfContents]
   startLevel = 1
-  endLevel = 4
+  endLevel = 6
 ```
 
 The `startLevel` and `endLevel` values apply globally. Individual pages can toggle the ToC on or off with the `bookToC` frontmatter parameter.
