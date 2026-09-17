@@ -420,8 +420,9 @@ body[dir="rtl"] .book-menu {
 
     .book-toc-content {
       position: static;
-      overflow: initial;
       width: auto;
+      font-size: var(--font-size-smaller);
+      overflow: initial;
     }
   }
 
