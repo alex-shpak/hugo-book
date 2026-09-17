@@ -63,6 +63,7 @@ These parameters control page content rendering. Set in page frontmatter.
 | --- | --- | --- |
 | `bookToC`           | | Show or hide the table of contents. Overrides the site-level `BookToC` setting. |
 | `bookBreadcrumbs`   | | Show or hide breadcrumbs. Overrides the site-level `BookBreadcrumbs` setting. |
+| `bookPageLinks`     | | Show or hide linked pages under the table of contents. Overrides the site-level `BookPageLinks` setting. |
 | `bookComments`      | | Show or hide comments. Overrides the site-level `BookComments` setting. |
 | `bookSearchExclude` | `false` | Exclude this page from the search index. |
 

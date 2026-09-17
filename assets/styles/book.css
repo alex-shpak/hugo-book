@@ -59,7 +59,7 @@ nav ul {
 
   a {
     padding: 0.5em 0;
-    display: flex;
+    display: inline-block;
     transition: opacity 0.1s ease-in-out;
   }
 
@@ -211,14 +211,15 @@ body[dir="rtl"] .book-menu {
 }
 
 .book-header {
-  margin-bottom: var(--space-16);
+  padding: var(--space-16);
+  padding-bottom: 0;
 
   label {
     line-height: 0;
-  }
 
-  .book-icon {
-    font-size: 1.25rem;
+    .book-icon {
+      font-size: 1.25rem;
+    }
   }
 
   .book-brand {
@@ -241,6 +242,10 @@ body[dir="rtl"] .book-menu {
   ul, li {
     gap: var(--space-4);
   }
+}
+
+.book-layout-landing main {
+  flex-direction: column;
 }
 
 .book-layout-landing .book-header {
@@ -330,9 +335,13 @@ body[dir="rtl"] .book-menu {
     height: 1em;
     width: 1em;
   }
+}
 
-  nav > ul > li:first-child {
-    margin-top: 0;
+.book-toc-section {
+  gap: .5em;
+
+  > .book-icon {
+    margin: .5em 0;
   }
 }
 
@@ -378,14 +387,19 @@ body[dir="rtl"] .book-menu {
 .book-menu-content,
 .book-toc-content {
   transition: 0.2s ease-in-out;
-  transition-property: transform, margin, opacity, visibility;
-  will-change: transform, margin, opacity;
+  transition-property: transform, opacity, visibility;
+  will-change: transform, opacity;
 }
 
 /* --menu-width(16) + --body-min-width(20) * 1.2 + --toc-width(16) */
 @media screen and (max-width: 56rem) {
+  main {
+    flex-direction: column;
+  }
+
   .book-menu {
     visibility: hidden;
+    flex-basis: 0;
     margin-inline-start: calc(-1 * var(--menu-width));
     z-index: 1;
 
@@ -394,12 +408,21 @@ body[dir="rtl"] .book-menu {
     }
   }
 
-  .book-toc {
-    display: none;
-  }
-
   .book-header {
     display: block;
+    order: -2;
+  }
+
+  .book-toc {
+    display: none;
+    flex: none;
+    order: -1;
+
+    .book-toc-content {
+      position: static;
+      overflow: initial;
+      width: auto;
+    }
   }
 
   .book-post-container {
@@ -416,6 +439,8 @@ body[dir="rtl"] .book-menu {
       box-shadow: 0 0 var(--space-8) rgba(0, 0, 0, 0.1);
     }
 
+    .book-header,
+    .book-toc,
     .book-page {
       opacity: 0.25;
     }
@@ -423,21 +448,16 @@ body[dir="rtl"] .book-menu {
     .book-menu-overlay {
       display: block;
       position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      inset: 0;
     }
   }
 
-  body:has(#toc-control:checked) {
-    .book-header aside {
-      display: block;
-    }
+  body:has(#toc-control:checked) .book-toc {
+    display: block;
   }
 
   /* for RTL support */
-  body[dir="rtl"] #menu-control:checked ~ main {
+  body[dir="rtl"]:has(#menu-control:checked) {
     .book-menu .book-menu-content {
       transform: translateX(calc(-1 * var(--menu-width)));
     }

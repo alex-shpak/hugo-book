@@ -1,4 +1,12 @@
 {{- $destination := .Destination -}}
+
+{{- if .Page.Param "BookPageLinks" | default true -}}
+{{- with .Page.GetPage $destination -}}
+  {{- $.Page.Store.Add "bookLinks" (slice .Page) -}}
+  {{-  .Page.Store.Add "bookBacklinks" (slice $.Page) -}}
+{{- end -}}
+{{- end -}}
+
 {{- if .Page.Site.Params.BookPortableLinks -}}
   {{- $destination = partial "docs/links/portable-link" . -}}
 {{- end -}}

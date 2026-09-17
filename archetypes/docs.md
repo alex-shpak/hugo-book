@@ -5,6 +5,7 @@ params:
   # bookFlatSection: false
   # bookToc: true
   # bookBreadcrumbs: true
+  # bookPageLinks: true
   # bookHidden: false
   # bookCollapseSection: false
   # bookComments: false

@@ -23,6 +23,10 @@ All theme parameters are set under `[params]` in your site config. Every paramet
   # Can also be set per-page via frontmatter
   BookBreadcrumbs = true
 
+  # Show linked pages under the table of contents.
+  # Can also be set per-page via frontmatter
+  BookPageLinks = true
+
   # Path to logo image file relative to 'static' directory
   BookLogo = 'logo.png'
 

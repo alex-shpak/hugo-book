@@ -8,11 +8,11 @@
   <main class="container flex">
     {{ template "menu-container" . }} <!-- Left menu -->
 
-    <div class="book-page">
-      <header class="book-header hidden">
-        {{ template "header" . }} <!-- Mobile layout header -->
-      </header>
+    <header class="book-header hidden">
+      {{ template "header" . }} <!-- Mobile layout header -->
+    </header>
 
+    <div class="book-page">
       {{ partial "docs/inject/content-before" . }}
       {{ template "breadcrumbs" . }}
       {{ template "main" . }} <!-- Page Content -->
@@ -50,12 +50,6 @@
 
 {{ define "header" }}
   {{ partial "docs/header" . }}
-
-  {{ if .Param "BookToC" | default true }}
-  <aside class="hidden">
-    {{ template "toc" . }}
-  </aside>
-  {{ end }}
 {{ end }}
 
 {{ define "breadcrumbs" }}

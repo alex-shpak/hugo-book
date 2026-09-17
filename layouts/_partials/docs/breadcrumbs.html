@@ -1,10 +1,14 @@
 {{- $bookSection := (partialCached "docs/menu-section" .Site) -}}
-{{- $breadcrumbs := slice -}}
+{{- $rootSection := site.Home -}}
+{{- if or (eq . $bookSection) (.IsDescendant $bookSection) -}}
+  {{- $rootSection = $bookSection -}}
+{{- end -}}
 
-{{- $breadcrumbs = $breadcrumbs | append $bookSection -}}
+{{- $breadcrumbs := slice -}}
 {{- range .Ancestors.Reverse -}}
-  {{- if not (.IsDescendant $bookSection) -}}{{- continue -}}{{- end -}}
-  {{- $breadcrumbs = $breadcrumbs | append . -}}
+  {{- if or (eq . $rootSection) (.IsDescendant $rootSection) -}}
+    {{- $breadcrumbs = $breadcrumbs | append . -}}
+  {{- end -}}
 {{- end -}}
 {{- $breadcrumbs = $breadcrumbs | append . -}}
 
