@@ -70,7 +70,7 @@ BookComments = false
 
 # /!\ This is an experimental feature, might be removed or changed at any time
 # (Optional, experimental, default false) Enables portable links and link checks in markdown pages.
-# Portable links meant to work with text editors and let you write markdown without {{< relref >}} shortcode
+# Portable links meant to work with text editors and let you write markdown without relref shortcode
 # Hugo Book will print warning or error if page referenced in markdown does not exists.
 # Possible values are false | 'warning' | 'error'
 BookPortableLinks = 'warning'

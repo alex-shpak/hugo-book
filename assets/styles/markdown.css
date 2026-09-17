@@ -125,9 +125,9 @@
       text-align: start;
     }
 
-    tr:nth-child(2n) {
+    /* tr:nth-child(2n) {
       background: var(--gray-100);
-    }
+    } */
   }
 
   hr {
