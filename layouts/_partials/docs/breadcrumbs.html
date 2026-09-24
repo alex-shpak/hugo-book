@@ -17,7 +17,7 @@
     {{- range $index, $page := $breadcrumbs -}}
     <li class="flex align-center">
       {{- if $index -}}
-      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" aria-hidden="true"/>
+      <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "chevron-right" }}</svg>
       {{- end -}}
       <a {{ if eq . $ }}aria-current="page"{{ else if $page.Content }}href="{{ $page.RelPermalink }}"{{ end }} >{{ partial "docs/title" $page }}</a>
     </li>

@@ -1,2 +1,1 @@
-{{- $icon := resources.GetMatch (printf "icons/%s.*" .) -}}
-{{- return $icon.RelPermalink -}}
+<use href="{{ partialCached "docs/links/iconset" nil }}#{{ . }}"></use>

@@ -13,11 +13,11 @@
   <li>
     <input type="checkbox" id="languages" class="toggle" />
     <label for="languages" class="flex">
-      <a role="button">
-        <img src="{{ partial "docs/icon" "translate" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Languages" }}" />
+      <a role="button" aria="{{ partial "docs/text/i18n" "Languages" }}">
+        <svg class="book-icon">{{ partial "docs/icon" "translate" }}</svg>
         {{ $.Site.Language.Label -}}
       </a>
-      <img src="{{ partial "docs/icon" "chevron-right" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Expand" }}" />
+      <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "chevron-right" }}</svg>
     </label>
 
     <ul>

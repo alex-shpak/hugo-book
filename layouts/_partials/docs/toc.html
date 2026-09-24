@@ -4,7 +4,7 @@
 
 {{ with (.Scratch.Get "bookBacklinks") | uniq }}
 <div class="flex book-toc-section">
-<img src="{{ partial "docs/icon" "incoming" }}" class="book-icon" />
+<svg class="book-icon">{{ partial "docs/icon" "incoming" }}</svg>
 <nav class="flex">
   <ul>
   {{ range . }}
@@ -21,7 +21,7 @@
 
 {{ with (.Scratch.Get "bookLinks") | uniq }}
 <div class="flex book-toc-section">
-<img src="{{ partial "docs/icon" "outgoing" }}" class="book-icon" />
+<svg class="book-icon">{{ partial "docs/icon" "outgoing" }}</svg>
 <nav class="flex">
   <ul>
   {{ range . }}

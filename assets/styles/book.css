@@ -131,10 +131,7 @@ ul.pagination {
     color: var(--color-link);
   }
 
-  label > img:last-child {
-    height: 1em;
-    width: 1em;
-
+  label > .book-icon:last-child {
     cursor: pointer;
 
     align-self: center;
@@ -146,7 +143,7 @@ ul.pagination {
   }
 
   input.toggle:checked + label {
-    > img:last-child {
+    > .book-icon:last-child {
       transform: rotate(90deg);
     }
 
@@ -158,11 +155,11 @@ ul.pagination {
 
 /* for RTL support */
 body[dir="rtl"] .book-menu {
-  input.toggle + label > img:last-child {
+  input.toggle + label > .book-icon:last-child {
     transform: rotate(180deg);
   }
 
-  input.toggle:checked + label > img:last-child {
+  input.toggle:checked + label > .book-icon:last-child {
     transform: rotate(90deg);
   }
 }
@@ -188,12 +185,6 @@ body[dir="rtl"] .book-menu {
 
 .book-post {
   margin-bottom: calc(var(--space-16) * 4);
-
-  .book-post-date img {
-    height: 1em;
-    width: 1em;
-    margin-inline-end: .5em;
-  }
 
   .book-post-content {
     margin-top: var(--space-16);
@@ -333,7 +324,7 @@ body[dir="rtl"] .book-menu {
 
   img {
     height: 1em;
-    width: 1em;
+    width: auto;
   }
 }
 

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+{{- range resources.Match "icons/*.svg" -}}
+  {{- $icon := transform.Unmarshal (dict "format" "xml") . }}
+  <symbol id="{{ .Name | path.BaseName }}" {{ with index $icon "-viewBox"}}viewBox="{{ . }}"{{ end }}>
+    {{- $path := index $icon "path" }}
+    <path d="{{ index $path "-d" }}" />
+  </symbol>
+{{- end }}
+</svg>

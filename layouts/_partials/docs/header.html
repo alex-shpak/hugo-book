@@ -1,15 +1,15 @@
 <div class="flex align-center justify-between gap">
   <input type="checkbox" class="toggle" id="menu-control" />
-  <label for="menu-control">
-    <img src="{{ partial "docs/icon" "menu" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Menu" }}" />
+  <label for="menu-control" aria-label="{{ partial "docs/text/i18n" "Menu" }}">
+    <svg class="book-icon">{{ partial "docs/icon" "menu" }}</svg>
   </label>
 
   {{ partial "docs/brand" . }}
 
   {{ if .Param "BookToC" | default true }}
   <input type="checkbox" class="toggle" id="toc-control" />
-  <label for="toc-control">
-    <img src="{{ partial "docs/icon" "toc" }}" class="book-icon" alt="{{ partial "docs/text/i18n" "Table of Contents" }}" />
+  <label for="toc-control" aria-label="{{ partial "docs/text/i18n" "Table of Contents" }}">
+    <svg class="book-icon">{{ partial "docs/icon" "toc" }}</svg>
   </label>
   {{ else }}<div></div>{{ end }}
 </div>
