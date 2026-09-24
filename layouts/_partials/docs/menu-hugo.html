@@ -36,7 +36,7 @@
 
 {{ define "book-menu-title" }}
 {{- with .Params.BookIcon -}}
-  <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" . }}</svg>
+  {{ partial "docs/menu-icon" . }}
 {{- end -}}
 {{- if .Name -}}
   {{- .Name -}}

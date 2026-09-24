@@ -48,7 +48,7 @@
 
 {{ define "book-icon-title" }}
 {{- with .Page.Params.BookIcon -}}
-  <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" . }}</svg>
+  {{ partial "docs/menu-icon" . }}
 {{- end -}}
 {{- partial "docs/title" .Page -}}
 {{ end }}
