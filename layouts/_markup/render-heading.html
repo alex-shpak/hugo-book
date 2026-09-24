@@ -1,6 +1,6 @@
 <h{{ .Level }} id="{{ .Anchor }}" {{- with .Attributes.class -}}class="{{ . }}"{{- end -}}>
   {{- .Text -}}
   {{- if default true .Attributes.anchor -}}
-  <a class="anchor" href="#{{ .Anchor }}" aria-hidden="true"></a>
+  <a class="anchor" href="#{{ .Anchor }}" aria-label="{{ partial "docs/text/i18n" "Link" }}"></a>
   {{- end -}}
 </h{{ .Level }}>

@@ -37,7 +37,7 @@
 </html>
 
 {{ define "menu-container" }}
-<aside class="book-menu">
+<aside class="book-menu" aria-label="{{ partial "docs/text/i18n" "Menu" }}">
   <div class="book-menu-content">
     {{ template "menu" . }}
   </div>
@@ -92,7 +92,7 @@
 
 {{ define "toc-container" }}
   {{ if .Param "BookToC" | default true }}
-  <aside class="book-toc">
+  <aside class="book-toc" aria-label="{{ partial "docs/text/i18n" "Table of Contents" }}">
     <div class="book-toc-content">
       {{ template "toc" . }}
     </div>

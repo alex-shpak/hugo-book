@@ -12,7 +12,7 @@
 {{- end -}}
 {{- $breadcrumbs = $breadcrumbs | append . -}}
 
-<nav class="book-breadcrumbs" aria-label="breadcrumbs">
+<nav class="book-breadcrumbs" aria-label="{{ partial "docs/text/i18n" "Breadcrumbs" }}">
   <ul class="flex flex-wrap">
     {{- range $index, $page := $breadcrumbs -}}
     <li class="flex align-center">

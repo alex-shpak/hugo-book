@@ -4,7 +4,7 @@
     "class" "book-tabs"
   )
 ) -}}
-<div {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
+<fieldset {{ partial "docs/html-attrs" $attributes | safeHTMLAttr }}>
 {{- .Inner -}}
-</div>
+</fieldset>
 {{- /* remove whitespaces */ -}}

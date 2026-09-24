@@ -2,8 +2,8 @@
 
   /* {{< tabs >}} */
   .book-tabs {
-    margin-top: var(--space-16);
-    margin-bottom: var(--space-16);
+    margin: var(--space-16) 0;
+    padding: 0;
 
     border: var(--space-1) solid var(--gray-200);
     border-radius: var(--border-radius);

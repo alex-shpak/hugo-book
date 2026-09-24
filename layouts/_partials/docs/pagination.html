@@ -2,7 +2,7 @@
 <div class="flex flex-wrap justify-between">
   <span>
   {{- with .Paginator.Prev }}
-    <a href="{{ .URL }}" class="flex align-center">
+    <a href="{{ .URL }}" rel="prev" aria-label="{{ .PageNumber }}" class="flex align-center">
       <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "backward" }}</svg>
     </a>
   {{ end }}
@@ -12,14 +12,14 @@
     {{- $currentPageNumber := .Paginator.PageNumber -}}
     {{- range $pageIndex := (slice -2 -1 0 1 2) -}}
     {{- with index $.Paginator.Pagers (add $currentPageNumber $pageIndex -1) -}}
-      <a {{if ne $currentPageNumber .PageNumber }}href="{{ .URL }}"{{end}}>{{ .PageNumber }}</a>
+      <a {{if ne $currentPageNumber .PageNumber }}href="{{ .URL }}"{{ else }}aria-current="page"{{end}}>{{ .PageNumber }}</a>
     {{- end -}}
     {{- end -}}
   </span>
   {{ end }}
   <span>
   {{- with .Paginator.Next }}
-    <a href="{{ .URL }}" class="flex align-center">
+    <a href="{{ .URL }}" rel="next" aria-label="{{ .PageNumber }}" class="flex align-center">
       <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "forward" }}</svg>
     </a>
   {{ end }}
