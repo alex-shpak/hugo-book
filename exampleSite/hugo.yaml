@@ -57,22 +57,25 @@ menu:
   home:
     - name: "Documentation"
       pageRef: "/docs/getting-started/introduction"
-      weight: 2
+      weight: 10
     - name: "Showcases"
       pageRef: "/showcases/"
-      weight: 3
+      weight: 20
     - name: "Github"
       url: "https://github.com/alex-shpak/hugo-book/"
-      weight: 4
+      weight: 30
 
   # before: []
   after:
+    - name: "Single Page"
+      url: "/docs/"
+      weight: 10
     - name: "Github"
       url: "https://github.com/alex-shpak/hugo-book/"
-      weight: 10
-    - name: "Hugo Themes"
-      url: "https://themes.gohugo.io/themes/hugo-book/"
       weight: 20
+    - name: "Codeberg"
+      url: "https://codeberg.org/alex-shpak/hugo-book"
+      weight: 30
 
 params:
   # (Optional, default light) Sets color theme: light, dark or auto.

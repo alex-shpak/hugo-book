@@ -246,22 +246,16 @@ body[dir="rtl"] .book-menu {
 
   nav > ul {
     display: flex;
-    gap: var(--space-16);
+    gap: var(--space-8);
+    flex-wrap: wrap;
     justify-content: end;
 
-    > li {
-      display: block;
-      white-space: nowrap;
+    a {
+      padding: var(--space-4);
+    }
 
-      > ul {
-        display: none;
-        position: absolute;
-        padding: 0;
-      }
-
-      &:hover > ul, &:focus-within > ul {
-        display: block;
-      }
+    > li > ul {
+      padding: 0;
     }
   }
 }
