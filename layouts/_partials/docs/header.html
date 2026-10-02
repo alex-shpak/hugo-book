@@ -1,7 +1,7 @@
 <div class="flex align-center justify-between gap">
   <input type="checkbox" class="toggle" id="menu-control" />
   <label for="menu-control" aria-label="{{ partial "docs/text/i18n" "Menu" }}">
-    <svg class="book-icon">{{ partial "docs/icon" "menu" }}</svg>
+    <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "menu" }}</svg>
   </label>
 
   {{ partial "docs/brand" . }}
@@ -9,7 +9,7 @@
   {{ if .Param "BookToC" | default true }}
   <input type="checkbox" class="toggle" id="toc-control" />
   <label for="toc-control" aria-label="{{ partial "docs/text/i18n" "Table of Contents" }}">
-    <svg class="book-icon">{{ partial "docs/icon" "toc" }}</svg>
+    <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "toc" }}</svg>
   </label>
   {{ else }}<div></div>{{ end }}
 </div>
