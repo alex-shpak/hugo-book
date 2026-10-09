@@ -2,7 +2,6 @@
   Returns rendered string from template and context.
   Usage: partial "docs/text/template" (dict "Template" "param={{ . }}" "Context" "Input")
 */}}
-{{- $checksum := . | encoding.Jsonify | crypto.SHA1 | printf "book-%s" -}}
-{{- $template := resources.FromString $checksum .Template -}}
-{{- $template = $template | resources.ExecuteAsTemplate $checksum .Context -}}
+{{- $checksum := (printf "%s:%s" .Path .Template) | crypto.SHA1 | printf "book-template-%s" -}}
+{{- $template := resources.FromString $checksum .Template | resources.ExecuteAsTemplate "target" .Context -}}
 {{- return $template.Content -}}
