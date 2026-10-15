@@ -7,6 +7,30 @@
 - id: Last modified by
   translation: 最後修改者
 
+- id: Menu
+  translation: 選單
+
+- id: Table of Contents
+  translation: 目錄
+
+- id: Link
+  translation: 連結
+
+- id: Breadcrumbs
+  translation: 麵包屑導覽
+
+- id: Thumbnail
+  translation: 縮圖
+
+- id: Logo
+  translation: 識別圖案
+
+- id: Categories
+  translation: 分類
+
+- id: Tags
+  translation: 標籤
+
 - id: bookSearchConfig
   translation: |
     {
