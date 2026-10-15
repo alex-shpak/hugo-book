@@ -12,10 +12,11 @@
         </div>
       </div>
       {{- $thumbnail := default "thumbnail.*" .Params.BookPostThumbnail -}}
+      {{- $thumbnailAlt := default (partial "docs/text/i18n" "Thumbnail") .Params.BookPostThumbnailAlt -}}
       {{- with or (.Resources.GetMatch $thumbnail) (resources.GetMatch $thumbnail) -}}
-      <div class="book-post-thumbnail">
-        <img src="{{ .RelPermalink }}" alt="{{ partial "docs/text/i18n" "Thumbnail" }}" />
-      </div>
+        <div class="book-post-thumbnail">
+          <img src="{{ .RelPermalink }}" alt="{{ $thumbnailAlt }}" />
+        </div>
       {{- end -}}
     </div>
   </article>
