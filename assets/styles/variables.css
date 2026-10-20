@@ -14,7 +14,8 @@
   --space-16: 1rem;
 
   --body-min-width: 20rem;
-  --container-max-width: 90rem;
+  --layout-max-width: 90rem;
+  --content-max-width: 50rem;
 
   --menu-width: 16rem;
   --toc-width: 16rem;

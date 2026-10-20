@@ -30,6 +30,11 @@ enableGitInfo = true
 [markup.goldmark.renderer]
   unsafe = true
 
+[markup.goldmark.parser]
+  [markup.goldmark.parser.attribute]
+    block = true
+    title = true
+
 [markup.tableOfContents]
   startLevel = 1
 

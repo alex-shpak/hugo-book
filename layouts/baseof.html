@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="{{ default .Site.Language.Name .Site.Language.Locale }}" dir="{{ default "ltr" .Site.Language.Direction }}" data-theme="{{ default "light" .Site.Params.BookTheme }}">
+<html lang="{{ default .Site.Language.Name .Site.Language.Locale }}" dir="{{ default "ltr" .Site.Language.Direction }}"
+    data-theme="{{ default "light" .Site.Params.BookTheme }}"
+    data-layout="{{default "centered" .Site.Params.BookLayout }}">
+
 <head>
   {{ partial "docs/html-head" . }}
   {{ partial "docs/inject/head" . }}
 </head>
+
 <body dir="{{ default "ltr" .Site.Language.Direction }}" class="book-kind-{{ .Kind }} book-type-{{ .Type }}{{ with .Layout }} book-layout-{{ . }}{{ end }}">
-  <main class="container flex">
+  <div class="book-container flex">
     {{ template "menu-container" . }} <!-- Left menu -->
 
     <header class="book-header hidden">
       {{ template "header" . }} <!-- Mobile layout header -->
     </header>
 
-    <div class="book-page">
+    <main class="book-page">
       {{ partial "docs/inject/content-before" . }}
       {{ template "breadcrumbs" . }}
       {{ template "main" . }} <!-- Page Content -->
@@ -27,10 +31,10 @@
       </footer>
 
       <label for="menu-control" class="hidden book-menu-overlay" aria-hidden="true"></label>
-    </div>
+    </main>
 
     {{ template "toc-container" . }} <!-- Table of Contents -->
-  </main>
+  </div>
 
   {{ partial "docs/inject/body" . }}
 </body>

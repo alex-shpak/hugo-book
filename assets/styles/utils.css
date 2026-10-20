@@ -67,3 +67,18 @@ input.toggle {
     transform: rotate(360deg);
   }
 }
+
+nav.horizontal > ul {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+  justify-content: end;
+
+  a {
+    padding: var(--space-4);
+  }
+
+  > li > ul {
+    padding: 0;
+  }
+}

@@ -87,8 +87,8 @@ ul.pagination {
   }
 }
 
-.container {
-  max-width: var(--container-max-width);
+.book-container {
+  max-width: var(--layout-max-width);
   margin: 0 auto;
 }
 
@@ -179,8 +179,15 @@ body[dir="rtl"] .book-menu {
 
 .book-page {
   min-width: var(--body-min-width);
-  flex-grow: 1;
+  max-width: var(--content-max-width);
   padding: var(--space-16);
+
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+}
+
+.book-page:last-child, .book-toc:last-child {
+  margin-inline-end: auto;
 }
 
 .book-post {
@@ -235,28 +242,20 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-.book-layout-landing main {
-  flex-direction: column;
-}
+.book-layout-landing {
+  .book-container {
+    flex-direction: column;
+    max-width: var(--layout-max-width);
+  }
 
-.book-layout-landing .book-header {
-  display: block;
-  position: relative;
-  z-index: 1;
+  .book-page {
+    max-width: initial;
+  }
 
-  nav > ul {
-    display: flex;
-    gap: var(--space-8);
-    flex-wrap: wrap;
-    justify-content: end;
-
-    a {
-      padding: var(--space-4);
-    }
-
-    > li > ul {
-      padding: 0;
-    }
+  .book-header {
+    display: block;
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -378,8 +377,12 @@ body[dir="rtl"] .book-menu {
 
 /* --menu-width(16) + --body-min-width(20) * 1.2 + --toc-width(16) */
 @media screen and (max-width: 56rem) {
-  main {
+  .book-container {
     flex-direction: column;
+  }
+
+  .book-page {
+    max-width: initial;
   }
 
   .book-menu {
@@ -450,9 +453,9 @@ body[dir="rtl"] .book-menu {
   }
 }
 
-/* Extra space for big screens (--container-max-width) */
-@media screen and (min-width: 90rem) {
-  main {
+/* Extra space for big screens (--layout-max-width) */
+@media screen and (min-width: 85rem) {
+  .book-container {
     gap: var(--space-16);
     padding: var(--space-16);
   }
