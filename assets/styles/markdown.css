@@ -97,14 +97,26 @@
 
   blockquote {
     margin: var(--space-16) 0;
-    padding: var(--space-8) var(--space-16) var(--space-8) calc(var(--space-16) - var(--space-4)); /* to keep total left space 16dp */
+    padding: var(--space-8) var(--space-16) var(--space-8) var(--space-16);
 
-    border-inline-start: var(--space-4) solid var(--gray-200);
     border-radius: var(--border-radius);
+
+    position: relative;
+    &:before {
+      border-radius: var(--border-radius);
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: var(--space-4);
+      background: var(--gray-500);
+    }
 
     :first-child {
       margin-top: 0;
     }
+
     :last-child {
       margin-bottom: 0;
     }
