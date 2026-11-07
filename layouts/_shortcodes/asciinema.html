@@ -9,7 +9,7 @@
 {{- end -}}
 {{- $id := partial "docs/text/shortcode-id" . -}}
 {{- $href := (partial "docs/links/portable-image" (dict "Page" .Page "Destination" (.Get "cast"))) -}}
-{{- .Store.Set "asciinema" .Params -}}
+{{- .Store.Set "asciinema" (merge .Params dict) -}}
 {{- .Store.DeleteInMap "asciinema" "cast" -}}
 {{- $attributes := partial "docs/text/mapper" (dict
   "attributes" (dict)

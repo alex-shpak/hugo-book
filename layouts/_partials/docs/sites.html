@@ -1,0 +1,64 @@
+<ul class="book-sites">
+  {{ range slice "language" "version" }}
+    {{ template "book-dimension" (dict "Page" $ "Dimension" .) }}
+  {{ end }}
+</ul>
+
+{{ define "book-dimension" }}
+  {{- $pages := dict -}}
+  {{- range $.Page.Rotate $.Dimension -}}
+    {{- $pages = merge $pages (dict (.Site.Dimension $.Dimension).Name .) -}}
+  {{- end -}}
+
+  {{- $current := "" -}}
+  {{- $items := slice -}}
+  {{- range $.Page.Site.Home.Rotate $.Dimension -}}
+    {{- $label := cond (eq $.Dimension "language") (or .Site.Language.Label .Site.Language.Name) (.Site.Dimension $.Dimension).Name -}}
+    {{- if eq .Site $.Page.Site -}}
+      {{- $current = $label -}}
+    {{- else -}}
+      {{- $target := or (index $pages (.Site.Dimension $.Dimension).Name) . -}}
+      {{- $items = $items | append (dict
+        "Label" $label
+        "URL" (cond hugo.IsMultihost $target.Permalink $target.RelPermalink)
+      ) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $icon := index (dict
+    "language" "translate"
+    "version" "tag"
+  ) $.Dimension -}}
+
+  {{- template "book-switcher" (dict
+    "Id" $.Dimension
+    "Icon" $icon
+    "Label" $current
+    "Items" $items
+  ) -}}
+{{ end }}
+
+{{ define "book-switcher" }}
+  {{ with .Items }}
+  <li>
+    <input type="checkbox" id="{{ $.Id }}-control" class="toggle" />
+    <label for="{{ $.Id }}-control" class="flex">
+      <a role="button">
+        <svg class="book-icon">{{ partial "docs/icon" $.Icon }}</svg>
+        {{ $.Label -}}
+      </a>
+      <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "chevron-right" }}</svg>
+    </label>
+
+    <ul>
+      {{ range . }}
+      <li>
+        <a href="{{ .URL }}" class="flex flex-auto">
+          {{ .Label }}
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </li>
+  {{ end }}
+{{ end }}

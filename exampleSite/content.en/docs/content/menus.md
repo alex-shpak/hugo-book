@@ -64,7 +64,8 @@ Menu items support these params under `[params]`:
   url = '/example/'
   weight = 10
   [menu.after.params]
-    bookIcon = 'star'       # Icon name to display next to the item
-    bookNewTab = true        # Open the link in a new tab
-    class = 'custom-class'   # CSS class to add to the menu item
+    class = 'custom-class'     # CSS class to add to the menu item
+    bookIcon = 'star'          # Icon name to display next to the item
+    bookNewTab = true          # Open the link in a new tab
+    bookCollapseSection = true # Collapse child items
 ```

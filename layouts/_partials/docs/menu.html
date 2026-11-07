@@ -1,8 +1,8 @@
 <nav>
 {{ partial "docs/brand" . }}
 {{ partial "docs/search" . }}
-{{ if hugo.IsMultilingual }}
-  {{ partial "docs/languages" . }}
+{{ if gt (len hugo.Sites) 1 }}
+  {{ partial "docs/sites" . }}
 {{ end }}
 
 {{ partial "docs/inject/menu-before" . }}

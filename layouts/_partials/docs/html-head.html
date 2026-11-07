@@ -23,7 +23,7 @@
 <link rel="canonical" href="{{ .Permalink }}">
 
 {{- range .Translations }}
-  <link rel="alternate" hreflang="{{ default .Site.Language.Locale .Language.Name }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">
+  <link rel="alternate" hreflang="{{ default .Language.Name .Language.Locale }}" href="{{ .Permalink }}" title="{{ partial "docs/title" . }}">
 {{- end -}}
 
 <!-- Theme stylesheet, you can customize it by creating `assets/styles/custom.css` in your website -->

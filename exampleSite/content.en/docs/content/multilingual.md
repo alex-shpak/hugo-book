@@ -38,9 +38,4 @@ Set `direction = 'rtl'` on a language to enable right-to-left layout. The entire
 
 ## Translation Dropdown
 
-By default, all configured languages appear in the selector. To only show languages that have a translation for the current page
-
-```toml {filename=hugo.toml}
-[params]
-  BookTranslatedOnly = true
-```
+All configured languages appear in the selector. A language without a translation of the current page links to its home page.

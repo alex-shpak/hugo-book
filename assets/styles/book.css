@@ -358,16 +358,6 @@ body[dir="rtl"] .book-menu {
   margin-top: var(--space-16);
 }
 
-.book-languages {
-  span {
-    padding: 0;
-  }
-
-  ul {
-    padding-inline-start: 1.5em;
-  }
-}
-
 /* Responsive styles */
 .book-menu-content,
 .book-toc-content {

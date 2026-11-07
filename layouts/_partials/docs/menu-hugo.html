@@ -9,29 +9,48 @@
 {{ define "book-menu-hugo" }}
 <ul>
 {{- range .Menu -}}
-  {{- $class := slice -}}
-  {{- with .Params.class -}}
-    {{- $class = $class | append . -}}
-  {{- end -}}
-  {{- if $.Page.IsMenuCurrent .Menu . -}}
-    {{- $class = $class | append "active" -}}
-  {{- end -}}
   <li>
-    {{- $isRemote := default (urls.Parse .URL).IsAbs .Params.bookNewTab -}}
-    <a href="{{ .URL }}"
-      {{- with $class }} class="{{ delimit . " " }}"{{- end -}}
-      {{- with .Title }} title="{{ . }}"{{- end -}}
-      {{- if $isRemote }} target="_blank" rel="noopener"{{- end -}}>
-      {{- .Pre -}}
-      {{- template "book-menu-title" . -}}
-      {{- .Post -}}
-    </a>
+    {{- if and .Params.bookCollapseSection .HasChildren -}}
+      {{- $id := printf "menu-%s" (md5 (print .Menu .KeyName)) -}}
+      <input type="checkbox" id="{{ $id }}" class="toggle" {{ if $.Page.HasMenuCurrent .Menu . }}checked{{ end }} />
+      <label for="{{ $id }}" class="flex">
+        {{- template "book-menu-link" (dict "Page" $.Page "Entry" .) -}}
+        <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "chevron-right" }}</svg>
+      </label>
+    {{- else -}}
+      {{- template "book-menu-link" (dict "Page" $.Page "Entry" .) -}}
+    {{- end -}}
     {{- with .Children -}}
       {{- template "book-menu-hugo" (dict "Page" $.Page "Menu" .) -}}
     {{- end -}}
   </li>
 {{- end -}}
 </ul>
+{{ end }}
+
+{{ define "book-menu-link" }}{{/* (dict "Page" .Page "Entry" .Entry) */}}
+  {{- $class := slice -}}
+  {{- with .Entry.Params.class -}}
+    {{- $class = $class | append . -}}
+  {{- end -}}
+  {{- if .Page.IsMenuCurrent .Entry.Menu .Entry -}}
+    {{- $class = $class | append "active" -}}
+  {{- end -}}
+  {{- $isRemote := (cond (isset .Entry.Params "booknewtab")
+    .Entry.Params.bookNewTab
+    (urls.Parse .Entry.URL).IsAbs
+  ) -}}
+
+  {{- with .Entry -}}
+  <a {{ if .URL }}href="{{ .URL }}"{{ else }}role="button"{{ end }}
+    {{- with $class }} class="{{ delimit . " " }}"{{- end -}}
+    {{- with .Title }} title="{{ . }}"{{- end -}}
+    {{- if $isRemote }} target="_blank" rel="noopener"{{- end -}}>
+    {{- .Pre -}}
+    {{- template "book-menu-title" . -}}
+    {{- .Post -}}
+  </a>
+  {{- end -}}
 {{ end }}
 
 {{ define "book-menu-title" }}
