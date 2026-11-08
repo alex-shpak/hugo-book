@@ -57,7 +57,9 @@
 {{- with .Params.BookIcon -}}
   {{ partial "docs/menu-icon" . }}
 {{- end -}}
-{{- if .Name -}}
+{{- if .Title -}}
+  {{- .Title -}}
+{{- else if .Name -}}
   {{- .Name -}}
 {{- else if .Page -}}
   {{- partial "docs/title" .Page -}}
