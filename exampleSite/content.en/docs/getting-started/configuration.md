@@ -49,6 +49,7 @@ BookLastChangeLink = '{{ .Site.Params.BookRepo }}/commit/{{ .GitInfo.Hash }}'
 # (Optional, default none) Set template for edit page link.
 # When set enabled 'Edit this page' link in the footer of the page.
 # Param is executed as template using .Site, .Page and .Path as context.
+# .Path is relative to the project, or to the module root for modules outside it.
 BookEditLink = '{{ .Site.Params.BookRepo }}/edit/main/exampleSite/{{ .Path }}'
 
 # (Optional, default 'January 2, 2006') Configure the date format used on the pages
