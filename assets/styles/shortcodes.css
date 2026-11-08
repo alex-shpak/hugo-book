@@ -3,6 +3,7 @@
   /* {{< tabs >}} */
   .book-tabs {
     margin: var(--space-16) 0;
+    background: var(--body-background);
     padding: 0;
     min-width: 0;
 
@@ -64,11 +65,11 @@
     display: inline-block;
     font-size: var(--font-size-smaller);
     color: var(--color-link);
+    background: var(--body-background);
     line-height: calc(var(--space-16) * 2);
     padding: 0 var(--space-16);
     border: var(--space-1) solid var(--color-link);
     border-radius: var(--border-radius);
-    cursor: pointer;
 
     &:hover {
       text-decoration: none;
@@ -86,7 +87,7 @@
     &.success { --accent-color: var(--color-accent-success); }
     &.danger { --accent-color: var(--color-accent-danger); }
 
-    background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
+    background-color: color-mix(in srgb, var(--accent-color) 10%, var(--body-background));
     &::before {
       background-color: var(--accent-color);
     }
@@ -154,7 +155,6 @@
         border-radius: var(--border-radius);
         background: var(--body-background);
         border: var(--space-1) solid var(--gray-500);
-        outline: var(--space-4) solid var(--body-background);
       }
 
       >li {

@@ -124,7 +124,7 @@
 
   table {
     overflow: auto;
-    display: block;
+    background: var(--body-background);
     border-spacing: 0;
     border-collapse: collapse;
     margin-top: var(--space-16);
@@ -198,6 +198,7 @@
   }
 
   details {
+    background: var(--body-background);
     padding: var(--space-16);
     margin: var(--space-16) 0;
     border: var(--space-1) solid var(--gray-200);
