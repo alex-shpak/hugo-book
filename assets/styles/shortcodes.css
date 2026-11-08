@@ -4,6 +4,7 @@
   .book-tabs {
     margin: var(--space-16) 0;
     padding: 0;
+    min-width: 0;
 
     border: var(--space-1) solid var(--gray-200);
     border-radius: var(--border-radius);
