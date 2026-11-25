@@ -44,7 +44,7 @@
     <input type="checkbox" id="{{ $.Id }}-control" class="toggle" />
     <label for="{{ $.Id }}-control" class="flex">
       <a role="button">
-        <svg class="book-icon">{{ partial "docs/icon" $.Icon }}</svg>
+        <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" $.Icon }}</svg>
         {{ $.Label -}}
       </a>
       <svg class="book-icon" aria-hidden="true">{{ partial "docs/icon" "chevron-right" }}</svg>
